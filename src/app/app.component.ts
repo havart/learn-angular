@@ -10,7 +10,15 @@ export class AppComponent {
 
     items: string[] = ['one', 'two', 'three'];
 
-    addItem(item) {
-        this.items.push(item);
+    addItem(item, ev) {
+        if (item) {
+            this.items.push(item);
+        }
+        console.log(ev)
+    }
+    del(val) {
+        const index = this.items.indexOf(val);
+        this.items.splice(index, 1);
+        console.log(val + ' is delete');
     }
 }

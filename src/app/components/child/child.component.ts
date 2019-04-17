@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-child',
@@ -7,8 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
     @Input() items: string[];
+    @Output() del = new EventEmitter<string>();
 
     constructor() {}
 
     ngOnInit() {}
+    isClick(val: string) {
+        this.del.emit(val);
+    }
 }
