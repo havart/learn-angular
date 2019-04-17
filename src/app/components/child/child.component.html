@@ -1,1 +1,7 @@
-<div *ngFor="let item of items">{{ item }}</div>
+<div *ngFor="let item of items">{{ item }}
+  <button matSuffix mat-icon-button color="warn" (click)="deleteItem(item)" type="reset">
+    <i class="material-icons">
+      close
+    </i>
+  </button>
+</div>
