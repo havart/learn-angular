@@ -6,7 +6,7 @@
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Add new item" #text/>
     </mat-form-field>
-    <button mat-button (click)="addItem(text.value); text.value=''">Add Item</button>
+    <button mat-button (click)="addItem(text.value)">Add Item</button>
   </mat-card>
 
   <app-child [items]="items"></app-child>
