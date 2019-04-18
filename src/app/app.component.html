@@ -4,10 +4,9 @@
 <div class="container">
     <mat-card>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Add new item" #text />
+            <input matInput placeholder="Add new item" maxlength="70" #text />
         </mat-form-field>
         <button mat-button (click)="addItem(text.value)">Add Item</button>
     </mat-card>
-
-    <app-child [items]="items"></app-child>
+    <app-child [items]="items" (del)="del($event)"></app-child>
 </div>

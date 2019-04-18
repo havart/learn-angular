@@ -2,4 +2,14 @@ div{
     padding: 15px;
     margin: 20px;
     border: 1px slategrey solid;
+
+}
+div:hover button{
+        visibility:visible;
+    }
+
+
+button{
+    visibility: hidden;
+    float: right;
 }
