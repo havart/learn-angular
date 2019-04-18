@@ -12,7 +12,7 @@ export class AppComponent {
   @ViewChild('text') text: ElementRef;
 
   addItem(item) {
-    if (item) {
+    if (!!item) {
       this.items.push(item);
       this.text.nativeElement.value = '';
     }

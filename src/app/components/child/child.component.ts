@@ -14,8 +14,7 @@ export class ChildComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteItem(value: string) {
-    const index = this.items.indexOf(value);
+  deleteItem(index: number) {
     this.items.splice(index, 1);
   }
 }
