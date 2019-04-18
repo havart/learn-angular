@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -7,10 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'learn-angular-change-detaction';
-
+    @ViewChild('text') input: ElementRef;
     items: string[] = ['one', 'two', 'three'];
 
     addItem(item) {
-        this.items.push(item);
+        if (!!item) {
+            this.items.push(item);
+        }
+        this.input.nativeElement.value = '';
+    }
+    del(index) {
+        this.items.splice(index, 1);
     }
 }
