@@ -23,7 +23,7 @@ export class ChildComponent implements OnInit {
   onVisible(event: Event) {
     this.isVisibleButton = !this.isVisibleButton;
     this.isVisibleButton
-      ? event.currentTarget.children[0].style.visibility = 'visible'
-      : event.currentTarget.children[0].style.visibility = 'hidden';
+        ? (event.currentTarget.children[0].style.visibility = 'visible')
+        : (event.currentTarget.children[0].style.visibility = 'hidden');
   }
 }

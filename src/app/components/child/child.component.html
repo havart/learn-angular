@@ -1,8 +1,8 @@
-<div *ngFor="let item of items; let i = index" (mouseenter)="onVisible($event)"
-     (mouseleave)="onVisible($event)">{{ item }}
-  <button matSuffix mat-icon-button color="warn" (click)="deleteItem(i)" type="reset">
-    <i class="material-icons">
-      close
-    </i>
-  </button>
+<div *ngFor="let item of items; let i = index" (mouseenter)="onVisible($event)" (mouseleave)="onVisible($event)">
+    {{ item }}
+    <button matSuffix mat-icon-button color="warn" (click)="deleteItem(i)" type="reset">
+        <i class="material-icons">
+            close
+        </i>
+    </button>
 </div>
