@@ -16,8 +16,7 @@ export class AppComponent {
         }
         this.input.nativeElement.value = '';
     }
-    del(val) {
-        const index = this.items.indexOf(val);
+    del(index) {
         this.items.splice(index, 1);
     }
 }

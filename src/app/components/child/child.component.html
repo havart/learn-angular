@@ -1,4 +1,4 @@
-<div *ngFor="let item of items">
+<div *ngFor="let item of items; let i = index" (mouseenter)="deleteButton($event)" (mouseleave)="deleteButton($event)">
     {{ item }}
-    <button (click)="isClick(item)">x</button>
+    <button (click)="isClick(i)">x</button>
 </div>
