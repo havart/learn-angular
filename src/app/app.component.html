@@ -4,7 +4,7 @@
 <div class="container">
     <mat-card>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Add new item" maxlength="70" #text />
+            <input matInput placeholder="Add new item" maxlength="70" #text autofocus/>
         </mat-form-field>
         <button mat-button (click)="addItem(text.value)">Add Item</button>
     </mat-card>
