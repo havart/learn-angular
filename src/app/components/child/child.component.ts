@@ -1,23 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-child',
     templateUrl: './child.component.html',
     styleUrls: ['./child.component.scss'],
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent {
     @Input() items: string[];
     @Output() del = new EventEmitter<string>();
-    constructor() {}
-
-    ngOnInit() {}
     isClick(val: string) {
         this.del.emit(val);
     }
-    deleteButton(event) {
-        event.target.children[0].style.visibility = isVisible();
-        function isVisible() {
-            return event.type === 'mouseenter' ? 'visible' : 'hidden';
-        }
-    }
+
 }
