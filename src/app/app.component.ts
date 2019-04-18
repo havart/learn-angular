@@ -12,7 +12,7 @@ export class AppComponent {
 
     addItem(item) {
         if (!!item) {
-            this.items.push(item);
+            this.items = [...this.items, item];
         }
         this.input.nativeElement.value = '';
     }
