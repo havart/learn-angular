@@ -1,5 +1,14 @@
-div{
+div {
     padding: 15px;
     margin: 20px;
     border: 1px slategrey solid;
+}
+
+button {
+    opacity: 0;
+    float: right;
+    margin: -10px -10px 0 0;
+}
+div:hover button {
+    opacity: 1;
 }

@@ -7,8 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ChildComponent implements OnInit {
     @Input() items: string[];
+    isVisibleButton = false;
 
     constructor() {}
 
     ngOnInit() {}
+
+    deleteItem(index: number) {
+        this.items.splice(index, 1);
+        this.isVisibleButton = false;
+    }
 }
