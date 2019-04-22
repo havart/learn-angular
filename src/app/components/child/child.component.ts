@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
     selector: 'app-child',
@@ -10,6 +10,6 @@ export class ChildComponent {
     @Input() items: string[];
 
     deleteItem(index: number) {
-        this.items.splice(index, 1);
+        this.items = this.items.filter((val, i) => i !== index);
     }
 }
