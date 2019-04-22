@@ -10,13 +10,13 @@ export class AppComponent {
     @ViewChild('text') input: ElementRef;
     items: string[] = ['one', 'two', 'three'];
 
-    addItem(item) {
+    addItem(item: string) {
         if (!!item) {
             this.items = [...this.items, item];
         }
         this.input.nativeElement.value = '';
     }
-    del(index) {
-        this.items.splice(index, 1);
+    del(index: number) {
+        this.items = this.items.filter((val, i) => i !== index);
     }
 }

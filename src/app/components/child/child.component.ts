@@ -8,8 +8,8 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 })
 export class ChildComponent {
     @Input() items: string[];
-    @Output() del = new EventEmitter<string>();
-    isClick(val: string) {
+    @Output() del = new EventEmitter<number>();
+    isClick(val: number) {
         this.del.emit(val);
     }
 
