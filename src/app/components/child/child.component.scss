@@ -1,15 +1,14 @@
-div{
+div {
     padding: 15px;
     margin: 20px;
     border: 1px slategrey solid;
-
 }
-div:hover button{
-        visibility:visible;
-    }
 
-
-button{
-    visibility: hidden;
+button {
+    opacity: 0;
     float: right;
+    margin: -10px -10px 0 0;
+}
+div:hover button {
+    opacity: 1;
 }
