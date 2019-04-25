@@ -10,9 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { HomeComponent } from './pages/home/home.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
-    declarations: [AppComponent, ChildComponent],
+    declarations: [AppComponent, ChildComponent, HomeComponent, PageNotFoundComponent],
     imports: [
         MatToolbarModule,
         BrowserModule,
@@ -22,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
         MatCardModule,
         MatChipsModule,
         MatButtonModule,
+        MatSidenavModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
