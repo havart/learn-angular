@@ -1,0 +1,53 @@
+<mat-toolbar>
+    <mat-toolbar-row class="toolbar">
+        <div class="firstToolbar">
+            <button mat-raised-button [matMenuTriggerFor]="menu">
+                <i class="material-icons"> menu </i>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+            </mat-menu>
+        </div>
+        <div class="secondToolbar"></div>
+        <div class="thirdToolbar">
+            <button mat-raised-button color="">
+                <i class="material-icons"> phone_forwarded </i>
+            </button>
+            <button mat-raised-button color="">
+                <i class="material-icons"> alarm </i>
+            </button>
+            <button mat-raised-button color="">
+                <i class="material-icons"> mic_none </i>
+            </button>
+            <button mat-raised-button color="warn">
+                <i class="material-icons"> call_end </i>
+            </button>
+        </div>
+        <div class="fourToolbar">
+            <button mat-mini-fab [matMenuTriggerFor]="user">
+                <i class="material-icons"> account_circle </i>
+            </button>
+            <mat-menu #user="matMenu">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                            Consequuntur
+                        </mat-card-title>
+                        <mat-card-subtitle
+                            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad beatae corporis
+                            dolor eos eum facilis incidunt itaque, labore nam quas, rem vero. Dolore eveniet quae unde
+                            vel.
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <img
+                        mat-card-image
+                        src="https://static1.squarespace.com/static/545be673e4b0ce38b21d0939/t/568418c4d82d5e479cd86388/1451497669644/"
+                        alt="Photo of me"
+                    />
+                </mat-card>
+            </mat-menu>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
