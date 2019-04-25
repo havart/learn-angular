@@ -12,10 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MatMenuModule } from '@angular/material';
+import { MatMenuModule, MatTabsModule } from '@angular/material';
+import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
 
 @NgModule({
-    declarations: [AppComponent, ToolbarComponent, HomeComponent, PageNotFoundComponent],
+    declarations: [AppComponent, ToolbarComponent, HomeComponent, PageNotFoundComponent, SidebarComponent],
     imports: [
         MatToolbarModule,
         BrowserModule,
@@ -27,6 +28,7 @@ import { MatMenuModule } from '@angular/material';
         MatButtonModule,
         MatSidenavModule,
         MatMenuModule,
+        MatTabsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
