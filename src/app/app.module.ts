@@ -14,6 +14,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatMenuModule, MatTabsModule } from '@angular/material';
 import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SidebarService } from './services/sidebarService/sidebar.service';
 
 @NgModule({
     declarations: [AppComponent, ToolbarComponent, HomeComponent, PageNotFoundComponent, SidebarComponent],
@@ -29,8 +31,9 @@ import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
         MatSidenavModule,
         MatMenuModule,
         MatTabsModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [SidebarService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,11 +1,17 @@
 <mat-tab-group>
     <mat-tab label="Действия">
-        Действия
+        <div *ngFor="let d of data">
+            <span>{{ d.name }}</span>
+        </div>
     </mat-tab>
-    <mat-tab label="События">
-        События
-    </mat-tab>
-    <mat-tab label="Помощь">
-        Помощь
-    </mat-tab>
+    <!--<mat-tab label="События">-->
+    <!--<div *ngFor="let d of data">-->
+    <!--<span>{{ d.comment }}</span>-->
+    <!--</div>-->
+    <!--</mat-tab>-->
+    <!--<mat-tab label="Помощь">-->
+    <!--<div *ngFor="let d of data">-->
+    <!--<span>{{ d.viewType }}</span>-->
+    <!--</div>-->
+    <!--</mat-tab>-->
 </mat-tab-group>
