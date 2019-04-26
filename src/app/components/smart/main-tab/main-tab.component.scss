@@ -1,0 +1,31 @@
+mat-tab-group {
+    width: 60%;
+    height: 90%;
+    margin-left: 10%;
+    padding-top: 10px;
+    flex-grow: 0.5;
+}
+:host {
+    /deep/.mat-tab-label {
+        color: rgba(33, 151, 248, 0.918);
+        min-width: 80px;
+        padding: 0 10px;
+    }
+}
+:host {
+    /deep/.mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: rgba(255, 230, 0, 0.918);
+    }
+}
+:host {
+    /deep/.mat-tab-body-content {
+        height: 100px;
+        margin-top: 30px;
+    }
+}
+:host {
+    /deep/.mat-tab-header-pagination {
+        min-width: 12px;
+    }
+}
