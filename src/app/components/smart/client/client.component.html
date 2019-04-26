@@ -1,0 +1,26 @@
+<section class="client">
+    <mat-card class="card">
+        <div class="clientInfo">
+          <mat-card-content>
+            <span>{{ client.createdAt | date }}</span>
+          </mat-card-content>
+            <mat-card-header>
+                <mat-card-title>{{ client.lastName }} {{ client.firstName }}</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <span>{{ client.age | date }}</span>
+                <span>{{ client.city.toUpperCase() }}</span>
+                <span>{{ client.address.toUpperCase() }}</span>
+                <span class="status">{{ client.session }}</span>
+            </mat-card-content>
+        </div>
+        <div class="clientImg">
+            <img
+                mat-card-image
+                src="{{ client.avatar }}"
+                alt="Photo of a {{ client.lastName }} {{ client.firstName }}"
+            />
+        </div>
+    </mat-card>
+</section>

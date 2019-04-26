@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
     ngOnInit() {
         this.sBarService.get(this.url).subscribe(
             (value: Data[]) => {
-                this.data = value.filter(el => el.isComment);
+                this.data = value.filter(el => !el.isComment);
             },
             error => {
                 console.log(error);
