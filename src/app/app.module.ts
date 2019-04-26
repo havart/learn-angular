@@ -15,9 +15,20 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { MatMenuModule } from '@angular/material';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CommentsComponent } from './components/smart/comments/comments.component';
+import { CommentService } from './services/comment.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
-    declarations: [AppComponent, ToolbarComponent, MainTabComponent, HomeComponent, PageNotFoundComponent],
+    declarations: [
+        AppComponent,
+        ToolbarComponent,
+        MainTabComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        CommentsComponent,
+    ],
     imports: [
         MatToolbarModule,
         BrowserModule,
@@ -30,8 +41,10 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatSidenavModule,
         MatMenuModule,
         MatTabsModule,
+        MatGridListModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [CommentService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
