@@ -1,0 +1,23 @@
+.comments {
+    height: 400px;
+}
+.card {
+    min-width: 100px;
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+:host {
+    /deep/.mat-card-header-text {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+:host {
+    /deep/.mat-card-header .mat-card-subtitle:not(:first-child) {
+        margin-top: 4px;
+    }
+}
