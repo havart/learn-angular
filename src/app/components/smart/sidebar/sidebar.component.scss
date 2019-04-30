@@ -1,3 +1,16 @@
 div {
     margin: 10px;
 }
+
+::ng-deep div .mat-tab-list {
+    width: 100%;
+}
+
+::ng-deep div .mat-tab-label {
+    min-width: 33%;
+    font-size: 13px;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background: #f7ba5a;
+}
