@@ -1,17 +1,17 @@
 <mat-tab-group>
     <mat-tab label="Действия">
-        <div *ngFor="let d of steps$ | async">
-            <span>{{ d.name }}</span>
+        <div *ngFor="let st of steps$ | async">
+            <span>{{ st.name }}</span>
         </div>
     </mat-tab>
-    <!--<mat-tab label="События">-->
-    <!--<div *ngFor="let d of data">-->
-    <!--<span>{{ d.comment }}</span>-->
-    <!--</div>-->
-    <!--</mat-tab>-->
-    <!--<mat-tab label="Помощь">-->
-    <!--<div *ngFor="let d of data">-->
-    <!--<span>{{ d.viewType }}</span>-->
-    <!--</div>-->
-    <!--</mat-tab>-->
+    <mat-tab label="События">
+        <div *ngFor="let st of steps$ | async">
+            <span>{{ st.comment }}</span>
+        </div>
+    </mat-tab>
+    <mat-tab label="Помощь">
+        <div *ngFor="let st of steps$ | async">
+            <span>{{ st.viewType }} {{ st.isComment }}</span>
+        </div>
+    </mat-tab>
 </mat-tab-group>
