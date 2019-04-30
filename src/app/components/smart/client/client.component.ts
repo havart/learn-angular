@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 import { ClientInterface } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
-import { Config } from '../../../services/config';
+import { API } from '../../../services/API';
 
 @Component({
     selector: 'app-client',
@@ -15,8 +15,8 @@ export class ClientComponent implements OnInit {
     url: string;
     id: string;
 
-    constructor(private clientInfoService: ClientInfoService, private config: Config) {
-        this.url = this.config.CLIENTURL;
+    constructor(private clientInfoService: ClientInfoService, private config: API) {
+        this.url = this.config.CLIENT_URL;
     }
 
     ngOnInit() {

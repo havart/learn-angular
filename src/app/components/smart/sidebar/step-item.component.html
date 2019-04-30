@@ -4,14 +4,4 @@
             <span>{{ st.name }}</span>
         </div>
     </mat-tab>
-    <mat-tab label="События">
-        <div *ngFor="let st of steps$ | async">
-            <span>{{ st.comment }}</span>
-        </div>
-    </mat-tab>
-    <mat-tab label="Помощь">
-        <div *ngFor="let st of steps$ | async">
-            <span>{{ st.viewType }} {{ st.isComment }}</span>
-        </div>
-    </mat-tab>
 </mat-tab-group>

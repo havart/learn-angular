@@ -18,7 +18,7 @@ import { StepItemComponent } from './components/smart/sidebar/step-item.componen
 import { HttpClientModule } from '@angular/common/http';
 import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
-import { Config } from './services/config';
+import { API } from './services/API';
 
 @NgModule({
     declarations: [
@@ -43,7 +43,7 @@ import { Config } from './services/config';
         MatTabsModule,
         HttpClientModule,
     ],
-    providers: [StepService, Config],
+    providers: [StepService, API],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

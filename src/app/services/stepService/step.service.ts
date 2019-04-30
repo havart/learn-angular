@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { API } from '../API';
 
 @Injectable({
     providedIn: 'root',
 })
 export class StepService {
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private config: API) {}
 
-    get(apiUrl: string) {
-        return this.httpClient.get(apiUrl);
+    get() {
+        return this.httpClient.get(this.config.STEPS_URL);
     }
 }
