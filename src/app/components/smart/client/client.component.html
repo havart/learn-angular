@@ -10,14 +10,13 @@
 
             <mat-card-content>
                 <span>{{ cl.age | date }}</span>
-                <span>{{ cl.city.toUpperCase() }}</span>
-                <span>{{ cl.address.toUpperCase() }}</span>
+                <span>{{ cl.city?.toUpperCase() }}</span>
+                <span>{{ cl.address?.toUpperCase() }}</span>
                 <span class="status">{{ cl.session }}</span>
             </mat-card-content>
         </div>
         <div class="clientImg">
-            <img mat-card-image src="{{ cl.avatar }}"
-                 alt="Photo of a {{ cl.lastName }} {{ cl.firstName }}" />
+            <img mat-card-image src="{{ cl.avatar }}" alt="Photo of a {{ cl.lastName }} {{ cl.firstName }}" />
         </div>
     </mat-card>
 </section>
