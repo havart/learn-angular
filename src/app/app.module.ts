@@ -16,7 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SidebarService } from './services/sidebarService/sidebar.service';
+import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { Config } from './services/config';
 
@@ -43,7 +43,7 @@ import { Config } from './services/config';
         MatTabsModule,
         HttpClientModule,
     ],
-    providers: [SidebarService, Config],
+    providers: [StepService, Config],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
