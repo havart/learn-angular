@@ -14,7 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
+import { StepItemComponent } from './components/smart/sidebar/step-item.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
@@ -26,7 +26,7 @@ import { Config } from './services/config';
         ToolbarComponent,
         HomeComponent,
         PageNotFoundComponent,
-        SidebarComponent,
+        StepItemComponent,
         ClientComponent,
     ],
     imports: [

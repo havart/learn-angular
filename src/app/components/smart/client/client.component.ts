@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
-import { ClientInterface } from '../../../interfaces/client-interface';
+import { ClientInterface } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
 import { Config } from '../../../services/config';
 
