@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root',
 })
-export class SidebarService {
+export class StepService {
     constructor(private httpClient: HttpClient) {}
 
     get(apiUrl: string) {
