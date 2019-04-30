@@ -18,6 +18,7 @@ import { SidebarComponent } from './components/smart/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SidebarService } from './services/sidebarService/sidebar.service';
 import { ClientComponent } from './components/smart/client/client.component';
+import { Config } from './services/config';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,7 @@ import { ClientComponent } from './components/smart/client/client.component';
         MatTabsModule,
         HttpClientModule,
     ],
-    providers: [SidebarService],
+    providers: [SidebarService, Config],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,38 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
+import { ClientInterface } from '../../../interfaces/client-interface';
+import { Observable } from 'rxjs';
+import { Config } from '../../../services/config';
 
-export interface Client {
-    id: string;
-    createdAt: string;
-    firstName: string;
-    lastName: string;
-    age: string;
-    address: string;
-    city: string;
-    avatar: string;
-    session: number;
-    customerId: string;
-}
 @Component({
     selector: 'app-client',
     templateUrl: './client.component.html',
     styleUrls: ['./client.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientComponent implements OnInit {
-    client: Client[] = [];
-    url = 'http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/';
+    client$: Observable<ClientInterface>;
+    url: string;
     id: string;
-    constructor(private clientInfoService: ClientInfoService) {}
+
+    constructor(private clientInfoService: ClientInfoService, private config: Config) {
+        this.url = this.config.CLIENTURL;
+    }
 
     ngOnInit() {
         this.id = '2';
-        this.clientInfoService.get(this.url, this.id).subscribe(
-            (value: Client[]) => {
-                this.client = value;
-            },
-            error => {
-                console.log(error);
-            },
-        );
+        this.client$ = this.clientInfoService.getById(this.url, this.id);
     }
 }
