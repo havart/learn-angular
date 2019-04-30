@@ -1,6 +1,6 @@
 <mat-tab-group>
     <mat-tab label="Действия">
-        <div *ngFor="let d of data">
+        <div *ngFor="let d of steps$ | async">
             <span>{{ d.name }}</span>
         </div>
     </mat-tab>

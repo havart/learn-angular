@@ -1,34 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../../../services/sidebarService/sidebar.service';
-
-export interface Data {
-    id: string;
-    createdAt: string;
-    name: string;
-    comment: string;
-    viewType: string;
-    isComment: boolean;
-}
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { StepService } from '../../../services/stepService/step.service';
+import { Config } from '../../../services/config';
+import { StepInterface } from '../../../interfaces/step-interface';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnInit {
-    url = 'http://5bfff0a00296210013dc7e82.mockapi.io/test/steps';
-    data: Data[];
+    url: string;
+    steps$: Observable<StepInterface>[];
 
-    constructor(private sBarService: SidebarService) {}
+    constructor(private stepService: StepService, private config: Config) {
+        this.url = this.config.STEPSURL;
+    }
 
     ngOnInit() {
-        this.sBarService.get(this.url).subscribe(
-            (value: Data[]) => {
-                this.data = value.filter(el => !el.isComment);
-            },
-            error => {
-                console.log(error);
-            },
-        );
+        this.steps$ = this.stepService.get(this.url).pipe(map(value => value.filter(el => !el.isComment)));
     }
 }
