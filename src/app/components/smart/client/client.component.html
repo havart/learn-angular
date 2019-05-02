@@ -1,22 +1,22 @@
 <section class="client" *ngIf="client$ | async as cl">
-    <mat-card class="card">
-        <div class="clientInfo">
-            <mat-card-content>
-                <span>{{ cl.createdAt | date }}</span>
-            </mat-card-content>
-            <mat-card-header>
-                <mat-card-title>{{ cl.lastName }} {{ cl.firstName }}</mat-card-title>
-            </mat-card-header>
+  <mat-card class="card">
+    <div class="clientInfo">
+      <mat-card-content>
+        <span>{{ cl.createdAt | date }}</span>
+      </mat-card-content>
+      <mat-card-header>
+        <mat-card-title>{{ cl.lastName }} {{ cl.firstName }}</mat-card-title>
+      </mat-card-header>
 
-            <mat-card-content>
-                <span>{{ cl.age | date }}</span>
-                <span>{{ cl.city?.toUpperCase() }}</span>
-                <span>{{ cl.address?.toUpperCase() }}</span>
-                <span class="status">{{ cl.session }}</span>
-            </mat-card-content>
-        </div>
-        <div class="clientImg">
-            <img mat-card-image src="{{ cl.avatar }}" alt="Photo of a {{ cl.lastName }} {{ cl.firstName }}" />
-        </div>
-    </mat-card>
+      <mat-card-content>
+        <span>Возраст: {{ birth }} </span>
+        <span>{{ cl.city?.toUpperCase() }}</span>
+        <span>{{ cl.address?.toUpperCase() }}</span>
+        <span class="status">{{ cl.session }}</span>
+      </mat-card-content>
+    </div>
+    <div class="clientImg">
+      <img mat-card-image src="{{ cl.avatar }}" alt="Photo of a {{ cl.lastName }} {{ cl.firstName }}"/>
+    </div>
+  </mat-card>
 </section>
