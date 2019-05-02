@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
-import { ClientInterface } from '../../../interfaces/client.interface';
+import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientComponent implements OnInit {
-    client$: Observable<ClientInterface>;
+    client$: Observable<IClient>;
     id: string;
 
     constructor(private clientInfoService: ClientInfoService) {}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ClientInterface } from '../../interfaces/client.interface';
+import { IClient } from '../../interfaces/client.interface';
 import { Observable } from 'rxjs';
 import { API } from '../API';
 
@@ -10,7 +10,7 @@ import { API } from '../API';
 export class ClientInfoService {
     constructor(private httpClient: HttpClient, private config: API) {}
 
-    getById(id: string): Observable<ClientInterface> {
-        return this.httpClient.get(this.config.CLIENT_URL + id);
+    getById(id: string): Observable<IClient> {
+        return this.httpClient.get<IClient>(this.config.CLIENT_URL + id);
     }
 }
