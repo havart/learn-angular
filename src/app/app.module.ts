@@ -16,9 +16,10 @@ import { MatMenuModule } from '@angular/material';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommentsComponent } from './components/smart/comments/comments.component';
-import { CommentService } from './services/comment.service';
+import { CommentService } from './services/comment/comment.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { API } from './services/API';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatGridListModule,
         HttpClientModule,
     ],
-    providers: [CommentService],
+    providers: [CommentService, API],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
