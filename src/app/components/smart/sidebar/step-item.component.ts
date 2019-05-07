@@ -16,7 +16,7 @@ export class StepItemComponent implements OnInit {
     constructor(private stepService: StepService) {}
 
     ngOnInit() {
-        this.steps$ = this.stepService.get().pipe(
+        this.steps$ = this.stepService.get$().pipe(
             switchMap(results => results),
             filter(result => !result.isComment),
             toArray(),

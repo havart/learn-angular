@@ -18,14 +18,7 @@ export class ClientComponent implements OnInit {
     constructor(private clientInfoService: ClientInfoService) {}
 
     ngOnInit() {
-        this.clientId = Math.floor(Math.random() * 10 + 1);
-        this.client$ = this.clientInfoService.getById(this.clientId).pipe(
-            map(el => {
-                return {
-                    ...el,
-                    age: getAge(el.age),
-                };
-            }),
-        );
+        this.clientId = '' + Math.floor(Math.random() * 10 + 1);
+        this.client$ = this.clientInfoService.getById$(this.clientId);
     }
 }

@@ -19,11 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { API } from './services/API';
+import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ToolbarComponent,
+        MainTabComponent,
         HomeComponent,
         PageNotFoundComponent,
         StepItemComponent,

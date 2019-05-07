@@ -10,7 +10,7 @@ import { ISteps } from '../../interfaces/steps.interface';
 export class StepService {
     constructor(private httpClient: HttpClient, private api: API) {}
 
-    get(): Observable<ISteps[]> {
+    get$(): Observable<ISteps[]> {
         return this.httpClient.get<ISteps[]>(this.api.STEPS_URL);
     }
 }

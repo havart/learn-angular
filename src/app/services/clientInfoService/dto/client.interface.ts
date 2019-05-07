@@ -1,9 +1,9 @@
-export interface IClient {
+export interface IClientDto {
     id: string;
     createdAt: string;
     firstName: string;
     lastName: string;
-    age: number;
+    age: string;
     address: string;
     city: string;
     avatar: string;
