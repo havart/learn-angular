@@ -12,14 +12,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MatMenuModule } from '@angular/material';
-import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CommentsComponent } from './components/smart/comments/comments.component';
 import { CommentService } from './services/comment/comment.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { API } from './services/API';
+import { StepItemComponent } from './components/smart/sidebar/step-item.component';
+import { StepService } from './services/stepService/step.service';
+import { ClientComponent } from './components/smart/client/client.component';
+import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +32,8 @@ import { API } from './services/API';
         HomeComponent,
         PageNotFoundComponent,
         CommentsComponent,
+        StepItemComponent,
+        ClientComponent,
     ],
     imports: [
         MatToolbarModule,
@@ -45,7 +50,7 @@ import { API } from './services/API';
         MatGridListModule,
         HttpClientModule,
     ],
-    providers: [CommentService, API],
+    providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

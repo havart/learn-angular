@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { MainTabConfig } from '../../../config/main-tab.config';
 
 @Component({
     selector: 'app-main-tab',
     templateUrl: './main-tab.component.html',
     styleUrls: ['./main-tab.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainTabComponent implements OnInit {
-    VALIDATION = 'Валидация';
-    INITIALIZATION = 'Инициализация';
-    WORK = 'Трудовая деятельность';
-    constructor() {}
+    tabsArr: string[];
+    constructor(private config: MainTabConfig) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.tabsArr = this.config.TABS;
+    }
 }

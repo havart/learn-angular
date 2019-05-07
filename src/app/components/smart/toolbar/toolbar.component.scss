@@ -1,37 +1,41 @@
 mat-toolbar {
-  display: flex;
-  background: #333333;
+    display: flex;
+    background: #333333;
 }
 
 button.mat-raised-button {
-  margin: 0 5px;
-  padding: 0;
-  min-width: 40px;
-  width: 40px;
+    margin: 0 5px;
+    padding: 0;
+    min-width: 40px;
+    width: 40px;
+}
+
+button.mat-raised-button.warn {
+    background-color: #f44336;
 }
 
 div button {
-  color: white;
-  background: #333333;
+    color: white;
+    background: #333333;
 }
 
 div button:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 .firstToolbar {
-  flex-grow: 50;
+    flex-grow: 50;
 }
 
 .thirdToolbar {
-  flex-grow: 3;
+    flex-grow: 3;
 }
 
 .fourToolbar {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
-.mat-card-image{
-  background-size: cover;
-  border-radius: 5%;
+.mat-card-image {
+    background-size: cover;
+    border-radius: 5%;
 }
