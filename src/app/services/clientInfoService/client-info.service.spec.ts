@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SidebarService } from './sidebar.service';
+import { ClientInfoService } from './client-info.service';
 
-describe('SidebarService', () => {
+describe('ClientInfoService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SidebarService = TestBed.get(SidebarService);
+    const service: ClientInfoService = TestBed.get(ClientInfoService);
     expect(service).toBeTruthy();
   });
 });
