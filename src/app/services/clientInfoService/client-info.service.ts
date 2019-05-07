@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ClientInfoService {
     constructor(private httpClient: HttpClient) {}
 
-    getById(url: string, id: string): Observable<ClientInterface> {
-        return this.httpClient.get(url + id);
+    getById$(url: string, id: string): Observable<ClientInterface> {
+        return this.httpClient.get<ClientInterface>(url + id);
     }
 }

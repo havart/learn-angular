@@ -21,6 +21,6 @@ export class ClientComponent implements OnInit {
 
     ngOnInit() {
         this.id = '2';
-        this.client$ = this.clientInfoService.getById(this.url, this.id);
+        this.client$ = this.clientInfoService.getById$(this.url, this.id);
     }
 }
