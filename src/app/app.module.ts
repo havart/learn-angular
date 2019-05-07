@@ -12,12 +12,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { MatMenuModule } from '@angular/material';
-import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { StepItemComponent } from './components/smart/sidebar/step-item.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StepService } from './services/stepService/step.service';
+import { ClientComponent } from './components/smart/client/client.component';
+import { API } from './services/API';
+import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 
 @NgModule({
-    declarations: [AppComponent, ToolbarComponent, MainTabComponent, HomeComponent, PageNotFoundComponent],
+    declarations: [
+        AppComponent,
+        ToolbarComponent,
+        MainTabComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        StepItemComponent,
+        ClientComponent,
+    ],
     imports: [
         MatToolbarModule,
         BrowserModule,
@@ -30,8 +43,9 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatSidenavModule,
         MatMenuModule,
         MatTabsModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [StepService, API],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
