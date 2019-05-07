@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ClientInterface } from '../../interfaces/client.interface';
+import { IClient } from '../../interfaces/client.interface';
 import { Observable } from 'rxjs';
+import { API } from '../API';
+import { IClientDto } from './dto/client.interface';
+import { map } from 'rxjs/operators';
+import { getAge } from '../../helpers/user-age';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ClientInfoService {
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private config: API) {}
 
-    getById$(url: string, id: string): Observable<ClientInterface> {
-        return this.httpClient.get<ClientInterface>(url + id);
+    getById$(id: string): Observable<IClient> {
+        return this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
+            map(el => {
+                return {
+                    ...el,
+                    age: getAge(el.age),
+                };
+            })
+        );
     }
 }

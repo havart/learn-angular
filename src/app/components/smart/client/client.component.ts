@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
-import { ClientInterface } from '../../../interfaces/client.interface';
+import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
-import { API } from '../../../services/API';
+import { map } from 'rxjs/operators';
+import { getAge } from '../../../helpers/user-age';
 
 @Component({
     selector: 'app-client',
@@ -11,16 +12,13 @@ import { API } from '../../../services/API';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientComponent implements OnInit {
-    client$: Observable<ClientInterface>;
-    url: string;
-    id: string;
+    client$: Observable<IClient>;
+    clientId: string;
 
-    constructor(private clientInfoService: ClientInfoService, private config: API) {
-        this.url = this.config.CLIENT_URL;
-    }
+    constructor(private clientInfoService: ClientInfoService) {}
 
     ngOnInit() {
-        this.id = '2';
-        this.client$ = this.clientInfoService.getById$(this.url, this.id);
+        this.clientId = '' + Math.floor(Math.random() * 10 + 1);
+        this.client$ = this.clientInfoService.getById$(this.clientId);
     }
 }
