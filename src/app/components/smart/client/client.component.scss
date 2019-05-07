@@ -1,0 +1,52 @@
+.client {
+    display: flex;
+    background: #555655;
+}
+
+.card {
+    max-height: 300px;
+    margin: 30px 60px 30px 30px;
+    background: #555655;
+    display: grid;
+    flex-grow: 1;
+    border-radius: 0;
+    grid-template-areas: 'clientInfo clientImg';
+    grid-template-columns: 9fr 1fr;
+}
+
+.clientInfo {
+    grid-area: clientInfo;
+}
+
+.clientImg {
+    grid-area: clientImg;
+}
+
+mat-card-title {
+    color: #ececec;
+    font-size: 24px;
+}
+
+mat-card-content {
+    margin: 0 20px 12px;
+    color: #888988;
+}
+span {
+    margin: 5px 20px 15px 0;
+    line-height: 2;
+}
+.status {
+    padding: 5px 10px;
+    background: #787b7f;
+    color: #d2d4d5;
+    border-radius: 25px;
+}
+.mat-card-image {
+    margin: 10px;
+    width: 80px;
+}
+
+.mat-card-image:first-child {
+    border-radius: 5%;
+    margin-top: 10px;
+}
