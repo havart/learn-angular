@@ -14,11 +14,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
-import { StepItemComponent } from './components/smart/sidebar/step-item.component';
+import { CommentsComponent } from './components/smart/comments/comments.component';
+import { CommentService } from './services/comment/comment.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { API } from './services/API';
+import { StepItemComponent } from './components/smart/sidebar/step-item.component';
 import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
-import { API } from './services/API';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 
 @NgModule({
@@ -28,6 +31,7 @@ import { MainTabComponent } from './components/smart/main-tab/main-tab.component
         MainTabComponent,
         HomeComponent,
         PageNotFoundComponent,
+        CommentsComponent,
         StepItemComponent,
         ClientComponent,
     ],
@@ -43,9 +47,10 @@ import { MainTabComponent } from './components/smart/main-tab/main-tab.component
         MatSidenavModule,
         MatMenuModule,
         MatTabsModule,
+        MatGridListModule,
         HttpClientModule,
     ],
-    providers: [StepService, API],
+    providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
