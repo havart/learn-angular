@@ -14,4 +14,8 @@ export class API {
     public get STEPS_URL(): string {
         return `${this.main}/steps`;
     }
+
+    public get LABOR_URL(): string {
+        return `${this.main}/labor-activity`;
+    }
 }
