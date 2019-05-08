@@ -1,11 +1,12 @@
 .container {
+    min-width: 550px;
     min-height: 89%;
     margin: 0px;
-    padding-right: 5%;
 }
 div {
     float: right;
     overflow: auto;
+    margin-right: 4%;
 }
 mat-drawer {
     width: 25%;
