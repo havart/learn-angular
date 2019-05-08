@@ -24,6 +24,7 @@ import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
+import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
         StepItemComponent,
         ClientComponent,
         ClientLaborActivityComponent,
+        LaborActivityFormComponent,
     ],
     imports: [
         MatToolbarModule,
