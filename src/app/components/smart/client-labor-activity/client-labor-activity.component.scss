@@ -1,0 +1,14 @@
+.activity-field {
+    margin-right: 15%
+}
+mat-grid-tile {
+    text-align: left;
+    color: #888988;
+    margin-left: 15px;
+
+}
+
+:host
+/deep/ mat-grid-tile .mat-figure {
+    justify-content: left;
+}

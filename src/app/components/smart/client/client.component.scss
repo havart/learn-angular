@@ -1,12 +1,7 @@
 .client {
-    display: flex;
     background: #555655;
-}
-
-.card {
     max-height: 300px;
-    margin: 30px 60px 30px 30px;
-    background: #555655;
+    padding: 30px 4% 30px 4%;
     display: grid;
     flex-grow: 1;
     border-radius: 0;
