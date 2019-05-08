@@ -23,6 +23,7 @@ import { StepItemComponent } from './components/smart/sidebar/step-item.componen
 import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
+import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { MainTabComponent } from './components/smart/main-tab/main-tab.component
         CommentsComponent,
         StepItemComponent,
         ClientComponent,
+        ClientLaborActivityComponent,
     ],
     imports: [
         MatToolbarModule,
