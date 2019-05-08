@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { getAge } from '../../../helpers/user-age';
 
 @Component({
     selector: 'app-client',
