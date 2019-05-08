@@ -1,5 +1,6 @@
 .comments {
-    height: 400px;
+    height: 350px;
+    
 }
 .card {
     min-width: 100px;
@@ -19,5 +20,14 @@
 :host {
     /deep/.mat-card-header .mat-card-subtitle:not(:first-child) {
         margin-top: 4px;
+        margin-left: 10px;
+        text-align: right;
+    }
+}
+@media (max-width: 1093px) {
+    :host {
+        /deep/.mat-card-header .mat-card-subtitle:not(:first-child) {
+            width: 100px;
+        }
     }
 }

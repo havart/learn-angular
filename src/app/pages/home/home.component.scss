@@ -1,13 +1,21 @@
+mat-drawer {
+    width: 20%;
+}
 .container {
     min-width: 550px;
-    min-height: 89%;
     margin: 0px;
+    height: 89%;
 }
-div {
+section {
+    float: left;
+    margin: 0 1.5%;
+    width: 63%;
+}
+aside {
     float: right;
+    margin: 0 1.5%;
+    margin-top: 100px;
+    width: 30%;
     overflow: auto;
-    margin-right: 4%;
 }
-mat-drawer {
-    width: 25%;
-}
+

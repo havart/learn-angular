@@ -1,8 +1,7 @@
 mat-tab-group {
-    width: 90%;
+    //width: 90%;
     margin-left: 10%;
     padding-top: 10px;
-
 }
 :host {
     /deep/.mat-tab-label {
@@ -18,8 +17,12 @@ mat-tab-group {
     }
 }
 :host {
+    /deep/.mat-tab-body-wrapper {
+        display: block;
+    }
+}
+:host {
     /deep/.mat-tab-body-content {
-        height: 100px;
         margin-top: 30px;
     }
 }
