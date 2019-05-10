@@ -12,17 +12,19 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
     providedIn: 'root',
 })
 export class ClientInfoService {
+    clientInfo: Observable<IClient>;
+
     constructor(private httpClient: HttpClient, private config: API) {}
 
     getById$(id: string): Observable<IClient> {
-        return this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
+        return (this.clientInfo = this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
             map(el => {
                 return {
                     ...el,
                     age: getAge(el.age),
                 };
             }),
-        );
+        ));
     }
 
     getLaborById$(id: string): Observable<ILabor> {

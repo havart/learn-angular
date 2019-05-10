@@ -1,10 +1,21 @@
 .comments {
     height: 400px;
 }
+
 .card {
     min-width: 100px;
     padding: 5px 10px;
     margin: 5px 0;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
 }
 
 :host {
@@ -16,6 +27,7 @@
         justify-content: space-between;
     }
 }
+
 :host {
     /deep/.mat-card-header .mat-card-subtitle:not(:first-child) {
         margin-top: 4px;

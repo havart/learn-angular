@@ -1,9 +1,17 @@
 <div class="comments">
-  <mat-card class="card" *ngFor="let comment of  comments$ | async">
-      <mat-card-header>
-          <mat-card-title> {{ comment?.name }}</mat-card-title>
-          <mat-card-subtitle>{{ comment?.createdAt | date: 'medium' }}</mat-card-subtitle>
+    <form class="form">
+        <mat-form-field class="full-width">
+            <input matInput type="text" placeholder="Напишите комментарий" [formControl]="userComment" name="comment" />
+            <button mat-button matSuffix *ngIf="userComment.value" (click)="addComment()">
+                <i class="material-icons"> send </i>
+            </button>
+        </mat-form-field>
+    </form>
+    <mat-card class="card" *ngFor="let comment of comments$ | async">
+        <mat-card-header>
+            <mat-card-title> {{ comment?.name }}</mat-card-title>
+            <mat-card-subtitle>{{ comment?.createdAt | date: 'medium' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>{{ comment?.comment }}</mat-card-content>
-  </mat-card>
+    </mat-card>
 </div>

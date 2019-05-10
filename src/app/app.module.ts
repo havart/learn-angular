@@ -24,6 +24,7 @@ import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,8 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
         MatTabsModule,
         MatGridListModule,
         HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
