@@ -4,7 +4,6 @@ mat-drawer {
 .container {
     min-width: 550px;
     margin: 0px;
-    height: 89%;
 }
 section {
     float: left;
@@ -16,6 +15,6 @@ aside {
     margin: 0 1.5%;
     margin-top: 100px;
     width: 30%;
+    min-width: 200px;
     overflow: auto;
 }
-

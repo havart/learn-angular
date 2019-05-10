@@ -1,36 +1,55 @@
-<form class="form">
+<form (ngSubmit)="save()" [formGroup]="form" class="form">
     <mat-form-field class="full-width">
-      <input matInput placeholder="Company (disabled)" disabled value="Google">
+        <mat-label>Тип занятости</mat-label>
+        <mat-select formControlName="employment">
+            <mat-option value="{{ employment}}" *ngFor="let employment of employments"> {{ employment }} </mat-option>
+        </mat-select>
     </mat-form-field>
-  
-    <table class="full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="full-width">
-        <input matInput placeholder="First name">
-      </mat-form-field></td>
-      <td><mat-form-field class="full-width">
-        <input matInput placeholder="Long Last Name That Will Be Truncated">
-      </mat-form-field></td>
-    </tr></table>
-  
-    <p>
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <textarea matInput placeholder="Address 2"></textarea>
-      </mat-form-field>
-    </p>
-  
-    <table class="full-width" cellspacing="0"><tr>
-      <td><mat-form-field class="full-width">
-        <input matInput placeholder="City">
-      </mat-form-field></td>
-      <td><mat-form-field class="full-width">
-        <input matInput placeholder="State">
-      </mat-form-field></td>
-      <td><mat-form-field class="full-width">
-        <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
-        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-      </mat-form-field></td>
-    </tr></table>
-  </form>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Организация"  formControlName="position"/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Юридический адрес" formControlName="organizationAddress" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Фактический адрес" formControlName="address" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Должность" formControlName="occupation" />
+    </mat-form-field>
+
+    <table class="full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Род деятельности" formControlName="type" />
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Доход" formControlName="income" />
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Телефон" formControlName="workPhone" />
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Дата начала" formControlName="startDate" />
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Сайт" formControlName="site" />
+    </mat-form-field>
+    <button mat-stroked-button (click)="save()">Сохранить</button>
+    <button mat-stroked-button (click)="cancel()">Отменить</button>
+    <button mat-stroked-button (click)="add()">Добавить</button>
+</form>

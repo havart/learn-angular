@@ -6,12 +6,15 @@ import { API } from '../API';
 import { IClientDto } from './dto/client.interface';
 import { map } from 'rxjs/operators';
 import { getAge } from '../../helpers/user-age';
-import { ILabor } from 'src/app/interfaces/labor.interface';
+import { ILabor } from '../../interfaces/labor.interface';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ClientInfoService {
+    // labor$: Observable<ILabor>;
+    // clientId = '' + Math.floor(Math.random() * 5 + 1);
+    clientId = '5';
     constructor(private httpClient: HttpClient, private config: API) {}
 
     getById$(id: string): Observable<IClient> {
@@ -25,7 +28,16 @@ export class ClientInfoService {
         );
     }
 
-    getLaborById$(id: string): Observable<ILabor> {
-        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + id);
+    getLaborById$(): Observable<ILabor> {
+        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
+        // return this.labor$ ? this.labor$ : this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
+    }
+
+    addLabor(form) {
+        return this.httpClient.post<ILabor>(this.config.LABOR_URL, form);
+    }
+
+    saveLabor(form, id) {
+        return this.httpClient.put<ILabor>(this.config.LABOR_URL + '/' + id, form);
     }
 }
