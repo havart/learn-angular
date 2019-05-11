@@ -14,7 +14,14 @@ import { ClientInfoService } from '../../../services/clientInfoService/client-in
 })
 export class CommentsComponent implements OnInit {
     comments$: Observable<IComments[]>;
-    comment: IComments;
+    comment: IComments = {
+        id: '',
+        createdAt: '',
+        name: '',
+        comment: '',
+        viewType: 'viewType 1',
+        isComment: true,
+    };
     clientName: string;
     userComment: FormControl = new FormControl('');
 
@@ -22,17 +29,16 @@ export class CommentsComponent implements OnInit {
 
     ngOnInit() {
         this.comments$ = this.commentService.get$().pipe(map(val => val.filter(el => el.isComment)));
-        this.clientService.clientInfo.subscribe(el => this.clientName = el.lastName);
+        this.clientService.clientInfo$.subscribe(el => (this.clientName = el.lastName));
     }
 
     addComment() {
         this.comment = {
+            ...this.comment,
             id: '' + Math.floor(Math.random() * 100 + 1),
             createdAt: new Date().toString(),
             name: this.clientName,
             comment: this.userComment.value,
-            viewType: 'viewType 1',
-            isComment: true,
         };
         this.commentService.addComment(this.comment);
         this.userComment.setValue('');
