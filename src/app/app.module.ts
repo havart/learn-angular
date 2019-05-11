@@ -28,6 +28,12 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
 import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { laborReducer } from './store/reducers/client-labor.reducer';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ClientLaborEffects } from './store/effects/client-labor.effects';
+import { reducers } from './store/reducers';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -57,7 +63,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         MatSelectModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        StoreModule.forRoot(reducers),
+        EffectsModule.forRoot([ClientLaborEffects]),
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],

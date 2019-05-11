@@ -28,6 +28,10 @@ export class ClientInfoService {
         );
     }
 
+    getLabor$(): Observable<ILabor[]> {
+        return this.httpClient.get<ILabor[]>(this.config.LABOR_URL);
+        // return this.labor$ ? this.labor$ : this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
+    }
     getLaborById$(): Observable<ILabor> {
         return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
         // return this.labor$ ? this.labor$ : this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
