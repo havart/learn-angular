@@ -28,8 +28,9 @@ export class CommentsComponent implements OnInit {
     constructor(private commentService: CommentService, private clientService: ClientInfoService) {}
 
     ngOnInit() {
-        this.comments$ = this.commentService.get$().pipe(map(val => val.filter(el => el.isComment)));
+        this.comments$ = this.commentService.comments$.pipe(map(val => val.filter(el => el.isComment)));
         this.clientService.clientInfo$.subscribe(el => (this.clientName = el.lastName));
+        this.commentService.get$();
     }
 
     addComment() {
@@ -42,5 +43,6 @@ export class CommentsComponent implements OnInit {
         };
         this.commentService.addComment(this.comment);
         this.userComment.setValue('');
+        this.commentService.get$();
     }
 }

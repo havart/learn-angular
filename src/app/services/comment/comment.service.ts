@@ -2,25 +2,42 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../API';
 import { IComments } from 'src/app/interfaces/comment.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CommentService {
-    constructor(private httpClient: HttpClient, private api: API) {}
+    comments$: Observable<IComments[]>;
+    private comment$: BehaviorSubject<IComments[]>;
+    private dataComments: IComments[] = [];
 
-    get$(): Observable<IComments[]> {
-        return this.httpClient.get<IComments[]>(this.api.COMMENT_URL);
+    constructor(private httpClient: HttpClient, private api: API) {
+        this.comment$ = new BehaviorSubject<IComments[]>([]);
+        this.comments$ = this.comment$.asObservable();
     }
 
-    updComment(comment: IComments, id: string): void {
-        // return this.httpClient.put<IComments>(this.api.COMMENT_URL + '/' + id, comment);
-        return console.log(comment);
+    get$(): void {
+        this.httpClient.get<IComments[]>(this.api.COMMENT_URL).subscribe(
+            data => {
+                this.dataComments = data;
+                this.comment$.next(data);
+            },
+            error => console.log('Could not load comments.'),
+        );
+    }
+
+    updComment(comment: IComments, id: string): Observable<IComments> {
+        return this.httpClient.put<IComments>(this.api.COMMENT_URL + '/' + id, comment);
     }
 
     addComment(comment: IComments): void {
-        // return this.httpClient.post<IComments>(this.api.COMMENT_URL, comment);
-        return console.log(comment);
+        this.httpClient.post(this.api.COMMENT_URL, comment).subscribe(
+            () => {
+                this.dataComments = [...this.dataComments, comment];
+                this.comment$.next(this.dataComments);
+            },
+            error => console.log('Could not create comment.'),
+        );
     }
 }
