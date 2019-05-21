@@ -10,14 +10,11 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientLaborActivityComponent implements OnInit {
-    private _client$: BehaviorSubject<ILabor>;
-    private client: ILabor;
     client$: Observable<ILabor>;
 
     constructor(private clientInfoService: ClientInfoService) {}
 
     ngOnInit() {
-        this.client$ = this.clientInfoService.labor$;
-        this.clientInfoService.getLaborById$();
+        this.client$ = this.clientInfoService.getLaborById$();
     }
 }

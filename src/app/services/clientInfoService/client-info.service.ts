@@ -12,15 +12,9 @@ import { ILabor } from '../../interfaces/labor.interface';
     providedIn: 'root',
 })
 export class ClientInfoService {
-    labor$: Observable<ILabor>;
-    private _labor$: BehaviorSubject<ILabor>;
-    private dataLabor: ILabor;
     clientId = '' + Math.floor(Math.random() * 5 + 1);
 
-    constructor(private httpClient: HttpClient, private config: API) {
-        this._labor$ = new BehaviorSubject<ILabor>({});
-        this.labor$ = this._labor$.asObservable();
-    }
+    constructor(private httpClient: HttpClient, private config: API) {}
 
     getById$(id: string): Observable<IClient> {
         return this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
@@ -34,13 +28,7 @@ export class ClientInfoService {
     }
 
     getLaborById$() {
-        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId).subscribe(
-            data => {
-                this.dataLabor = data;
-                this._labor$.next(data);
-            },
-            error => console.log('Could not load labor.'),
-        );
+        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
     }
 
     addLabor(form) {
@@ -48,12 +36,6 @@ export class ClientInfoService {
     }
 
     updateLabor(form, id) {
-        this.httpClient.put<ILabor>(this.config.LABOR_URL + '/' + id, form).subscribe(
-            data => {
-                this.dataLabor = { ...data };
-                this._labor$.next(this.dataLabor);
-            },
-            error => console.log('Could not create labor.'),
-        );
+        this.httpClient.put<ILabor>(this.config.LABOR_URL + '/' + id, form);
     }
 }
