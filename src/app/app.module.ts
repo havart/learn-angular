@@ -27,12 +27,11 @@ import { MainTabComponent } from './components/smart/main-tab/main-tab.component
 import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
 import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { laborReducer } from './store/reducers/client-labor.reducer';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { ClientLaborEffects } from './store/effects/client-labor.effects';
-import { reducers } from './store/reducers';
+import { reducers, metaReducers } from './store/state/app.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
     declarations: [
@@ -64,8 +63,10 @@ import { reducers } from './store/reducers';
         MatSelectModule,
         FormsModule,
         ReactiveFormsModule,
-        StoreModule.forRoot(reducers),
-        EffectsModule.forRoot([ClientLaborEffects]),
+        StoreModule.forRoot(reducers, {
+            metaReducers,
+        }),
+         !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],

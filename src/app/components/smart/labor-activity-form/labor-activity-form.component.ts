@@ -1,11 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ILabor } from 'src/app/interfaces/labor.interface';
-import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
+// import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { LoadLabor, GetLabor } from 'src/app/store/actions/client-labor.action';
-import { getSelectLabor } from 'src/app/store/reducers/client-labor.reducer';
+import {  UpsertLabor } from 'src/app/store/actions/client-labor.action';
+import { LABOR } from 'src/app/store/selectors/client-labor.selector';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -18,7 +18,7 @@ export class LaborActivityFormComponent implements OnInit {
     employments = ['Кастелян', 'Министр', 'Диктатор', 'Глава государства', 'Креативный директор', 'Директор'];
     client$: Observable<ILabor>;
     laborState$: Observable<ILabor>;
-    temp = this.store.pipe(select(getSelectLabor));
+    // temp = this.store.pipe(select(getSelectLabor));
     // client$;
 
     constructor(
@@ -31,10 +31,10 @@ export class LaborActivityFormComponent implements OnInit {
     }
     ngOnInit() {
         //   this.client$ = this.clientInfoService.getLaborById$();
-        // this.client$ = this.store.pipe(select(getSelectLabor));
-        this.store.dispatch(new GetLabor());
+        this.client$ = this.store.pipe(select('id'));
+        // this.store.dispatch(new UpsertLabor());
         // this.temp = this.store.pipe(select('type'));
-        console.log(this.temp);
+        console.log(this.client$);
         // console.log(this.client$ );
         // this.store.pipe(select(GetLabor));
 
@@ -64,12 +64,12 @@ export class LaborActivityFormComponent implements OnInit {
     private fillForm() {
         // this.client$.forEach(el => this.form.patchValue(el));
         setTimeout(() => {
-            this.temp.forEach(el => this.form.patchValue(el));
+            this.client$.forEach(el => this.form.patchValue(el));
         }, 2000);
     }
 
     save() {
-        this.client$ = this.store.pipe(select(getSelectLabor));
+      //  this.client$ = this.store.pipe(select(getSelectLabor));
         // this.clientInfoService.updateLabor(this.form.value, this.form.value.id);
         //  this.clientInfoService.getLaborById$();
     }
@@ -78,7 +78,7 @@ export class LaborActivityFormComponent implements OnInit {
     }
 
     add() {
-        this.client$ = this.store.pipe(select(getSelectLabor));
+      //  this.client$ = this.store.pipe(select(getSelectLabor));
         // this.clientInfoService.addLabor(this.form.value);
         //  this.form.reset();
     }
