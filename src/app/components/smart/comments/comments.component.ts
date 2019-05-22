@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { Observable } from 'rxjs';
 import { IComments } from 'src/app/interfaces/comment.interface';
-import { map } from 'rxjs/internal/operators';
 import { FormControl } from '@angular/forms';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 
@@ -28,9 +27,9 @@ export class CommentsComponent implements OnInit {
     constructor(private commentService: CommentService, private clientService: ClientInfoService) {}
 
     ngOnInit() {
-        this.comments$ = this.commentService.comments$.pipe(map(val => val.filter(el => el.isComment)));
+        this.comments$ = this.commentService.comments$;
         this.clientService.clientInfo$.subscribe(el => (this.clientName = el.lastName));
-        this.commentService.get$();
+        this.commentService.getComments$().subscribe();
     }
 
     addComment() {
@@ -41,8 +40,7 @@ export class CommentsComponent implements OnInit {
             name: this.clientName,
             comment: this.userComment.value,
         };
-        this.commentService.addComment(this.comment);
+        this.commentService.addComment$(this.comment).subscribe();
         this.userComment.setValue('');
-        this.commentService.get$();
     }
 }

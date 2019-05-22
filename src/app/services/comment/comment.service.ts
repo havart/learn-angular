@@ -1,43 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { API } from '../API';
 import { IComments } from 'src/app/interfaces/comment.interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Error } from 'tslint/lib/error';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CommentService {
     comments$: Observable<IComments[]>;
-    private comment$: BehaviorSubject<IComments[]>;
-    private dataComments: IComments[] = [];
+    private _comments$: BehaviorSubject<IComments[]>;
 
     constructor(private httpClient: HttpClient, private api: API) {
-        this.comment$ = new BehaviorSubject<IComments[]>([]);
-        this.comments$ = this.comment$.asObservable();
+        this._comments$ = new BehaviorSubject<IComments[]>([]);
+        this.comments$ = this._comments$.asObservable();
     }
 
-    get$(): void {
-        this.httpClient.get<IComments[]>(this.api.COMMENT_URL).subscribe(
-            data => {
-                this.dataComments = data;
-                this.comment$.next(data);
-            },
-            error => console.log('Could not load comments.'),
+    getComments$(): Observable<void> {
+        return this.httpClient.get<IComments[]>(this.api.COMMENT_URL).pipe(
+            map((comment: IComments[]) => {
+                this._comments$.next([...comment]);
+            }),
+            catchError((err: HttpErrorResponse) => {
+                return throwError(new Error(JSON.stringify(err)));
+            }),
         );
     }
 
-    updComment(comment: IComments, id: string): Observable<IComments> {
-        return this.httpClient.put<IComments>(this.api.COMMENT_URL + '/' + id, comment);
+    updateComment$(comment: IComments, id: string): Observable<IComments> {
+        return this.httpClient.put<IComments>(`${this.api.COMMENT_URL}/${id}`, comment);
     }
 
-    addComment(comment: IComments): void {
-        this.httpClient.post(this.api.COMMENT_URL, comment).subscribe(
-            () => {
-                this.dataComments = [...this.dataComments, comment];
-                this.comment$.next(this.dataComments);
-            },
-            error => console.log('Could not create comment.'),
+    addComment$(comment: IComments): Observable<void> {
+        return this.httpClient.post(this.api.COMMENT_URL, comment).pipe(
+            map(() => {
+                this._comments$.next([...this._comments$.getValue(), comment]);
+            }),
+            catchError((err: HttpErrorResponse) => {
+                return throwError(new Error(JSON.stringify(err)));
+            }),
         );
     }
 }
