@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { API } from '../API';
 import { IComment } from 'src/app/interfaces/comment.interface';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Error } from 'tslint/lib/error';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class CommentService {
     getComments$(): Observable<void> {
         return this.httpClient.get<IComment[]>(this.api.COMMENT_URL).pipe(
             map((comment: IComment[]) => {
-                this._comments$.next([...comment]);
+                this._comments$.next(comment);
             }),
             catchError((err: HttpErrorResponse) => {
                 return throwError(new Error(JSON.stringify(err)));
@@ -35,7 +35,7 @@ export class CommentService {
 
     addComment$(comment: IComment): Observable<void> {
         return this.httpClient.post(this.api.COMMENT_URL, comment).pipe(
-            map(() => {
+            tap(() => {
                 this._comments$.next([...this._comments$.getValue(), comment]);
             }),
             catchError((err: HttpErrorResponse) => {

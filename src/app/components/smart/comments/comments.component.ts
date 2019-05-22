@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { IComment } from 'src/app/interfaces/comment.interface';
 import { FormControl } from '@angular/forms';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
+import { IClient } from '../../../interfaces/client.interface';
 
 @Component({
     selector: 'app-comments',
@@ -28,7 +29,9 @@ export class CommentsComponent implements OnInit {
 
     ngOnInit() {
         this.comments$ = this.commentService.comments$;
-        this.clientService.clientInfo$.subscribe(el => (this.clientName = el.lastName));
+        this.clientService.clientInfo$.subscribe((value: IClient) => {
+            return (this.clientName = value.lastName);
+        });
         this.commentService.getComments$().subscribe();
     }
 
