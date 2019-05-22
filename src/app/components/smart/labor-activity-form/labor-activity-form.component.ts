@@ -1,8 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { ILabor } from 'src/app/interfaces/labor.interface';
 import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { EmploymentsConfig } from 'src/app/config/employment.config';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -10,23 +12,31 @@ import { FormGroup, FormBuilder } from '@angular/forms';
     styleUrls: ['./labor-activity-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LaborActivityFormComponent implements OnInit {
+export class LaborActivityFormComponent implements OnInit, DoCheck {
     form: FormGroup = new FormGroup({});
-    employments = ['Кастелян', 'Министр', 'Диктатор', 'Глава государства', 'Креативный директор', 'Директор'];
-    private _client$: BehaviorSubject<ILabor>;
-    private client: ILabor;
     client$: Observable<ILabor>;
+    employments: ReadonlyArray<string>;
+    buttonVisibility = false;
+    tempForm: FormGroup;
 
-    constructor(private clientInfoService: ClientInfoService, private formBuilder: FormBuilder) {}
+    constructor(
+        private clientInfoService: ClientInfoService,
+        private formBuilder: FormBuilder,
+        private cofig: EmploymentsConfig,
+    ) {}
 
     ngOnInit() {
+        this.employments = this.cofig.EMPLOYMENTLIST;
         this.client$ = this.clientInfoService.labor$;
-        this.clientInfoService.getLaborById$();
+        this.clientInfoService.getLaborById$().subscribe();
         this.initForm();
         this.fillForm();
     }
+    ngDoCheck() {
+        this.buttonVisibility = _.isEqual(this.form.value, this.tempForm);
+    }
 
-    private initForm() {
+    private initForm(): void {
         this.form = this.formBuilder.group({
             employment: [null],
             occupation: [null],
@@ -44,19 +54,24 @@ export class LaborActivityFormComponent implements OnInit {
     }
 
     private fillForm() {
-        this.client$.forEach(el => this.form.patchValue(el));
+        this.client$.forEach(el => {
+            if (!!el) {
+                this.form.patchValue(el);
+                this.tempForm = this.form.value;
+            }
+        });
     }
 
-    save() {
-        this.clientInfoService.updateLabor(this.form.value, this.form.value.id);
-        this.clientInfoService.getLaborById$();
+    saveLaborChanges(): void {
+        this.clientInfoService.updateLabor$(this.form.value, this.form.value.id).subscribe();
     }
-    cancel() {
+
+    cancelLaborChanges(): void {
         this.fillForm();
     }
 
-    add() {
-        this.clientInfoService.addLabor(this.form.value);
+    addNewLabor(): void {
+        this.clientInfoService.addLabor$(this.form.value).subscribe();
         //  this.form.reset();
     }
 }
