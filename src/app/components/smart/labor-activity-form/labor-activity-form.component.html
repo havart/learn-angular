@@ -1,0 +1,55 @@
+<form (ngSubmit)="save()" [formGroup]="form" class="form">
+    <mat-form-field class="full-width">
+        <mat-label>Тип занятости</mat-label>
+        <mat-select formControlName="employment">
+            <mat-option value="{{ employment }}" *ngFor="let employment of employments"> {{ employment }} </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Организация" formControlName="position" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Юридический адрес" formControlName="organizationAddress" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Фактический адрес" formControlName="address" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Должность" formControlName="occupation" />
+    </mat-form-field>
+
+    <table class="full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Род деятельности" formControlName="type" />
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Доход" formControlName="income" />
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Телефон" formControlName="workPhone" />
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Дата начала" formControlName="startDate" />
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Сайт" formControlName="site" />
+    </mat-form-field>
+    <button mat-stroked-button (click)="saveLaborChanges()" [disabled]="buttonVisibility">Сохранить</button>
+    <button mat-stroked-button (click)="cancelLaborChanges()">Отменить</button>
+    <button mat-stroked-button (click)="addNewLabor()">Добавить</button>
+</form>

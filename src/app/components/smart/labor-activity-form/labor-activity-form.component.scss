@@ -1,0 +1,28 @@
+.form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    min-width: 150px;
+    max-width: 500px;
+}
+:host{
+  /deep/.mat-form-field-infix{
+    background: #edf1f6;
+    border-radius: 8px;
+    padding-left: 5px;
+    width: 100%;
+  }
+}
+
+.full-width {
+    width: 100%;
+}
+
+td {
+    padding-right: 8px;
+}
+tr{
+  width: 100%;
+}
+button {
+    margin: 10px 30px 0 0;
+}

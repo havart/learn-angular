@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MatMenuModule } from '@angular/material/menu';
@@ -24,6 +25,8 @@ import { StepService } from './services/stepService/step.service';
 import { ClientComponent } from './components/smart/client/client.component';
 import { MainTabComponent } from './components/smart/main-tab/main-tab.component';
 import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
+import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -36,6 +39,7 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
         StepItemComponent,
         ClientComponent,
         ClientLaborActivityComponent,
+        LaborActivityFormComponent,
     ],
     imports: [
         MatToolbarModule,
@@ -51,6 +55,9 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
         MatTabsModule,
         MatGridListModule,
         HttpClientModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
