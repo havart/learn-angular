@@ -32,7 +32,7 @@ export class CommentsComponent implements OnInit {
         this.commentService.getComments$().subscribe();
     }
 
-    addComment() {
+    addComment(): void {
         this.comment = {
             ...this.comment,
             id: '' + Math.floor(Math.random() * 100 + 1),
