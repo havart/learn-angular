@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { Observable } from 'rxjs';
-import { IComments } from 'src/app/interfaces/comment.interface';
+import { IComment } from 'src/app/interfaces/comment.interface';
 import { FormControl } from '@angular/forms';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 
@@ -12,8 +12,8 @@ import { ClientInfoService } from '../../../services/clientInfoService/client-in
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentsComponent implements OnInit {
-    comments$: Observable<IComments[]>;
-    comment: IComments = {
+    comments$: Observable<IComment[]>;
+    comment: IComment = {
         id: '',
         createdAt: '',
         name: '',
