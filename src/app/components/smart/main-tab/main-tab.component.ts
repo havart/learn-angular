@@ -8,10 +8,10 @@ import { MainTabConfig } from '../../../config/main-tab.config';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainTabComponent implements OnInit {
-    tabsArr: string[];
+    tabs: string[];
     constructor(private config: MainTabConfig) {}
 
     ngOnInit() {
-        this.tabsArr = this.config.TABS;
+        this.tabs = this.config.TABS;
     }
 }

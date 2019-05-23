@@ -11,11 +11,11 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
 })
 export class ClientLaborActivityComponent implements OnInit {
     client$: Observable<ILabor>;
-    clientId: string;
 
     constructor(private clientInfoService: ClientInfoService) {}
+
     ngOnInit() {
-        this.clientId = '2';
-        this.client$ = this.clientInfoService.getLaborById$(this.clientId);
+        this.client$ = this.clientInfoService.labor$;
+        this.clientInfoService.getLaborById$().subscribe();
     }
 }
