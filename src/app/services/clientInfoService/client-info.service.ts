@@ -12,29 +12,30 @@ import { ILabor } from '../../interfaces/labor.interface';
     providedIn: 'root',
 })
 export class ClientInfoService {
+    clientInfo$: Observable<IClient>;
     clientId = '' + Math.floor(Math.random() * 5 + 1);
     labor$: Observable<ILabor>;
-    private _labor$: BehaviorSubject<ILabor>;
+    private laborBS$: BehaviorSubject<ILabor>;
 
     constructor(private httpClient: HttpClient, private config: API) {
-        this._labor$ = new BehaviorSubject<ILabor>(null);
-        this.labor$ = this._labor$.asObservable();
+        this.laborBS$ = new BehaviorSubject<ILabor>(null);
+        this.labor$ = this.laborBS$.asObservable();
     }
 
     getById$(id: string): Observable<IClient> {
-        return this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
-            map((value: IClientDto) => {
+        return (this.clientInfo$ = this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
+            map((client: IClient) => {
                 return {
-                    ...value,
-                    age: getAge(value.age),
+                    ...client,
+                    age: getAge(client.age),
                 };
             }),
-        );
+        ));
     }
 
     getLaborById$(): Observable<void> {
         return this.httpClient.get<ILabor>(`${this.config.LABOR_URL}/${this.clientId}`).pipe(
-            map((value: ILabor) => this._labor$.next(value)),
+            map((value: ILabor) => this.laborBS$.next(value)),
             catchError((error: HttpErrorResponse) => {
                 return throwError(new Error(JSON.stringify(error)));
             }),
@@ -47,7 +48,7 @@ export class ClientInfoService {
 
     updateLabor$(form: ILabor, id: string): Observable<ILabor> {
         return this.httpClient.put<ILabor>(`${this.config.LABOR_URL}/${id}`, form).pipe(
-            tap((value: ILabor) => this._labor$.next({ ...value })),
+            tap((value: ILabor) => this.laborBS$.next({ ...value })),
             catchError((error: HttpErrorResponse) => {
                 return throwError(new Error(JSON.stringify(error)));
             }),

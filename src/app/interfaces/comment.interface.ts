@@ -1,4 +1,4 @@
-export interface IComments {
+export interface IComment {
     id: string;
     createdAt: string;
     name: string;

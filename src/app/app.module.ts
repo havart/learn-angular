@@ -55,9 +55,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatTabsModule,
         MatGridListModule,
         HttpClientModule,
-        MatSelectModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatSelectModule,
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
