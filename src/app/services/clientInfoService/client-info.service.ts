@@ -12,7 +12,6 @@ import { ILabor } from '../../interfaces/labor.interface';
     providedIn: 'root',
 })
 export class ClientInfoService {
-    clientId = '' + Math.floor(Math.random() * 5 + 1);
 
     constructor(private httpClient: HttpClient, private config: API) {}
 
@@ -27,8 +26,8 @@ export class ClientInfoService {
         );
     }
 
-    getLaborById$() {
-        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + this.clientId);
+    getLaborById$(clientId: number) {
+        return this.httpClient.get<ILabor>(this.config.LABOR_URL + '/' + clientId);
     }
 
     addLabor(form) {
