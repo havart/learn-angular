@@ -1,4 +1,4 @@
-
+<button mat-stroked-button (click)="getNext()">Обновить</button>
 <form (ngSubmit)="save()" [formGroup]="form" class="form">
     <mat-form-field class="full-width">
         <mat-label>Тип занятости</mat-label>
@@ -53,4 +53,6 @@
     <button mat-stroked-button (click)="save()">Сохранить</button>
     <button mat-stroked-button (click)="cancel()">Отменить</button>
     <button mat-stroked-button (click)="add()">Добавить</button>
+  
+
 </form>

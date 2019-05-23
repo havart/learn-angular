@@ -3,10 +3,11 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
 import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { UpsertLabor } from 'src/app/store/actions/client-labor.action';
-import { LABOR } from 'src/app/store/selectors/client-labor.selector';
+import { Store, select } from '@ngrx/store';
+import { UpsertLabor, SelectedLaborSet } from 'src/app/store/actions/client-labor.action';
+import { LABOR, getLabor } from 'src/app/store/selectors/client-labor.selector';
 import { tap } from 'rxjs/operators';
+import { IAppState } from 'src/app/store/state/app.state';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -21,22 +22,38 @@ export class LaborActivityFormComponent implements OnInit {
 
     constructor(
         private clientInfoService: ClientInfoService,
-        private store: Store<ILabor>,
+        private store$: Store<IAppState>,
         private formBuilder: FormBuilder,
     ) {
-        this.client$ = this.store.select(LABOR);
+        this.client$ = this.store$.pipe(select(getLabor));
     }
     ngOnInit() {
         this.clientInfoService
-            .getLaborById$()
+            .getLaborById$(1)
             .pipe(
                 tap((el: ILabor) => {
-                    this.store.dispatch(new UpsertLabor(el)), this.form.patchValue(el);
+                    this.store$.dispatch(new UpsertLabor(el));
+                    this.store$.dispatch(new SelectedLaborSet(el.id));
+                    this.form.patchValue(el);
                 }),
             )
             .subscribe();
         this.initForm();
         this.fillForm();
+    }
+
+    getNext(): void {
+        const clientId = Math.floor(Math.random() * 5 + 1);
+        this.clientInfoService
+            .getLaborById$(clientId)
+            .pipe(
+                tap((el: ILabor) => {
+                    this.store$.dispatch(new UpsertLabor(el));
+                    this.store$.dispatch(new SelectedLaborSet(el.id));
+                    this.form.patchValue(el);
+                }),
+            )
+            .subscribe();
     }
 
     private initForm(): void {
@@ -57,11 +74,11 @@ export class LaborActivityFormComponent implements OnInit {
     }
 
     private fillForm(): void {
-        this.client$.forEach(el => this.form.patchValue(el));
+        //   this.client$.forEach(el => this.form.patchValue(el));
     }
 
     save(): void {
-        //  this.client$ = this.store.pipe(select(getSelectLabor));
+        //  this.client$ = this.store$.pipe(select(getSelectLabor));
         // this.clientInfoService.updateLabor(this.form.value, this.form.value.id);
         //  this.clientInfoService.getLaborById$();
     }
@@ -70,7 +87,7 @@ export class LaborActivityFormComponent implements OnInit {
     }
 
     add(): void {
-        //  this.client$ = this.store.pipe(select(getSelectLabor));
+        //  this.client$ = this.store$.pipe(select(getSelectLabor));
         // this.clientInfoService.addLabor(this.form.value);
         //  this.form.reset();
     }
