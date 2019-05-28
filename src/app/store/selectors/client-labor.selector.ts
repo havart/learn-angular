@@ -10,10 +10,17 @@ export const getLaborEntities = createSelector(
     getLaborState,
     fromLabor.selectEntities,
 );
+
+export const getLoadingStatus = createSelector(
+    getLaborState,
+    ({ isLoading }: fromLabor.ILaborState) => isLoading,
+);
+
 export const getSelectedLaborId = createSelector(
     getLaborState,
     ({ selectedId }: fromLabor.ILaborState) => selectedId,
 );
+
 export const getLabor = createSelector(
     getSelectedLaborId,
     getLaborEntities,
