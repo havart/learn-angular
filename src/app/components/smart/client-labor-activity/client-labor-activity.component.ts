@@ -1,12 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ILabor } from 'src/app/interfaces/labor.interface';
-import { tap } from 'rxjs/operators';
-import { Store, select } from '@ngrx/store';
+import { switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { IAppState } from 'src/app/store/state/app.state';
-import { getLabor } from 'src/app/store/selectors/client-labor.selector';
-import { UpsertLabor, SelectedLaborSet } from 'src/app/store/actions/client-labor.action';
+import { IClient } from '../../../interfaces/client.interface';
 
 @Component({
     selector: 'app-client-labor-activity',
@@ -15,22 +14,17 @@ import { UpsertLabor, SelectedLaborSet } from 'src/app/store/actions/client-labo
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientLaborActivityComponent implements OnInit {
-    client$: Observable<ILabor>;
+    client$: Observable<IClient>;
+    labor$: Observable<ILabor>;
 
-    constructor(private clientInfoService: ClientInfoService, private store$: Store<IAppState>) {
-        this.client$ = this.store$.pipe(select(getLabor));
-    }
+    constructor(private clientInfoService: ClientInfoService, private store$: Store<IAppState>) {}
 
     ngOnInit() {
-        this.clientInfoService
-            .getLaborById$(1)
-            .pipe(
-                tap((el: ILabor) => {
-                    this.store$.dispatch(new UpsertLabor(el));
-                    this.store$.dispatch(new SelectedLaborSet(el.id));
-                }),
-            )
-            .subscribe();
-        // this.client$ = this.clientInfoService.getLaborById$(1);
+        this.client$ = this.clientInfoService.getById$('1');
+        this.labor$ = this.client$.pipe(
+            switchMap(({ id }: IClient) => {
+                return this.clientInfoService.getLaborById$(+id);
+            }),
+        );
     }
 }

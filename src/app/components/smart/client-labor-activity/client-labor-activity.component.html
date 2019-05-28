@@ -1,8 +1,8 @@
-<div class="activity-field" *ngIf="client$ | async as client">
+<div class="activity-field" *ngIf="labor$ | async as labor">
     <mat-grid-list cols="3" rowHeight="40px">
-        <mat-grid-tile colspan="2"> {{ client?.position }} </mat-grid-tile>
-        <mat-grid-tile> {{ client?.income }} </mat-grid-tile>
-        <mat-grid-tile colspan="2"> {{ client?.occupation }} </mat-grid-tile>
-        <mat-grid-tile> {{ client?.site }} </mat-grid-tile>
+        <mat-grid-tile colspan="2"> {{ labor?.position }} </mat-grid-tile>
+        <mat-grid-tile> {{ labor?.income }} </mat-grid-tile>
+        <mat-grid-tile colspan="2"> {{ labor?.occupation }} </mat-grid-tile>
+        <mat-grid-tile> {{ labor?.site }} </mat-grid-tile>
     </mat-grid-list>
 </div>
