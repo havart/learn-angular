@@ -27,6 +27,11 @@ import { MainTabComponent } from './components/smart/main-tab/main-tab.component
 import { ClientLaborActivityComponent } from './components/smart/client-labor-activity/client-labor-activity.component';
 import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/state/app.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
     declarations: [
@@ -57,7 +62,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
-        MatSelectModule,
+        StoreModule.forRoot(reducers, {
+            metaReducers,
+        }),
+         !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],

@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
 import { Observable } from 'rxjs';
 import { ILabor } from 'src/app/interfaces/labor.interface';
+import { switchMap } from 'rxjs/operators';
+import { IClient } from '../../../interfaces/client.interface';
 
 @Component({
     selector: 'app-client-labor-activity',
@@ -10,12 +12,17 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientLaborActivityComponent implements OnInit {
-    client$: Observable<ILabor>;
+    client$: Observable<IClient>;
+    labor$: Observable<ILabor>;
 
     constructor(private clientInfoService: ClientInfoService) {}
 
     ngOnInit() {
-        this.client$ = this.clientInfoService.labor$;
-        this.clientInfoService.getLaborById$().subscribe();
+        this.client$ = this.clientInfoService.getById$('1');
+        this.labor$ = this.client$.pipe(
+            switchMap(({ id }: IClient) => {
+                return this.clientInfoService.getLaborById$(+id);
+            }),
+        );
     }
 }

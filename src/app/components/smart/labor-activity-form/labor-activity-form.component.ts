@@ -5,6 +5,10 @@ import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { EmploymentsConfig } from 'src/app/config/employment.config';
 import * as _ from 'lodash';
+import { Store, select } from '@ngrx/store';
+import { getLabor } from 'src/app/store/selectors/client-labor.selector';
+import { filter, tap } from 'rxjs/operators';
+import { IAppState } from 'src/app/store/state/app.state';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -21,19 +25,35 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
 
     constructor(
         private clientInfoService: ClientInfoService,
+        private store$: Store<IAppState>,
         private formBuilder: FormBuilder,
         private cofig: EmploymentsConfig,
-    ) {}
+    ) {
+        this.client$ = this.store$.pipe(select(getLabor));
+    }
 
     ngOnInit() {
         this.employments = this.cofig.EMPLOYMENTLIST;
-        this.client$ = this.clientInfoService.labor$;
-        this.clientInfoService.getLaborById$().subscribe();
+        this.clientInfoService
+            .getLaborById$(1)
+            .pipe(
+                filter((labor: ILabor) => !!labor),
+                tap(value => {
+                    console.log(value);
+                    this.form.patchValue(value);
+                }),
+            )
+            .subscribe();
         this.initForm();
-        this.fillForm();
     }
     ngDoCheck() {
         this.buttonVisibility = _.isEqual(this.form.value, this.tempForm);
+    }
+
+    getNext(): void {
+        const clientId = Math.floor(Math.random() * 5 + 1);
+        console.log(clientId);
+        this.clientInfoService.fetchAndSave$(clientId).subscribe();
     }
 
     private initForm(): void {
@@ -53,25 +73,17 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
         });
     }
 
-    private fillForm() {
-        this.client$.forEach(el => {
-            if (!!el) {
-                this.form.patchValue(el);
-                this.tempForm = this.form.value;
-            }
-        });
-    }
-
     saveLaborChanges(): void {
-        this.clientInfoService.updateLabor$(this.form.value, this.form.value.id).subscribe();
+        //  this.client$ = this.store$.pipe(select(getSelectLabor));
+        // this.clientInfoService.updateLabor(this.form.value, this.form.value.id);
+        //  this.clientInfoService.getLaborById$();
     }
 
-    cancelLaborChanges(): void {
-        this.fillForm();
-    }
+    cancelLaborChanges(): void {}
 
     addNewLabor(): void {
-        this.clientInfoService.addLabor$(this.form.value).subscribe();
+        //  this.client$ = this.store$.pipe(select(getSelectLabor));
+        // this.clientInfoService.addLabor(this.form.value);
         //  this.form.reset();
     }
 }
