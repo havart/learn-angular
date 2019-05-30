@@ -33,7 +33,7 @@ export class CommentService {
         return this.httpClient.put<IComment>(`${this.api.COMMENT_URL}/${id}`, comment);
     }
 
-    addComment$(comment: IComment): Observable<void> {
+    addComment$(comment: IComment): Observable<object> {
         return this.httpClient.post(this.api.COMMENT_URL, comment).pipe(
             tap(() => {
                 this._comments$.next([...this._comments$.getValue(), comment]);
