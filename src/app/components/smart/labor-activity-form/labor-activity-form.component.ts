@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { ILabor } from 'src/app/interfaces/labor.interface';
-import { ClientInfoService } from 'src/app/services/clientInfoService/client-info.service';
 import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { EmploymentsConfig } from 'src/app/config/employment.config';
@@ -9,6 +8,7 @@ import { Store, select } from '@ngrx/store';
 import { getLabor } from 'src/app/store/selectors/client-labor.selector';
 import { filter, tap } from 'rxjs/operators';
 import { IAppState } from 'src/app/store/state/app.state';
+import { LaborService } from '../../../services/labor/labor.service';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -24,7 +24,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     tempForm: FormGroup;
 
     constructor(
-        private clientInfoService: ClientInfoService,
+        private laborService: LaborService,
         private store$: Store<IAppState>,
         private formBuilder: FormBuilder,
         private cofig: EmploymentsConfig,
@@ -34,14 +34,11 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
 
     ngOnInit() {
         this.employments = this.cofig.EMPLOYMENTLIST;
-        this.clientInfoService
+        this.laborService
             .getLaborById$(1)
             .pipe(
                 filter((labor: ILabor) => !!labor),
-                tap(value => {
-                    console.log(value);
-                    this.form.patchValue(value);
-                }),
+                tap(value => this.form.patchValue(value)),
             )
             .subscribe();
         this.initForm();
@@ -52,8 +49,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
 
     getNext(): void {
         const clientId = Math.floor(Math.random() * 5 + 1);
-        console.log(clientId);
-        this.clientInfoService.fetchAndSave$(clientId).subscribe();
+        this.laborService.fetchAndSave$(clientId).subscribe();
     }
 
     private initForm(): void {

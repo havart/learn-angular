@@ -17,6 +17,6 @@ export class ClientComponent implements OnInit {
 
     ngOnInit() {
         this.clientId = '' + Math.floor(Math.random() * 10 + 1);
-        this.client$ = this.clientInfoService.getById$(this.clientId);
+        this.client$ = this.clientInfoService.getClientById$(this.clientId);
     }
 }

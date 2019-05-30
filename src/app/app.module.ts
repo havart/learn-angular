@@ -32,6 +32,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/state/app.state';
 import { environment } from 'src/environments/environment';
+import { MatOptionModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -59,13 +60,15 @@ import { environment } from 'src/environments/environment';
         MatMenuModule,
         MatTabsModule,
         MatGridListModule,
+        MatOptionModule,
+        MatSelectModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         StoreModule.forRoot(reducers, {
             metaReducers,
         }),
-         !environment.production ? StoreDevtoolsModule.instrument() : [],
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [CommentService, API, StepService],
     bootstrap: [AppComponent],
