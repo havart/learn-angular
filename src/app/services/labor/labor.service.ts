@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ILabor } from '../../interfaces/labor.interface';
 import { IsLoadingLabor, SelectedLaborSet, UpsertLabor } from '../../store/actions/client-labor.action';
-import { getLabor, getLoadingStatus } from '../../store/selectors/client-labor.selector';
+import { selectGetLabor, selectLoadingStatus } from '../../store/selectors/client-labor.selector';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { API } from '../API';
@@ -19,14 +19,14 @@ export class LaborService {
 
     getLaborById$(clientId: string | number): Observable<ILabor> {
         return this.store$.pipe(
-            select(getLabor),
+            select(selectGetLabor),
             onceRunOrCatch(this.fetchAndSave$(clientId)),
         );
     }
 
     fetchAndSave$(clientId: string | number): Observable<ILabor> {
         return this.store$.pipe(
-            select(getLoadingStatus),
+            select(selectLoadingStatus),
             take(1),
             filter((isLoading: boolean) => !isLoading),
             switchMap(() => {

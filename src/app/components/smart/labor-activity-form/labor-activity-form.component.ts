@@ -1,11 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, DoCheck } from '@angular/core';
 import { ILabor } from 'src/app/interfaces/labor.interface';
-import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { EmploymentsConfig } from 'src/app/config/employment.config';
 import * as _ from 'lodash';
-import { Store, select } from '@ngrx/store';
-import { getLabor } from 'src/app/store/selectors/client-labor.selector';
+import { Store } from '@ngrx/store';
 import { filter, tap } from 'rxjs/operators';
 import { IAppState } from 'src/app/store/state/app.state';
 import { LaborService } from '../../../services/labor/labor.service';
@@ -18,7 +16,6 @@ import { LaborService } from '../../../services/labor/labor.service';
 })
 export class LaborActivityFormComponent implements OnInit, DoCheck {
     form: FormGroup = new FormGroup({});
-    client$: Observable<ILabor>;
     employments: ReadonlyArray<string>;
     buttonVisibility = false;
     tempForm: FormGroup;
@@ -28,9 +25,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
         private store$: Store<IAppState>,
         private formBuilder: FormBuilder,
         private cofig: EmploymentsConfig,
-    ) {
-        this.client$ = this.store$.pipe(select(getLabor));
-    }
+    ) {}
 
     ngOnInit() {
         this.employments = this.cofig.EMPLOYMENTLIST;

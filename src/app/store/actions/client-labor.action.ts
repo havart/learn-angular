@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { ILabor } from '../../interfaces/labor.interface';
 
 export enum LaborActionsType {
-    UPSERT = '[LABOR] UPSERT',
+    UPSERT = '[LABOR] GET_COMMENTS',
     SELECTED_LABOR_SET = '[LABOR] SELECTED_LABOR_SET',
     LABOR_IS_LOADING = '[LABOR] LABOR_IS_LOADING',
 }

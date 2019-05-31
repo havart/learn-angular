@@ -6,23 +6,23 @@ import { ILabor } from 'src/app/interfaces/labor.interface';
 export const LABOR = 'labor';
 export const getLaborState = createFeatureSelector<fromLabor.ILaborState>(LABOR);
 
-export const getLaborEntities = createSelector(
+export const selectLaborEntities = createSelector(
     getLaborState,
     fromLabor.selectEntities,
 );
 
-export const getLoadingStatus = createSelector(
+export const selectLoadingStatus = createSelector(
     getLaborState,
     ({ isLoading }: fromLabor.ILaborState) => isLoading,
 );
 
-export const getSelectedLaborId = createSelector(
+export const selectedLaborId = createSelector(
     getLaborState,
     ({ selectedId }: fromLabor.ILaborState) => selectedId,
 );
 
-export const getLabor = createSelector(
-    getSelectedLaborId,
-    getLaborEntities,
+export const selectGetLabor = createSelector(
+    selectedLaborId,
+    selectLaborEntities,
     (laborId: string, entities: Dictionary<ILabor>) => entities[laborId],
 );
