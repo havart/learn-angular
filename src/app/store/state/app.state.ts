@@ -15,7 +15,6 @@ export interface IAppState {
 export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
     return (state: any, action: any) => {
         if (action.type === 'SET_ROOT_STATE') {
-            // tslint:disable-next-line:no-console
             console.log('[SET_ROOT_STATE]', action.payload);
             return action.payload;
         }

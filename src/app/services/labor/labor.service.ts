@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ILabor } from '../../interfaces/labor.interface';
-import { IsLoadingLabor, SelectedLaborSet, UpsertLabor } from '../../store/actions/client-labor.action';
+import { IsLoadingLabor, SelectedLaborSet, UpsertLabor, AddLabor } from '../../store/actions/client-labor.action';
 import { selectGetLabor, selectLoadingStatus } from '../../store/selectors/client-labor.selector';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { API } from '../API';
-import { catchError, filter, switchMap, take, tap } from 'rxjs/operators';
+import { filter, switchMap, take, tap, map } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { onceRunOrCatch } from '../../helpers/onceRunOrCatch';
 import { IAppState } from '../../store/state/app.state';
-import { Error } from 'tslint/lib/error';
 
 @Injectable({
     providedIn: 'root',
@@ -41,14 +40,19 @@ export class LaborService {
             }),
         );
     }
-    addLabor$(form: ILabor): void {
-        this.httpClient.post(this.config.LABOR_URL, form);
+    addLabor$(form: ILabor): Observable<void> {
+        return this.httpClient.post(this.config.LABOR_URL, form).pipe(
+            map((labor: ILabor) => {
+                this.store$.dispatch(new AddLabor(labor));
+            }),
+        );
     }
 
-    updateLabor$(form: ILabor, id: string): Observable<ILabor> {
+    updateLabor$(form: ILabor, id: string): Observable<void> {
         return this.httpClient.put<ILabor>(`${this.config.LABOR_URL}/${id}`, form).pipe(
-            catchError((error: HttpErrorResponse) => {
-                return throwError(new Error(JSON.stringify(error)));
+            map((labor: ILabor) => {
+                this.store$.dispatch(new UpsertLabor(labor));
+                this.store$.dispatch(new SelectedLaborSet(labor.id));
             }),
         );
     }

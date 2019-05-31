@@ -1,5 +1,5 @@
 <button mat-stroked-button (click)="getNext()">Обновить</button>
-<form (ngSubmit)="save()" [formGroup]="form" class="form">
+<form (ngSubmit)="saveLaborChanges()" [formGroup]="form" class="form">
     <mat-form-field class="full-width">
         <mat-label>Тип занятости</mat-label>
         <mat-select formControlName="employment">

@@ -6,6 +6,7 @@ import {
     UpsertLabor,
     SelectedLaborSet,
     IsLoadingLabor,
+    AddLabor,
 } from '../actions/client-labor.action';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
@@ -27,12 +28,20 @@ const reducers: DictionaryInterface<ActionReducer<ILaborState, LaborActions>> = 
     [LaborActionsType.UPSERT]: upsertLabor,
     [LaborActionsType.SELECTED_LABOR_SET]: selectedLaborSet,
     [LaborActionsType.LABOR_IS_LOADING]: setLaborIsLoading,
+    [LaborActionsType.ADD_LABOR]: addLabor,
+    [LaborActionsType.UPDATE_LABOR]: updateLabor,
 };
 function upsertLabor(state: ILaborState, { payload }: UpsertLabor): ILaborState {
     return laborAdapter.upsertOne(payload, state);
 }
 function setLaborIsLoading(state: ILaborState, { payload }: IsLoadingLabor): ILaborState {
     return { ...state, isLoading: payload };
+}
+function addLabor(state: ILaborState, { payload }: AddLabor): ILaborState {
+    return laborAdapter.upsertOne(payload, state);
+}
+function updateLabor(state: ILaborState, { payload }: AddLabor): ILaborState {
+    return laborAdapter.upsertOne(payload, state);
 }
 function selectedLaborSet(state: ILaborState, { payload }: SelectedLaborSet): ILaborState {
     return { ...state, selectedId: payload };
