@@ -23,6 +23,7 @@ export class CommentService {
                 take(1),
                 filter((comments: IComment[]) => !comments.length),
                 switchMapTo(this.httpClient.get<IComment[]>(this.api.COMMENT_URL)),
+                map((comments: IComment[]) => comments.filter((comment: IComment) => comment.isComment)),
             )
             .subscribe((comments: IComment[]) => this.store$.dispatch(new GetComments(comments)));
 
