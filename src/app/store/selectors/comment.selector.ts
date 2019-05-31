@@ -9,11 +9,6 @@ export const selectCommentsEntities = createSelector(
     fromComments.selectEntities,
 );
 
-export const selectLoadingStatus = createSelector(
-    selectCommentsState,
-    ({ isLoading }: fromComments.ICommentsState) => isLoading,
-);
-
 export const selectGetComments = createSelector(
     selectCommentsState,
     fromComments.selectAll,

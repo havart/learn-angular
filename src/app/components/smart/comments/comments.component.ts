@@ -55,7 +55,7 @@ export class CommentsComponent implements OnInit {
             name: this.clientName,
             comment: this.userComment.value,
         };
-        // this.commentService.addComment$(this.comment).subscribe();
+        this.commentService.addComment$(this.comment).subscribe();
         this.userComment.setValue('');
     }
 }

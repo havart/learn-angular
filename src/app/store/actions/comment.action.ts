@@ -3,7 +3,7 @@ import { IComment } from '../../interfaces/comment.interface';
 
 export enum CommentActionsType {
     GET_COMMENTS = '[COMMENT] GET_COMMENTS',
-    COMMENTS_IS_LOADING = '[COMMENT] COMMENTS_IS_LOADING',
+    ADD_COMMENT = '[COMMENT] ADD_COMMENT',
 }
 
 export class GetComments implements Action {
@@ -11,9 +11,9 @@ export class GetComments implements Action {
     constructor(public payload: IComment[]) {}
 }
 
-export class IsLoadingComments implements Action {
-    readonly type = CommentActionsType.COMMENTS_IS_LOADING;
-    constructor(public payload: boolean) {}
+export class AddComment implements Action {
+    readonly type = CommentActionsType.ADD_COMMENT;
+    constructor(public payload: IComment) {}
 }
 
-export type CommentsActions = GetComments | IsLoadingComments;
+export type CommentsActions = GetComments | AddComment;
