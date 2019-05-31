@@ -1,15 +1,16 @@
 import { LABOR } from '../selectors/client-labor.selector';
 import { COMMENTS } from '../selectors/comment.selector';
-import { ILaborState } from '../reducers/client-labor.reducer';
-import { ICommentState } from './comment.state';
+import { STEPS } from '../selectors/steps.selector';
 import * as fromLabor from '../reducers/client-labor.reducer';
 import * as fromComments from '../reducers/comment.reducer';
+import * as fromSteps from '../reducers/steps.reducer';
 import { environment } from '../../../environments/environment';
 import { ActionReducerMap, ActionReducer, MetaReducer, Action } from '@ngrx/store';
 
 export interface IAppState {
-    [LABOR]: ILaborState;
-    [COMMENTS]: ICommentState;
+    [LABOR]: fromLabor.ILaborState;
+    [COMMENTS]: fromComments.ICommentsState;
+    [STEPS]: fromSteps.IStepState;
 }
 
 export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -34,6 +35,7 @@ export function stateReset(reducer: ActionReducer<IAppState>): ActionReducer<IAp
 export const reducers: ActionReducerMap<IAppState> = {
     [LABOR]: fromLabor.reducer,
     [COMMENTS]: fromComments.reducer,
+    [STEPS]: fromSteps.reducer,
 };
 export const metaReducers: MetaReducer<IAppState>[] = !environment.production
     ? [stateSetter, stateReset]
