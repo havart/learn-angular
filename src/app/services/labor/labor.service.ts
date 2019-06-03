@@ -16,21 +16,21 @@ import { IAppState } from '../../store/state/app.state';
 export class LaborService {
     constructor(private httpClient: HttpClient, private config: API, private store$: Store<IAppState>) {}
 
-    getLaborById$(clientId: string | number): Observable<ILabor> {
+    getLaborById$(laborId: string | number): Observable<ILabor> {
         return this.store$.pipe(
             select(selectGetLabor),
-            onceRunOrCatch(this.fetchAndSave$(clientId)),
+            onceRunOrCatch(this.fetchAndSave$(laborId)),
         );
     }
 
-    fetchAndSave$(clientId: string | number): Observable<ILabor> {
+    fetchAndSave$(laborId: string | number): Observable<ILabor> {
         return this.store$.pipe(
             select(selectLoadingStatus),
             take(1),
             filter((isLoading: boolean) => !isLoading),
             switchMap(() => {
                 this.store$.dispatch(new IsLoadingLabor(true));
-                return this.httpClient.get<ILabor>(`${this.config.LABOR_URL}/${clientId}`).pipe(
+                return this.httpClient.get<ILabor>(`${this.config.LABOR_URL}/${laborId}`).pipe(
                     tap((labor: ILabor) => {
                         this.store$.dispatch(new UpsertLabor(labor));
                         this.store$.dispatch(new SelectedLaborSet(labor.id));
