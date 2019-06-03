@@ -3,36 +3,41 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { IComment } from '../../interfaces/comment.interface';
 import { CommentsActions, CommentActionsType, GetComments, AddComment } from '../actions/comment.action';
 
-export const commentAdapter = createEntityAdapter<IComment>({
-    selectId: ({ id }: IComment) => id,
+export interface ICommentState {
+    clientId: string;
+    comments: IComment[];
+}
+
+export const commentAdapter = createEntityAdapter<ICommentState>({
+    selectId: ({ clientId }: ICommentState) => clientId,
 });
+
+export interface ICommentListState extends EntityState<ICommentState> {}
+
+export const commentsInitialState: ICommentListState = commentAdapter.getInitialState({});
+
 export interface DictionaryInterface<T> {
     [key: string]: T;
 }
 
-export interface ICommentsState extends EntityState<IComment> {
-    comments: IComment[];
-}
-
-export const commentInitialState: ICommentsState = commentAdapter.getInitialState({
-    comments: [],
-});
-
-const reducers: DictionaryInterface<ActionReducer<ICommentsState, CommentsActions>> = {
+const reducers: DictionaryInterface<ActionReducer<ICommentListState, CommentsActions>> = {
     [CommentActionsType.GET_COMMENTS]: getComments,
     [CommentActionsType.ADD_COMMENT]: addComment,
 };
 
-function getComments(state: ICommentsState, { payload }: GetComments): ICommentsState {
-    return commentAdapter.addMany(payload, state);
-}
-
-function addComment(state: ICommentsState, { payload }: AddComment): ICommentsState {
+function getComments(state: ICommentListState, { payload }: GetComments): ICommentListState {
     return commentAdapter.upsertOne(payload, state);
 }
 
-export function reducer(state: ICommentsState = commentInitialState, action: CommentsActions): ICommentsState {
+function addComment(state: ICommentListState, { payload }: AddComment): ICommentListState {
+    return commentAdapter.upsertOne(
+        { clientId: payload.clientId, comments: [...state.entities[payload.clientId].comments, payload.comment] },
+        state,
+    );
+}
+
+export function reducer(state: ICommentListState = commentsInitialState, action: CommentsActions): ICommentListState {
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
 
-export const { selectIds, selectEntities, selectAll } = commentAdapter.getSelectors();
+export const { selectEntities } = commentAdapter.getSelectors();
