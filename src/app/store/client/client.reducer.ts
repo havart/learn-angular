@@ -6,7 +6,7 @@ import {
     IsLoadingClient,
     SelectedClientSet,
     UpsertClient,
-} from '../actions/client.action';
+} from './client.action';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const clientAdapter = createEntityAdapter<IClient>({

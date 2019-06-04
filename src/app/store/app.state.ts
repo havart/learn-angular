@@ -1,18 +1,15 @@
-import { LABOR } from '../selectors/client-labor.selector';
-import { COMMENTS } from '../selectors/comment.selector';
-import { STEPS } from '../selectors/steps.selector';
-import { CLIENT } from '../selectors/client.selector';
-import * as fromLabor from '../reducers/client-labor.reducer';
-import * as fromComments from '../reducers/comment.reducer';
-import * as fromSteps from '../reducers/steps.reducer';
-import * as fromClient from '../reducers/client.reducer';
-import { environment } from '../../../environments/environment';
+import { LABOR } from './client-labor/client-labor.selector';
+import { COMMENTS_STEPS } from './comments-steps/comments-steps.selector';
+import { CLIENT } from './client/client.selector';
+import * as fromLabor from './client-labor/client-labor.reducer';
+import * as fromCommentsSteps from './comments-steps/comments-steps.reducer';
+import * as fromClient from './client/client.reducer';
+import { environment } from '../../environments/environment';
 import { ActionReducerMap, ActionReducer, MetaReducer, Action } from '@ngrx/store';
 
 export interface IAppState {
     [LABOR]: fromLabor.ILaborState;
-    [COMMENTS]: fromComments.ICommentListState;
-    [STEPS]: fromSteps.IStepState;
+    [COMMENTS_STEPS]: fromCommentsSteps.ICommentStepListState;
     [CLIENT]: fromClient.IClientState;
 }
 
@@ -37,8 +34,7 @@ export function stateReset(reducer: ActionReducer<IAppState>): ActionReducer<IAp
 }
 export const reducers: ActionReducerMap<IAppState> = {
     [LABOR]: fromLabor.reducer,
-    [COMMENTS]: fromComments.reducer,
-    [STEPS]: fromSteps.reducer,
+    [COMMENTS_STEPS]: fromCommentsSteps.reducer,
     [CLIENT]: fromClient.reducer,
 };
 export const metaReducers: MetaReducer<IAppState>[] = !environment.production

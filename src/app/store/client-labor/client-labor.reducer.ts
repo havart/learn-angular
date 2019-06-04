@@ -7,7 +7,7 @@ import {
     SelectedLaborSet,
     IsLoadingLabor,
     AddLabor,
-} from '../actions/client-labor.action';
+} from './client-labor.action';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const laborAdapter = createEntityAdapter<ILabor>({
@@ -49,4 +49,4 @@ function selectedLaborSet(state: ILaborState, { payload }: SelectedLaborSet): IL
 export function reducer(state: ILaborState = laborInitialState, action: LaborActions): ILaborState {
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
-export const { selectIds, selectEntities, selectAll } = laborAdapter.getSelectors();
+export const { selectEntities } = laborAdapter.getSelectors();

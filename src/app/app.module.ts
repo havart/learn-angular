@@ -28,9 +28,8 @@ import { ClientLaborActivityComponent } from './components/smart/client-labor-ac
 import { LaborActivityFormComponent } from './components/smart/labor-activity-form/labor-activity-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/state/app.state';
+import { reducers, metaReducers } from './store/app.state';
 import { environment } from 'src/environments/environment';
 import { MatOptionModule } from '@angular/material';
 

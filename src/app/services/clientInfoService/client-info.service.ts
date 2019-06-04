@@ -6,9 +6,9 @@ import { API } from '../API';
 import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { getAge } from '../../helpers/user-age';
 import { select, Store } from '@ngrx/store';
-import { IAppState } from '../../store/state/app.state';
-import { selectGetClient, selectLoadingStatus } from '../../store/selectors/client.selector';
-import { IsLoadingClient, SelectedClientSet, UpsertClient } from '../../store/actions/client.action';
+import { IAppState } from '../../store/app.state';
+import { selectGetClient, selectLoadingStatus } from '../../store/client/client.selector';
+import { IsLoadingClient, SelectedClientSet, UpsertClient } from '../../store/client/client.action';
 import { onceRunOrCatch } from '../../helpers/onceRunOrCatch';
 
 @Injectable({

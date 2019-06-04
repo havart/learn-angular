@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromLabor from '../reducers/client-labor.reducer';
+import * as fromLabor from './client-labor.reducer';
 import { Dictionary } from '@ngrx/entity';
 import { ILabor } from 'src/app/interfaces/labor.interface';
 

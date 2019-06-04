@@ -1,13 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { Observable } from 'rxjs';
-import { IComment } from 'src/app/interfaces/comment.interface';
+import { ICommentStep } from 'src/app/interfaces/commentStep.interface';
 import { FormControl } from '@angular/forms';
 import { IClient } from '../../../interfaces/client.interface';
 import { Store } from '@ngrx/store';
-import { IAppState } from '../../../store/state/app.state';
-import { filter, switchMap, tap } from 'rxjs/operators';
-import { selectGetClient } from '../../../store/selectors/client.selector';
+import { IAppState } from '../../../store/app.state';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { selectGetClient } from '../../../store/client/client.selector';
 
 @Component({
     selector: 'app-comments',
@@ -16,8 +16,8 @@ import { selectGetClient } from '../../../store/selectors/client.selector';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentsComponent implements OnInit {
-    comments$: Observable<IComment[]>;
-    comment: IComment = {
+    comments$: Observable<ICommentStep[]>;
+    comment: ICommentStep = {
         id: '',
         createdAt: '',
         name: '',
@@ -38,7 +38,12 @@ export class CommentsComponent implements OnInit {
                 this.clientName = client.lastName;
                 this.clientId = client.id;
             }),
-            switchMap(({ id }: IClient) => this.commentService.getComments$(id)),
+            switchMap(({ id }: IClient) =>
+                this.commentService.getComments$(id).pipe(
+                    filter((comments: ICommentStep[]) => !!comments),
+                    map((comments: ICommentStep[]) => comments.filter((comment: ICommentStep) => comment.isComment)),
+                ),
+            ),
         );
     }
 

@@ -1,4 +1,4 @@
-export interface IComment {
+export interface ICommentStep {
     id: string;
     createdAt: string;
     name: string;

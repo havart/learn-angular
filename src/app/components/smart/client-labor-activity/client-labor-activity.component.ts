@@ -6,8 +6,8 @@ import { switchMap } from 'rxjs/operators';
 import { IClient } from '../../../interfaces/client.interface';
 import { LaborService } from '../../../services/labor/labor.service';
 import { select, Store } from '@ngrx/store';
-import { IAppState } from '../../../store/state/app.state';
-import { selectGetLabor } from '../../../store/selectors/client-labor.selector';
+import { IAppState } from '../../../store/app.state';
+import { selectGetLabor } from '../../../store/client-labor/client-labor.selector';
 
 @Component({
     selector: 'app-client-labor-activity',

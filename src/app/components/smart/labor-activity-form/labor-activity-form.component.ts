@@ -5,7 +5,7 @@ import { EmploymentsConfig } from 'src/app/config/employment.config';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
-import { IAppState } from 'src/app/store/state/app.state';
+import { IAppState } from 'src/app/store/app.state';
 import { LaborService } from '../../../services/labor/labor.service';
 
 @Component({
@@ -33,7 +33,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
         this.laborService
             .getLaborById$(1)
             .pipe(filter((labor: ILabor) => !!labor))
-            .subscribe(labor => {
+            .subscribe((labor: ILabor) => {
                 this.form.patchValue(labor);
                 this.tempForm = labor;
             });

@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StepService } from '../../../services/stepService/step.service';
 import { Observable } from 'rxjs';
-import { filter, switchMap, toArray, tap } from 'rxjs/operators';
-import { IAppState } from 'src/app/store/state/app.state';
-import { select, Store } from '@ngrx/store';
-import { selectGetSteps } from 'src/app/store/selectors/steps.selector';
-import { IStep } from 'src/app/interfaces/steps.interface';
+import { ICommentStep } from '../../../interfaces/commentStep.interface';
+import { IClient } from '../../../interfaces/client.interface';
+import { Store } from '@ngrx/store';
+import { IAppState } from 'src/app/store/app.state';
+import { filter, switchMap, map } from 'rxjs/operators';
+import { selectGetClient } from '../../../store/client/client.selector';
 
 @Component({
     selector: 'app-sidebar',
@@ -14,13 +15,19 @@ import { IStep } from 'src/app/interfaces/steps.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepItemComponent implements OnInit {
-    steps$: Observable<IStep[]>;
+    steps$: Observable<ICommentStep[]>;
 
-    constructor(private stepService: StepService, private store$: Store<IAppState>) {
-        this.steps$ = this.store$.pipe(select(selectGetSteps));
-    }
+    constructor(private stepService: StepService, private store$: Store<IAppState>) {}
 
     ngOnInit() {
-        this.stepService.getSteps$();
+        this.steps$ = this.store$.select(selectGetClient).pipe(
+            filter((client: IClient) => !!client),
+            switchMap(({ id }: IClient) =>
+                this.stepService.getSteps$(id).pipe(
+                    filter((steps: ICommentStep[]) => !!steps),
+                    map((steps: ICommentStep[]) => steps.filter((step: ICommentStep) => !step.isComment)),
+                ),
+            ),
+        );
     }
 }

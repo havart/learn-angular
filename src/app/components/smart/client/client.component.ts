@@ -3,8 +3,8 @@ import { ClientInfoService } from '../../../services/clientInfoService/client-in
 import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { IAppState } from '../../../store/state/app.state';
-import { selectGetClient } from '../../../store/selectors/client.selector';
+import { IAppState } from '../../../store/app.state';
+import { selectGetClient } from '../../../store/client/client.selector';
 
 @Component({
     selector: 'app-client',

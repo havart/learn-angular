@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ILabor } from '../../interfaces/labor.interface';
-import { IsLoadingLabor, SelectedLaborSet, UpsertLabor, AddLabor } from '../../store/actions/client-labor.action';
-import { selectGetLabor, selectLoadingStatus } from '../../store/selectors/client-labor.selector';
+import { IsLoadingLabor, SelectedLaborSet, UpsertLabor, AddLabor } from '../../store/client-labor/client-labor.action';
+import { selectGetLabor, selectLoadingStatus } from '../../store/client-labor/client-labor.selector';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../API';
 import { filter, switchMap, take, tap, map } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { onceRunOrCatch } from '../../helpers/onceRunOrCatch';
-import { IAppState } from '../../store/state/app.state';
+import { IAppState } from '../../store/app.state';
 
 @Injectable({
     providedIn: 'root',

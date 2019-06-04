@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromClient from '../reducers/client.reducer';
+import * as fromClient from './client.reducer';
 import { Dictionary } from '@ngrx/entity';
 import { IClient } from 'src/app/interfaces/client.interface';
 
