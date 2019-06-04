@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { IAppState } from '../../../store/state/app.state';
+import { selectGetClient } from '../../../store/selectors/client.selector';
 
 @Component({
     selector: 'app-client',
@@ -13,10 +16,11 @@ export class ClientComponent implements OnInit {
     client$: Observable<IClient>;
     clientId: string;
 
-    constructor(private clientInfoService: ClientInfoService) {}
+    constructor(private clientInfoService: ClientInfoService, private store$: Store<IAppState>) {}
 
     ngOnInit() {
+        this.client$ = this.store$.pipe(select(selectGetClient));
         this.clientId = '' + Math.floor(Math.random() * 10 + 1);
-        this.client$ = this.clientInfoService.getById$(this.clientId);
+        this.clientInfoService.getClientById$(this.clientId).subscribe();
     }
 }

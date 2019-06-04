@@ -3,8 +3,11 @@ import { CommentService } from 'src/app/services/comment/comment.service';
 import { Observable } from 'rxjs';
 import { IComment } from 'src/app/interfaces/comment.interface';
 import { FormControl } from '@angular/forms';
-import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 import { IClient } from '../../../interfaces/client.interface';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../../store/state/app.state';
+import { filter, switchMap, tap } from 'rxjs/operators';
+import { selectGetClient } from '../../../store/selectors/client.selector';
 
 @Component({
     selector: 'app-comments',
@@ -24,15 +27,19 @@ export class CommentsComponent implements OnInit {
     };
     clientName: string;
     userComment: FormControl = new FormControl('');
+    clientId: string;
 
-    constructor(private commentService: CommentService, private clientService: ClientInfoService) {}
+    constructor(private commentService: CommentService, private store$: Store<IAppState>) {}
 
     ngOnInit() {
-        this.comments$ = this.commentService.comments$;
-        this.clientService.clientInfo$.subscribe((value: IClient) => {
-            return (this.clientName = value.lastName);
-        });
-        this.commentService.getComments$().subscribe();
+        this.comments$ = this.store$.select(selectGetClient).pipe(
+            filter((client: IClient) => !!client),
+            tap((client: IClient) => {
+                this.clientName = client.lastName;
+                this.clientId = client.id;
+            }),
+            switchMap(({ id }: IClient) => this.commentService.getComments$(id)),
+        );
     }
 
     addComment(): void {
@@ -43,7 +50,7 @@ export class CommentsComponent implements OnInit {
             name: this.clientName,
             comment: this.userComment.value,
         };
-        this.commentService.addComment$(this.comment).subscribe();
+        this.commentService.addComment$(this.comment, this.clientId).subscribe();
         this.userComment.setValue('');
     }
 }

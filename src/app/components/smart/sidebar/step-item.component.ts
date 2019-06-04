@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StepService } from '../../../services/stepService/step.service';
-import { ISteps } from '../../../interfaces/steps.interface';
 import { Observable } from 'rxjs';
-import { filter, switchMap, toArray } from 'rxjs/operators';
+import { filter, switchMap, toArray, tap } from 'rxjs/operators';
+import { IAppState } from 'src/app/store/state/app.state';
+import { select, Store } from '@ngrx/store';
+import { selectGetSteps } from 'src/app/store/selectors/steps.selector';
+import { IStep } from 'src/app/interfaces/steps.interface';
 
 @Component({
     selector: 'app-sidebar',
@@ -11,15 +14,13 @@ import { filter, switchMap, toArray } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepItemComponent implements OnInit {
-    steps$: Observable<ISteps[]>;
+    steps$: Observable<IStep[]>;
 
-    constructor(private stepService: StepService) {}
+    constructor(private stepService: StepService, private store$: Store<IAppState>) {
+        this.steps$ = this.store$.pipe(select(selectGetSteps));
+    }
 
     ngOnInit() {
-        this.steps$ = this.stepService.get$().pipe(
-            switchMap(results => results),
-            filter(result => !result.isComment),
-            toArray(),
-        );
+        this.stepService.getSteps$();
     }
 }

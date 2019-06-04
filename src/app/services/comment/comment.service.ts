@@ -1,46 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { API } from '../API';
 import { IComment } from 'src/app/interfaces/comment.interface';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Error } from 'tslint/lib/error';
+import { Observable } from 'rxjs';
+import { filter, map, switchMapTo, take, tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { IAppState } from '../../store/state/app.state';
+import { selectComments } from '../../store/selectors/comment.selector';
+import { AddComment, GetComments } from '../../store/actions/comment.action';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CommentService {
-    comments$: Observable<IComment[]>;
-    private _comments$: BehaviorSubject<IComment[]>;
+    constructor(private httpClient: HttpClient, private api: API, private store$: Store<IAppState>) {}
 
-    constructor(private httpClient: HttpClient, private api: API) {
-        this._comments$ = new BehaviorSubject<IComment[]>([]);
-        this.comments$ = this._comments$.asObservable();
+    getComments$(clientId: string): Observable<IComment[]> {
+        const sourceComments$: Observable<IComment[]> = this.store$.select(selectComments(clientId));
+
+        sourceComments$
+            .pipe(
+                take(1),
+                filter((comments: IComment[]) => !comments),
+                switchMapTo(this.httpClient.get<IComment[]>(this.api.COMMENT_URL)),
+                map((comments: IComment[]) => comments.filter((comment: IComment) => comment.isComment)),
+            )
+            .subscribe((comments: IComment[]) => {
+                this.store$.dispatch(new GetComments({ clientId, comments }));
+            });
+
+        return sourceComments$;
     }
 
-    getComments$(): Observable<void> {
-        return this.httpClient.get<IComment[]>(this.api.COMMENT_URL).pipe(
-            map((comment: IComment[]) => {
-                this._comments$.next(comment);
-            }),
-            catchError((err: HttpErrorResponse) => {
-                return throwError(new Error(JSON.stringify(err)));
-            }),
-        );
-    }
-
-    updateComment$(comment: IComment, id: string): Observable<IComment> {
-        return this.httpClient.put<IComment>(`${this.api.COMMENT_URL}/${id}`, comment);
-    }
-
-    addComment$(comment: IComment): Observable<void> {
-        return this.httpClient.post(this.api.COMMENT_URL, comment).pipe(
-            tap(() => {
-                this._comments$.next([...this._comments$.getValue(), comment]);
-            }),
-            catchError((err: HttpErrorResponse) => {
-                return throwError(new Error(JSON.stringify(err)));
-            }),
-        );
+    addComment$(comment: IComment, clientId: string): Observable<void> {
+        return this.httpClient
+            .post<void>(this.api.COMMENT_URL, comment)
+            .pipe(tap(() => this.store$.dispatch(new AddComment({ clientId, comment }))));
     }
 }

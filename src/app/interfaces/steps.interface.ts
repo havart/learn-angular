@@ -1,4 +1,4 @@
-export interface ISteps {
+export interface IStep {
     id: string;
     createdAt: string;
     name: string;

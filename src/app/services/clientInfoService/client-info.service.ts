@@ -1,56 +1,50 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { IClient } from '../../interfaces/client.interface';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { API } from '../API';
-import { IClientDto } from './dto/client.interface';
-import { map, catchError, tap } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { getAge } from '../../helpers/user-age';
-import { ILabor } from '../../interfaces/labor.interface';
+import { select, Store } from '@ngrx/store';
+import { IAppState } from '../../store/state/app.state';
+import { selectGetClient, selectLoadingStatus } from '../../store/selectors/client.selector';
+import { IsLoadingClient, SelectedClientSet, UpsertClient } from '../../store/actions/client.action';
+import { onceRunOrCatch } from '../../helpers/onceRunOrCatch';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ClientInfoService {
-    clientInfo$: Observable<IClient>;
-    clientId = '' + Math.floor(Math.random() * 5 + 1);
-    labor$: Observable<ILabor>;
-    private laborBS$: BehaviorSubject<ILabor>;
+    constructor(private httpClient: HttpClient, private config: API, private store$: Store<IAppState>) {}
 
-    constructor(private httpClient: HttpClient, private config: API) {
-        this.laborBS$ = new BehaviorSubject<ILabor>(null);
-        this.labor$ = this.laborBS$.asObservable();
-    }
-
-    getById$(id: string): Observable<IClient> {
-        return (this.clientInfo$ = this.httpClient.get<IClientDto>(this.config.CLIENT_URL + id).pipe(
-            map((client: IClient) => {
-                return {
-                    ...client,
-                    age: getAge(client.age),
-                };
-            }),
-        ));
-    }
-
-    getLaborById$(): Observable<void> {
-        return this.httpClient.get<ILabor>(`${this.config.LABOR_URL}/${this.clientId}`).pipe(
-            map((value: ILabor) => this.laborBS$.next(value)),
-            catchError((error: HttpErrorResponse) => {
-                return throwError(new Error(JSON.stringify(error)));
-            }),
+    getClientById$(clientId: string): Observable<IClient> {
+        return this.store$.pipe(
+            select(selectGetClient),
+            take(1),
+            onceRunOrCatch(this.fetchAndSave$(clientId)),
         );
     }
 
-    addLabor$(form: ILabor): Observable<ILabor> {
-        return this.httpClient.post<ILabor>(this.config.LABOR_URL, form);
-    }
-
-    updateLabor$(form: ILabor, id: string): Observable<ILabor> {
-        return this.httpClient.put<ILabor>(`${this.config.LABOR_URL}/${id}`, form).pipe(
-            tap((value: ILabor) => this.laborBS$.next({ ...value })),
-            catchError((error: HttpErrorResponse) => {
-                return throwError(new Error(JSON.stringify(error)));
+    fetchAndSave$(clientId: string | number): Observable<IClient> {
+        return this.store$.pipe(
+            select(selectLoadingStatus),
+            take(1),
+            filter((isLoading: boolean) => !isLoading),
+            switchMap(() => {
+                this.store$.dispatch(new IsLoadingClient(true));
+                return this.httpClient.get<IClient>(`${this.config.CLIENT_URL}/${clientId}`).pipe(
+                    map((client: IClient) => {
+                        return {
+                            ...client,
+                            age: getAge('' + client.age),
+                        };
+                    }),
+                    tap((client: IClient) => {
+                        this.store$.dispatch(new UpsertClient(client));
+                        this.store$.dispatch(new SelectedClientSet(client.id));
+                        this.store$.dispatch(new IsLoadingClient(false));
+                    }),
+                );
             }),
         );
     }
