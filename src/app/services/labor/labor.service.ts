@@ -17,10 +17,11 @@ export class LaborService {
     constructor(private httpClient: HttpClient, private config: API, private store$: Store<IAppState>) {}
 
     getLaborById$(laborId: string | number): Observable<ILabor> {
-        return this.store$.pipe(
-            select(selectGetLabor),
-            onceRunOrCatch(this.fetchAndSave$(laborId)),
-        );
+        const sourceLabor$: Observable<ILabor> = this.store$.select(selectGetLabor);
+
+        sourceLabor$.pipe(onceRunOrCatch(this.fetchAndSave$(laborId))).subscribe();
+
+        return sourceLabor$;
     }
 
     fetchAndSave$(laborId: string | number): Observable<ILabor> {

@@ -16,12 +16,10 @@ export class ClientComponent implements OnInit {
     client$: Observable<IClient>;
     clientId: string;
 
-    constructor(private clientInfoService: ClientInfoService,
-                private store$: Store<IAppState>) {
-        this.client$ = this.store$.pipe(select(selectGetClient));
-    }
+    constructor(private clientInfoService: ClientInfoService, private store$: Store<IAppState>) {}
 
     ngOnInit() {
+        this.client$ = this.store$.pipe(select(selectGetClient));
         this.clientId = '' + Math.floor(Math.random() * 10 + 1);
         this.clientInfoService.getClientById$(this.clientId).subscribe();
     }

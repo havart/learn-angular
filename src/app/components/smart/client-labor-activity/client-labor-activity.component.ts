@@ -22,15 +22,12 @@ export class ClientLaborActivityComponent implements OnInit {
         private clientInfoService: ClientInfoService,
         private laborService: LaborService,
         private store$: Store<IAppState>,
-    ) {
-        this.labor$ = this.store$.pipe(select(selectGetLabor));
-    }
+    ) {}
 
     ngOnInit() {
-        this.clientInfoService.getClientById$('1').pipe(
-            switchMap(({ id }: IClient) => {
-                return this.laborService.getLaborById$(+id);
-            }),
-        );
+        this.labor$ = this.store$.pipe(select(selectGetLabor));
+        this.clientInfoService
+            .getClientById$('1')
+            .pipe(switchMap(({ id }: IClient) => this.laborService.getLaborById$(+id)));
     }
 }

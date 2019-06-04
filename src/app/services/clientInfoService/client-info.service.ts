@@ -22,7 +22,6 @@ export class ClientInfoService {
             select(selectGetClient),
             take(1),
             onceRunOrCatch(this.fetchAndSave$(clientId)),
-            tap(cl => console.log(cl)),
         );
     }
 
@@ -40,7 +39,6 @@ export class ClientInfoService {
                             age: getAge('' + client.age),
                         };
                     }),
-                    tap(cl => console.log(cl)),
                     tap((client: IClient) => {
                         this.store$.dispatch(new UpsertClient(client));
                         this.store$.dispatch(new SelectedClientSet(client.id));
