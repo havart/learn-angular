@@ -4,9 +4,15 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { EmploymentsConfig } from 'src/app/config/employment.config';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
-import { filter } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { IAppState } from 'src/app/store/app.state';
 import { LaborService } from '../../../services/labor/labor.service';
+import { IClient } from '../../../interfaces/client.interface';
+import { selectGetClient } from '../../../store/client/client.selector';
+import { Observable } from 'rxjs';
+import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
+import { SelectedLaborSet } from '../../../store/client-labor/client-labor.action';
+import { SelectedClientSet } from '../../../store/client/client.action';
 
 @Component({
     selector: 'app-labor-activity-form',
@@ -15,6 +21,7 @@ import { LaborService } from '../../../services/labor/labor.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LaborActivityFormComponent implements OnInit, DoCheck {
+    labor$: Observable<ILabor>;
     form: FormGroup = new FormGroup({});
     employments: ReadonlyArray<string>;
     buttonVisibility = true;
@@ -22,6 +29,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
 
     constructor(
         private laborService: LaborService,
+        private clientInfoService: ClientInfoService,
         private store$: Store<IAppState>,
         private formBuilder: FormBuilder,
         private config: EmploymentsConfig,
@@ -30,13 +38,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     ngOnInit() {
         this.employments = this.config.EMPLOYMENTLIST;
 
-        this.laborService
-            .getLaborById$(1)
-            .pipe(filter((labor: ILabor) => !!labor))
-            .subscribe((labor: ILabor) => {
-                this.form.patchValue(labor);
-                this.tempForm = labor;
-            });
+        this.labor$ = this.fillForm();
 
         this.initForm();
     }
@@ -45,10 +47,27 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     }
 
     getNext(): void {
-        const clientId = Math.floor(Math.random() * 5 + 1);
-        this.laborService.fetchAndSave$(clientId).subscribe();
+        const clientId = '' + Math.floor(Math.random() * 10 + 1);
+        this.store$.dispatch(new SelectedClientSet(clientId));
+        this.store$.dispatch(new SelectedLaborSet(clientId));
+        this.clientInfoService.getClientById$(clientId).subscribe();
+        this.fillForm();
     }
 
+    private fillForm(): Observable<ILabor> {
+        return this.store$.select(selectGetClient).pipe(
+            filter((client: IClient) => !!client),
+            switchMap(({ id }: IClient) =>
+                this.laborService.getLaborById$(id).pipe(
+                    filter((labor: ILabor) => !!labor),
+                    tap((labor: ILabor) => {
+                        this.form.patchValue(labor);
+                        this.tempForm = labor;
+                    }),
+                ),
+            ),
+        );
+    }
     private initForm(): void {
         this.form = this.formBuilder.group({
             employment: [null],

@@ -15,3 +15,8 @@ export const selectCommentsSteps = (id: string) =>
         selectCommentsStepsEntities,
         (entities: Dictionary<fromCommentsSteps.ICommentStepState>) => entities[id] && entities[id].commentsSteps,
     );
+
+export const selectLoadingStatusCommentStep = createSelector(
+    selectCommentsStepsState,
+    ({ isLoading }: fromCommentsSteps.ICommentStepListState) => isLoading,
+);

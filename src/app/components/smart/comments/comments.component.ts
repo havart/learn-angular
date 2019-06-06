@@ -41,6 +41,7 @@ export class CommentsComponent implements OnInit {
             switchMap(({ id }: IClient) =>
                 this.commentService.getComments$(id).pipe(
                     filter((comments: ICommentStep[]) => !!comments),
+
                     map((comments: ICommentStep[]) => comments.filter((comment: ICommentStep) => comment.isComment)),
                 ),
             ),

@@ -18,11 +18,11 @@ export class ClientInfoService {
     constructor(private httpClient: HttpClient, private config: API, private store$: Store<IAppState>) {}
 
     getClientById$(clientId: string): Observable<IClient> {
-        return this.store$.pipe(
-            select(selectGetClient),
-            take(1),
-            onceRunOrCatch(this.fetchAndSave$(clientId)),
-        );
+        const sourceClient$: Observable<IClient> = this.store$.select(selectGetClient);
+
+        sourceClient$.pipe(onceRunOrCatch(this.fetchAndSave$(clientId))).subscribe();
+
+        return sourceClient$;
     }
 
     fetchAndSave$(clientId: string | number): Observable<IClient> {

@@ -16,15 +16,15 @@ import { IAppState } from '../../store/app.state';
 export class LaborService {
     constructor(private httpClient: HttpClient, private config: API, private store$: Store<IAppState>) {}
 
-    getLaborById$(laborId: string | number): Observable<ILabor> {
+    getLaborById$(clientId: string): Observable<ILabor> {
         const sourceLabor$: Observable<ILabor> = this.store$.select(selectGetLabor);
 
-        sourceLabor$.pipe(onceRunOrCatch(this.fetchAndSave$(laborId))).subscribe();
+        sourceLabor$.pipe(onceRunOrCatch(this.fetchAndSave$(clientId))).subscribe();
 
         return sourceLabor$;
     }
 
-    fetchAndSave$(laborId: string | number): Observable<ILabor> {
+    fetchAndSave$(laborId: string): Observable<ILabor> {
         return this.store$.pipe(
             select(selectLoadingStatus),
             take(1),

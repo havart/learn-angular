@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { ClientInfoService } from '../../../services/clientInfoService/client-info.service';
 import { IClient } from '../../../interfaces/client.interface';
 import { Observable } from 'rxjs';
