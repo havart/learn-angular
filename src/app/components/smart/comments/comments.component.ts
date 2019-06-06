@@ -41,8 +41,15 @@ export class CommentsComponent implements OnInit {
             switchMap(({ id }: IClient) =>
                 this.commentService.getComments$(id).pipe(
                     filter((comments: ICommentStep[]) => !!comments),
-
-                    map((comments: ICommentStep[]) => comments.filter((comment: ICommentStep) => comment.isComment)),
+                    map((comments: ICommentStep[]) =>
+                        comments
+                            .filter((comment: ICommentStep) => comment.isComment)
+                            .sort(
+                                (comment1, comment2) =>
+                                    new Date(comment2.createdAt).getTime() - new Date(comment1.createdAt).getTime(),
+                            ),
+                    ),
+                    tap(v => console.log(v)),
                 ),
             ),
         );
