@@ -49,7 +49,6 @@ export class CommentsComponent implements OnInit {
                                     new Date(comment2.createdAt).getTime() - new Date(comment1.createdAt).getTime(),
                             ),
                     ),
-                    tap(v => console.log(v)),
                 ),
             ),
         );
