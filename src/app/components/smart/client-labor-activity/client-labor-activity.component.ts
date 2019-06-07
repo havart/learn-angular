@@ -31,9 +31,5 @@ export class ClientLaborActivityComponent implements OnInit {
                 this.laborService.getLaborById$(id).pipe(filter((labor: ILabor) => !!labor)),
             ),
         );
-        // this.labor$ = this.store$.pipe(select(selectGetLabor));
-        // this.clientInfoService
-        //     .getClientById$('1')
-        //     .pipe(switchMap(({ id }: IClient) => this.laborService.getLaborById$(id)));
     }
 }

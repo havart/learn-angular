@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { EmploymentsConfig } from 'src/app/config/employment.config';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { IAppState } from 'src/app/store/app.state';
 import { LaborService } from '../../../services/labor/labor.service';
 import { IClient } from '../../../interfaces/client.interface';
@@ -60,8 +60,14 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
             switchMap(({ id }: IClient) =>
                 this.laborService.getLaborById$(id).pipe(
                     filter((labor: ILabor) => !!labor),
+                    map((labor: ILabor) => {
+                        return {
+                            ...labor,
+                            startDate: new Date(labor.startDate).toLocaleDateString(),
+                        };
+                    }),
                     tap((labor: ILabor) => {
-                        this.form.patchValue(labor);
+                        this.form.patchValue({ ...labor });
                         this.tempForm = labor;
                     }),
                 ),
@@ -90,7 +96,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     }
 
     cancelLaborChanges(): void {
-        this.form.patchValue(this.tempForm);
+        this.form.patchValue({ ...this.tempForm });
     }
 
     addNewLabor(): void {
