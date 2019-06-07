@@ -94,6 +94,6 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     }
 
     addNewLabor(): void {
-        this.laborService.addLabor$(this.form.value).subscribe();
+        this.laborService.addLabor$(this.form.value);
     }
 }

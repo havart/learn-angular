@@ -41,12 +41,12 @@ export class LaborService {
             }),
         );
     }
-    addLabor$(form: ILabor): Observable<void> {
-        return this.httpClient.post(this.config.LABOR_URL, form).pipe(
+    addLabor$(form: ILabor): void {
+         this.httpClient.post(this.config.LABOR_URL, form).pipe(
             map((labor: ILabor) => {
                 this.store$.dispatch(new AddLabor(labor));
             }),
-        );
+        ).subscribe();
     }
 
     updateLabor$(form: ILabor, id: string): Observable<void> {
