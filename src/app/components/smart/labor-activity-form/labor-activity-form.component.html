@@ -3,7 +3,7 @@
     <mat-form-field class="full-width">
         <mat-label>Тип занятости</mat-label>
         <mat-select formControlName="employment">
-            <mat-option value="{{ employment }}" *ngFor="let employment of employments"> {{ employment }} </mat-option>
+            <mat-option value="{{ employment }}" *ngFor="let employment of employments"> {{ employment }}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -36,7 +36,19 @@
         <tr>
             <td>
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Телефон" formControlName="workPhone" />
+                    <input
+                        matInput
+                        ngClass="{phoneInput:true}"
+                        [readonly]="activeCall"
+                        placeholder="Телефон"
+                        formControlName="workPhone"
+                    />
+                    <button mat-button matSuffix (click)="callToClient()" *ngIf="!activeCall">
+                        <i class="material-icons"> call </i>
+                    </button>
+                    <button mat-button matSuffix (click)="callEnd()" *ngIf="activeCall">
+                        <i class="material-icons"> call_end </i>
+                    </button>
                 </mat-form-field>
             </td>
             <td>

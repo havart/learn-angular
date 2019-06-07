@@ -26,6 +26,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
     employments: ReadonlyArray<string>;
     buttonVisibility = true;
     tempForm: ILabor;
+    activeCall = false;
 
     constructor(
         private laborService: LaborService,
@@ -63,7 +64,7 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
                     map((labor: ILabor) => {
                         return {
                             ...labor,
-                            startDate: new Date(labor.startDate).toLocaleDateString(),
+                            startDate: new Date(labor.startDate).toString(),
                         };
                     }),
                     tap((labor: ILabor) => {
@@ -101,5 +102,14 @@ export class LaborActivityFormComponent implements OnInit, DoCheck {
 
     addNewLabor(): void {
         this.laborService.addLabor$(this.form.value);
+    }
+
+    callToClient(): void {
+        this.activeCall = !this.activeCall;
+        console.log(`Звонок на номер ${this.form.value.workPhone}`);
+    }
+
+    callEnd(): void {
+        this.activeCall = !this.activeCall;
     }
 }
