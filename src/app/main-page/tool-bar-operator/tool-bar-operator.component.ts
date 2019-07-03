@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { SideBarService } from '../../side-bar.service';
+import { SideBarService } from '../../services/side-bar.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({

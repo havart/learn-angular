@@ -8,7 +8,7 @@ import { OperatorBaseComponent } from './main-page/operator-base/operator-base.c
 import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { SideBarOperatorComponent } from './main-page/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './main-page/tool-bar-operator/tool-bar-operator.component';
-import { SideBarService } from './side-bar.service';
+import { SideBarService } from './services/side-bar.service';
 import { RightListComponent } from './main-page/right-list/right-list.component';
 
 @NgModule({
