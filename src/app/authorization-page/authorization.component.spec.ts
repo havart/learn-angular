@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SideBarOperatorComponent } from './side-bar-operator.component';
+import { AuthorizationComponent } from './authorization.component';
 
-describe('SideBarOperatorComponent', () => {
-    let component: SideBarOperatorComponent;
-    let fixture: ComponentFixture<SideBarOperatorComponent>;
+describe('AuthorizationComponent', () => {
+    let component: AuthorizationComponent;
+    let fixture: ComponentFixture<AuthorizationComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [SideBarOperatorComponent],
+            declarations: [AuthorizationComponent],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(SideBarOperatorComponent);
+        fixture = TestBed.createComponent(AuthorizationComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

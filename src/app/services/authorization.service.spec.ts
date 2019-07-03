@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SideBarService } from './side-bar.service';
+import { AuthorizationService } from './authorization.service';
 
-describe('SideBarService', () => {
+describe('AuthorizationService', () => {
     beforeEach(() => TestBed.configureTestingModule({}));
 
     it('should be created', () => {
-        const service: SideBarService = TestBed.get(SideBarService);
+        const service: AuthorizationService = TestBed.get(AuthorizationService);
         expect(service).toBeTruthy();
     });
 });

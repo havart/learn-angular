@@ -5,11 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OperatorBaseComponent } from './main-page/operator-base/operator-base.component';
-import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+} from '@angular/material';
 import { SideBarOperatorComponent } from './main-page/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './main-page/tool-bar-operator/tool-bar-operator.component';
 import { SideBarService } from './services/side-bar.service';
 import { RightListComponent } from './main-page/right-list/right-list.component';
+import { AuthorizationComponent } from './authorization-page/authorization.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -18,6 +28,7 @@ import { RightListComponent } from './main-page/right-list/right-list.component'
         SideBarOperatorComponent,
         ToolBarOperatorComponent,
         RightListComponent,
+        AuthorizationComponent,
     ],
     imports: [
         BrowserModule,
@@ -28,6 +39,10 @@ import { RightListComponent } from './main-page/right-list/right-list.component'
         MatButtonModule,
         MatIconModule,
         MatListModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
