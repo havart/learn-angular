@@ -1,15 +1,14 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened *ngIf="sideWorks">
-    <mat-list>
-      <mat-list-item>Item 1</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 2</mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>Item 3</mat-list-item>
-    </mat-list>
-    <div style="text-align:center">
-      <button class="btnExitSession" mat-raised-button color="accent">Завершить сессию</button>
-    </div>
-  </mat-sidenav>
+    <mat-sidenav mode="side" [opened]="sideWorks">
+        <mat-list>
+            <mat-list-item>Item 1</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Item 2</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Item 3</mat-list-item>
+        </mat-list>
+        <div class="center-btn">
+            <button class="btnExitSession" mat-raised-button color="accent">Завершить сессию</button>
+        </div>
+    </mat-sidenav>
 </mat-sidenav-container>
-

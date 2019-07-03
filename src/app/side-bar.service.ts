@@ -1,12 +1,9 @@
-import {Injectable, Input} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
+import { Injectable, Input } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SideBarService {
-  public sideWorks$ = new Subject();
+    public sideWorks$ = new Subject();
 
-  constructor() { }
-
+    constructor() {}
 }
