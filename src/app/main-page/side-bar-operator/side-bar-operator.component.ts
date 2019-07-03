@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { SideBarService } from '../side-bar.service';
+import { SideBarService } from '../../side-bar.service';
 
 @Component({
     selector: 'app-side-bar-operator',
