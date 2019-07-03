@@ -1,0 +1,22 @@
+.cont-auth {
+    margin: auto;
+    margin-top: 100px;
+    width: 500px;
+    height: 300px;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cont-auth-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+mat-form-field {
+    margin: 5px 60px;
+}
+.button {
+    margin: auto;
+    display: block;
+}
