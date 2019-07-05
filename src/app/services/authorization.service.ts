@@ -9,7 +9,7 @@ export class AuthorizationService {
 
     checkAuth(): boolean {
         const user = this.localStorageService.getUser();
-        if (user.username) {
+        if (user && user.username) {
             return true;
         }
         return false;
