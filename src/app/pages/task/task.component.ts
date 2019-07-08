@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ServerConnectionService } from '../../services/server-connection.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
     selector: 'app-task',
     templateUrl: './task.component.html',
     styleUrls: ['./task.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent implements OnInit {
     constructor(private serverConnectionService: ServerConnectionService, private router: Router) {}
