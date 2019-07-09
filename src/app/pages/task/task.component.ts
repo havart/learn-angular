@@ -20,7 +20,8 @@ export class TaskComponent implements OnInit {
 
     getTask() {
         const id = this.getRandomId(1, 20);
-        this.serverConnectionService.getClient(id).subscribe(
+        const url = 'http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/' + id;
+        this.serverConnectionService.getRequest(url, id).subscribe(
             response => {
                 console.log(response);
                 this.router.navigate(['operator']);
