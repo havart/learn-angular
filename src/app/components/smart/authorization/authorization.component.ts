@@ -12,7 +12,7 @@ import { LocalStorageService } from '../../../services/local-storage.service';
 export class AuthorizationComponent implements OnInit {
     public authForm: FormGroup;
 
-    constructor(public localStotageService: LocalStorageService, private router: Router) {}
+    constructor(private localStotageService: LocalStorageService, private router: Router) {}
 
     ngOnInit() {
         this.authFormInit();
