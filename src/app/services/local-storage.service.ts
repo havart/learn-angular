@@ -7,7 +7,9 @@ export class LocalStorageService {
     private authData = {
         username: '',
     };
+
     constructor() {}
+
     setUser(login: string): void {
         this.authData.username = login;
         const JsonUser: string = JSON.stringify(this.authData);
