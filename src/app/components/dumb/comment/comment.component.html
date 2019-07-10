@@ -1,0 +1,22 @@
+<div>
+  <form [formGroup]="commentForm" (ngSubmit)="submit()">
+      <mat-form-field class="commentInputBox" appearance="fill">
+        <mat-label>Напишите комментарий:</mat-label>
+        <input matInput type="text" formControlName="comment" />
+      </mat-form-field>
+  </form>
+</div>
+<div class="comments-list">
+<mat-card class="comment-card" *ngFor="let comment of commentList$ | async" >
+  <mat-card-header>
+    <mat-card-title>Сообщение системы</mat-card-title>
+  </mat-card-header>
+  <mat-card-subtitle>{{getDate() | date}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{comment.comment}}
+    </p>
+  </mat-card-content>
+</mat-card>
+</div>
+
