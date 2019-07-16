@@ -1,0 +1,6 @@
+<div class="info-client" *ngIf="client">
+    <img class="avatar" [src]="client.avatar" alt="альтернативный текст" />
+    <h3 class="full-name">{{ client.firstName }} {{ client.lastName }}</h3>
+    <span class="age"><b>DoB</b>: {{ client.age }}</span>
+    <span class="location"><b>City</b>: {{ client.city }}, <b>Address</b>: {{ client.address }}</span>
+</div>

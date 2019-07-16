@@ -22,6 +22,7 @@ import { RightListComponent } from './pages/main-page/right-list/right-list.comp
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaskComponent } from './pages/task/task.component';
+import { InfoClientComponent } from './components/dumb/info-client/info-client.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { TaskComponent } from './pages/task/task.component';
         RightListComponent,
         AuthorizationComponent,
         TaskComponent,
+        InfoClientComponent,
     ],
     imports: [
         BrowserModule,

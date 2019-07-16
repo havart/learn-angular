@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ServerConnectionService } from '../../services/server-connection.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ClientService } from '../../services/client.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent implements OnInit {
-    constructor(private serverConnectionService: ServerConnectionService, private router: Router) {}
+    constructor(private serverConnectionService: ClientService, private router: Router) {}
 
     ngOnInit() {}
 
@@ -18,17 +17,8 @@ export class TaskComponent implements OnInit {
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
-    getTask() {
-        const id = this.getRandomId(1, 20);
-        const url = 'http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/' + id;
-        this.serverConnectionService.getRequest(url, id).subscribe(
-            response => {
-                console.log(response);
-                this.router.navigate(['operator']);
-            },
-            (error: HttpErrorResponse) => {
-                console.log(error);
-            },
-        );
+    sendRequest() {
+        const id = this.getRandomId(1, 10);
+        this.serverConnectionService.getId(id);
     }
 }
