@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommentInterface } from '../interfaces/comment.interface';
 import { HttpClient } from '@angular/common/http';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class CommentsService {
+    constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
-
-  getComments$(url: string): Observable<CommentInterface[]> {
-    return this.http.get<CommentInterface[]>(url);
-  }
+    getComments$(url: string): Observable<CommentInterface[]> {
+        return this.http
+            .get<CommentInterface[]>(url)
+            .pipe(map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)));
+    }
 }

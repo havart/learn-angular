@@ -11,7 +11,6 @@ export class LocalStorageService {
     constructor() {}
 
     setUser(login: string): void {
-        console.log(login);
         this.authData.username = login;
         const JsonUser: string = JSON.stringify(this.authData);
         localStorage.setItem('authData', JsonUser);

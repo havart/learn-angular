@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
 import { CommentInterface } from '../../../interfaces/comment.interface';
 import { CommentsService } from '../../../services/comments.service';
-import { filter, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-comment',
@@ -28,8 +27,7 @@ export class CommentComponent implements OnInit {
     getCommentFromServer() {
         const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
         this.commentList$ = this.commentsService
-            .getComments$(url)
-            .pipe(map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)));
+            .getComments$(url);
     }
 
     submit(): void {
