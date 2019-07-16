@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
 import { CommentInterface } from '../../../interfaces/comment.interface';
 import { CommentsService } from '../../../services/comments.service';
+import { CommentEnum } from './comment.enum';
 
 @Component({
     selector: 'app-comment',
@@ -13,6 +14,7 @@ import { CommentsService } from '../../../services/comments.service';
 })
 export class CommentComponent implements OnInit {
     public commentForm: FormGroup;
+    public comment: [CommentEnum.COMMENT];
     commentList$: Observable<CommentInterface[]>;
 
     constructor(private mathHelper: MathHelper, private commentsService: CommentsService) {}
@@ -24,17 +26,11 @@ export class CommentComponent implements OnInit {
         this.getCommentFromServer();
     }
 
-    getCommentFromServer() {
-        const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
-        this.commentList$ = this.commentsService
-            .getComments$(url);
+    getCommentFromServer(): void {
+        this.commentList$ = this.commentsService.getComments$();
     }
 
     submit(): void {
         this.commentForm.reset();
-    }
-
-    getDate(): string {
-        return String(new Date());
     }
 }

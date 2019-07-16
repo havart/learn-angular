@@ -11,10 +11,10 @@
   <mat-card-header>
     <mat-card-title>Сообщение системы</mat-card-title>
   </mat-card-header>
-  <mat-card-subtitle>{{getDate() | date}}</mat-card-subtitle>
+  <mat-card-subtitle>{{ comment.createdAt | date }}</mat-card-subtitle>
   <mat-card-content>
     <p>
-      {{comment.comment}}
+      {{ comment.comment }}
     </p>
   </mat-card-content>
 </mat-card>

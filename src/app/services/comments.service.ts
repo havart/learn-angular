@@ -10,7 +10,8 @@ import { filter, map } from 'rxjs/operators';
 export class CommentsService {
     constructor(private http: HttpClient) {}
 
-    getComments$(url: string): Observable<CommentInterface[]> {
+    getComments$(): Observable<CommentInterface[]> {
+        const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
         return this.http
             .get<CommentInterface[]>(url)
             .pipe(map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)));
