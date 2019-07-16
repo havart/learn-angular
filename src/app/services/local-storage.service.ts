@@ -7,6 +7,7 @@ export class LocalStorageService {
     private authData = {
         username: '',
     };
+
     constructor() {}
 
     setUser(login: string): void {
