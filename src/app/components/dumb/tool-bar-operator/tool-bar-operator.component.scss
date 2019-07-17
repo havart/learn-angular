@@ -63,4 +63,12 @@ span {
   display: flex;
   align-items: center;
   margin-right: 15px;
+  height: 100%;
+  min-width: 150px;
+  padding-left: 35px;
 }
+
+.user-section-toolbar:hover{
+  background-color: black;
+}
+

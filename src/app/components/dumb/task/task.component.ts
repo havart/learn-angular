@@ -3,6 +3,7 @@ import { ServerConnectionService } from '../../../services/server-connection.ser
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MathHelper } from '../../../helpers/math.helper';
+import { OPERATOR } from '../../../constants/path.constans';
 
 @Component({
     selector: 'app-task',
@@ -21,7 +22,7 @@ export class TaskComponent implements OnInit {
         this.serverConnectionService.getRequest$(url).subscribe(
             response => {
                 console.log(response);
-                this.router.navigate(['operator']);
+                this.router.navigate([OPERATOR]);
             },
             (error: HttpErrorResponse) => {
                 console.log(error);

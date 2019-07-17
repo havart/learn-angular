@@ -7,7 +7,7 @@
   </form>
 </div>
 <div class="comments-list">
-<mat-card class="comment-card" *ngFor="let comment of commentList$ | async" >
+<mat-card *ngFor="let comment of commentList$ | async" class="comment-card" >
   <mat-card-header>
     <mat-card-title>Сообщение системы</mat-card-title>
   </mat-card-header>
