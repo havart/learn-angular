@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Router } from '@angular/router';
+import { OPERATOR } from 'src/app/constants/path.constans';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-task',
@@ -19,6 +21,14 @@ export class TaskComponent implements OnInit {
 
     sendRequest() {
         const id = this.getRandomId(1, 10);
-        this.serverConnectionService.getId(id);
+        this.serverConnectionService.getTask$(id).subscribe(
+            client => {
+                this.router.navigate([OPERATOR]);
+                this.serverConnectionService.client = client;
+            },
+            (error: HttpErrorResponse) => {
+                console.log(error);
+            },
+        );
     }
 }

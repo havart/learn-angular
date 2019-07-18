@@ -3,11 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from '../../constants/path.constans';
-
-enum AuthFormStatusEnum {
-    VALID = 'VALID',
-    INVALID = 'INVALID',
-}
+import { AuthFormStatusEnum } from './auth-form-status.enum';
 
 @Component({
     selector: 'app-authorization',

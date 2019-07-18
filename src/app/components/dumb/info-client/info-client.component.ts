@@ -9,15 +9,11 @@ import { ClientService } from '../../../services/client.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoClientComponent implements OnInit {
-    public client: ClientInterface;
+    client: ClientInterface;
 
     constructor(private clientService: ClientService) {}
 
     ngOnInit() {
         this.client = this.clientService.client;
-        if (this.client) {
-            this.client.age = this.client.age.slice(0, 10);
-        }
-        console.log(this.client);
     }
 }
