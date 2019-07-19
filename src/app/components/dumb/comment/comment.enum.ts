@@ -1,3 +1,3 @@
 export enum CommentEnum {
-    COMMENT,
+    COMMENT = 'comment',
 }

@@ -14,14 +14,14 @@ import { CommentEnum } from './comment.enum';
 })
 export class CommentComponent implements OnInit {
     public commentForm: FormGroup;
-    public comment: [CommentEnum.COMMENT];
+    public commentEnum = CommentEnum;
     commentList$: Observable<CommentInterface[]>;
 
     constructor(private mathHelper: MathHelper, private commentsService: CommentsService) {}
 
     ngOnInit() {
         this.commentForm = new FormGroup({
-            comment: new FormControl('', Validators.required),
+            [CommentEnum.COMMENT]: new FormControl('', Validators.required),
         });
         this.getCommentFromServer();
     }
