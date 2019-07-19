@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from 'src/app/constants/path.constans';
@@ -11,10 +11,8 @@ import { ClientInterface } from 'src/app/interfaces/client.interface';
     styleUrls: ['./task.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
     constructor(private serverConnectionService: ClientService, private router: Router) {}
-
-    ngOnInit() {}
 
     getRandomId(min: number, max: number): number {
         return Math.floor(Math.random() * (max - min)) + min;
@@ -25,7 +23,6 @@ export class TaskComponent implements OnInit {
         this.serverConnectionService.getTask$(id).subscribe(
             (client: ClientInterface) => {
                 this.router.navigate([OPERATOR]);
-                this.serverConnectionService.setClient(client);
             },
             (error: HttpErrorResponse) => {
                 console.log(error);

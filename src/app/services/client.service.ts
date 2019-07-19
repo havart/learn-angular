@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ClientInterface } from '../interfaces/client.interface';
-import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ClientService {
-    constructor(private http: HttpClient, private router: Router) {}
-    client: ClientInterface;
+    private clientSource$ = new BehaviorSubject<ClientInterface>(null);
 
-    clinetSource = new BehaviorSubject<ClientInterface>(this.client);
-    client$: Observable<ClientInterface> = this.clinetSource.asObservable();
+    constructor(private http: HttpClient) {}
 
-    setClient(client: ClientInterface) {
-        this.clinetSource.next(client);
+    get client$(): Observable<ClientInterface> {
+        return this.clientSource$.asObservable();
     }
 
     getTask$(id: number): Observable<ClientInterface> {
         const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/${id}`;
-        return this.http.get<ClientInterface>(url);
+        return this.http
+            .get<ClientInterface>(url)
+            .pipe(tap((client: ClientInterface) => this.clientSource$.next(client)));
     }
 }
