@@ -14,6 +14,8 @@ export class InfoClientComponent implements OnInit {
     constructor(private clientService: ClientService) {}
 
     ngOnInit() {
-        this.client = this.clientService.client;
+        this.clientService.client$.subscribe((client: ClientInterface) => {
+            this.client = client;
+        });
     }
 }
