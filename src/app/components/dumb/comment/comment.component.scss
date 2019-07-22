@@ -1,15 +1,32 @@
-.commentInputBox{
-  width: 100%;
+.commentInputBox {
+    width: 100%;
 }
 
-.comment-card{
-  width: 88%;
-  margin: auto;
-  margin-bottom: 15px;
+.comment-card {
+    width: 88%;
+    margin: auto;
+    margin-bottom: 15px;
 }
 
-.comments-list{
-  display: block;
-  overflow: scroll;
-  height: 60%;
+.comments-list {
+    display: block;
+    min-height: 50%;
+    overflow-y: scroll;
+    height: 60%;
+}
+
+.input-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+.input-icon:hover {
+    opacity: 0.8;
+}
+
+form {
+    opacity: 0.5;
 }

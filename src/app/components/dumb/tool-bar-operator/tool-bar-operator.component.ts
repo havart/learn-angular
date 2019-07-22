@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SideBarService } from '../../../services/side-bar.service';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { USERNAME } from './tool-bar.constants';
 

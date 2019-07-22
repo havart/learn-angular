@@ -16,4 +16,9 @@ export class CommentsService {
             .get<CommentInterface[]>(url)
             .pipe(map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)));
     }
+
+    putComments$(commentData: CommentInterface): Observable<CommentInterface[]> {
+        const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/steps/${commentData.id}`;
+        return this.http.put<CommentInterface[]>(url, commentData);
+    }
 }

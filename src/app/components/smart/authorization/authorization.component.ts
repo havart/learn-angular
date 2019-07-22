@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OPERATOR } from '../../../constants/path.constans';
 import { LocalStorageService } from '../../../services/local-storage.service';
@@ -18,14 +18,14 @@ enum AuthFormStatusEnum {
 export class AuthorizationComponent implements OnInit {
     public authForm: FormGroup;
 
-    constructor(public localStotageService: LocalStorageService, private router: Router) {}
+    constructor(public localStorageService: LocalStorageService, private router: Router) {}
 
     ngOnInit() {
         this.authFormInit();
     }
 
     authFormInit(): void {
-        this.localStotageService.clearLocalStorage();
+        this.localStorageService.clearLocalStorage();
         this.authForm = new FormGroup({
             login: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required),
@@ -34,7 +34,7 @@ export class AuthorizationComponent implements OnInit {
 
     submit(): void {
         if (this.authForm.status === AuthFormStatusEnum.VALID) {
-            this.localStotageService.setUser(this.authForm.controls.login.value);
+            this.localStorageService.setUser(this.authForm.controls.login.value);
             this.router.navigate([OPERATOR]);
         }
         this.authForm.reset();

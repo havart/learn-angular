@@ -5,6 +5,8 @@ import { Observable, throwError } from 'rxjs';
 import { CommentInterface } from '../../../interfaces/comment.interface';
 import { CommentsService } from '../../../services/comments.service';
 import { CommentEnum } from './comment.enum';
+import { LocalStorageService } from '../../../services/local-storage.service';
+import { USERNAME } from '../tool-bar-operator/tool-bar.constants';
 
 @Component({
     selector: 'app-comment',
@@ -15,15 +17,22 @@ import { CommentEnum } from './comment.enum';
 export class CommentComponent implements OnInit {
     public commentForm: FormGroup;
     public comment: [CommentEnum.COMMENT];
-    commentList$: Observable<CommentInterface[]>;
+    public commentList$: Observable<CommentInterface[]>;
 
-    constructor(private mathHelper: MathHelper, private commentsService: CommentsService) {}
+    private userName: string;
+
+    constructor(
+        private mathHelper: MathHelper,
+        private commentsService: CommentsService,
+        private localStorageService: LocalStorageService,
+    ) {}
 
     ngOnInit() {
         this.commentForm = new FormGroup({
             comment: new FormControl('', Validators.required),
         });
         this.getCommentFromServer();
+        this.userName = this.localStorageService.getUser()[USERNAME];
     }
 
     getCommentFromServer(): void {
@@ -31,6 +40,19 @@ export class CommentComponent implements OnInit {
     }
 
     submit(): void {
+        const minNumber = 1;
+        const maxNumber = 20;
+
+        const commentFromInput = this.commentForm.controls.comment.value;
+
         this.commentForm.reset();
+        this.commentsService.putComments$({
+            id: this.mathHelper.getRandomNumber(minNumber, maxNumber),
+            createdAt:  new Date().toISOString(),
+            name: this.userName,
+            comment: commentFromInput,
+            viewType: 1,
+            isComment: true,
+        }).subscribe();
     }
 }

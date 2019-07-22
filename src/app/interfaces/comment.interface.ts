@@ -1,8 +1,8 @@
 export interface CommentInterface {
-    id: string;
+    id: number;
     createdAt: string;
     name: string;
     comment: string;
-    viewType: string;
+    viewType: number;
     isComment: boolean;
 }
