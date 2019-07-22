@@ -16,7 +16,8 @@ import { USERNAME } from '../tool-bar-operator/tool-bar.constants';
 })
 export class CommentComponent implements OnInit {
     public commentForm: FormGroup;
-    public comment: [CommentEnum.COMMENT];
+
+    public commentEnum = CommentEnum;
     public commentList$: Observable<CommentInterface[]>;
 
     private userName: string;
@@ -29,7 +30,7 @@ export class CommentComponent implements OnInit {
 
     ngOnInit() {
         this.commentForm = new FormGroup({
-            comment: new FormControl('', Validators.required),
+            [CommentEnum.COMMENT]: new FormControl('', Validators.required),
         });
         this.getCommentFromServer();
         this.userName = this.localStorageService.getUser()[USERNAME];
