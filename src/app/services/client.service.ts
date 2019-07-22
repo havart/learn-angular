@@ -17,7 +17,7 @@ export class ClientService {
     }
 
     getTask$(id: number): Observable<ClientInterface> {
-        const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/${id}`;
+        const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/${id}`;
         return this.http
             .get<ClientInterface>(url)
             .pipe(tap((client: ClientInterface) => this.clientSource$.next(client)));
