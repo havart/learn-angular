@@ -41,14 +41,14 @@ export class CommentComponent implements OnInit {
     }
 
     submit(): void {
-        const minNumber = 1;
-        const maxNumber = 20;
+        const minNumberOfId = 1;
+        const maxNumberOfId = 20;
 
         const commentFromInput = this.commentForm.controls.comment.value;
 
         this.commentForm.reset();
         this.commentsService.putComments$({
-            id: this.mathHelper.getRandomNumber(minNumber, maxNumber),
+            id: this.mathHelper.getRandomNumber(minNumberOfId, maxNumberOfId),
             createdAt:  new Date().toISOString(),
             name: this.userName,
             comment: commentFromInput,
