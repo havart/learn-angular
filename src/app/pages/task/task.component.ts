@@ -25,7 +25,7 @@ export class TaskComponent {
                 this.router.navigate([OPERATOR]);
             },
             (error: HttpErrorResponse) => {
-                console.log(error);
+                console.log(error, id);
             },
         );
     }
