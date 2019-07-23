@@ -6,8 +6,4 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./right-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RightListComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
-}
+export class RightListComponent {}

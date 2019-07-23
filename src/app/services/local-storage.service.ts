@@ -15,9 +15,14 @@ export class LocalStorageService {
         const JsonUser: string = JSON.stringify(this.authData);
         localStorage.setItem('authData', JsonUser);
     }
+
     getUser() {
         const JsonUser: string = localStorage.getItem('authData');
         this.authData = JSON.parse(JsonUser);
         return this.authData;
+    }
+
+    clearLocalStorage() {
+        localStorage.clear();
     }
 }
