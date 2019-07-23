@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ClientService } from '../../services/client.service';
+import { ClientService } from '../../../services/client.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from 'src/app/constants/path.constans';
 import { HttpErrorResponse } from '@angular/common/http';

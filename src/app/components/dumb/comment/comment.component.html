@@ -1,0 +1,26 @@
+<div>
+    <form [formGroup]="commentForm" (ngSubmit)="submit()">
+        <mat-form-field class="commentInputBox" appearance="outline">
+            <img
+                (click)="submit()"
+                matSuffix
+                class="input-icon"
+                src="https://image.flaticon.com/icons/svg/149/149446.svg"
+            />
+            <input matInput type="text" placeholder="Введите комментарий" formControlName="comment" />
+        </mat-form-field>
+    </form>
+</div>
+<div class="comments-list">
+    <mat-card *ngFor="let comment of commentList$ | async" class="comment-card">
+        <mat-card-header>
+            <mat-card-title>Сообщение системы</mat-card-title>
+        </mat-card-header>
+        <mat-card-subtitle>{{ comment.createdAt | date }}</mat-card-subtitle>
+        <mat-card-content>
+            <p>
+                {{ comment.comment }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

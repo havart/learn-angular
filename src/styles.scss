@@ -5,13 +5,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .right-list{
   position: relative;
-  top: 0;
+  background-color: #fcfcfc;
   display: block;
+  top: 0;
   float: right;
   right: 0;
   width: 350px;
   height: 100%;
-  background-color: #eeeeee;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .left-list{
@@ -21,5 +23,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   float: left;
   left: 0;
   width: 350px;
+  height: 100%;
+}
+
+.app-comment{
+  position: relative;
+  display: block;
+  width: 100%;
   height: 100%;
 }
