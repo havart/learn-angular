@@ -21,6 +21,7 @@ import { SideBarService } from './services/side-bar.service';
 import { RightListComponent } from './components/dumb/right-list/right-list.component';
 import { AuthorizationComponent } from './components/smart/authorization/authorization.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfoClientComponent } from './components/dumb/info-client/info-client.component';
 import { TaskComponent } from './components/dumb/task/task.component';
 import { CommentComponent } from './components/dumb/comment/comment.component';
 
@@ -33,6 +34,7 @@ import { CommentComponent } from './components/dumb/comment/comment.component';
         RightListComponent,
         AuthorizationComponent,
         TaskComponent,
+        InfoClientComponent,
         CommentComponent,
     ],
   imports: [

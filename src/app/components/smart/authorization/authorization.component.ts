@@ -2,12 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OPERATOR } from '../../../constants/path.constans';
+import { AuthFormStatusEnum } from './auth-form-status.enum';
 import { LocalStorageService } from '../../../services/local-storage.service';
-
-enum AuthFormStatusEnum {
-    VALID = 'VALID',
-    INVALID = 'INVALID',
-}
 
 @Component({
     selector: 'app-authorization',
@@ -25,7 +21,6 @@ export class AuthorizationComponent implements OnInit {
     }
 
     authFormInit(): void {
-        this.localStorageService.clearLocalStorage();
         this.authForm = new FormGroup({
             login: new FormControl('', Validators.required),
             password: new FormControl('', Validators.required),

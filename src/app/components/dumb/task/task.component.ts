@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ServerConnectionService } from '../../../services/server-connection.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ClientService } from '../../../services/client.service';
 import { Router } from '@angular/router';
-import { MathHelper } from '../../../helpers/math.helper';
-import { OPERATOR } from '../../../constants/path.constans';
+import { OPERATOR } from 'src/app/constants/path.constans';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ClientInterface } from 'src/app/interfaces/client.interface';
 
 @Component({
     selector: 'app-task',
@@ -11,21 +11,21 @@ import { OPERATOR } from '../../../constants/path.constans';
     styleUrls: ['./task.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskComponent implements OnInit {
-    constructor(private serverConnectionService: ServerConnectionService, private router: Router, private mathHelper: MathHelper) {}
+export class TaskComponent {
+    constructor(private serverConnectionService: ClientService, private router: Router) {}
 
-    ngOnInit() {}
+    getRandomId(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
 
-    getTask() {
-        const id = this.mathHelper.getRandomNumber(1, 20);
-        const url = `http://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/${id}`;
-        this.serverConnectionService.getRequest$(url).subscribe(
-            response => {
-                console.log(response);
+    sendRequest() {
+        const id = this.getRandomId(1, 10);
+        this.serverConnectionService.getTask$(id).subscribe(
+            (client: ClientInterface) => {
                 this.router.navigate([OPERATOR]);
             },
             (error: HttpErrorResponse) => {
-                console.log(error);
+                console.log(error, id);
             },
         );
     }
