@@ -10,8 +10,8 @@ import { USERNAME } from './tool-bar.constants';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolBarOperatorComponent implements OnInit {
+    userName: string;
     private sideWorks = false;
-    private userName: string;
 
     constructor(private sideBarService: SideBarService, private localStorageService: LocalStorageService) {}
 
