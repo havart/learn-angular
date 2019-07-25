@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SideBarService } from '../../../services/side-bar.service';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { LocalStorageService } from '../../../services/local-storage.service';
+import { USERNAME } from './tool-bar.constants';
 
 @Component({
     selector: 'app-tool-bar-operator',
@@ -9,11 +10,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolBarOperatorComponent implements OnInit {
-    public sideWorks = false;
+    private sideWorks = false;
+    private userName: string;
 
-    constructor(private sideBarService: SideBarService) {}
+    constructor(private sideBarService: SideBarService, private localStorageService: LocalStorageService) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.userName = this.localStorageService.getUser()[USERNAME];
+    }
 
     sideBarToggle(): void {
         this.sideWorks = !this.sideWorks;
