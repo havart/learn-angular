@@ -1,0 +1,11 @@
+<div *ngIf="clientLaborActivity$ | async as clientLaborActivity" class="labor-activity">
+    <div class="section-1">
+        <span class="position">{{ clientLaborActivity.position }}</span>
+        <span class="occupation">{{ clientLaborActivity.occupation }}</span>
+    </div>
+
+    <div class="section-2">
+        <span class="income">{{ clientLaborActivity.income }}</span>
+        <span class="site">{{ clientLaborActivity.site }}</span>
+    </div>
+</div>
