@@ -2,8 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ClientService } from '../../../services/client.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from 'src/app/constants/path.constans';
-import { HttpErrorResponse } from '@angular/common/http';
-import { ClientInterface } from 'src/app/interfaces/client.interface';
+import { MathHelper } from 'src/app/helpers/math.helper';
 
 @Component({
     selector: 'app-task',
@@ -12,21 +11,16 @@ import { ClientInterface } from 'src/app/interfaces/client.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent {
-    constructor(private serverConnectionService: ClientService, private router: Router) {}
+    constructor(
+        private serverConnectionService: ClientService,
+        private router: Router,
+        private mathHelper: MathHelper,
+    ) {}
 
-    getRandomId(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    sendRequest() {
-        const id = this.getRandomId(1, 10);
-        this.serverConnectionService.getTask$(id).subscribe(
-            (client: ClientInterface) => {
-                this.router.navigate([OPERATOR]);
-            },
-            (error: HttpErrorResponse) => {
-                console.log(error, id);
-            },
-        );
+    sendRequest(): void {
+        const id = this.mathHelper.getRandomNumber(1, 10);
+        this.serverConnectionService.getTask$(id).subscribe(() => {
+            this.router.navigate([OPERATOR]);
+        });
     }
 }
