@@ -15,6 +15,7 @@ import {
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatSnackBarModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -40,6 +41,7 @@ import { OperatorStepsComponent } from './components/dumb/operator-steps/operato
         InfoClientComponent,
         CommentComponent,
         InfoLaborActivityClientComponent,
+        OperatorStepsComponent,
     ],
     imports: [
         BrowserModule,
@@ -56,7 +58,7 @@ import { OperatorStepsComponent } from './components/dumb/operator-steps/operato
         ReactiveFormsModule,
         HttpClientModule,
         MatCardModule,
-        OperatorStepsComponent,
+        MatSnackBarModule,
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
