@@ -26,6 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfoClientComponent } from './components/dumb/info-client/info-client.component';
 import { TaskComponent } from './components/dumb/task/task.component';
 import { CommentComponent } from './components/dumb/comment/comment.component';
+import { InfoLaborActivityClientComponent } from './components/dumb/info-labor-activity-client/info-labor-activity-client.component';
+import { OperatorStepsComponent } from './components/dumb/operator-steps/operator-steps.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +40,8 @@ import { CommentComponent } from './components/dumb/comment/comment.component';
         TaskComponent,
         InfoClientComponent,
         CommentComponent,
+        InfoLaborActivityClientComponent,
+        OperatorStepsComponent,
     ],
     imports: [
         BrowserModule,

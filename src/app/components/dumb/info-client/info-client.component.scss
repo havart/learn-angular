@@ -9,7 +9,12 @@
 .age,
 .location {
     color: darkgrey;
-    font-size: 14px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.location {
+    padding-left: 20px;
 }
 .age {
     margin-right: 10px;

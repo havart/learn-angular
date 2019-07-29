@@ -1,6 +1,8 @@
 <div *ngIf="client$ | async as client" class="info-client">
     <img [src]="client.avatar" class="avatar" />
     <h3 class="full-name">{{ client.firstName }} {{ client.lastName }}</h3>
-    <span class="age"><b>DoB</b>: {{ client.age }}</span>
-    <span class="location"><b>City</b>: {{ client.city }}, <b>Address</b>: {{ client.address }}</span>
+    <span class="age">{{ client.age }}</span>
+    <span class="location">{{ client.city }}</span>
+    <span class="location">{{ client.address }}</span>
+    <app-info-labor-activity-client></app-info-labor-activity-client>
 </div>

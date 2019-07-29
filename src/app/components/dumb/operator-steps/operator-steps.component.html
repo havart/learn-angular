@@ -1,0 +1,5 @@
+<mat-list>
+    <ng-container *ngFor="let step of stepsList$ | async">
+        <mat-list-item>{{ step.comment }}</mat-list-item>
+    </ng-container>
+</mat-list>
