@@ -1,0 +1,14 @@
+mat-list {
+    padding-top: 0;
+    border: #e9eaec solid 0.1em;
+    border-radius: 0.3em;
+    margin: 15px;
+}
+
+mat-list-item {
+    cursor: pointer;
+}
+
+mat-list-item:hover {
+    background-color: #e9eaec;
+}
