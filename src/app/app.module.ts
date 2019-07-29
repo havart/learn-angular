@@ -13,8 +13,9 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatSidenavModule, MatTabsModule,
+  MatSidenavModule,
   MatToolbarModule,
+  MatSnackBarModule, MatTabsModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -60,6 +61,7 @@ import { OperatorMainTabsComponent } from './components/dumb/operator-main-tabs/
     HttpClientModule,
     MatCardModule,
     MatTabsModule,
+    MatSnackBarModule
   ],
     providers: [SideBarService],
     bootstrap: [AppComponent],

@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ClientService } from '../../../services/client.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from 'src/app/constants/path.constans';
+import { MathHelper } from 'src/app/helpers/math.helper';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
 
@@ -16,11 +17,8 @@ export class TaskComponent {
         private clientService: ClientService,
         private router: Router,
         private clientLaborActivityService: ClientLaborActivityService,
+        private mathHelper: MathHelper,
     ) {}
-
-    getRandomId(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
 
     sendRequestLaborActivity(id: number): void {
         this.clientLaborActivityService.getLaborActivityClient$(id).subscribe(
@@ -34,7 +32,7 @@ export class TaskComponent {
     }
 
     sendRequest(): void {
-        const id = this.getRandomId(1, 10);
+        const id = this.mathHelper.getRandomNumber(1, 10);
         this.clientService.getTask$(id).subscribe(
             () => {
                 this.sendRequestLaborActivity(id);
