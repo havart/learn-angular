@@ -10,6 +10,17 @@ const routes: Routes = [
         path: 'operator',
         component: OperatorBaseComponent,
         canActivate: [OperatorBaseGuard],
+        children: [
+            {
+                path: 'contact',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: './components/dumb/contact-tab/features/contact-tab.module#ContactTabModule',
+                    },
+                ],
+            },
+        ],
     },
     {
         path: 'task',

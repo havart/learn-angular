@@ -28,7 +28,8 @@ import { TaskComponent } from './components/dumb/task/task.component';
 import { CommentComponent } from './components/dumb/comment/comment.component';
 import { InfoLaborActivityClientComponent } from './components/dumb/info-labor-activity-client/info-labor-activity-client.component';
 import { OperatorStepsComponent } from './components/dumb/operator-steps/operator-steps.component';
-import { OperatorMainTabsComponent } from './components/dumb/operator-main-tabs/operator-main-tabs.component';
+import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
+import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,7 @@ import { OperatorMainTabsComponent } from './components/dumb/operator-main-tabs/
         CommentComponent,
         InfoLaborActivityClientComponent,
         OperatorStepsComponent,
-        OperatorMainTabsComponent,
+        OperatorTabsComponent,
     ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import { OperatorMainTabsComponent } from './components/dumb/operator-main-tabs/
     HttpClientModule,
     MatCardModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    OperatorTabsModule
   ],
     providers: [SideBarService],
     bootstrap: [AppComponent],

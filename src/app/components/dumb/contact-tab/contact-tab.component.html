@@ -1,0 +1,37 @@
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+    <div class="base-inputs">
+        <mat-form-field appearance="outline" color="accent">
+            <input matInput type="text" placeholder="Номер телефона" formControlName="numberPhone" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+            <input matInput type="text" placeholder="ФИО контакта" formControlName="fullName" />
+        </mat-form-field>
+    </div>
+    <div class="base-inputs">
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Тип телефона</mat-label>
+            <mat-select>
+                <ng-container *ngFor="let item of informationList$ | async">
+                    <mat-option value="{{ item.phoneType }}">
+                        {{ item.phoneType }}
+                    </mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Департамент</mat-label>
+            <mat-select>
+                <ng-container *ngFor="let item of informationList$ | async">
+                    <mat-option value="{{ item.departament }}">
+                        {{ item.departament }}
+                    </mat-option>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="base-inputs">
+        <mat-form-field class="comment-input-box" appearance="outline" color="accent">
+            <input matInput type="text" placeholder="Введите комментарий" formControlName="comment" />
+        </mat-form-field>
+    </div>
+</form>
