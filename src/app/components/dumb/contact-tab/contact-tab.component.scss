@@ -1,21 +1,25 @@
-.base-inputs{
-  position: relative;
-  display: flex;
+.base-inputs {
+    position: relative;
+    display: flex;
 }
 
-mat-form-field{
-  flex: 1 1 auto;
-  margin: 5px;
+mat-form-field {
+    flex: 1 1 auto;
+    margin: 5px;
 }
 
-.comment-input-box{
-  width: 100%;
+.comment-input-box {
+    width: 100%;
 }
 
-form{
-  margin: auto;
-  border: solid #E7E8EA 0.1em;
-  border-radius: 0.5em;
-  margin-top: 40px;
-  padding: 20px;
+form {
+    margin: auto;
+    border: solid #e7e8ea 0.1em;
+    border-radius: 0.5em;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.submit-btn {
+    text-align: center;
 }
