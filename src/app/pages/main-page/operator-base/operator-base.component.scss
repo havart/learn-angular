@@ -5,6 +5,11 @@
     background-color: rgb(87, 82, 82);
 }
 .right-list {
-    margin-top: 200px;
-    height: 70%;
+    margin-top: 0;
+}
+
+app-operator-main-tabs{
+  position: relative;
+  display: block;
+  margin-top: 200px;
 }

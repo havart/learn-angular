@@ -7,15 +7,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatSnackBarModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatSnackBarModule, MatTabsModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -28,6 +28,7 @@ import { TaskComponent } from './components/dumb/task/task.component';
 import { CommentComponent } from './components/dumb/comment/comment.component';
 import { InfoLaborActivityClientComponent } from './components/dumb/info-labor-activity-client/info-labor-activity-client.component';
 import { OperatorStepsComponent } from './components/dumb/operator-steps/operator-steps.component';
+import { OperatorMainTabsComponent } from './components/dumb/operator-main-tabs/operator-main-tabs.component';
 
 @NgModule({
     declarations: [
@@ -42,24 +43,26 @@ import { OperatorStepsComponent } from './components/dumb/operator-steps/operato
         CommentComponent,
         InfoLaborActivityClientComponent,
         OperatorStepsComponent,
+        OperatorMainTabsComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatSidenavModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatInputModule,
-        MatFormFieldModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatCardModule,
-        MatSnackBarModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSnackBarModule
+  ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
 })

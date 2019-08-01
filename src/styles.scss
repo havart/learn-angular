@@ -5,7 +5,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .right-list{
   position: relative;
-  background-color: #fcfcfc;
   display: block;
   top: 0;
   float: right;
@@ -22,8 +21,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: block;
   float: left;
   left: 0;
-  width: 350px;
-  height: 100%;
+  width: auto;
+  height: 100vh;
 }
 
 .app-comment{
