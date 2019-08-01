@@ -21,6 +21,7 @@ export class ContactTabComponent implements OnInit {
     ngOnInit() {
         this.getInformationFromServer();
     }
+
     initContactForm(): void {
         this.contactForm = new FormGroup({
             [ContactTabEnum.NUMBERPHONE]: new FormControl('', [Validators.required, Validators.maxLength(10)]),
