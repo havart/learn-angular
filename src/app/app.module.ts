@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +30,9 @@ import { TaskComponent } from './components/dumb/task/task.component';
 import { CommentComponent } from './components/dumb/comment/comment.component';
 import { InfoLaborActivityClientComponent } from './components/dumb/info-labor-activity-client/info-labor-activity-client.component';
 import { OperatorStepsComponent } from './components/dumb/operator-steps/operator-steps.component';
+import { mainReducers } from './store/reducers/main.reduce';
+import { EffectsModule } from '@ngrx/effects';
+import { ClientEffects } from './store/effects/client.effect';
 
 @NgModule({
     declarations: [
@@ -59,6 +64,11 @@ import { OperatorStepsComponent } from './components/dumb/operator-steps/operato
         HttpClientModule,
         MatCardModule,
         MatSnackBarModule,
+        StoreModule.forRoot(mainReducers),
+        StoreDevtoolsModule.instrument({
+            maxAge: 50,
+        }),
+        EffectsModule.forRoot([ClientEffects]),
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
