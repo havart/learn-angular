@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactTabEnum } from './contact-tab.enum';
 import { ContactTabService } from '../../../services/contact-tab.service';
 import { Observable } from 'rxjs';
 import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
-import { CommentInterface } from '../../../interfaces/comment.interface';
 
 @Component({
     selector: 'app-contact-tab',
@@ -16,12 +15,11 @@ export class ContactTabComponent implements OnInit {
     contactForm: FormGroup;
 
     constructor(private contactTabService: ContactTabService) {
-      this.initContactForm();
+        this.initContactForm();
     }
 
     ngOnInit() {
         this.getInformationFromServer();
-
     }
     initContactForm(): void {
         this.contactForm = new FormGroup({
