@@ -10,7 +10,7 @@
     <div class="base-inputs">
         <mat-form-field appearance="outline" color="accent">
             <mat-label>Тип телефона</mat-label>
-            <mat-select>
+            <mat-select formControlName="phoneType">
                 <ng-container *ngFor="let item of informationList$ | async">
                     <mat-option value="{{ item.phoneType }}">
                         {{ item.phoneType }}
@@ -20,7 +20,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" color="accent">
             <mat-label>Департамент</mat-label>
-            <mat-select>
+            <mat-select formControlName="departament">
                 <ng-container *ngFor="let item of informationList$ | async">
                     <mat-option value="{{ item.departament }}">
                         {{ item.departament }}
