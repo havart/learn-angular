@@ -16,7 +16,7 @@ const routes: Routes = [
                 children: [
                     {
                         path: '',
-                        loadChildren: './components/feature/contact-tab/features/contact-tab.module#ContactTabModule',
+                        loadChildren: './components/feature/contact-tab/contact-tab.module#ContactTabModule',
                     },
                 ],
             },
