@@ -18,6 +18,7 @@ import {
     MatSidenavModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatTabsModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -33,6 +34,8 @@ import { OperatorStepsComponent } from './components/dumb/operator-steps/operato
 import { mainReducers } from './store/reducers/main.reduce';
 import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effect';
+import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
+import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
 
 @NgModule({
     declarations: [
@@ -47,6 +50,7 @@ import { ClientEffects } from './store/effects/client.effect';
         CommentComponent,
         InfoLaborActivityClientComponent,
         OperatorStepsComponent,
+        OperatorTabsComponent,
     ],
     imports: [
         BrowserModule,
@@ -59,11 +63,13 @@ import { ClientEffects } from './store/effects/client.effect';
         MatListModule,
         MatInputModule,
         MatFormFieldModule,
+        MatTabsModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         MatCardModule,
         MatSnackBarModule,
+        OperatorTabsModule,
         StoreModule.forRoot(mainReducers),
         StoreDevtoolsModule.instrument({
             maxAge: 50,

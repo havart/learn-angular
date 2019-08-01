@@ -5,6 +5,16 @@
     background-color: rgb(87, 82, 82);
 }
 .right-list {
+    margin-top: 250px;
+}
+
+app-operator-tabs {
+    position: relative;
+    display: block;
     margin-top: 200px;
-    height: 70%;
+}
+
+.flex-tabs {
+    position: absolute;
+    width: 100%;
 }
