@@ -12,9 +12,8 @@ export class ClientEffects {
     @Effect()
     getUsers$ = this.actions$.pipe(
         ofType<GetClient>(ClientActionsEnum.GetClient),
-        switchMap(() => {
-            const id = this.mathHelper.getRandomNumber(1, 10);
-            return this.clientService.getTask$(id);
+        switchMap(action => {
+            return this.clientService.getTask$(action.id);
         }),
         map((clientHttp: ClientInterface) => new GetClientSuccess(clientHttp)),
     );

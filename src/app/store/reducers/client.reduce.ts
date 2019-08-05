@@ -5,6 +5,7 @@ export const clientReducers = (state: ClientState = initialClientState, action: 
     switch (action.type) {
         case ClientActionsEnum.GetClientSuccess: {
             return {
+                ...state,
                 client: action.payload,
             };
         }

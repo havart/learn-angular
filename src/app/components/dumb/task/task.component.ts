@@ -34,8 +34,8 @@ export class TaskComponent {
     }
 
     sendRequest(): void {
-        this.store.dispatch(new GetClient());
         const id = this.mathHelper.getRandomNumber(1, 10);
+        this.store.dispatch(new GetClient(id));
         this.sendRequestLaborActivity(id);
     }
 }

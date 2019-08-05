@@ -8,6 +8,8 @@ export enum ClientActionsEnum {
 
 export class GetClient implements Action {
     public readonly type = ClientActionsEnum.GetClient;
+
+    constructor(public id: number) {}
 }
 
 export class GetClientSuccess implements Action {
