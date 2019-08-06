@@ -1,4 +1,4 @@
-.commentInputBox {
+.comment-input-box {
     width: 100%;
 }
 
@@ -10,9 +10,8 @@
 
 .comments-list {
     display: block;
-    min-height: 50%;
+    max-height: 35vh;
     overflow-y: scroll;
-    height: 60%;
 }
 
 .input-icon {

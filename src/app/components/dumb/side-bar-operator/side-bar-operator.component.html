@@ -1,12 +1,6 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav [opened]="sideWorks" mode="side">
-        <mat-list>
-            <mat-list-item>Item 1</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Item 2</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Item 3</mat-list-item>
-        </mat-list>
+    <mat-sidenav [opened]="sideWorks" mode="push">
+        <app-operator-steps></app-operator-steps>
         <div class="center-btn">
             <button class="btnExitSession" mat-raised-button color="accent">Завершить сессию</button>
         </div>

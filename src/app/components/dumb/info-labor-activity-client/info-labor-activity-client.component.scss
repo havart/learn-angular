@@ -1,0 +1,26 @@
+.labor-activity {
+    width: 60%;
+    margin-top: 10px;
+}
+
+.position,
+.occupation,
+.income,
+.site {
+    display: block;
+    padding-top: 5px;
+    color: rgb(231, 228, 228);
+}
+
+.position,
+.income {
+    color: darkgrey;
+}
+
+.section-1 {
+    float: left;
+}
+
+.section-2 {
+    float: right;
+}

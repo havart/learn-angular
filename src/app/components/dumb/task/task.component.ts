@@ -1,9 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ClientService } from '../../../services/client.service';
 import { Router } from '@angular/router';
 import { OPERATOR } from 'src/app/constants/path.constans';
+import { MathHelper } from 'src/app/helpers/math.helper';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
+import { Store } from '@ngrx/store';
 import { ClientInterface } from 'src/app/interfaces/client.interface';
+import { GetClient } from 'src/app/store/actions/client.action';
 
 @Component({
     selector: 'app-task',
@@ -12,21 +15,27 @@ import { ClientInterface } from 'src/app/interfaces/client.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent {
-    constructor(private serverConnectionService: ClientService, private router: Router) {}
+    constructor(
+        private router: Router,
+        private clientLaborActivityService: ClientLaborActivityService,
+        private mathHelper: MathHelper,
+        private store: Store<ClientInterface>,
+    ) {}
 
-    getRandomId(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    sendRequest() {
-        const id = this.getRandomId(1, 10);
-        this.serverConnectionService.getTask$(id).subscribe(
-            (client: ClientInterface) => {
+    sendRequestLaborActivity(id: number): void {
+        this.clientLaborActivityService.getLaborActivityClient$(id).subscribe(
+            () => {
                 this.router.navigate([OPERATOR]);
             },
             (error: HttpErrorResponse) => {
-                console.log(error, id);
+                console.log(error);
             },
         );
+    }
+
+    sendRequest(): void {
+        const id = this.mathHelper.getRandomNumber(1, 10);
+        this.store.dispatch(new GetClient(id));
+        this.sendRequestLaborActivity(id);
     }
 }
