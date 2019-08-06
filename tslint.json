@@ -1,5 +1,19 @@
 {
-  "extends": "tslint:recommended",
+  "extends": [
+    "angular-tslint-rules",
+    "tslint-consistent-codestyle",
+    "rxjs-tslint-rules",
+    "tslint-etc"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "**/*.d.ts",
+      "*.d.ts",
+      "**/*.assets.ts",
+      "*.assets.ts",
+      "utils/*"
+    ]
+  },
   "rulesDirectory": [
     "codelyzer"
   ],
