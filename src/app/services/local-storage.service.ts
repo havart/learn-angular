@@ -21,8 +21,4 @@ export class LocalStorageService {
         this.authData = JSON.parse(JsonUser);
         return this.authData;
     }
-
-    clearLocalStorage() {
-        localStorage.clear();
-    }
 }

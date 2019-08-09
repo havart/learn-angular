@@ -36,6 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effect';
 import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
+import { CommentEffects } from './store/effects/comment.effects';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,7 @@ import { OperatorTabsModule } from './components/dumb/operator-tabs/features/ope
         StoreDevtoolsModule.instrument({
             maxAge: 50,
         }),
-        EffectsModule.forRoot([ClientEffects]),
+        EffectsModule.forRoot([ClientEffects, CommentEffects]),
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 <div>
     <form [formGroup]="commentForm" (ngSubmit)="submit()">
-        <mat-form-field class="comment-input-box" appearance="outline">
+        <mat-form-field class="comment-input-box" appearance="outline" color="accent">
             <img
                 (click)="submit()"
                 matSuffix
@@ -12,7 +12,7 @@
     </form>
 </div>
 <div class="comments-list">
-    <mat-card *ngFor="let comment of commentList$ | async" class="comment-card">
+    <mat-card *ngFor="let comment of comment$ | async" class="comment-card">
         <mat-card-title-group>
             <mat-card-title>Сообщение системы</mat-card-title>
             <mat-card-subtitle>{{ comment.createdAt | date }}</mat-card-subtitle>

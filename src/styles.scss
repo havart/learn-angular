@@ -16,13 +16,14 @@ body { margin: 0; font-family: Helvetica, sans-serif; }
 }
 
 .left-list{
-  position: relative;
+  position: fixed;
   top: 0;
   display: block;
   float: left;
   left: 0;
   width: auto;
   height: 100vh;
+  z-index: 99;
 }
 
 .app-comment{

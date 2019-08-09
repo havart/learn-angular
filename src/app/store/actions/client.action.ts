@@ -15,7 +15,9 @@ export class GetClient implements Action {
 export class GetClientSuccess implements Action {
     public readonly type = ClientActionsEnum.GetClientSuccess;
 
-    constructor(public payload: ClientInterface) {}
+    constructor(public payload: ClientInterface) {
+      console.log(payload);
+    }
 }
 
 export type ClientActions = GetClient | GetClientSuccess;

@@ -27,6 +27,7 @@ const routes: Routes = [
         component: TaskComponent,
         canActivate: [OperatorBaseGuard],
     },
+    { path: '**', component: AuthorizationComponent },
     { path: '', component: AuthorizationComponent },
     { path: 'login', redirectTo: '', pathMatch: 'full' },
 ];
