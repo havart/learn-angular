@@ -18,8 +18,6 @@ export class GetCommentSuccess implements Action {
   public readonly type = CommentActionEnum.GetCommentSuccess;
 
   constructor(public payload: CommentInterface[]) {
-    console.log(payload);
-    console.log('243242324');
   }
 }
 
