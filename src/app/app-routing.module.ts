@@ -30,7 +30,7 @@ const routes: Routes = [
         canActivate: [OperatorBaseGuard],
     },
     { path: LOGIN, component: AuthorizationComponent },
-    { path: '', redirectTo: '/' + LOGIN, pathMatch: 'full' },
+    { path: '', redirectTo: LOGIN, pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent },
 ];
 

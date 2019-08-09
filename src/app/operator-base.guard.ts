@@ -11,10 +11,10 @@ export class OperatorBaseGuard implements CanActivate {
     constructor(private authorizationService: AuthorizationService, private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-        const res = this.authorizationService.checkAuth();
-        if (!res) {
+        const isAuthorized = this.authorizationService.checkAuth();
+        if (!isAuthorized) {
             this.router.navigate([LOGIN]);
         }
-        return res;
+        return isAuthorized;
     }
 }
