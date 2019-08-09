@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { OPERATOR } from '../../../constants/path.constans';
+import { TASK } from '../../../constants/path.constans';
 import { AuthFormStatusEnum } from './auth-form-status.enum';
 import { LocalStorageService } from '../../../services/local-storage.service';
 
@@ -30,7 +30,7 @@ export class AuthorizationComponent implements OnInit {
     submit(): void {
         if (this.authForm.status === AuthFormStatusEnum.VALID) {
             this.localStorageService.setUser(this.authForm.controls.login.value);
-            this.router.navigate([OPERATOR]);
+            this.router.navigate([TASK]);
         }
         this.authForm.reset();
     }
