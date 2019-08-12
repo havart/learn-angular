@@ -13,7 +13,8 @@ import { TASK } from 'src/app/constants/path.constans';
 })
 export class ToolBarOperatorComponent implements OnInit {
     userName: string;
-    private sideWorks: boolean;
+    sideWorks: boolean;
+    isShowUserMenu = false;
 
     constructor(
         private sideBarService: SideBarService,
@@ -32,5 +33,9 @@ export class ToolBarOperatorComponent implements OnInit {
 
     redirectToTask(): void {
         this.router.navigate([TASK]);
+    }
+
+    showUserMenu(flag: boolean): void {
+        this.isShowUserMenu = flag;
     }
 }

@@ -38,6 +38,7 @@ import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
 import { CommentEffects } from './store/effects/comment.effects';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
+import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not
         OperatorStepsComponent,
         OperatorTabsComponent,
         PageNotFoundComponent,
+        UserMenuComponent,
     ],
     imports: [
         BrowserModule,
