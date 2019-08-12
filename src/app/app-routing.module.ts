@@ -4,15 +4,17 @@ import { AuthorizationComponent } from './components/smart/authorization/authori
 import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 import { OperatorBaseGuard } from './operator-base.guard';
 import { TaskComponent } from './components/dumb/task/task.component';
+import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
+import { TASK, LOGIN, OPERATOR, CONTACT } from './constants/path.constans';
 
 const routes: Routes = [
     {
-        path: 'operator',
+        path: OPERATOR,
         component: OperatorBaseComponent,
         canActivate: [OperatorBaseGuard],
         children: [
             {
-                path: 'contact',
+                path: CONTACT,
                 children: [
                     {
                         path: '',
@@ -23,13 +25,14 @@ const routes: Routes = [
         ],
     },
     {
-        path: 'task',
+        path: TASK,
         component: TaskComponent,
         canActivate: [OperatorBaseGuard],
     },
-    { path: '**', component: AuthorizationComponent },
-    { path: '', component: AuthorizationComponent },
-    { path: 'login', redirectTo: '', pathMatch: 'full' },
+
+    { path: LOGIN, component: AuthorizationComponent },
+    { path: '', redirectTo: LOGIN, pathMatch: 'full' },
+    { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

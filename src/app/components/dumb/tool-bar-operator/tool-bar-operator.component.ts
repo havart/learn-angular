@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { SideBarService } from '../../../services/side-bar.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { USERNAME } from './tool-bar.constants';
+import { Router } from '@angular/router';
+import { TASK } from 'src/app/constants/path.constans';
 
 @Component({
     selector: 'app-tool-bar-operator',
@@ -11,9 +13,13 @@ import { USERNAME } from './tool-bar.constants';
 })
 export class ToolBarOperatorComponent implements OnInit {
     userName: string;
-    private sideWorks = false;
+    private sideWorks: boolean;
 
-    constructor(private sideBarService: SideBarService, private localStorageService: LocalStorageService) {}
+    constructor(
+        private sideBarService: SideBarService,
+        private localStorageService: LocalStorageService,
+        private router: Router,
+    ) {}
 
     ngOnInit() {
         this.userName = this.localStorageService.getUser()[USERNAME];
@@ -22,5 +28,9 @@ export class ToolBarOperatorComponent implements OnInit {
     sideBarToggle(): void {
         this.sideWorks = !this.sideWorks;
         this.sideBarService.sideWorks$.next(this.sideWorks);
+    }
+
+    redirectToTask(): void {
+        this.router.navigate([TASK]);
     }
 }

@@ -1,14 +1,15 @@
 <mat-toolbar>
-  <mat-toolbar-row>
-    <div (click)="sideBarToggle()">
-      <img class="icon-toolbar-menu" src="https://image.flaticon.com/icons/svg/148/148806.svg" />
-    </div>
-    <div class="user-section-toolbar">
-      <img class="icons-toolbar" src="https://image.flaticon.com/icons/svg/149/149071.svg" />
-      <div class="text-info-toolbar">
-        <div class="name-user-toolbar">{{ userName }}</div>
-        <div class="status-user-toolbar">Готов</div>
-      </div>
-    </div>
-  </mat-toolbar-row>
+    <mat-toolbar-row>
+        <div (click)="sideBarToggle()" class="left-part-menu">
+            <img class="icon-toolbar-menu" src="https://image.flaticon.com/icons/svg/148/148806.svg" />
+            <span (click)="redirectToTask()" class="verification">Верификация</span>
+        </div>
+        <div class="user-section-toolbar">
+            <img class="icons-toolbar" src="https://image.flaticon.com/icons/svg/149/149071.svg" />
+            <div class="text-info-toolbar">
+                <div class="name-user-toolbar">{{ userName }}</div>
+                <div class="status-user-toolbar">Готов</div>
+            </div>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>

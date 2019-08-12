@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
+import { AuthData } from '../interfaces/authData.interface';
 
 @Injectable({
     providedIn: 'root',
 })
 export class LocalStorageService {
-    private authData = {
-        username: '',
-    };
+    private authData: AuthData;
 
     constructor() {}
 
     setUser(login: string): void {
+        if (!this.authData) {
+            this.authData = {
+                username: '',
+            };
+        }
         this.authData.username = login;
         const JsonUser: string = JSON.stringify(this.authData);
         localStorage.setItem('authData', JsonUser);

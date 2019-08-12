@@ -37,6 +37,7 @@ import { ClientEffects } from './store/effects/client.effect';
 import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
 import { CommentEffects } from './store/effects/comment.effects';
+import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
@@ -52,6 +53,7 @@ import { CommentEffects } from './store/effects/comment.effects';
         InfoLaborActivityClientComponent,
         OperatorStepsComponent,
         OperatorTabsComponent,
+        PageNotFoundComponent,
     ],
     imports: [
         BrowserModule,

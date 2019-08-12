@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideBarOperatorComponent implements OnInit, OnDestroy {
-    sideWorks = true;
+    sideWorks: boolean;
     sideBarSubscription: Subscription;
 
     constructor(private sideBarService: SideBarService, private changeDetectorRef: ChangeDetectorRef) {}
