@@ -24,11 +24,12 @@ export class LocalStorageService {
 
     getUser(): AuthDataInterface {
         const JsonUser: string = localStorage.getItem('authData');
+
         this.authData = JSON.parse(JsonUser);
         return this.authData;
     }
 
-    deleteLocalStorageUser() {
+    deleteLocalStorageUser(): void {
         localStorage.removeItem(AUTHDATA);
     }
 }
