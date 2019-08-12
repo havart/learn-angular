@@ -14,6 +14,7 @@ import { MainState } from '../../../store/state/main.state';
 import { selectComment } from '../../../store/selectors/comment.selectors';
 import { GetClient } from '../../../store/actions/client.action';
 import { GetComment } from '../../../store/actions/comment.action';
+import { map, take, takeLast, takeUntil, takeWhile } from 'rxjs/operators';
 
 @Component({
     selector: 'app-comment',

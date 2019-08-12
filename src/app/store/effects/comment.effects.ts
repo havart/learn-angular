@@ -5,7 +5,7 @@ import { MathHelper } from '../../helpers/math.helper';
 import { CommentsService } from '../../services/comments.service';
 import { CommentActionEnum, GetComment, GetCommentSuccess } from '../actions/comment.action';
 import { ClientActionsEnum } from '../actions/client.action';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, takeLast } from 'rxjs/operators';
 import { CommentInterface } from '../../interfaces/comment.interface';
 
 @Injectable()

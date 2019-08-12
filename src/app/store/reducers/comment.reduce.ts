@@ -1,4 +1,4 @@
-import { CommentState, initialCommentState } from '../state/commtent.state';
+import { CommentState, initialCommentState } from '../state/comment.state';
 import { ClientState, initialClientState } from '../state/client.state';
 import { CommentActions, CommentActionEnum } from '../actions/comment.action';
 
