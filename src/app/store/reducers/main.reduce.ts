@@ -5,5 +5,5 @@ import { commentReducers } from './comment.reduce';
 
 export const mainReducers: ActionReducerMap<MainState> = {
     client: clientReducers,
-    comment: commentReducers,
+    commentList: commentReducers,
 };

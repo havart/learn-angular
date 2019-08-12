@@ -7,7 +7,7 @@ export function commentReducers(state: CommentState = initialCommentState, actio
         case CommentActionEnum.GetCommentSuccess: {
             return {
                 ...state,
-                comment: action.payload,
+                commentList: action.payload,
             };
         }
       default: return state;

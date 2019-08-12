@@ -3,6 +3,6 @@ import { CommentState } from './commtent.state';
 
 export interface MainState {
     client: ClientState;
-    comment: CommentState;
+    commentList: CommentState;
 }
 

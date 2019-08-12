@@ -14,11 +14,10 @@ export class CommentEffects {
     getComment$ = this.actions$.pipe(
         ofType<GetComment>(CommentActionEnum.GetComment),
         switchMap(action => {
-            console.log(action);
             return this.commentService.getComments$();
         }),
         map((clientHttp: CommentInterface[]) => new GetCommentSuccess(clientHttp)),
     );
 
-    constructor(private commentService: CommentsService, private actions$: Actions, private mathHelper: MathHelper) {}
+    constructor(private commentService: CommentsService, private actions$: Actions) {}
 }

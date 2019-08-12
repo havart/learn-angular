@@ -1,9 +1,9 @@
 import { CommentInterface } from '../../interfaces/comment.interface';
 
 export interface CommentState {
-    comment: CommentInterface[];
+    commentList: CommentInterface[];
 }
 
 export const initialCommentState: CommentState = {
-    comment: null,
+    commentList: null,
 };

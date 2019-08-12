@@ -23,8 +23,6 @@ import { GetComment } from '../../../store/actions/comment.action';
 })
 export class CommentComponent implements OnInit {
     public commentForm: FormGroup;
-    comment$: Observable<CommentInterface[]>;
-    public commentEnum = CommentEnum;
     public commentList$: Observable<CommentInterface[]>;
 
     private userName: string;
@@ -42,7 +40,7 @@ export class CommentComponent implements OnInit {
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
         this.store.dispatch(new GetComment());
-        this.comment$ = this.store.pipe(select(selectComment));
+        this.commentList$ = this.store.pipe(select(selectComment));
     }
 
     submit(): void {

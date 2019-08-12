@@ -17,8 +17,7 @@ export class GetComment implements Action {
 export class GetCommentSuccess implements Action {
   public readonly type = CommentActionEnum.GetCommentSuccess;
 
-  constructor(public payload: CommentInterface[]) {
-  }
+  constructor(public payload: CommentInterface[]) {}
 }
 
 export class PutComment implements Action {
