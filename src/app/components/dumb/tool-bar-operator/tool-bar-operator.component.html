@@ -1,7 +1,16 @@
 <mat-toolbar>
     <mat-toolbar-row>
         <div (click)="sideBarToggle()" class="left-part-menu">
-            <img class="icon-toolbar-menu" src="https://image.flaticon.com/icons/svg/148/148806.svg" />
+            <img
+                *ngIf="!sideWorks"
+                class="icon-toolbar-menu"
+                src="https://image.flaticon.com/icons/svg/148/148806.svg"
+            />
+            <img
+                *ngIf="sideWorks"
+                class="icon-toolbar-menu"
+                src="https://image.flaticon.com/icons/png/512/61/61155.png"
+            />
             <span (click)="redirectToTask()" class="verification">Верификация</span>
         </div>
         <div class="user-section-toolbar">
