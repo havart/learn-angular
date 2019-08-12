@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, EMPTY } from 'rxjs';
-import { ClientLaborActivityInterface } from '../interfaces/clientLaborActivity.interfase';
+import { ClientLaborActivityInterface } from '../interfaces/clientLaborActivity.interface';
 import { tap, catchError } from 'rxjs/operators';
 import { NotificationErrorService } from './notification-error.service';
 
