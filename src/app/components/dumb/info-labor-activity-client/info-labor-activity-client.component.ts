@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interfase';
+import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interface';
 import { Observable } from 'rxjs';
 import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
 

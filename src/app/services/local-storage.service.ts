@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AuthData } from '../interfaces/authData.interface';
+import { AuthDataInterface } from '../interfaces/authData.interface';
 import { AUTHDATA } from '../constants/auth.constans';
 
 @Injectable({
     providedIn: 'root',
 })
 export class LocalStorageService {
-    private authData: AuthData;
+    private authData: AuthDataInterface;
 
     constructor() {}
 
@@ -16,18 +16,20 @@ export class LocalStorageService {
                 username: '',
             };
         }
+
         this.authData.username = login;
         const JsonUser: string = JSON.stringify(this.authData);
         localStorage.setItem(AUTHDATA, JsonUser);
     }
 
-    getUser() {
-        const JsonUser: string = localStorage.getItem(AUTHDATA);
+    getUser(): AuthDataInterface {
+        const JsonUser: string = localStorage.getItem('authData');
+
         this.authData = JSON.parse(JsonUser);
         return this.authData;
     }
 
-    deleteLocalStorageUser() {
+    deleteLocalStorageUser(): void {
         localStorage.removeItem(AUTHDATA);
     }
 }

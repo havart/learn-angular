@@ -13,7 +13,7 @@ import { TASK } from 'src/app/constants/path.constans';
 })
 export class ToolBarOperatorComponent implements OnInit {
     userName: string;
-    private sideWorks = false;
+    sideWorks: boolean;
     isShowUserMenu = false;
 
     constructor(

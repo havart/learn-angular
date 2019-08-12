@@ -36,6 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effect';
 import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
+import { CommentEffects } from './store/effects/comment.effects';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
 import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
 
@@ -78,7 +79,7 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
         StoreDevtoolsModule.instrument({
             maxAge: 50,
         }),
-        EffectsModule.forRoot([ClientEffects]),
+        EffectsModule.forRoot([ClientEffects, CommentEffects]),
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
