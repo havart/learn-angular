@@ -37,6 +37,7 @@ import { ClientEffects } from './store/effects/client.effect';
 import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
+import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not
         OperatorStepsComponent,
         OperatorTabsComponent,
         PageNotFoundComponent,
+        UserMenuComponent,
     ],
     imports: [
         BrowserModule,
