@@ -1,3 +1,3 @@
-export interface AuthData {
+export interface AuthDataInterface {
     username: string;
 }
