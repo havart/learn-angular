@@ -12,6 +12,10 @@ mat-form-field {
     width: 100%;
 }
 
+.form-container{
+  display: flex;
+}
+
 form {
     margin: auto;
     border: solid #e7e8ea 0.1em;
