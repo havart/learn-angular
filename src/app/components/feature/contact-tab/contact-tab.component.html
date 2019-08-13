@@ -1,3 +1,3 @@
-<ng-container *ngFor="let item of informationList$ | async">
-    <app-contact [(itemContact)]="item"> </app-contact>
+<ng-container *ngFor="let contact of informationList$ | async">
+    <app-contact [contact]="contact"> </app-contact>
 </ng-container>

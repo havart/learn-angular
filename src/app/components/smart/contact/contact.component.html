@@ -3,7 +3,7 @@
         <div class="base-inputs">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Номер телефона</mat-label>
-                <input matInput type="text" placeholder="Введите номер телефона" value="{{ itemContact.phone }}" formControlName="numberPhone"/>
+                <input matInput type="text" placeholder="Введите номер телефона" value="{{ contact.phone }}" formControlName="numberPhone"/>
             </mat-form-field>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>ФИО контакта</mat-label>
@@ -11,7 +11,7 @@
                     matInput
                     type="text"
                     placeholder="Введите ФИО контакта"
-                    value="{{ itemContact.firstName + ' ' + itemContact.lastName }}"
+                    value="{{ contact.firstName + ' ' + contact.lastName }}"
                     formControlName="fullName"
                 />
             </mat-form-field>
@@ -19,17 +19,17 @@
         <div class="base-inputs">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Тип телефона</mat-label>
-                <mat-select value="{{ itemContact.phoneType }}">
-                    <mat-option value="{{ itemContact.phoneType }}">
-                        {{ itemContact.phoneType }}
+                <mat-select value="{{ contact.phoneType }}">
+                    <mat-option value="{{ contact.phoneType }}">
+                        {{ contact.phoneType }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Департамент</mat-label>
-                <mat-select value="{{ itemContact.departament }}">
-                    <mat-option value="{{ itemContact.departament }}">
-                        {{ itemContact.departament }}
+                <mat-select value="{{ contact.departament }}">
+                    <mat-option value="{{ contact.departament }}">
+                        {{ contact.departament }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>

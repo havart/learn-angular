@@ -8,21 +8,23 @@ import { ContactEnum } from './contact.enum';
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
     contactForm: FormGroup;
-    @Input() itemContact: ContactTabInterface;
+    @Input() contact: ContactTabInterface;
 
-    constructor() {
+    constructor() {}
+
+    ngOnInit(): void {
         this.initContactForm();
     }
 
     initContactForm(): void {
         this.contactForm = new FormGroup({
-            [ContactEnum.NUMBERPHONE]: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+            [ContactEnum.NUMBERPHONE]: new FormControl('', [Validators.required, Validators.maxLength(15)]),
             [ContactEnum.FULLNAME]: new FormControl('', [Validators.required, Validators.maxLength(99)]),
             [ContactEnum.PHONETYPE]: new FormControl('', Validators.required),
             [ContactEnum.DEPARTAMENT]: new FormControl('', Validators.required),
-            [ContactEnum.COMMENT]: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
+            [ContactEnum.COMMENT]: new FormControl('', [Validators.required, Validators.maxLength(999)]),
         });
     }
     submit() {}
