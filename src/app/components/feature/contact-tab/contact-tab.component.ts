@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, ElementRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactTabEnum } from './contact-tab.enum';
 import { ContactTabService } from '../../../services/contact-tab.service';
@@ -19,8 +19,6 @@ export class ContactTabComponent implements OnInit {
     ngOnInit() {
         this.getInformationFromServer();
     }
-
-    submit() {}
 
     getInformationFromServer(): void {
         this.informationList$ = this.contactTabService.getInformationFromServer$();
