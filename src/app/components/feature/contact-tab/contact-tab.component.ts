@@ -12,25 +12,14 @@ import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
 })
 export class ContactTabComponent implements OnInit {
     public informationList$: Observable<ContactTabInterface[]>;
-    contactForm: FormGroup;
 
     constructor(private contactTabService: ContactTabService) {
-        this.initContactForm();
     }
 
     ngOnInit() {
         this.getInformationFromServer();
     }
 
-    initContactForm(): void {
-        this.contactForm = new FormGroup({
-            [ContactTabEnum.NUMBERPHONE]: new FormControl('', [Validators.required, Validators.maxLength(10)]),
-            [ContactTabEnum.FULLNAME]: new FormControl('', [Validators.required, Validators.maxLength(99)]),
-            [ContactTabEnum.PHONETYPE]: new FormControl('', Validators.required),
-            [ContactTabEnum.DEPARTAMENT]: new FormControl('', Validators.required),
-            [ContactTabEnum.COMMENT]: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
-        });
-    }
     submit() {}
 
     getInformationFromServer(): void {
