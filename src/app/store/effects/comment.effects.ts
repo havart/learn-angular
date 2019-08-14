@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ClientService } from '../../services/client.service';
-import { MathHelper } from '../../helpers/math.helper';
 import { CommentsService } from '../../services/comments.service';
 import { CommentActionEnum, GetComment, GetCommentSuccess } from '../actions/comment.action';
-import { ClientActionsEnum } from '../actions/client.action';
-import { map, switchMap, takeLast } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { CommentInterface } from '../../interfaces/comment.interface';
 
 @Injectable()
@@ -14,9 +11,9 @@ export class CommentEffects {
     getComment$ = this.actions$.pipe(
         ofType<GetComment>(CommentActionEnum.GetComment),
         switchMap(action => {
-            return this.commentService.getComments$();
+            return this.commentService.fetchComments$();
         }),
-        map((clientHttp: CommentInterface[]) => new GetCommentSuccess(clientHttp)),
+        map((comments: CommentInterface[]) => new GetCommentSuccess(comments)),
     );
 
     constructor(private commentService: CommentsService, private actions$: Actions) {}

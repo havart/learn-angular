@@ -1,4 +1,4 @@
-export enum ContactTabEnum {
+export enum ContactEnum {
     NUMBERPHONE = 'numberPhone',
     FULLNAME = 'fullName',
     PHONETYPE = 'phoneType',
