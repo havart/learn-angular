@@ -11,12 +11,6 @@ import { NotificationErrorService } from './notification-error.service';
 export class CommentsService {
     constructor(private http: HttpClient, private notificationErrorService: NotificationErrorService) {}
 
-    compareFunction(elementA, elementB): number {
-        if (elementA.createdAt < elementB.createdAt) { return 1; }
-        if (elementA.createdAt > elementB.createdAt) { return -1; }
-        return 0;
-    };
-
     getComments$(): Observable<CommentInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
         return this.http.get<CommentInterface[]>(url).pipe(
@@ -38,5 +32,15 @@ export class CommentsService {
                 return EMPTY;
             }),
         );
+    }
+
+    private compareFunction(elementA, elementB): number {
+        if (elementA.createdAt < elementB.createdAt) {
+            return 1;
+        }
+        if (elementA.createdAt > elementB.createdAt) {
+            return -1;
+        }
+        return 0;
     }
 }
