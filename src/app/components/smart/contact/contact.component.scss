@@ -8,6 +8,18 @@ mat-form-field {
     margin: 5px;
 }
 
+mat-icon{
+  cursor: pointer;
+}
+
+mat-icon:hover{
+  opacity: 0.6;
+}
+
+.input-and-call-btn{
+  display: flex;
+}
+
 .comment-input-box {
     width: 100%;
 }
