@@ -15,10 +15,11 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSelectModule,
     MatSidenavModule,
-    MatToolbarModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatToolbarModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -80,6 +81,7 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
             maxAge: 50,
         }),
         EffectsModule.forRoot([ClientEffects, CommentEffects]),
+        MatSelectModule,
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],

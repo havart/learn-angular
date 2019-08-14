@@ -6,5 +6,5 @@ const selectState = (state: MainState) => state.commentList;
 
 export const selectComment = createSelector(
     selectState,
-    ({commentList}: CommentState) => commentList,
+    ({ commentList }: CommentState) => commentList,
 );
