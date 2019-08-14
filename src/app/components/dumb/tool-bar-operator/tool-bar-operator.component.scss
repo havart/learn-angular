@@ -1,6 +1,8 @@
 mat-toolbar {
     flex: 1 1 auto;
     background-color: #2b2b2b;
+    position: fixed;
+    z-index: 2;
 }
 
 mat-toolbar-row {
@@ -89,4 +91,8 @@ mat-toolbar-row {
     z-index: 3;
     background-color: rgba(43, 43, 43, 0.6);
     text-align: center;
+}
+
+.empty-container {
+    height: 64px;
 }
