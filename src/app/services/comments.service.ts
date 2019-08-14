@@ -15,7 +15,6 @@ export class CommentsService {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
         return this.http.get<CommentInterface[]>(url).pipe(
             map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)),
-            map((comments: CommentInterface[]) => comments.sort(this.compareFunction)),
             map(comments => comments.slice(0, 10)),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
@@ -32,15 +31,5 @@ export class CommentsService {
                 return EMPTY;
             }),
         );
-    }
-
-    private compareFunction(elementA, elementB): number {
-        if (elementA.createdAt < elementB.createdAt) {
-            return 1;
-        }
-        if (elementA.createdAt > elementB.createdAt) {
-            return -1;
-        }
-        return 0;
     }
 }
