@@ -1,20 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MathHelper } from '../../../helpers/math.helper';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CommentInterface } from '../../../interfaces/comment.interface';
 import { CommentsService } from '../../../services/comments.service';
 import { CommentEnum } from './comment.enum';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { USERNAME } from '../tool-bar-operator/tool-bar.constants';
-import { ClientInterface } from '../../../interfaces/client.interface';
-import { select, Store } from '@ngrx/store';
-import { selectClient } from '../../../store/selectors/client.selector';
+import { Store } from '@ngrx/store';
 import { MainState } from '../../../store/state/main.state';
-import { selectComment } from '../../../store/selectors/comment.selectors';
-import { GetClient } from '../../../store/actions/client.action';
 import { GetComment } from '../../../store/actions/comment.action';
-import { map, take, takeLast, takeUntil, takeWhile } from 'rxjs/operators';
+import { switchMapTo } from 'rxjs/operators';
 
 @Component({
     selector: 'app-comment',
@@ -41,12 +37,12 @@ export class CommentComponent implements OnInit {
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
         this.store.dispatch(new GetComment());
-        this.commentList$ = this.store.pipe(select(selectComment));
+        this.commentList$ = this.commentsService.getComments$();
     }
 
     submit(): void {
         const minNumberOfId = 1;
-        const maxNumberOfId = 20;
+        const maxNumberOfId = 15;
         const commentFromInput = this.commentForm.controls.comment.value;
 
         this.commentForm.reset();
@@ -59,6 +55,7 @@ export class CommentComponent implements OnInit {
                 viewType: 1,
                 isComment: true,
             })
+            .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
             .subscribe();
     }
 }
