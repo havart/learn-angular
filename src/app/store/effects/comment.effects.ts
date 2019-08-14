@@ -13,7 +13,7 @@ export class CommentEffects {
         switchMap(action => {
             return this.commentService.fetchComments$();
         }),
-        map((clientHttp: CommentInterface[]) => new GetCommentSuccess(clientHttp)),
+        map((comments: CommentInterface[]) => new GetCommentSuccess(comments)),
     );
 
     constructor(private commentService: CommentsService, private actions$: Actions) {}

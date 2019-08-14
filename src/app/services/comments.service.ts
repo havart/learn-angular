@@ -22,8 +22,10 @@ export class CommentsService {
     fetchComments$(): Observable<CommentInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
         return this.http.get<CommentInterface[]>(url).pipe(
-            map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment === true)),
-            map(comments => comments.slice(0, 10)),
+            map((comments: CommentInterface[]) =>
+                comments.filter(({ isComment }: CommentInterface) => isComment === true),
+            ),
+            map((comments: CommentInterface[]) => comments.slice(0, 10)),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
                 return EMPTY;

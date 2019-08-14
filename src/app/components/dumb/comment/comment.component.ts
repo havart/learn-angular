@@ -10,6 +10,7 @@ import { USERNAME } from '../tool-bar-operator/tool-bar.constants';
 import { Store } from '@ngrx/store';
 import { MainState } from '../../../store/state/main.state';
 import { GetComment } from '../../../store/actions/comment.action';
+import { switchMapTo } from 'rxjs/operators';
 
 @Component({
     selector: 'app-comment',
@@ -54,10 +55,7 @@ export class CommentComponent implements OnInit {
                 viewType: 1,
                 isComment: true,
             })
-            .subscribe(() => {
-                this.commentsService.fetchAndSave$().subscribe(() => {
-                    this.commentList$ = this.commentsService.getComments$();
-                });
-            });
+            .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
+            .subscribe();
     }
 }
