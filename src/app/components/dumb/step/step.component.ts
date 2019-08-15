@@ -10,7 +10,7 @@ export class StepComponent {
   @Input() step: StepInterface;
   private isShowDescriptionMenu: boolean;
 
-  showDescriptionMenuToggle(): void {
+  private showDescriptionMenuToggle(): void {
     this.isShowDescriptionMenu = !this.isShowDescriptionMenu;
   }
 }
