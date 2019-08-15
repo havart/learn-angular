@@ -31,8 +31,8 @@ export class ContactComponent implements OnInit {
     }
     submit() {}
 
-    toggleCall(): void {
-        console.log(`calling at *number*`);
+    toggleCall(contact): void {
+        console.log(`calling at *number* ${contact}`);
         this.callStatus = !this.callStatus;
     }
 }
