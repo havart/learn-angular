@@ -13,7 +13,7 @@
             />
             <span (click)="redirectToTask()" class="verification">Верификация</span>
         </div>
-        <div class="user-section-toolbar" (mouseenter)="showUserMenu(true)">
+        <div (mouseenter)="showUserMenu(true)" class="user-section-toolbar">
             <img class="icons-toolbar" src="https://image.flaticon.com/icons/svg/149/149071.svg" />
             <div class="text-info-toolbar">
                 <div class="name-user-toolbar">{{ userName }}</div>
@@ -23,4 +23,3 @@
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
-<div class="empty-container"></div>

@@ -1,39 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Helvetica, sans-serif; }
-
-.right-list{
-  position: relative;
-  display: block;
-  top: 0;
-  float: right;
-  right: 0;
-  width: 350px;
-  height: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Helvetica, sans-serif;
 }
 
-.left-list{
-  position: relative;
-  top: 0;
-  display: block;
-  float: left;
-  left: 0;
-  width: auto;
-  height: 100vh;
-  z-index: 99;
+.right-list {
+    position: relative;
+    display: block;
+    top: 0;
+    float: right;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.app-comment{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
+.left-list {
+    position: relative;
+    display: block;
+    float: left;
+    width: auto;
+    top: 0;
+    left: 0;
 }
 
-app-contact-tab{
-  position: relative;
+.app-comment {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
+app-contact-tab {
+    position: relative;
+}
