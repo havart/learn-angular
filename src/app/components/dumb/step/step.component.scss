@@ -1,0 +1,26 @@
+mat-list-item {
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+    height: auto !important;
+}
+
+mat-list-item:hover {
+    background-color: #e9eaec;
+}
+
+.list {
+    background-color: #e9eaec;
+}
+
+.more-information {
+    font-size: 8px;
+    color: #6185b3;
+    cursor: pointer;
+}
+
+.description {
+    display: block;
+    color: #656565;
+    padding: 16px;
+    word-break: break-all;
+}
