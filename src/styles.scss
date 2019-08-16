@@ -21,3 +21,10 @@ app-contact-tab {
 .mat-form-field-appearance-outline .mat-form-field-flex {
     height: 65px;
 }
+
+.mat-fab.mat-accent,
+.mat-flat-button.mat-accent,
+.mat-mini-fab.mat-accent,
+.mat-raised-button.mat-accent {
+    background-color: #f7dc6d !important;
+}
