@@ -1,0 +1,26 @@
+mat-form-field {
+    display: block !important;
+    flex: 1 1 auto;
+    margin-left: 5px;
+     margin-right: 5px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  padding-top: 51px !important;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    opacity: 0.6;
+}
+
+.input-and-call-btn {
+    display: flex;
+}
+
+.form-container {
+    display: flex;
+}

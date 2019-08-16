@@ -6,13 +6,14 @@ import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatTab
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppModule } from '../../../app.module';
 import { ContactComponent } from '../../smart/contact/contact.component';
+import { PhoneNumberFormComponent } from '../../smart/phone-number-form/phone-number-form.component';
 
 const routes: Routes = [
   { path: '', component: ContactTabComponent,  pathMatch: 'full'}
 ];
 
 @NgModule({
-    declarations: [ContactTabComponent, ContactComponent],
+  declarations: [ContactTabComponent, ContactComponent, PhoneNumberFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

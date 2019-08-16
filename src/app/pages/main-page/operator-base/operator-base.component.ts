@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CONTACT } from '../../../constants/path.constans';
 
 @Component({
     selector: 'app-operator-base',
@@ -6,8 +7,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./operator-base.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OperatorBaseComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
+export class OperatorBaseComponent {
+    private contact = CONTACT;
 }

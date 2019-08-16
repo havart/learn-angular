@@ -12,7 +12,6 @@ import { ContactEnum } from './contact.enum';
 export class ContactComponent implements OnInit {
     @Input() contact: ContactTabInterface;
     contactForm: FormGroup;
-    private callStatus: boolean;
 
     constructor() {}
 
@@ -30,9 +29,4 @@ export class ContactComponent implements OnInit {
         });
     }
     submit() {}
-
-    toggleCall(contact): void {
-        console.log(`calling at *number* ${contact}`);
-        this.callStatus = !this.callStatus;
-    }
 }
