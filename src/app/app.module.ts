@@ -41,6 +41,7 @@ import { CommentEffects } from './store/effects/comment.effects';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
 import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
 import { StepComponent } from './components/dumb/step/step.component';
+import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { StepComponent } from './components/dumb/step/step.component';
         PageNotFoundComponent,
         UserMenuComponent,
         StepComponent,
+        StepWithPhoneNumberComponent,
     ],
     imports: [
         BrowserModule,

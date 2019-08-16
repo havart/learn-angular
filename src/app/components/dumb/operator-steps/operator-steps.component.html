@@ -1,4 +1,10 @@
 <mat-list>
+    <h3 mat-subheader>Шаги с телефоном</h3>
+    <ng-container *ngFor="let step of stepsList$ | async">
+        <app-step-with-phone-number [step]="step"></app-step-with-phone-number>
+    </ng-container>
+</mat-list>
+<mat-list>
     <ng-container *ngFor="let step of stepsList$ | async">
         <app-step [step]="step"></app-step>
     </ng-container>
