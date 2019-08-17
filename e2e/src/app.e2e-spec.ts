@@ -9,14 +9,11 @@ describe('workspace-project App', () => {
   });
 
   it('should display welcome message', () => {
-    // tslint:disable-next-line: no-floating-promises
     page.navigateTo();
-    // tslint:disable-next-line: no-floating-promises
     expect(page.getTitleText()).toEqual('Welcome to learn-angular-change-detaction!');
   });
 
   afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
     // tslint:disable-next-line: no-object-literal-type-assertion
     expect(logs).not.toContain(jasmine.objectContaining({

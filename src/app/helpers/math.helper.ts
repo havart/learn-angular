@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class MathHelper {
+    constructor() {}
 
-  constructor() { }
-
-  getRandomNumber(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+    getRandomNumber(min: number, max: number): number {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
 }

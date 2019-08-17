@@ -141,6 +141,7 @@
         "no-boolean-literal-compare": true,
         "no-null-keyword": false,
         "prefer-readonly": false,
+        "no-floating-promises": false,
         "no-consecutive-blank-lines": [
           true,
           1
