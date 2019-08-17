@@ -1,13 +1,13 @@
 <div class="cont-auth">
     <form [formGroup]="authForm" (ngSubmit)="submit()">
         <div class="cont-auth-form">
-            <mat-form-field>
-                <mat-label>Login:</mat-label>
+            <mat-form-field color="accent">
+                <mat-label>Логин:</mat-label>
                 <input matInput class="login" type="text" formControlName="login" />
             </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Password:</mat-label>
+            <mat-form-field color="accent">
+                <mat-label>Пароль:</mat-label>
                 <input matInput class="password" type="password" formControlName="password" />
             </mat-form-field>
         </div>

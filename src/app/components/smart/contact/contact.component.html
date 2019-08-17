@@ -1,0 +1,43 @@
+<div class="form-container">
+    <form [formGroup]="contactForm" (ngSubmit)="submit()">
+        <div class="base-inputs">
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Номер телефона</mat-label>
+                <input matInput type="text" placeholder="Введите номер телефона" value="{{ contact.phone }}" formControlName="numberPhone"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>ФИО контакта</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    placeholder="Введите ФИО контакта"
+                    value="{{ contact.firstName + ' ' + contact.lastName }}"
+                    formControlName="fullName"
+                />
+            </mat-form-field>
+        </div>
+        <div class="base-inputs">
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Тип телефона</mat-label>
+                <mat-select value="{{ contact.phoneType }}">
+                    <mat-option value="{{ contact.phoneType }}">
+                        {{ contact.phoneType }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Департамент</mat-label>
+                <mat-select value="{{ contact.departament }}">
+                    <mat-option value="{{ contact.departament }}">
+                        {{ contact.departament }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="base-inputs">
+            <mat-form-field class="comment-input-box" appearance="outline" color="accent">
+                <input matInput type="text" placeholder="Введите комментарий" formControlName="comment"/>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

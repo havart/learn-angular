@@ -15,10 +15,11 @@ import {
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatSelectModule,
     MatSidenavModule,
-    MatToolbarModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatToolbarModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -36,6 +37,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ClientEffects } from './store/effects/client.effect';
 import { OperatorTabsComponent } from './components/dumb/operator-tabs/operator-tabs.component';
 import { OperatorTabsModule } from './components/dumb/operator-tabs/features/operator-tabs.module';
+import { CommentEffects } from './store/effects/comment.effects';
+import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
+import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +55,8 @@ import { OperatorTabsModule } from './components/dumb/operator-tabs/features/ope
         InfoLaborActivityClientComponent,
         OperatorStepsComponent,
         OperatorTabsComponent,
+        PageNotFoundComponent,
+        UserMenuComponent,
     ],
     imports: [
         BrowserModule,
@@ -74,7 +80,8 @@ import { OperatorTabsModule } from './components/dumb/operator-tabs/features/ope
         StoreDevtoolsModule.instrument({
             maxAge: 50,
         }),
-        EffectsModule.forRoot([ClientEffects]),
+        EffectsModule.forRoot([ClientEffects, CommentEffects]),
+        MatSelectModule,
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
