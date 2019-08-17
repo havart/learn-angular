@@ -14,7 +14,7 @@
         "execute:pre-commit": "shx chmod +x .githooks/pre-commit",
         "precommit": "./node_modules/.bin/lint-staged",
         "postcommit": "git update-index --again",
-        "prettier:app": "prettier --write app/**/*.ts && prettier --write app/**/*.js",
+        "prettier:app": "prettier --write src/**/*.ts && prettier --write src/**/*.js",
         "init-hooks": "npm run execute:pre-commit && npm run execute:prepare-commit-msg && npm run execute:hooks-folder"
     },
     "private": true,
