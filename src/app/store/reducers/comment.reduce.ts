@@ -1,5 +1,4 @@
 import { CommentState, initialCommentState } from '../state/comment.state';
-import { ClientState, initialClientState } from '../state/client.state';
 import { CommentActions, CommentActionEnum } from '../actions/comment.action';
 
 export function commentReducers(state: CommentState = initialCommentState, action: CommentActions): CommentState {
@@ -10,6 +9,7 @@ export function commentReducers(state: CommentState = initialCommentState, actio
                 commentList: action.payload,
             };
         }
-      default: return state;
+        default:
+            return state;
     }
 }
