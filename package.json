@@ -8,7 +8,14 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postinstall": "ng build --aot --prod"
+        "postinstall": "npm run init-hooks && ng build --aot --prod",
+        "execute:hooks-folder": "git config core.hooksPath .githooks",
+        "execute:prepare-commit-msg": "shx chmod +x .githooks/prepare-commit-msg",
+        "execute:pre-commit": "shx chmod +x .githooks/pre-commit",
+        "precommit": "./node_modules/.bin/lint-staged",
+        "postcommit": "git update-index --again",
+        "prettier:app": "prettier --write app/**/*.ts && prettier --write app/**/*.js",
+        "init-hooks": "npm run execute:pre-commit && npm run execute:prepare-commit-msg && npm run execute:hooks-folder"
     },
     "private": true,
     "dependencies": {
