@@ -12,6 +12,7 @@ export class AuthorizationService {
         if (user && user.username) {
             return true;
         }
+
         return false;
     }
 }

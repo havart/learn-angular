@@ -15,7 +15,7 @@ export class ContactTabComponent implements OnInit {
     constructor(private contactTabService: ContactTabService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getInformationFromServer();
     }
 

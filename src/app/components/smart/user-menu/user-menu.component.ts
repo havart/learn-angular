@@ -12,7 +12,7 @@ import { LOGIN } from 'src/app/constants/path.constans';
 export class UserMenuComponent {
     constructor(private localStorageService: LocalStorageService, private router: Router) {}
 
-    logOutUser() {
+    logOutUser(): void {
         this.localStorageService.deleteLocalStorageUser();
         this.router.navigate([LOGIN]);
     }

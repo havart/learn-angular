@@ -8,7 +8,7 @@ describe('OperatorStepsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OperatorStepsComponent ]
+      declarations: [ OperatorStepsComponent ],
     })
     .compileComponents();
   }));

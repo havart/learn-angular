@@ -14,10 +14,12 @@ export class OperatorStepsService {
 
     getSteps$(): Observable<StepInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
+
         return this.http.get<CommentInterface[]>(url).pipe(
-            map((steps: StepInterface[]) => steps.filter(step => step.isComment === false)),
+            map((steps: StepInterface[]) => steps.filter(({ isComment }: StepInterface) => !isComment)),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+
                 return EMPTY;
             }),
         );

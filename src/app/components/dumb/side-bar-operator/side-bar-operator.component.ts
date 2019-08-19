@@ -14,7 +14,7 @@ export class SideBarOperatorComponent implements OnInit, OnDestroy {
 
     constructor(private sideBarService: SideBarService, private changeDetectorRef: ChangeDetectorRef) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.sideBarSubscription = this.sideBarService.sideWorks$.subscribe((value: boolean) => {
             this.sideWorks = value;
             this.changeDetectorRef.detectChanges();
