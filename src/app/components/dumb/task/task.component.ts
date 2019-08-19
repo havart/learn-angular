@@ -19,7 +19,7 @@ export class TaskComponent {
         private router: Router,
         private clientLaborActivityService: ClientLaborActivityService,
         private mathHelper: MathHelper,
-        private store: Store<ClientInterface>,
+        private store$: Store<ClientInterface>,
     ) {}
 
     sendRequestLaborActivity(id: number): void {
@@ -27,15 +27,13 @@ export class TaskComponent {
             () => {
                 this.router.navigate([OPERATOR]);
             },
-            (error: HttpErrorResponse) => {
-                console.log(error);
-            },
+            (error: HttpErrorResponse) => {},
         );
     }
 
     sendRequest(): void {
         const id = this.mathHelper.getRandomNumber(1, 10);
-        this.store.dispatch(new GetClient(id));
+        this.store$.dispatch(new GetClient(id));
         this.sendRequestLaborActivity(id);
     }
 }

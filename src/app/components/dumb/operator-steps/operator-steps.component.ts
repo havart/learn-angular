@@ -18,7 +18,7 @@ export class OperatorStepsComponent implements OnInit {
         this.getStepsFromServer();
     }
 
-    getStepsFromServer() {
+    getStepsFromServer(): void {
         this.stepsList$ = this.operatorStepService.getSteps$();
     }
 }
