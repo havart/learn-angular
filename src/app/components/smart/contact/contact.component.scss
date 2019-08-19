@@ -13,6 +13,14 @@ app-phone-number-form {
     flex: 1 1 auto;
 }
 
+input {
+    height: 25px !important;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
 mat-icon {
     cursor: pointer;
 }

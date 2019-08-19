@@ -11,6 +11,7 @@ export class ContactTabService {
 
     getInformationFromServer$(): Observable<ContactTabInterface[]> {
         const url = 'https://5bfff0a00296210013dc7e82.mockapi.io/test/contacts';
+
         return this.http.get<ContactTabInterface[]>(url);
     }
 }
