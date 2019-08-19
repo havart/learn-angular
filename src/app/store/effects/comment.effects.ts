@@ -10,7 +10,6 @@ export class CommentEffects {
     @Effect()
     getComment$ = this.actions$.pipe(
         ofType<GetComment>(CommentActionEnum.GetComment),
-        // tslint:disable-next-line: rxjs-no-unsafe-switchmap
         switchMap(action => this.commentService.fetchComments$()),
         map((comments: CommentInterface[]) => new GetCommentSuccess(comments)),
     );
