@@ -36,11 +36,7 @@ export class CommentComponent implements OnInit {
             [CommentEnum.COMMENT]: new FormControl('', Validators.required),
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
-<<<<<<< HEAD
-        this.store.dispatch(new GetComment());
-=======
         this.store$.dispatch(new GetComment());
->>>>>>> develop-2
         this.commentList$ = this.commentsService.getComments$();
     }
 
