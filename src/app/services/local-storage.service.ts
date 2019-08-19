@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthDataInterface } from '../interfaces/authData.interface';
+import { AuthDataInterface } from '../interfaces/auth-data.interface';
 import { AUTHDATA } from '../constants/auth.constans';
 
 @Injectable({

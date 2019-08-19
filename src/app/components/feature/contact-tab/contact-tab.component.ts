@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ContactTabService } from '../../../services/contact-tab.service';
 import { Observable } from 'rxjs';
 import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
@@ -7,6 +7,7 @@ import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
     selector: 'app-contact-tab',
     templateUrl: './contact-tab.component.html',
     styleUrls: ['./contact-tab.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactTabComponent implements OnInit {
     public informationList$: Observable<ContactTabInterface[]>;
@@ -14,7 +15,7 @@ export class ContactTabComponent implements OnInit {
     constructor(private contactTabService: ContactTabService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getInformationFromServer();
     }
 

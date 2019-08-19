@@ -3,7 +3,19 @@
         <div class="base-inputs">
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>Номер телефона</mat-label>
-                <input matInput type="text" placeholder="Введите номер телефона" value="{{ contact.phone }}" formControlName="numberPhone"/>
+                <div class="input-and-call-btn">
+                    <input
+                        matInput
+                        type="text"
+                        placeholder="Введите номер телефона"
+                        value="{{ contact.phone }}"
+                        formControlName="numberPhone"
+                    />
+                    <mat-icon *ngIf="!callStatus; else callOff" (click)="toggleCall()">call</mat-icon>
+                    <ng-template #callOff>
+                        <mat-icon (click)="toggleCall()">call_end</mat-icon>
+                    </ng-template>
+                </div>
             </mat-form-field>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>ФИО контакта</mat-label>
@@ -36,7 +48,7 @@
         </div>
         <div class="base-inputs">
             <mat-form-field class="comment-input-box" appearance="outline" color="accent">
-                <input matInput type="text" placeholder="Введите комментарий" formControlName="comment"/>
+                <input matInput type="text" placeholder="Введите комментарий" formControlName="comment" />
             </mat-form-field>
         </div>
     </form>
