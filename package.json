@@ -9,7 +9,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "postinstall": "ng build --aot --prod && npm run init-hooks",
-        "execute:hooks-folder": "git config core.hooksPath .githooks",
+        "execute:hooks-folder": "git config core.hooksPath .git/.githooks",
         "execute:prepare-commit-msg": "shx chmod +x .githooks/prepare-commit-msg",
         "execute:pre-commit": "shx chmod +x .githooks/pre-commit",
         "precommit": "./node_modules/.bin/lint-staged",
