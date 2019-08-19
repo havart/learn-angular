@@ -1,28 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, EMPTY } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 import { ClientLaborActivityInterface } from '../interfaces/clientLaborActivity.interface';
-import { tap, catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { NotificationErrorService } from './notification-error.service';
+import { Router } from '@angular/router';
+import { TASK, OPERATOR } from '../constants/path.constans';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ClientLaborActivityService {
-    private clientLaborActivitySource$ = new BehaviorSubject<ClientLaborActivityInterface>(null);
-
-    constructor(private http: HttpClient, private notificationErrorService: NotificationErrorService) {}
-
-    get clientLaborActivity$(): Observable<ClientLaborActivityInterface> {
-        return this.clientLaborActivitySource$.asObservable();
-    }
+    constructor(
+        private http: HttpClient,
+        private notificationErrorService: NotificationErrorService,
+        private router: Router,
+    ) {}
 
     getLaborActivityClient$(id: number): Observable<ClientLaborActivityInterface> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/labor-activity/${id}`;
         return this.http.get<ClientLaborActivityInterface>(url).pipe(
-            tap((clientLaborActivity: ClientLaborActivityInterface) =>
-                this.clientLaborActivitySource$.next(clientLaborActivity),
-            ),
+            tap(() => {
+                if (this.router.url === '/' + TASK) {
+                    this.router.navigate([OPERATOR]);
+                }
+            }),
+            catchError((error: HttpErrorResponse) => {
+                this.notificationErrorService.openSnackBarError(error.message);
+                return EMPTY;
+            }),
+        );
+    }
+
+    putLaborActivityClient$(
+        laborActivity: ClientLaborActivityInterface,
+        id: string,
+    ): Observable<ClientLaborActivityInterface> {
+        const url = `https://5bfff0a00296210013dc7e82.mockapi.io/labor-activity/${id}`;
+        return this.http.put<ClientLaborActivityInterface>(url, laborActivity).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
                 return EMPTY;
