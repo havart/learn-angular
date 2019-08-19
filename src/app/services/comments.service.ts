@@ -28,6 +28,7 @@ export class CommentsService {
             map((comments: CommentInterface[]) => comments.slice(0, 10)),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+
                 return EMPTY;
             }),
         );
@@ -35,9 +36,11 @@ export class CommentsService {
 
     putComments$(commentData: CommentInterface): Observable<CommentInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps/${commentData.id}`;
+
         return this.http.put<CommentInterface[]>(url, commentData).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+
                 return EMPTY;
             }),
         );
