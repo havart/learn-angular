@@ -22,7 +22,7 @@ export class ToolBarOperatorComponent implements OnInit {
         private router: Router,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.userName = this.localStorageService.getUser()[USERNAME];
     }
 

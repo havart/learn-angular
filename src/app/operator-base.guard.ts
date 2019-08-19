@@ -15,6 +15,7 @@ export class OperatorBaseGuard implements CanActivate {
         if (!isAuthorized) {
             this.router.navigate([LOGIN]);
         }
+
         return isAuthorized;
     }
 }

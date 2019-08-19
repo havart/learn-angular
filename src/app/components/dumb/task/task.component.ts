@@ -7,6 +7,9 @@ import { ClientLaborActivityService } from 'src/app/services/client-labor-activi
 import { Store } from '@ngrx/store';
 import { ClientInterface } from 'src/app/interfaces/client.interface';
 import { GetClient } from 'src/app/store/actions/client.action';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+import { NotificationErrorService } from '../../../services/notification-error.service';
 
 @Component({
     selector: 'app-task',
@@ -19,7 +22,8 @@ export class TaskComponent {
         private router: Router,
         private clientLaborActivityService: ClientLaborActivityService,
         private mathHelper: MathHelper,
-        private store: Store<ClientInterface>,
+        private store$: Store<ClientInterface>,
+        private notificationErrorService: NotificationErrorService,
     ) {}
 
     sendRequestLaborActivity(id: number): void {
@@ -27,15 +31,17 @@ export class TaskComponent {
             () => {
                 this.router.navigate([OPERATOR]);
             },
-            (error: HttpErrorResponse) => {
-                console.log(error);
-            },
+            catchError((error: HttpErrorResponse) => {
+                this.notificationErrorService.openSnackBarError(error.message);
+
+                return EMPTY;
+            }),
         );
     }
 
     sendRequest(): void {
         const id = this.mathHelper.getRandomNumber(1, 10);
-        this.store.dispatch(new GetClient(id));
+        this.store$.dispatch(new GetClient(id));
         this.sendRequestLaborActivity(id);
     }
 }
