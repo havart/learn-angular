@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CONTACT } from '../../../constants/path.constans';
 
 @Component({
     selector: 'app-operator-base',
@@ -6,4 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['./operator-base.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OperatorBaseComponent {}
+
+export class OperatorBaseComponent {
+    private contact = CONTACT;
+}

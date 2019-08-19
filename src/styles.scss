@@ -1,10 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+.mat-form-field-appearance-outline .mat-form-field-flex {
+    height: 65px;
+}
+
+.mat-fab.mat-accent,
+.mat-flat-button.mat-accent,
+.mat-mini-fab.mat-accent,
+.mat-raised-button.mat-accent {
+    background-color: #f7dc6d !important;
+}
 
 html,
 body {
     height: 100%;
-}
-body {
     margin: 0;
     font-family: Helvetica, sans-serif;
 }

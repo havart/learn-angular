@@ -12,8 +12,7 @@ import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
 export class ContactTabComponent implements OnInit {
     public informationList$: Observable<ContactTabInterface[]>;
 
-    constructor(private contactTabService: ContactTabService) {
-    }
+    constructor(private contactTabService: ContactTabService) {}
 
     ngOnInit(): void {
         this.getInformationFromServer();

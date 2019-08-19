@@ -5,4 +5,6 @@ export interface StepInterface {
     comment: string;
     viewType: number;
     isComment: boolean;
+    description: string;
+    showDescription: boolean;
 }

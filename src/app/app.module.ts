@@ -40,6 +40,7 @@ import { OperatorTabsModule } from './components/dumb/operator-tabs/features/ope
 import { CommentEffects } from './store/effects/comment.effects';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
 import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
+import { StepComponent } from './components/dumb/step/step.component';
 
 @NgModule({
     declarations: [
@@ -57,6 +58,7 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
         OperatorTabsComponent,
         PageNotFoundComponent,
         UserMenuComponent,
+        StepComponent,
     ],
     imports: [
         BrowserModule,

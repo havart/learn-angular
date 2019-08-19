@@ -29,9 +29,6 @@ export class ContactComponent implements OnInit {
             [ContactEnum.COMMENT]: new FormControl('', [Validators.required, Validators.maxLength(999)]),
         });
     }
-    submit(): void {}
 
-    toggleCall(): void {
-        this.callStatus = !this.callStatus;
-    }
+    submit(): void {}
 }
