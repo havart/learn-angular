@@ -77,6 +77,4 @@ export class CommentsService {
 
         return 0;
     }
-
-    }
 }
