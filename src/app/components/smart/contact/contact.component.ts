@@ -12,7 +12,7 @@ import { ContactEnum } from './contact.enum';
 export class ContactComponent implements OnInit {
     @Input() contact: ContactTabInterface;
     contactForm: FormGroup;
-    private callStatus: boolean;
+    callStatus: boolean;
 
     constructor() {}
 
