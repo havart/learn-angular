@@ -4,7 +4,7 @@ import { StepInterface } from '../../../interfaces/step.interface';
 @Component({
   selector: 'app-step',
   templateUrl: './step.component.html',
-  styleUrls: ['./step.component.scss']
+  styleUrls: ['./step.component.scss'],
 })
 export class StepComponent {
   @Input() step: StepInterface;
