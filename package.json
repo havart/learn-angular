@@ -8,7 +8,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postinstall": "ng build --aot --prod && npm run init-hooks",
+        "postinstall": "ng build --aot --prod",
         "execute:hooks-folder": "git config core.hooksPath .git/.githooks",
         "execute:prepare-commit-msg": "shx chmod +x .githooks/prepare-commit-msg",
         "execute:pre-commit": "shx chmod +x .githooks/pre-commit",
