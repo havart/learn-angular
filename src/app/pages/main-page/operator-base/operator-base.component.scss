@@ -10,10 +10,11 @@ app-tool-bar-operator {
 }
 
 .info-client {
-    position: relative;
-    width: 100%;
-    height: 200px;
     background-color: rgb(87, 82, 82);
+    position: relative;
+    margin-top: 64px;
+    height: 200px;
+    width: 100%;
 }
 
 .left-list {
@@ -47,8 +48,4 @@ app-operator-tabs {
     color: #4a7ab1;
     opacity: 1;
     font-weight: normal;
-}
-
-.wrapper {
-    margin-top: 64px;
 }

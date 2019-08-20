@@ -7,7 +7,6 @@ import { CONTACT } from '../../../constants/path.constans';
     styleUrls: ['./operator-base.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class OperatorBaseComponent {
-    private contact = CONTACT;
+    contact = CONTACT;
 }
