@@ -8,7 +8,7 @@ describe('PhoneNumberFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhoneNumberFormComponent ]
+      declarations: [ PhoneNumberFormComponent ],
     })
     .compileComponents();
   }));

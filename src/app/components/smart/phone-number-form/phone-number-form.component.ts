@@ -15,11 +15,10 @@ export class PhoneNumberFormComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   private toggleCall(contact): void {
-    console.log(`calling at *number* ${contact}`);
     this.callStatus = !this.callStatus;
   }
 
