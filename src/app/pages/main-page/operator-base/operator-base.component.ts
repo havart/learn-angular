@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CONTACT } from '../../../constants/path.constans';
 
 @Component({
@@ -8,5 +8,5 @@ import { CONTACT } from '../../../constants/path.constans';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OperatorBaseComponent {
-    private contact = CONTACT;
+    contact = CONTACT;
 }

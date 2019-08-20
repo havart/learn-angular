@@ -10,11 +10,9 @@ export class CommentEffects {
     @Effect()
     getComment$ = this.actions$.pipe(
         ofType<GetComment>(CommentActionEnum.GetComment),
-        switchMap(action => {
-            return this.commentService.fetchComments$();
-        }),
+        switchMap(() => this.commentService.fetchComments$()),
         map((comments: CommentInterface[]) => new GetCommentSuccess(comments)),
     );
 
-    constructor(private commentService: CommentsService, private actions$: Actions) {}
+    constructor(private readonly commentService: CommentsService, private readonly actions$: Actions) {}
 }

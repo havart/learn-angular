@@ -3,24 +3,21 @@ import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-phone-number-form',
-  templateUrl: './phone-number-form.component.html',
-  styleUrls: ['./phone-number-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-phone-number-form',
+    templateUrl: './phone-number-form.component.html',
+    styleUrls: ['./phone-number-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhoneNumberFormComponent implements OnInit {
-  @Input() contactForm: FormGroup;
-  @Input() contact: ContactTabInterface;
-  private callStatus: boolean;
+    @Input() contactForm: FormGroup;
+    @Input() contact: ContactTabInterface;
+    callStatus: boolean;
 
-  constructor() { }
+    constructor() {}
 
-  ngOnInit() {
-  }
+    ngOnInit(): void {}
 
-  private toggleCall(contact): void {
-    console.log(`calling at *number* ${contact}`);
-    this.callStatus = !this.callStatus;
-  }
-
+    toggleCall(contact): void {
+        this.callStatus = !this.callStatus;
+    }
 }

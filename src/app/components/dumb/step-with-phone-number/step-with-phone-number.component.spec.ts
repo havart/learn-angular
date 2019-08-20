@@ -8,7 +8,7 @@ describe('StepWithPhoneNumberComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StepWithPhoneNumberComponent ]
+      declarations: [ StepWithPhoneNumberComponent ],
     })
     .compileComponents();
   }));

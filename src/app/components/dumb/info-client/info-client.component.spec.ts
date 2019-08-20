@@ -8,7 +8,7 @@ describe('InfoClientComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfoClientComponent ]
+      declarations: [ InfoClientComponent ],
     })
     .compileComponents();
   }));

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interface';
+import { ClientLaborActivityInterface } from 'src/app/interfaces/client-labor-activity.interface';
 import { Observable } from 'rxjs';
 import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
 
@@ -14,7 +14,7 @@ export class InfoLaborActivityClientComponent implements OnInit {
 
     constructor(private clientLaborActivityService: ClientLaborActivityService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.clientLaborActivity$ = this.clientLaborActivityService.clientLaborActivity$;
     }
 }

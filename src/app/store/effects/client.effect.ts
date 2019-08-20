@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
-import { of } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { GetClient, ClientActionsEnum, GetClientSuccess } from '../actions/client.action';
 import { ClientService } from 'src/app/services/client.service';
@@ -12,11 +11,13 @@ export class ClientEffects {
     @Effect()
     getUsers$ = this.actions$.pipe(
         ofType<GetClient>(ClientActionsEnum.GetClient),
-        switchMap(action => {
-            return this.clientService.getTask$(action.id);
-        }),
+        switchMap(action => this.clientService.getTask$(action.id)),
         map((clientHttp: ClientInterface) => new GetClientSuccess(clientHttp)),
     );
 
-    constructor(private clientService: ClientService, private actions$: Actions, private mathHelper: MathHelper) {}
+    constructor(
+        private readonly clientService: ClientService,
+        private readonly actions$: Actions,
+        private readonly mathHelper: MathHelper,
+    ) {}
 }

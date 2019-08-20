@@ -14,9 +14,9 @@ import { MainState } from 'src/app/store/state/main.state';
 export class InfoClientComponent implements OnInit {
     client$: Observable<ClientInterface>;
 
-    constructor(private store: Store<MainState>) {}
+    constructor(private store$: Store<MainState>) {}
 
-    ngOnInit() {
-        this.client$ = this.store.pipe(select(selectClient));
+    ngOnInit(): void {
+        this.client$ = this.store$.pipe(select(selectClient));
     }
 }

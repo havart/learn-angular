@@ -8,7 +8,7 @@ describe('OperatorTabsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OperatorTabsComponent ]
+      declarations: [ OperatorTabsComponent ],
     })
     .compileComponents();
   }));

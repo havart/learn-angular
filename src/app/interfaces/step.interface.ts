@@ -6,7 +6,7 @@ export interface StepInterface {
     viewType: number;
     isComment: boolean;
     description: string;
-    showDescription: false;
+    showDescription: boolean;
     showPhone: true;
     phone: string;
 }
