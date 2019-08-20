@@ -5,3 +5,17 @@ mat-list {
     margin: 15px;
 }
 
+.title-list {
+    display: flex;
+}
+
+h3 {
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+mat-icon {
+    color: #537aad;
+    cursor: default;
+    margin: 5px;
+}

@@ -7,21 +7,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from '../../smart/contact/contact.component';
 import { PhoneNumberFormComponent } from '../../smart/phone-number-form/phone-number-form.component';
 
-const routes: Routes = [
-  { path: '', component: ContactTabComponent,  pathMatch: 'full'},
-];
+const routes: Routes = [{ path: '', component: ContactTabComponent, pathMatch: 'full' }];
 
 @NgModule({
-  declarations: [ContactTabComponent, ContactComponent, PhoneNumberFormComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatTabsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+    declarations: [ContactTabComponent, ContactComponent, PhoneNumberFormComponent],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatTabsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatIconModule,
+    ],
 })
 export class ContactTabModule {}
