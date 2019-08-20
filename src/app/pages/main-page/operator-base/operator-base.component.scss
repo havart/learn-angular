@@ -1,8 +1,26 @@
+@import '../../../variables.scss';
+
+app-tool-bar-operator {
+    position: fixed;
+    top: 0;
+    z-index: $toolbar-z-index;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .info-client {
     position: relative;
     width: 100%;
     height: 200px;
     background-color: rgb(87, 82, 82);
+}
+
+.left-list {
+    position: fixed;
+    top: 64px;
+    bottom: 0;
+    z-index: $sidebar-z-index;
 }
 
 .grids-elements {
@@ -15,17 +33,6 @@
     margin-top: 40px;
 }
 
-.left-list{
-  position: absolute;
-  top: 0;
-  display: block;
-  float: left;
-  left: 0;
-  width: auto;
-  height: 100vh;
-  z-index: 99;
-}
-
 app-operator-tabs {
     display: block;
     position: relative;
@@ -36,8 +43,12 @@ app-operator-tabs {
     width: 100%;
 }
 
-.mat-tab-link{
-  color: #4A7AB1;
-  opacity: 1;
-  font-weight: normal;
+.mat-tab-link {
+    color: #4a7ab1;
+    opacity: 1;
+    font-weight: normal;
+}
+
+.wrapper {
+    margin-top: 64px;
 }

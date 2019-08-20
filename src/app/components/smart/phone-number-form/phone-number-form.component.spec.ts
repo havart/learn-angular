@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StepComponent } from './step.component';
+import { PhoneNumberFormComponent } from './phone-number-form.component';
 
-describe('StepComponent', () => {
-  let component: StepComponent;
-  let fixture: ComponentFixture<StepComponent>;
+describe('PhoneNumberFormComponent', () => {
+  let component: PhoneNumberFormComponent;
+  let fixture: ComponentFixture<PhoneNumberFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StepComponent ],
+      declarations: [ PhoneNumberFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StepComponent);
+    fixture = TestBed.createComponent(PhoneNumberFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

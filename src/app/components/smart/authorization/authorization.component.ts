@@ -16,7 +16,7 @@ export class AuthorizationComponent implements OnInit {
 
     constructor(public localStorageService: LocalStorageService, private router: Router) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.authFormInit();
     }
 
