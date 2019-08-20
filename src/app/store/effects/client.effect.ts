@@ -11,7 +11,6 @@ export class ClientEffects {
     @Effect()
     getUsers$ = this.actions$.pipe(
         ofType<GetClient>(ClientActionsEnum.GetClient),
-        // tslint:disable-next-line: rxjs-no-unsafe-switchmap
         switchMap(action => this.clientService.getTask$(action.id)),
         map((clientHttp: ClientInterface) => new GetClientSuccess(clientHttp)),
     );

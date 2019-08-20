@@ -10,7 +10,7 @@ export class CommentEffects {
     @Effect()
     getComment$ = this.actions$.pipe(
         ofType<GetComment>(CommentActionEnum.GetComment),
-        switchMap(action => this.commentService.fetchComments$()),
+        switchMap(() => this.commentService.fetchComments$()),
         map((comments: CommentInterface[]) => new GetCommentSuccess(comments)),
     );
 
