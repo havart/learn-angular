@@ -1,4 +1,4 @@
-import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interface';
+import { ClientLaborActivityInterface } from 'src/app/interfaces/client-labor-activity.interface';
 
 export interface LaborActivityState {
     laborActivity: ClientLaborActivityInterface;

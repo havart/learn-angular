@@ -10,9 +10,7 @@ export class ClientEffects {
     @Effect()
     getUsers$ = this.actions$.pipe(
         ofType<GetClient>(ClientActionsEnum.GetClient),
-        switchMap(action => {
-            return this.clientService.getTask$(action.id);
-        }),
+        switchMap(action => this.clientService.getTask$(action.id)),
         map((clientHttp: ClientInterface) => new GetClientSuccess(clientHttp)),
     );
 

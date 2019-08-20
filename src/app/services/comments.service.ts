@@ -16,18 +16,23 @@ export class CommentsService {
     constructor(
         private http: HttpClient,
         private notificationErrorService: NotificationErrorService,
-        private store: Store<MainState>,
+        private store$: Store<MainState>,
     ) {}
 
     fetchComments$(): Observable<CommentInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps`;
+
         return this.http.get<CommentInterface[]>(url).pipe(
+            map((comments: CommentInterface[]) => comments.filter(comment => comment.isComment)),
             map((comments: CommentInterface[]) =>
-                comments.filter(({ isComment }: CommentInterface) => isComment === true),
+                comments.sort((elementA: CommentInterface, elementB: CommentInterface): number => {
+                    return this.compareFunction(elementA, elementB);
+                }),
             ),
-            map((comments: CommentInterface[]) => comments.slice(0, 10)),
+            map(comments => comments.slice(0, 10)),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+
                 return EMPTY;
             }),
         );
@@ -35,9 +40,11 @@ export class CommentsService {
 
     putComments$(commentData: CommentInterface): Observable<CommentInterface[]> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/steps/${commentData.id}`;
+
         return this.http.put<CommentInterface[]>(url, commentData).pipe(
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+
                 return EMPTY;
             }),
         );
@@ -53,10 +60,21 @@ export class CommentsService {
     }
 
     saveToStore(comments: CommentInterface[]): void {
-        this.store.dispatch(new GetCommentSuccess(comments));
+        this.store$.dispatch(new GetCommentSuccess(comments));
     }
 
     getComments$(): Observable<CommentInterface[]> {
-        return this.store.pipe(select(selectComment));
+        return this.store$.pipe(select(selectComment));
+    }
+
+    private compareFunction(elementA, elementB): number {
+        if (elementA.createdAt < elementB.createdAt) {
+            return 1;
+        }
+        if (elementA.createdAt > elementB.createdAt) {
+            return -1;
+        }
+
+        return 0;
     }
 }

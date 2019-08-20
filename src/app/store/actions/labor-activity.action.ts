@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interface';
+import { ClientLaborActivityInterface } from 'src/app/interfaces/client-labor-activity.interface';
 
 export enum LaborActivityActionsEnum {
     GetLaborActivity = 'Get Labor Activity',
@@ -9,7 +9,7 @@ export enum LaborActivityActionsEnum {
 export class GetLaborActivity implements Action {
     public readonly type = LaborActivityActionsEnum.GetLaborActivity;
 
-    constructor(public id: number) {}
+    constructor(public id: string) {}
 }
 
 export class GetLaborActivitySuccess implements Action {

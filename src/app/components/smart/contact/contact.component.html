@@ -1,10 +1,9 @@
 <div class="form-container">
     <form [formGroup]="contactForm" (ngSubmit)="submit()">
         <div class="base-inputs">
-            <mat-form-field appearance="outline" color="accent">
-                <mat-label>Номер телефона</mat-label>
-                <input matInput type="text" placeholder="Введите номер телефона" value="{{ contact.phone }}" formControlName="numberPhone"/>
-            </mat-form-field>
+            <app-phone-number-form [contact]="contact" [contactForm]="contactForm">
+
+            </app-phone-number-form>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>ФИО контакта</mat-label>
                 <input
@@ -36,7 +35,7 @@
         </div>
         <div class="base-inputs">
             <mat-form-field class="comment-input-box" appearance="outline" color="accent">
-                <input matInput type="text" placeholder="Введите комментарий" formControlName="comment"/>
+                <input matInput type="text" placeholder="Введите комментарий" formControlName="comment" />
             </mat-form-field>
         </div>
     </form>

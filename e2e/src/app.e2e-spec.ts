@@ -14,8 +14,8 @@ describe('workspace-project App', () => {
   });
 
   afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    // tslint:disable-next-line: no-object-literal-type-assertion
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
     } as logging.Entry));

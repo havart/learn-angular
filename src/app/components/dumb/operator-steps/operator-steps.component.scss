@@ -5,10 +5,17 @@ mat-list {
     margin: 15px;
 }
 
-mat-list-item {
-    cursor: pointer;
+.title-list {
+    display: flex;
 }
 
-mat-list-item:hover {
-    background-color: #e9eaec;
+h3 {
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+mat-icon {
+    color: #537aad;
+    cursor: default;
+    margin: 5px;
 }

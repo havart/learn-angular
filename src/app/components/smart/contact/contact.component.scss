@@ -5,7 +5,28 @@
 
 mat-form-field {
     flex: 1 1 auto;
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+app-phone-number-form {
+    flex: 1 1 auto;
+}
+
+input {
+    height: 25px !important;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    opacity: 0.6;
 }
 
 .comment-input-box {

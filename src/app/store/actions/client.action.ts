@@ -9,7 +9,7 @@ export enum ClientActionsEnum {
 export class GetClient implements Action {
     public readonly type = ClientActionsEnum.GetClient;
 
-    constructor(public id: number) {}
+    constructor(public id: string) {}
 }
 
 export class GetClientSuccess implements Action {

@@ -1,39 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Helvetica, sans-serif; }
-
-.right-list{
-  position: relative;
-  display: block;
-  top: 0;
-  float: right;
-  right: 0;
-  width: 350px;
-  height: 100%;
-  padding-left: 10px;
-  padding-right: 10px;
+.mat-form-field-appearance-outline .mat-form-field-flex {
+    height: 65px;
 }
 
-.left-list{
-  position: relative;
-  top: 0;
-  display: block;
-  float: left;
-  left: 0;
-  width: auto;
-  height: 100vh;
-  z-index: 99;
+.mat-fab.mat-accent,
+.mat-flat-button.mat-accent,
+.mat-mini-fab.mat-accent,
+.mat-raised-button.mat-accent {
+    background-color: #f7dc6d !important;
 }
 
-.app-comment{
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 100%;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
 }
 
-app-contact-tab{
-  position: relative;
+.right-list {
+    position: relative;
+    display: block;
+    top: 0;
+    float: right;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
+.left-list {
+    position: relative;
+    display: block;
+    float: left;
+    width: auto;
+    top: 0;
+    left: 0;
+}
+
+.app-comment {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+app-contact-tab {
+    position: relative;
+}

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CONTACT, LABOR_ACTIVITY } from '../../../constants/path.constans';
 
 @Component({
     selector: 'app-operator-base',
@@ -6,8 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     styleUrls: ['./operator-base.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OperatorBaseComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
+export class OperatorBaseComponent {
+    contact = CONTACT;
+    laborActivity = LABOR_ACTIVITY;
 }

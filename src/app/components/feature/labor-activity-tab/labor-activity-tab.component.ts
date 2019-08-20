@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClientLaborActivityInterface } from 'src/app/interfaces/clientLaborActivity.interface';
+import { ClientLaborActivityInterface } from 'src/app/interfaces/client-labor-activity.interface';
 import { Store, select } from '@ngrx/store';
 import { selectLaborActivity } from 'src/app/store/selectors/labor-activity.selector';
 import { MainState } from 'src/app/store/state/main.state';
@@ -10,7 +10,6 @@ import { MathHelper } from 'src/app/helpers/math.helper';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LaborActivityEnum } from './labor-activity.enum';
 import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
-import * as uuid from 'uuid';
 
 @Component({
     selector: 'app-labor-activity-tab',
@@ -24,18 +23,18 @@ export class LaborActivityTabComponent implements OnInit {
     form: FormGroup;
 
     constructor(
-        private store: Store<MainState>,
+        private store$: Store<MainState>,
         private mathHelper: MathHelper,
         private clientLaborActivityService: ClientLaborActivityService,
     ) {}
 
-    ngOnInit() {
-        this.laborActivity$ = this.store.pipe(
+    ngOnInit(): void {
+        this.laborActivity$ = this.store$.pipe(
             select(selectLaborActivity),
             tap((laborActivity: ClientLaborActivityInterface) => {
                 if (!laborActivity) {
-                    const id = this.mathHelper.getRandomNumber(1, 10);
-                    this.store.dispatch(new GetLaborActivity(id));
+                    const id = this.mathHelper.getRandomNumber(1, 10).toString();
+                    this.store$.dispatch(new GetLaborActivity(id));
                 } else {
                     this.laborActivity = laborActivity;
                     this.initForm();
@@ -80,24 +79,27 @@ export class LaborActivityTabComponent implements OnInit {
     }
 
     putLaborActivity(): void {
-        function getUpdatedLaborActivity(form, laborActivity: ClientLaborActivityInterface) {
+        function getUpdatedLaborActivity(
+            form,
+            laborActivity: ClientLaborActivityInterface,
+        ): ClientLaborActivityInterface {
             return { ...laborActivity, ...form.value };
         }
         if (!this.form.pristine && this.form.valid) {
             this.clientLaborActivityService
                 .putLaborActivityClient$(getUpdatedLaborActivity(this.form, this.laborActivity), this.laborActivity.id)
+                .pipe(
+                    tap(() => {
+                        this.clientLaborActivityService.fetchAndSave$(this.laborActivity.id).subscribe();
+                    }),
+                )
                 .subscribe();
         }
     }
 
     reset(): void {
-        this.store
-            .pipe(select(selectLaborActivity))
-            .subscribe((laborActivity: ClientLaborActivityInterface) => this.form.reset(laborActivity));
+        this.store$.pipe(select(selectLaborActivity)).subscribe((laborActivity: ClientLaborActivityInterface) => {
+            this.form.reset(laborActivity);
+        });
     }
-
-    // addLaborActivity(): void {
-    //     this.form.reset({ occupation: '123' });
-    //     this.laborActivity.id = uuid.v1();
-    // }
 }
