@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ClientLaborActivityInterface } from 'src/app/interfaces/client-labor-activity.interface';
 import { Observable } from 'rxjs';
-import { ClientLaborActivityService } from 'src/app/services/client-labor-activity.service';
+import { Store, select } from '@ngrx/store';
+import { MainState } from 'src/app/store/state/main.state';
+import { selectLaborActivity } from 'src/app/store/selectors/labor-activity.selector';
 
 @Component({
     selector: 'app-info-labor-activity-client',
@@ -12,9 +14,9 @@ import { ClientLaborActivityService } from 'src/app/services/client-labor-activi
 export class InfoLaborActivityClientComponent implements OnInit {
     clientLaborActivity$: Observable<ClientLaborActivityInterface>;
 
-    constructor(private clientLaborActivityService: ClientLaborActivityService) {}
+    constructor(private store$: Store<MainState>) {}
 
     ngOnInit(): void {
-        this.clientLaborActivity$ = this.clientLaborActivityService.clientLaborActivity$;
+        this.clientLaborActivity$ = this.store$.pipe(select(selectLaborActivity));
     }
 }

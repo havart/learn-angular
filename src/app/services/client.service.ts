@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class ClientService {
     constructor(private http: HttpClient, private notificationErrorService: NotificationErrorService) {}
 
-    getTask$(id: number): Observable<ClientInterface> {
+    getTask$(id: string): Observable<ClientInterface> {
         const url = `https://5bfff0a00296210013dc7e82.mockapi.io/test/user-info/${id}`;
 
         return this.http.get<ClientInterface>(url).pipe(

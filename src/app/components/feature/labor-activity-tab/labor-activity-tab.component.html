@@ -1,0 +1,61 @@
+<div *ngIf="laborActivity$ | async as laborActivity" class="labor-activity">
+    <form [formGroup]="form">
+        <div>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Род занятий</mat-label>
+                <mat-select value="{{ laborActivity.occupation }}">
+                    <mat-option value="{{ laborActivity.occupation }}">
+                        {{ laborActivity.occupation }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Должность</mat-label>
+                <input matInput type="text" placeholder="Введите должность" formControlName="position" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Адрес организации</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    placeholder="Введите адрес организации"
+                    formControlName="organizationAddress"
+                />
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Адрес</mat-label>
+                <input matInput type="text" placeholder="Введите адрес" formControlName="address" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Тип</mat-label>
+                <input matInput type="text" placeholder="Введите тип" formControlName="type" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Доход</mat-label>
+                <input matInput type="text" placeholder="Введите доход" formControlName="income" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Рабочий телефон</mat-label>
+                <input matInput type="text" placeholder="Введите рабочий телефон" formControlName="workPhone" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Дата начала работы</mat-label>
+                <input matInput type="text" placeholder="Введите дату начала работы" formControlName="startDate" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" color="accent">
+                <mat-label>Сайт</mat-label>
+                <input matInput type="text" placeholder="Введите сайт" formControlName="site" />
+            </mat-form-field>
+        </div>
+    </form>
+    <button mat-raised-button (click)="putLaborActivity(laborActivity)" color="accent">Сохранить</button>
+    <button mat-raised-button (click)="reset()" color="accent">Отменить</button>
+</div>

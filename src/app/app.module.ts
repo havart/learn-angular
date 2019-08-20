@@ -40,6 +40,7 @@ import { OperatorTabsModule } from './components/dumb/operator-tabs/features/ope
 import { CommentEffects } from './store/effects/comment.effects';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
 import { UserMenuComponent } from './components/smart/user-menu/user-menu.component';
+import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
 
@@ -84,7 +85,7 @@ import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-
         StoreDevtoolsModule.instrument({
             maxAge: 50,
         }),
-        EffectsModule.forRoot([ClientEffects, CommentEffects]),
+        EffectsModule.forRoot([ClientEffects, CommentEffects, LaborActivityEffects]),
         MatSelectModule,
     ],
     providers: [SideBarService],

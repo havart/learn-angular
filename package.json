@@ -45,6 +45,7 @@
         "tslint-consistent-codestyle": "^1.15.1",
         "tslint-etc": "^1.6.0",
         "typescript": "~3.2.2",
+        "uuid": "^3.3.2",
         "zone.js": "~0.8.26"
     },
     "devDependencies": {
