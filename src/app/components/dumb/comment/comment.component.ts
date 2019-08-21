@@ -49,21 +49,19 @@ export class CommentComponent implements OnInit {
         const maxNumberOfId = 15;
         const commentFromInput = this.commentForm.controls.comment.value;
 
-        if (this.commentForm.invalid) {
-            return;
+        if (this.commentForm.valid) {
+            this.commentForm.reset();
+            this.commentsService
+                .putComments$({
+                    id: this.mathHelper.getRandomNumber(minNumberOfId, maxNumberOfId),
+                    createdAt: new Date().toISOString(),
+                    name: this.userName,
+                    comment: commentFromInput,
+                    viewType: 1,
+                    isComment: true,
+                })
+                .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
+                .subscribe();
         }
-
-        this.commentForm.reset();
-        this.commentsService
-            .putComments$({
-                id: this.mathHelper.getRandomNumber(minNumberOfId, maxNumberOfId),
-                createdAt: new Date().toISOString(),
-                name: this.userName,
-                comment: commentFromInput,
-                viewType: 1,
-                isComment: true,
-            })
-            .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
-            .subscribe();
     }
 }
