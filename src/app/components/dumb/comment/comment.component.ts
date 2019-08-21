@@ -33,7 +33,11 @@ export class CommentComponent implements OnInit {
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
-            [CommentEnum.COMMENT]: new FormControl('', Validators.required),
+            [CommentEnum.COMMENT]: new FormControl('', [
+                Validators.required,
+                Validators.minLength(10),
+                Validators.maxLength(100),
+            ]),
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
         this.store$.dispatch(new GetComment());
@@ -44,6 +48,10 @@ export class CommentComponent implements OnInit {
         const minNumberOfId = 1;
         const maxNumberOfId = 15;
         const commentFromInput = this.commentForm.controls.comment.value;
+
+        if (this.commentForm.invalid) {
+            return;
+        }
 
         this.commentForm.reset();
         this.commentsService
