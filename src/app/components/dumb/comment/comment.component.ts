@@ -37,6 +37,7 @@ export class CommentComponent implements OnInit {
                 Validators.required,
                 Validators.minLength(10),
                 Validators.maxLength(100),
+                Validators.pattern('^((?!\\s{10}).)*$'),
             ]),
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
