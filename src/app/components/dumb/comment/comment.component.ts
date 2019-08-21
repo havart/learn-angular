@@ -33,7 +33,11 @@ export class CommentComponent implements OnInit {
 
     ngOnInit(): void {
         this.commentForm = new FormGroup({
-            [CommentEnum.COMMENT]: new FormControl('', Validators.required),
+            [CommentEnum.COMMENT]: new FormControl('', [
+                Validators.required,
+                Validators.minLength(10),
+                Validators.maxLength(100),
+            ]),
         });
         this.userName = this.localStorageService.getUser()[USERNAME];
         this.store$.dispatch(new GetComment());
@@ -45,17 +49,19 @@ export class CommentComponent implements OnInit {
         const maxNumberOfId = 15;
         const commentFromInput = this.commentForm.controls.comment.value;
 
-        this.commentForm.reset();
-        this.commentsService
-            .putComments$({
-                id: this.mathHelper.getRandomNumber(minNumberOfId, maxNumberOfId),
-                createdAt: new Date().toISOString(),
-                name: this.userName,
-                comment: commentFromInput,
-                viewType: 1,
-                isComment: true,
-            })
-            .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
-            .subscribe();
+        if (this.commentForm.valid) {
+            this.commentForm.reset();
+            this.commentsService
+                .putComments$({
+                    id: this.mathHelper.getRandomNumber(minNumberOfId, maxNumberOfId),
+                    createdAt: new Date().toISOString(),
+                    name: this.userName,
+                    comment: commentFromInput,
+                    viewType: 1,
+                    isComment: true,
+                })
+                .pipe(switchMapTo(this.commentsService.fetchAndSave$()))
+                .subscribe();
+        }
     }
 }

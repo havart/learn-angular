@@ -19,5 +19,7 @@ export class PhoneNumberFormComponent implements OnInit {
 
     toggleCall(contact): void {
         this.callStatus = !this.callStatus;
+      // tslint:disable-next-line:no-console
+        console.log(`Звоним на номер ${contact}`);
     }
 }
