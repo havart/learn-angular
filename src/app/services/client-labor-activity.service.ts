@@ -9,6 +9,7 @@ import { OPERATOR, TASK_URL } from '../constants/path.constans';
 import { Store } from '@ngrx/store';
 import { MainState } from '../store/state/main.state';
 import { GetLaborActivitySuccess } from '../store/actions/labor-activity.action';
+import { ClientService } from './client.service';
 
 @Injectable({
     providedIn: 'root',
@@ -19,6 +20,7 @@ export class ClientLaborActivityService {
         private notificationErrorService: NotificationErrorService,
         private router: Router,
         private store$: Store<MainState>,
+        private clientService: ClientService,
     ) {}
 
     getLaborActivityClient$(id: string): Observable<ClientLaborActivityInterface> {
@@ -32,6 +34,7 @@ export class ClientLaborActivityService {
             }),
             catchError((error: HttpErrorResponse) => {
                 this.notificationErrorService.openSnackBarError(error.message);
+                this.clientService.setIsShowButton(true);
 
                 return EMPTY;
             }),

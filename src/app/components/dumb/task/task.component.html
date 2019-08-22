@@ -1,2 +1,4 @@
 <app-tool-bar-operator></app-tool-bar-operator>
-<button mat-raised-button (click)="sendRequest()" color="accent" class="button">Получить задание</button>
+<button mat-raised-button (click)="sendRequest()" color="accent" class="button" [disabled]="!(isShowButton$ | async)">
+    Получить задание
+</button>
