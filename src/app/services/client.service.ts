@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ClientService {
-    isShowButton$ = new BehaviorSubject(true);
+    isShowButton$ = new BehaviorSubject<boolean>(true);
 
     constructor(private http: HttpClient, private notificationErrorService: NotificationErrorService) {}
 
