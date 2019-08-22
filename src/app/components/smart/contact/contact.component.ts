@@ -12,7 +12,6 @@ import { ContactEnum } from './contact.enum';
 export class ContactComponent implements OnInit {
     @Input() contact: ContactTabInterface;
     contactForm: FormGroup;
-    callStatus: boolean;
 
     constructor() {}
 
@@ -26,7 +25,11 @@ export class ContactComponent implements OnInit {
             [ContactEnum.FULLNAME]: new FormControl('', [Validators.required, Validators.maxLength(99)]),
             [ContactEnum.PHONETYPE]: new FormControl('', Validators.required),
             [ContactEnum.DEPARTAMENT]: new FormControl('', Validators.required),
-            [ContactEnum.COMMENT]: new FormControl('', [Validators.required, Validators.maxLength(999)]),
+            [ContactEnum.COMMENT]: new FormControl('', [
+                Validators.required,
+                Validators.maxLength(999),
+                Validators.pattern(/^\S+[\D]*/),
+            ]),
         });
     }
 
