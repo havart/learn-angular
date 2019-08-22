@@ -32,17 +32,21 @@ export class CommentComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.initCommentForm();
+        this.userName = this.localStorageService.getUser()[USERNAME];
+        this.store$.dispatch(new GetComment());
+        this.commentList$ = this.commentsService.getComments$();
+    }
+
+    initCommentForm(): void {
         this.commentForm = new FormGroup({
             [CommentEnum.COMMENT]: new FormControl('', [
                 Validators.required,
                 Validators.minLength(10),
                 Validators.maxLength(100),
-                Validators.pattern('^((?!\\s{10}).)*$'),
+                Validators.pattern(/^\S+[\D]*/),
             ]),
         });
-        this.userName = this.localStorageService.getUser()[USERNAME];
-        this.store$.dispatch(new GetComment());
-        this.commentList$ = this.commentsService.getComments$();
     }
 
     submit(): void {
