@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',

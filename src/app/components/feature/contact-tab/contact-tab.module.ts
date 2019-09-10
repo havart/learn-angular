@@ -9,7 +9,6 @@ import { PhoneNumberFormComponent } from '../../smart/phone-number-form/phone-nu
 import { VideoRenderingComponent } from '../../smart/video-rendering/video-rendering.component';
 import { CircleProgressComponent } from '../../smart/circle-progress/circle-progress.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { SideBarService } from '../../../services/side-bar.service';
 
 const routes: Routes = [{ path: '', component: ContactTabComponent, pathMatch: 'full' }];
 
