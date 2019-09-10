@@ -1,0 +1,19 @@
+<div class="container-steps-video">
+    <div>
+        <h3>Выполните действия:</h3>
+        <div *ngFor="let item of listOfSteps; let i = index" class="step-line">
+            <app-circle-progress [number]="i+1" [minTime]="item.minTime" [maxTime]="item.maxTime"></app-circle-progress>
+            <div class="description-step">
+                {{ item.description }}
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="video">
+            <video controls #videoPlayer>
+                <source src="../../../../assets/video.mp4" type="video/mp4" />
+                Browser not supported
+            </video>
+        </div>
+    </div>
+</div>

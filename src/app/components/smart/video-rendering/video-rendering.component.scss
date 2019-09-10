@@ -1,0 +1,21 @@
+.step-line{
+  display: flex;
+}
+
+.description-step{
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bolder;
+  margin-left: 15px;
+}
+
+.container-steps-video{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+video{
+  height: 100%;
+  width: 100%;
+}

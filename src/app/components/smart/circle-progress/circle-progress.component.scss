@@ -1,0 +1,17 @@
+.container-progress {
+    position: relative;
+}
+
+.step-action {
+    background-color: #ffffff;
+    display: block;
+    left: 12px;
+    top: 12px;
+    height: 45px;
+    border-radius: 50px;
+    width: 45px;
+    position: absolute;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
