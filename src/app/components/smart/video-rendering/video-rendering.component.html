@@ -1,0 +1,17 @@
+<div class="video-rendering-wrapper">
+    <div class="circle-progress-wrapper">
+        <h3 class="title">{{ title }}</h3>
+        <div
+            *ngFor="let snapshotPoint of snapshotPoints; let i = index"
+            (click)="changeTime(snapshotPoint.timestamp, i)"
+            class="action"
+        >
+            <circle-progress #circleProgresses></circle-progress>
+            <span>{{ snapshotPoint.description }}</span>
+        </div>
+    </div>
+
+    <video width="400" height="300" preload="metadata" #video class="video">
+        <source [src]="sourceVideo" type="video/mp4" />
+    </video>
+</div>

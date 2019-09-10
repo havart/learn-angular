@@ -5,7 +5,7 @@ import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-
 import { OperatorBaseGuard } from './operator-base.guard';
 import { TaskComponent } from './components/dumb/task/task.component';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
-import { TASK, LOGIN, OPERATOR, CONTACT, LABOR_ACTIVITY } from './constants/path.constans';
+import { TASK, LOGIN, OPERATOR, CONTACT, LABOR_ACTIVITY, VIDEO_RENDERING } from './constants/path.constans';
 
 const routes: Routes = [
     {
@@ -26,6 +26,11 @@ const routes: Routes = [
                 path: LABOR_ACTIVITY,
                 loadChildren:
                     './components/feature/labor-activity-tab/labor-activity-tab.module#LaborActivityTabModule',
+            },
+            {
+                path: VIDEO_RENDERING,
+                loadChildren:
+                    './components/feature/video-rendering-tab/video-rendering-tab.module#VideoRenderingTabModule',
             },
         ],
     },
