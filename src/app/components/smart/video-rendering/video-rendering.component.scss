@@ -1,21 +1,31 @@
-.step-line{
-  display: flex;
+.step-line {
+    display: flex;
 }
 
-.description-step{
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  font-weight: bolder;
-  margin-left: 15px;
+.description-step {
+    display: flex;
+    align-items: center;
+    color: #696969;
+    font-size: 12px;
+    font-weight: bolder;
+    margin-left: 15px;
 }
 
-.container-steps-video{
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+.container-steps-video {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 
-video{
-  height: 100%;
-  width: 100%;
+video {
+    height: 100%;
+    width: 100%;
+}
+
+.container-table-steps {
+    padding: 10px;
+    height: 100%;
+}
+
+h3{
+  color: #333333;
 }

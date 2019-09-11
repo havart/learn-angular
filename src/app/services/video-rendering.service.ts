@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 })
 export class VideoRenderingService {
     currentTime$ = new Subject<number>();
-    currentTime: number;
 
-    constructor() {}
+    getPercentFromValue(value: number, minTime: number, maxTime: number): number {
+        return Math.floor((100 / (maxTime - minTime)) * (value - minTime));
+    }
 }

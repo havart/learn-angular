@@ -23,10 +23,16 @@ export class VideoRenderingComponent implements OnInit {
                 minTime: 0,
                 maxTime: 220,
             },
-            { description: 'На экране кассы нажмите...', minTime: 220, maxTime: 436 },
+            { description: 'На экране кассы нажмите...', minTime: 220, maxTime: 336 },
+            { description: 'На экране кассы нажмите...', minTime: 336, maxTime: 436 },
         ];
         this.videoPlayer.nativeElement.addEventListener('timeupdate', () => {
             this.videoRenderingService.currentTime$.next(this.videoPlayer.nativeElement.currentTime);
         });
+    }
+
+    toSnapShotPoint(minTime: number): void {
+        this.videoPlayer.nativeElement.currentTime = minTime;
+        this.videoRenderingService.currentTime$.next(this.videoPlayer.nativeElement.currentTime);
     }
 }
