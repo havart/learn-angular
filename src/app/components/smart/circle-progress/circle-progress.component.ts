@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
-import { map, throttleTime } from 'rxjs/operators';
+import { map, takeUntil, throttleTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'app-circle-progress',
@@ -8,17 +9,20 @@ import { map, throttleTime } from 'rxjs/operators';
     styleUrls: ['./circle-progress.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CircleProgressComponent implements OnInit {
+export class CircleProgressComponent implements OnInit, OnDestroy {
     @Input() number: number;
     @Input() minTime: number;
     @Input() maxTime: number;
     percent: number;
+
+    private unsubscribeCurrentTime$: Subject<void> = new Subject<void>();
 
     constructor(private videoRenderingService: VideoRenderingService, private changeDetectionRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.videoRenderingService.currentTime$
             .pipe(
+                takeUntil(this.unsubscribeCurrentTime$),
                 throttleTime(3000),
                 map((value: number) => {
                     return this.videoRenderingService.getPercentFromValue(value, this.minTime, this.maxTime);
@@ -28,5 +32,10 @@ export class CircleProgressComponent implements OnInit {
                 this.percent = value;
                 this.changeDetectionRef.detectChanges();
             });
+    }
+
+    ngOnDestroy(): void {
+        this.unsubscribeCurrentTime$.next();
+        this.unsubscribeCurrentTime$.complete();
     }
 }
