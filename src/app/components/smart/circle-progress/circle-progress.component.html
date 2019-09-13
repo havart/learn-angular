@@ -1,6 +1,6 @@
 <div class="container-progress">
     <circle-progress
-        [percent]="percent"
+        [percent]="percent$ | async"
         [radius]="30"
         [outerStrokeWidth]="4"
         [innerStrokeWidth]="0"

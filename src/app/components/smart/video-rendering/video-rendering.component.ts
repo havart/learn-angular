@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
 import { ListOfStepsInterface } from '../../../interfaces/list-of-steps.interface';
+import { LISTOFSTEPS } from '../../../constants/snapshot-point.constants';
 
 @Component({
     selector: 'app-video-rendering',
@@ -17,15 +18,7 @@ export class VideoRenderingComponent implements OnInit {
     constructor(private videoRenderingService: VideoRenderingService) {}
 
     ngOnInit(): void {
-        this.listOfSteps = [
-            {
-                description: 'Соедините кассу и терминал с помощью кабеля MicroUSB -> MicroUSB-A',
-                minTime: 0,
-                maxTime: 220,
-            },
-            { description: 'На экране кассы нажмите...', minTime: 220, maxTime: 336 },
-            { description: 'На экране кассы нажмите...', minTime: 336, maxTime: 436 },
-        ];
+        this.listOfSteps = LISTOFSTEPS;
         this.videoPlayer.nativeElement.addEventListener('timeupdate', () => {
             this.videoRenderingService.currentTime$.next(this.videoPlayer.nativeElement.currentTime);
         });
