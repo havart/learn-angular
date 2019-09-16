@@ -7,9 +7,11 @@
 <mat-list>
     <div class="title-list">
         <h3 mat-subheader>Звонок заявителю</h3>
-        <mat-icon>call</mat-icon>
     </div>
-    <ng-container *ngFor="let step of stepsList$ | async">
-        <app-step-with-phone-number [step]="step"></app-step-with-phone-number>
+    <ng-container *ngFor="let step of stepsList$ | async"
+        ><div class="container-step-with-number">
+            <app-step-with-phone-number [step]="step"></app-step-with-phone-number>
+            <mat-icon>call</mat-icon>
+        </div>
     </ng-container>
 </mat-list>
