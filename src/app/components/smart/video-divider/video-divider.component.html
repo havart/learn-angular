@@ -4,7 +4,7 @@
         <div class="circle-progress-wrapper">
             <ng-container *ngFor="let snapshotPoint of snapshotPoints; let i = index">
                 <app-snapshot-point
-                    [percent$]="percents[i]"
+                    [percent]="percents[i]"
                     [index]="i"
                     [snapshotPoint]="snapshotPoint"
                     (click)="changeTime(snapshotPoint.timestamp, i)"

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, ChangeDetectionStrategy, Renderer2 } from '@angular/core';
 import { SnapshotPointInterface } from 'src/app/interfaces/snapshot-point.interface';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-video-divider',
@@ -16,7 +15,7 @@ export class VideoDividerComponent implements OnInit {
     @Input('title')
     public title: string;
 
-    public percents: BehaviorSubject<number>[];
+    public percents: number[];
 
     @ViewChild('video')
     private video: ElementRef;
@@ -29,7 +28,7 @@ export class VideoDividerComponent implements OnInit {
     ngOnInit(): void {
         this.percents = [];
         this.snapshotPoints.forEach(item => {
-            this.percents.push(new BehaviorSubject(0));
+            this.percents.push(0);
         });
         this.percent = 0;
     }
@@ -57,7 +56,7 @@ export class VideoDividerComponent implements OnInit {
                 currentTime = currentTime - startTime;
                 const newPercent = Math.floor((currentTime / range) * 101);
                 if (this.percent < newPercent) {
-                    this.percents[index].next(newPercent);
+                    this.percents[index] = newPercent;
                 }
                 this.percent = newPercent;
             }
@@ -66,12 +65,12 @@ export class VideoDividerComponent implements OnInit {
 
     changeTime(timestamp: number, i: number): void {
         this.render.setProperty(this.video.nativeElement, 'currentTime', timestamp);
-        this.percents.forEach((item$: BehaviorSubject<number>, index: number) => {
+        this.percents = this.percents.map((item: number, index: number) => {
             if (index < i) {
-                item$.next(100);
-            } else {
-                item$.next(0);
+                return 100;
             }
+
+            return 0;
         });
         this.video.nativeElement.play();
     }

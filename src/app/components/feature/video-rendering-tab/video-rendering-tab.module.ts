@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { VideoRenderingTabComponent } from './video-rendering-tab.component';
-import { VideoRenderingComponent } from '../../smart/video-rendering/video-rendering.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { VideoDividerComponent } from '../../smart/video-divider/video-divider.component';
 import { SnapshotPointComponent } from '../../dumb/snapshot-point/snapshot-point.component';
@@ -10,7 +9,7 @@ import { SnapshotPointComponent } from '../../dumb/snapshot-point/snapshot-point
 const routes: Routes = [{ path: '', component: VideoRenderingTabComponent, pathMatch: 'full' }];
 
 @NgModule({
-    declarations: [VideoRenderingTabComponent, VideoRenderingComponent, VideoDividerComponent, SnapshotPointComponent],
+    declarations: [VideoRenderingTabComponent, VideoDividerComponent, SnapshotPointComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

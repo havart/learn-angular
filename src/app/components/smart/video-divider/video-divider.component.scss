@@ -22,7 +22,6 @@
 .left-column {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
     height: 220px;
 }
 
@@ -33,11 +32,12 @@
 .circle-progress-wrapper {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
 .circle-progress-wrapper:last-child {
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .translucency {
