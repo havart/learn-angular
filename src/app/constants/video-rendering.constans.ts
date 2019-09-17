@@ -6,6 +6,6 @@ export const constSnapshotPoints: ReadonlyArray<SnapshotPointInterface> = [
     { description: 'Забудьте все, что вам сказали', timestamp: 300 },
 ];
 
-export const constTitle = 'Выполните действия:';
+export const TITLE = 'Выполните действия:';
 
-export const constSourceVideo = '../../../../assets/video.mp4';
+export const SOURCE_VIDEO = '../../../../assets/video.mp4';

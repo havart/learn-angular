@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { SnapshotPointInterface } from 'src/app/interfaces/snapshot-point.interface';
-import { constSnapshotPoints, constSourceVideo, constTitle } from '../../../constants/video-rendering.constans';
+import { constSnapshotPoints, SOURCE_VIDEO, TITLE } from '../../../constants/video-rendering.constans';
 
 @Component({
     selector: 'app-video-rendering-tab',
@@ -17,7 +17,7 @@ export class VideoRenderingTabComponent implements OnInit {
 
     ngOnInit(): void {
         this.snapshotPoints = constSnapshotPoints;
-        this.sourceVideo = constSourceVideo;
-        this.title = constTitle;
+        this.sourceVideo = SOURCE_VIDEO;
+        this.title = TITLE;
     }
 }
