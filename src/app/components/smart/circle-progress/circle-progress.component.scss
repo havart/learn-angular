@@ -6,12 +6,25 @@
     background-color: #ffffff;
     display: block;
     left: 12px;
-    top: 12px;
-    height: 45px;
+    top: 11px;
     border-radius: 50px;
     width: 45px;
+    height: 45px;
     position: absolute;
     text-align: center;
     font-size: 13px;
     font-weight: 600;
+}
+
+.container-table-steps {
+    display: flex;
+}
+
+:host {
+    position: relative;
+    height: 35px;
+}
+
+p {
+    color: #333333;
 }

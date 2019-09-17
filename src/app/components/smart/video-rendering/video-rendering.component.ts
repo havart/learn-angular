@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
 import { ListOfStepsInterface } from '../../../interfaces/list-of-steps.interface';
-import { LISTOFSTEPS } from '../../../constants/snapshot-point.constants';
+import { STEP_LIST } from '../../../constants/snapshot-point.constants';
 
 @Component({
     selector: 'app-video-rendering',
@@ -13,19 +13,19 @@ export class VideoRenderingComponent implements OnInit {
     @ViewChild('videoPlayer') videoPlayer: ElementRef;
     @Input() sourceVideo: string;
     currentTime: number;
-    listOfSteps: ListOfStepsInterface[];
+    listOfSteps: ReadonlyArray<ListOfStepsInterface>;
 
     constructor(private videoRenderingService: VideoRenderingService) {}
 
     ngOnInit(): void {
-        this.listOfSteps = LISTOFSTEPS;
+        this.listOfSteps = STEP_LIST;
         this.videoPlayer.nativeElement.addEventListener('timeupdate', () => {
-            this.videoRenderingService.currentTime$.next(this.videoPlayer.nativeElement.currentTime);
+            this.videoRenderingService.setCurrentTime$(this.videoPlayer.nativeElement.currentTime);
         });
     }
 
     toSnapShotPoint(minTime: number): void {
         this.videoPlayer.nativeElement.currentTime = minTime;
-        this.videoRenderingService.currentTime$.next(this.videoPlayer.nativeElement.currentTime);
+        this.videoRenderingService.setCurrentTime$(this.videoPlayer.nativeElement.currentTime);
     }
 }

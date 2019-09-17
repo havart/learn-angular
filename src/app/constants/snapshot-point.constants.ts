@@ -1,4 +1,6 @@
-export const LISTOFSTEPS = [
+import { ListOfStepsInterface } from '../interfaces/list-of-steps.interface';
+
+export const STEP_LIST: ReadonlyArray<ListOfStepsInterface> = [
     {
         description: 'Соедините кассу и терминал с помощью кабеля MicroUSB -> MicroUSB-A',
         minTime: 0,

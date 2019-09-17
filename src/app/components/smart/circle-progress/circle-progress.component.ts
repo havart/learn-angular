@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
-import { map, takeUntil, throttleTime } from 'rxjs/operators';
+import { filter, map, takeUntil, tap, throttleTime } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 
 @Component({
@@ -11,6 +11,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class CircleProgressComponent implements OnInit {
     @Input() number: number;
+    @Input() description: number;
     @Input() minTime: number;
     @Input() maxTime: number;
     percent$: Observable<number>;
@@ -19,7 +20,6 @@ export class CircleProgressComponent implements OnInit {
 
     ngOnInit(): void {
         this.percent$ = this.videoRenderingService.currentTime$.pipe(
-            throttleTime(3000),
             map((value: number) => this.videoRenderingService.getPercentFromValue(value, this.minTime, this.maxTime)),
         );
     }
