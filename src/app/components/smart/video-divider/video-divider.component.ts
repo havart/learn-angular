@@ -8,12 +8,9 @@ import { SnapshotPointInterface } from 'src/app/interfaces/snapshot-point.interf
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoDividerComponent implements OnInit {
-    @Input('snapshotPoints')
-    public snapshotPoints: ReadonlyArray<SnapshotPointInterface>;
-    @Input('sourceVideo')
-    public sourceVideo: string;
-    @Input('title')
-    public title: string;
+    @Input() public snapshotPoints: ReadonlyArray<SnapshotPointInterface>;
+    @Input() public sourceVideo: string;
+    @Input() public title: string;
 
     public percents: number[];
 

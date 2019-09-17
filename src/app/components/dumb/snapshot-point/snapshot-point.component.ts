@@ -8,12 +8,9 @@ import { SnapshotPointInterface } from 'src/app/interfaces/snapshot-point.interf
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SnapshotPointComponent implements OnInit {
-    @Input('percent')
-    public percent: number;
-    @Input('index')
-    public index: number;
-    @Input('snapshotPoint')
-    public snapshotPoint: SnapshotPointInterface;
+    @Input() public percent: number;
+    @Input() public index: number;
+    @Input() public snapshotPoint: SnapshotPointInterface;
 
     constructor() {}
 
