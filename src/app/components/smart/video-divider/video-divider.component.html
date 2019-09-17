@@ -1,0 +1,21 @@
+<div class="video-rendering-wrapper">
+    <div class="left-column">
+        <h3 class="title">{{ title }}</h3>
+        <div class="circle-progress-wrapper">
+            <ng-container *ngFor="let snapshotPoint of snapshotPoints; let i = index">
+                <app-snapshot-point
+                    [percent$]="percents[i]"
+                    [index]="i"
+                    [snapshotPoint]="snapshotPoint"
+                    (click)="changeTime(snapshotPoint.timestamp, i)"
+                    class="action"
+                ></app-snapshot-point>
+            </ng-container>
+            <div class="translucency"></div>
+        </div>
+    </div>
+
+    <video #video width="400" height="200" preload="metadata" autoplay class="video" (timeupdate)="workWithTime()">
+        <source [src]="sourceVideo" type="video/mp4" />
+    </video>
+</div>

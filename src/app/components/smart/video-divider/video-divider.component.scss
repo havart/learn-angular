@@ -1,0 +1,58 @@
+@import '../../../variables.scss';
+
+.video-rendering-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+    margin-top: 40px;
+}
+
+.title {
+    color: rgb(29, 28, 28);
+}
+
+.video {
+    margin: 10px;
+    z-index: $video-z-index;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 220px;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+.circle-progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.circle-progress-wrapper:last-child {
+    margin-bottom: 50px;
+}
+
+.translucency {
+    position: absolute;
+    top: 190px;
+    left: 0;
+    border-radius: 5px;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, rgb(243, 243, 243));
+    z-index: $translucency-z-index;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

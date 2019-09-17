@@ -10,7 +10,7 @@ import {
     QueryList,
     Renderer2,
 } from '@angular/core';
-import { SnapshotPoint } from 'src/app/interfaces/snapshot-point.interface';
+import { SnapshotPointInterface } from 'src/app/interfaces/snapshot-point.interface';
 import { CircleProgressComponent } from 'ng-circle-progress';
 
 @Component({
@@ -21,7 +21,7 @@ import { CircleProgressComponent } from 'ng-circle-progress';
 })
 export class VideoRenderingComponent implements AfterViewInit {
     @Input('snapshotPoints')
-    public snapshotPoints: SnapshotPoint[];
+    public snapshotPoints: ReadonlyArray<SnapshotPointInterface>;
     @Input('sourceVideo')
     public sourceVideo: string;
     @Input('title')
@@ -68,22 +68,20 @@ export class VideoRenderingComponent implements AfterViewInit {
     }
 
     timeZoneCircleProgressesInit(): number[][] {
-        const timeZoneCircleProgresses = [];
-        this.snapshotPoints.forEach((snapshotPoint: SnapshotPoint, index: number) => {
-            if (timeZoneCircleProgresses.length === 0) {
-                timeZoneCircleProgresses.push([snapshotPoint.timestamp, this.snapshotPoints[index + 1].timestamp]);
-            } else if (index !== this.snapshotPoints.length - 1) {
-                timeZoneCircleProgresses.push([snapshotPoint.timestamp, this.snapshotPoints[index + 1].timestamp]);
-            } else {
-                timeZoneCircleProgresses.push([snapshotPoint.timestamp, this.video.nativeElement.duration]);
+        return this.snapshotPoints.map((snapshotPoint: SnapshotPointInterface, index: number) => {
+            if (index !== this.snapshotPoints.length - 1) {
+                return [snapshotPoint.timestamp, this.snapshotPoints[index + 1].timestamp];
             }
-        });
 
-        return timeZoneCircleProgresses;
+            return [snapshotPoint.timestamp, this.video.nativeElement.duration];
+        });
     }
 
     circleProgressesInit(): void {
         this.arrayCircleProgresses.forEach((circleProgress: CircleProgressComponent, index: number) => {
+            if (index === 0) {
+                this.arrayCircleProgresses[index].options.percent = 1;
+            }
             circleProgress.options.title = (index + 1).toString();
             circleProgress.draw(0);
             this.changeDetectorRef.detectChanges();

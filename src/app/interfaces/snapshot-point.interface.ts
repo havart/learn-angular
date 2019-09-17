@@ -1,4 +1,4 @@
-export interface SnapshotPoint {
-    description: string;
-    timestamp: number;
+export interface SnapshotPointInterface {
+    readonly description: string;
+    readonly timestamp: number;
 }
