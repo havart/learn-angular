@@ -23,9 +23,8 @@ export class VideoDividerComponent implements OnInit {
     constructor(private render: Renderer2) {}
 
     ngOnInit(): void {
-        this.percents = [];
-        this.snapshotPoints.forEach(item => {
-            this.percents.push(0);
+        this.percents = this.snapshotPoints.map((item: SnapshotPointInterface) => {
+            return 0;
         });
         this.percent = 0;
     }
