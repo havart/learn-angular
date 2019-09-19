@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
 import { FormGroup } from '@angular/forms';
+import { CallWidgetService } from '../../../services/call-widget.service';
 
 @Component({
     selector: 'app-phone-number-form',
@@ -11,15 +12,17 @@ import { FormGroup } from '@angular/forms';
 export class PhoneNumberFormComponent implements OnInit {
     @Input() contactForm: FormGroup;
     @Input() contact: ContactTabInterface;
-    callStatus: boolean;
+    callStatus = false;
 
-    constructor() {}
+    constructor(private callWidgetService: CallWidgetService) {}
 
     ngOnInit(): void {}
 
     toggleCall(contact): void {
         this.callStatus = !this.callStatus;
-      // tslint:disable-next-line:no-console
-        console.log(`Звоним на номер ${contact}`);
+        this.callWidgetService.setPhoneNumber(this.contact.phone);
+        this.callWidgetService.setUserName(1231);
+        console.log(`${this.contact.firstName} + ${this.contact.lastName}`);
+        this.callWidgetService.setCallStatus(this.callStatus);
     }
 }

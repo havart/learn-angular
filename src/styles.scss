@@ -9,6 +9,11 @@
     background-color: #f7dc6d !important;
 }
 
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #47c77d !important;
+}
+
 html,
 body {
     height: 100%;

@@ -1,0 +1,20 @@
+:host {
+    height: 100%;
+    width: 100%;
+    background-color: #ec807a;
+}
+
+mat-icon {
+    display: block;
+    color: white;
+}
+
+.call-btn {
+    background-color: red;
+}
+
+.widget-blocks {
+    align-items: center;
+    display: flex;
+    height: 100%;
+}

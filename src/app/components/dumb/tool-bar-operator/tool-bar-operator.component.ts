@@ -4,6 +4,8 @@ import { LocalStorageService } from '../../../services/local-storage.service';
 import { USERNAME } from './tool-bar.constants';
 import { Router } from '@angular/router';
 import { TASK } from 'src/app/constants/path.constans';
+import { CallWidgetService } from '../../../services/call-widget.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'app-tool-bar-operator',
@@ -15,15 +17,18 @@ export class ToolBarOperatorComponent implements OnInit {
     userName: string;
     sideWorks: boolean;
     isShowUserMenu = false;
+    isShowCallWidget$ = new BehaviorSubject<boolean>(false);
 
     constructor(
         private sideBarService: SideBarService,
         private localStorageService: LocalStorageService,
         private router: Router,
+        private callWidgetService: CallWidgetService,
     ) {}
 
     ngOnInit(): void {
         this.userName = this.localStorageService.getUser()[USERNAME];
+        this.callWidgetService.callStatus$.subscribe((value: boolean) => this.isShowCallWidget$.next(value));
     }
 
     sideBarToggle(): void {
