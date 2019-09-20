@@ -1,3 +1,6 @@
-<p>
-  info-client-fixed works!
-</p>
+<div *ngIf="client$ | async as client" class="info-client-fixed">
+    <h3 class="full-name">{{ client.firstName }} {{ client.lastName }}</h3>
+    <span class="age">{{ client.age }}</span>
+    <span class="location">{{ client.city }}</span>
+    <span class="location">{{ client.address }}</span>
+</div>

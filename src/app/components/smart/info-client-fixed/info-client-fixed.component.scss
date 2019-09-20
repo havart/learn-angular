@@ -1,0 +1,41 @@
+.info-client-fixed {
+    width: 55%;
+    margin-left: 20%;
+    padding-top: 30px;
+    margin-right: auto;
+}
+.full-name {
+    color: rgb(231, 228, 228);
+    font-size: 22px;
+}
+.age,
+.location {
+    color: darkgrey;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.location {
+    padding-left: 20px;
+}
+.age {
+    margin-right: 10px;
+}
+.avatar {
+    float: right;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 0;
+}
+
+:host {
+    position: fixed;
+    top: 0;
+    background-color: rgb(87, 82, 82);
+    margin-top: 64px;
+    height: 200px;
+    width: 100%;
+    z-index: 30;
+}
