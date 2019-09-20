@@ -10,7 +10,7 @@ import { fromEvent } from 'rxjs';
     styleUrls: ['./video-rendering.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VideoRenderingComponent implements OnInit, OnDestroy {
+export class VideoRenderingComponent implements OnInit {
     @ViewChild('videoPlayer') videoPlayer: ElementRef;
     @Input() sourceVideo: string;
     currentTime: number;
