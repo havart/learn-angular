@@ -10,6 +10,8 @@
         <mat-icon>call</mat-icon>
     </div>
     <ng-container *ngFor="let step of stepsList$ | async">
-        <app-step-with-phone-number [step]="step"></app-step-with-phone-number>
+        <div class="container-step-with-number">
+            <app-step-with-phone-number [step]="step"></app-step-with-phone-number>
+        </div>
     </ng-container>
 </mat-list>
