@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
 import { ListOfStepsInterface } from '../../../interfaces/list-of-steps.interface';
 import { STEP_LIST } from '../../../constants/snapshot-point.constants';
+import { fromEvent } from 'rxjs';
 
 @Component({
     selector: 'app-video-rendering',
@@ -9,7 +10,7 @@ import { STEP_LIST } from '../../../constants/snapshot-point.constants';
     styleUrls: ['./video-rendering.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VideoRenderingComponent implements OnInit {
+export class VideoRenderingComponent implements OnInit, OnDestroy {
     @ViewChild('videoPlayer') videoPlayer: ElementRef;
     @Input() sourceVideo: string;
     currentTime: number;
@@ -19,7 +20,7 @@ export class VideoRenderingComponent implements OnInit {
 
     ngOnInit(): void {
         this.listOfSteps = STEP_LIST;
-        this.videoPlayer.nativeElement.addEventListener('timeupdate', () => {
+        const videoEventTimeUpdate$ = fromEvent(this.videoPlayer.nativeElement, 'timeupdate').subscribe(() => {
             this.videoRenderingService.setCurrentTime$(this.videoPlayer.nativeElement.currentTime);
         });
     }
