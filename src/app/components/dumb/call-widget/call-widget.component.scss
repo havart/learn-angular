@@ -7,14 +7,48 @@
 mat-icon {
     display: block;
     color: white;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .call-btn {
-    background-color: red;
+    height: 15px;
+    width: 15px;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .widget-blocks {
-    align-items: center;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     height: 100%;
+}
+
+.call-icon {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: red;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+}
+
+.user-information {
+    display: flex;
+}
+
+.clock-timer-container{
+  border-radius: 5px;
+  display: flex;
+  background-color: #47c77d;
+}
+
+.clock-timer{
+  padding: 5px;
+  font-size: 14px;
 }

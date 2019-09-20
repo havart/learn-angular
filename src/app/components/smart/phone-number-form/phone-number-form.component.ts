@@ -12,17 +12,19 @@ import { CallWidgetService } from '../../../services/call-widget.service';
 export class PhoneNumberFormComponent implements OnInit {
     @Input() contactForm: FormGroup;
     @Input() contact: ContactTabInterface;
-    callStatus = false;
+    callStatus: boolean;
 
     constructor(private callWidgetService: CallWidgetService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.callWidgetService.callStatus$.subscribe((value: boolean) => (this.callStatus = value));
+    }
 
     toggleCall(contact): void {
         this.callStatus = !this.callStatus;
-        this.callWidgetService.setPhoneNumber(this.contact.phone);
-        this.callWidgetService.setUserName(1231);
-        console.log(`${this.contact.firstName} + ${this.contact.lastName}`);
         this.callWidgetService.setCallStatus(this.callStatus);
+        this.callWidgetService.setUserName(`${contact.firstName} + ${contact.lastName}`);
+
+        this.callWidgetService.setPhoneNumber(this.contact.phone);
     }
 }

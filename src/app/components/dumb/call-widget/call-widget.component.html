@@ -1,9 +1,20 @@
 <div class="widget-blocks">
-    <div>{{ userName$ | async }}</div>
-    <mat-icon>alarm</mat-icon>
-    <mat-icon>micro</mat-icon>
-    <mat-spinner [diameter]="spinnerDiameter"></mat-spinner>
-    <div class="call-btn">
-        <mat-icon>call</mat-icon>
+    <div class="user-information">
+        <div>{{ userName$ | async }}</div>
+        <div>{{ userName }}</div>
+    </div>
+    <div class="control-buttons">
+        <div class="clock-timer-container">
+          <mat-icon>alarm</mat-icon>
+          <div class="clock-timer">13:30</div>
+        </div>
+
+        <mat-icon>micro</mat-icon>
+        <mat-spinner [diameter]="spinnerDiameter"></mat-spinner>
+        <div class="call-btn" (click)="callToggle()">
+            <div class="call-icon">
+                <mat-icon>call</mat-icon>
+            </div>
+        </div>
     </div>
 </div>
