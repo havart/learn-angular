@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { CONTACT, LABOR_ACTIVITY } from '../../../constants/path.constans';
-import { BehaviorSubject, fromEvent, Observable } from 'rxjs';
+import { BehaviorSubject, fromEvent, Observable, Subscription } from 'rxjs';
 import { map, throttleTime } from 'rxjs/operators';
 import { HeaderService } from '../../../services/header.service';
 
@@ -9,17 +9,18 @@ import { HeaderService } from '../../../services/header.service';
     templateUrl: './operator-base.component.html',
     styleUrls: ['./operator-base.component.scss'],
 })
-export class OperatorBaseComponent implements OnInit {
+export class OperatorBaseComponent implements OnInit, OnDestroy {
     contact = CONTACT;
     laborActivity = LABOR_ACTIVITY;
 
+    private scrollEventSubscribe: Subscription;
     private shrinkHeader$: Observable<boolean>;
 
     constructor(private headerService: HeaderService) {}
 
     ngOnInit(): void {
-        const scroll$ = fromEvent(window, 'scroll')
-            .pipe(throttleTime(10))
+        this.scrollEventSubscribe = fromEvent(window, 'scroll')
+            .pipe(throttleTime(200))
             .subscribe(() => {
                 if (window.pageYOffset > 220) {
                     this.headerService.setShrinkHeader(true);
@@ -28,5 +29,9 @@ export class OperatorBaseComponent implements OnInit {
                 }
                 this.shrinkHeader$ = this.headerService.getShrinkHeader();
             });
+    }
+
+    ngOnDestroy(): void {
+        this.scrollEventSubscribe.unsubscribe();
     }
 }

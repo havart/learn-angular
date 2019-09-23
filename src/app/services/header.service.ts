@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class HeaderService {
-    shrinkHeader$ = new BehaviorSubject<boolean>(false);
+    private shrinkHeader$ = new BehaviorSubject<boolean>(false);
 
     constructor() {}
 
