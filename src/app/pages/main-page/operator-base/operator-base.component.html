@@ -7,7 +7,7 @@
     <a mat-tab-link routerLink="{{ contact }}" routerLinkActive="{{ contact }}">Контактность</a>
     <a mat-tab-link routerLink="{{ laborActivity }}" routerLinkActive="{{ laborActivity }}">Трудовая деятельность</a>
 </nav>
-<app-info-client-fixed></app-info-client-fixed>
+<app-info-client-fixed *ngIf="shrinkHeader$ | async"></app-info-client-fixed>
 <div class="grids-elements">
     <div></div>
     <app-operator-tabs></app-operator-tabs>

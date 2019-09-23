@@ -1,40 +1,30 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    OnDestroy,
-    OnInit,
-} from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ClientInterface } from '../../../interfaces/client.interface';
 import { select, Store } from '@ngrx/store';
 import { MainState } from '../../../store/state/main.state';
 import { selectClient } from '../../../store/selectors/client.selector';
-import { distinctUntilChanged, filter, map, pairwise, share, tap, throttleTime } from 'rxjs/operators';
-import { Direction, VisibilityState } from './info-client-fixed.enum';
+import { VisibilityState } from './info-client-fixed.enum';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ClientLaborActivityInterface } from '../../../interfaces/client-labor-activity.interface';
+import { selectLaborActivity } from '../../../store/selectors/labor-activity.selector';
+import { HeaderService } from '../../../services/header.service';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
     selector: 'app-info-client-fixed',
     templateUrl: './info-client-fixed.component.html',
     styleUrls: ['./info-client-fixed.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [
-        trigger('toggle', [
-            state(VisibilityState.Hidden, style({ opacity: 0, transform: 'translateY(-100%)' })),
-            state(VisibilityState.Visible, style({ opacity: 1, transform: 'translateY(0)' })),
-            transition('* => *', animate('200ms ease-in')),
-        ]),
-    ],
 })
 export class InfoClientFixedComponent implements OnInit {
     client$: Observable<ClientInterface>;
+    clientLaborActivity$: Observable<ClientLaborActivityInterface>;
 
-    constructor(private store$: Store<MainState>) {}
+    constructor(private store$: Store<MainState>, private headerService: HeaderService) {}
 
     ngOnInit(): void {
         this.client$ = this.store$.pipe(select(selectClient));
+        this.clientLaborActivity$ = this.store$.pipe(select(selectLaborActivity));
     }
 }

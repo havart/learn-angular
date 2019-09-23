@@ -3,4 +3,9 @@
     <span class="age">{{ client.age }}</span>
     <span class="location">{{ client.city }}</span>
     <span class="location">{{ client.address }}</span>
+    <div *ngIf="clientLaborActivity$ | async as clientLaborActivity" class="labor-activity">
+        <span class="income">{{ clientLaborActivity.income }}</span>
+        <span class="position">{{ clientLaborActivity.position }}</span>
+        <span class="occupation">{{ clientLaborActivity.occupation }}</span>
+    </div>
 </div>

@@ -1,4 +1,5 @@
 .info-client-fixed {
+    display: flex;
     width: 55%;
     margin-left: 20%;
     padding-top: 30px;
@@ -9,7 +10,7 @@
     font-size: 22px;
 }
 .age,
-.location {
+.location, .labor-activity {
     color: darkgrey;
     font-size: 18px;
     display: inline-block;
@@ -39,3 +40,9 @@ h3 {
     width: 100%;
     z-index: 30;
 }
+
+span{
+  padding: 0 15px;
+}
+
+

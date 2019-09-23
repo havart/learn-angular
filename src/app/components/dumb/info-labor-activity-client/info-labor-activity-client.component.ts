@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { MainState } from 'src/app/store/state/main.state';
 import { selectLaborActivity } from 'src/app/store/selectors/labor-activity.selector';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-info-labor-activity-client',
