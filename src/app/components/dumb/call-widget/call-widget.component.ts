@@ -34,7 +34,7 @@ export class CallWidgetComponent implements OnInit, OnDestroy {
             map(i => this.timerTimeoutCall - i),
             take(this.timerTimeoutCall + 1),
         );
-        this.source.subscribe(i => console.log(i));
+        this.source.subscribe();
     }
 
     ngOnDestroy(): void {

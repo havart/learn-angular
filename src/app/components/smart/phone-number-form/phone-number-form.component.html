@@ -10,7 +10,7 @@
                 formControlName="numberPhone"
             />
             <mat-icon *ngIf="!callStatus" (click)="toggleCall(contact)">call</mat-icon>
-            <mat-icon *ngIf="callStatus" (click)="toggleCall('off')">phone_in_talk</mat-icon>
+            <mat-icon *ngIf="callStatus" (click)="toggleCall(contact)">phone_in_talk</mat-icon>
         </div>
     </mat-form-field>
 </form>
