@@ -1,8 +1,17 @@
-<div *ngIf="client$ | async as client" class="info-client">
-    <img [src]="client.avatar" class="avatar" />
-    <h3 class="full-name">{{ client.firstName }} {{ client.lastName }}</h3>
-    <span class="age">{{ client.age }}</span>
-    <span class="location">{{ client.city }}</span>
-    <span class="location">{{ client.address }}</span>
-    <app-info-labor-activity-client></app-info-labor-activity-client>
+<div class="info-client">
+    <div *ngIf="client">
+        <div *ngIf="!isSticky" class="info-client-wrapper">
+            <img [src]="client.avatar" class="avatar" />
+            <h3 class="full-name">{{ client.firstName }} {{ client.lastName }}</h3>
+            <span class="age">{{ client.age }}</span>
+            <span class="location">{{ client.city }}</span>
+            <span class="location">{{ client.address }}</span>
+            <app-info-labor-activity-client
+                [clientLaborActivity]="clientLaborActivity"
+            ></app-info-labor-activity-client>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSticky" class="small-info-client">
+    <app-small-info-client [client]="client" [clientLaborActivity]="clientLaborActivity"></app-small-info-client>
 </div>

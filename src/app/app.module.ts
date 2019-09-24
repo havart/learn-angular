@@ -43,6 +43,7 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
 import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
+import { SmallInfoClientComponent } from './components/dumb/small-info-client/small-info-client.component';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-
         UserMenuComponent,
         StepComponent,
         StepWithPhoneNumberComponent,
+        SmallInfoClientComponent,
     ],
     imports: [
         BrowserModule,
