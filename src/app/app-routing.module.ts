@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthorizationComponent } from './components/smart/authorization/authorization.component';
 import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 import { OperatorBaseGuard } from './operator-base.guard';
 import { TaskComponent } from './components/dumb/task/task.component';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
-import { TASK, LOGIN, OPERATOR, CONTACT, LABOR_ACTIVITY, VIDEO } from './constants/path.constans';
-import { VideoRenderingComponent } from './components/smart/video-rendering/video-rendering.component';
+import { CONTACT, LABOR_ACTIVITY, LOGIN, OPERATOR, TASK, VIDEO } from './constants/path.constans';
 
 const routes: Routes = [
     {

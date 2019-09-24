@@ -6,9 +6,6 @@ import { MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatTab
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from '../../smart/contact/contact.component';
 import { PhoneNumberFormComponent } from '../../smart/phone-number-form/phone-number-form.component';
-import { VideoRenderingComponent } from '../../smart/video-rendering/video-rendering.component';
-import { CircleProgressComponent } from '../../smart/circle-progress/circle-progress.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
 
 const routes: Routes = [{ path: '', component: ContactTabComponent, pathMatch: 'full' }];
 

@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VideoRenderingComponent } from '../../smart/video-rendering/video-rendering.component';
-import { ContactTabModule } from '../contact-tab/contact-tab.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CircleProgressComponent } from '../../smart/circle-progress/circle-progress.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MatButtonModule, MatInputModule, MatSelectModule, MatTabsModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
-import { LaborActivityTabComponent } from '../labor-activity-tab/labor-activity-tab.component';
 
 const routes: Routes = [{ path: '', component: VideoRenderingComponent, pathMatch: 'full' }];
 

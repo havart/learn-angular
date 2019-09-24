@@ -9,17 +9,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';
@@ -43,7 +43,6 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
 import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
-import { VideoRenderingModule } from './components/feature/video-rendering/video-rendering.module';
 
 @NgModule({
     declarations: [

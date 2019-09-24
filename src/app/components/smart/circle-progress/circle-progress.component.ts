@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { VideoRenderingService } from '../../../services/video-rendering.service';
-import { filter, map, takeUntil, tap, throttleTime } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-circle-progress',
