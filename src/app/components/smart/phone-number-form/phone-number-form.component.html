@@ -9,10 +9,8 @@
                 value="{{ contact.phone }}"
                 formControlName="numberPhone"
             />
-            <mat-icon *ngIf="!callStatus; else callOff" (click)="toggleCall(contact)">call</mat-icon>
-            <ng-template #callOff>
-                <mat-icon (click)="toggleCall('off')">call_end</mat-icon>
-            </ng-template>
+            <mat-icon *ngIf="!callStatus" (click)="toggleCall(contact)">call</mat-icon>
+            <mat-icon *ngIf="callStatus" (click)="toggleCall('off')">phone_in_talk</mat-icon>
         </div>
     </mat-form-field>
 </form>

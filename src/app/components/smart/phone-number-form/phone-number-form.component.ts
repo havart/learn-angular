@@ -17,7 +17,10 @@ export class PhoneNumberFormComponent implements OnInit {
     constructor(private callWidgetService: CallWidgetService) {}
 
     ngOnInit(): void {
-        this.callWidgetService.callStatus$.subscribe((value: boolean) => (this.callStatus = value));
+        this.callWidgetService.callStatus$.subscribe((value: boolean) => {
+          console.log(value)
+          this.callStatus = value;
+        });
     }
 
     toggleCall(contact): void {
