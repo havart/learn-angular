@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CONTACT, LABOR_ACTIVITY } from '../../../constants/path.constans';
-import { BehaviorSubject, fromEvent, Observable, Subscription } from 'rxjs';
-import { map, throttleTime } from 'rxjs/operators';
+import { fromEvent, Observable, Subscription } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 import { HeaderService } from '../../../services/header.service';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-operator-base',
     templateUrl: './operator-base.component.html',
     styleUrls: ['./operator-base.component.scss'],
+    animations: [
+        trigger('headerAnimationTrigger', [
+            transition('void => *', [style({ opacity: 0 }), animate('0.5s', style({ opacity: 1 }))]),
+            transition('* => void', [animate('0.5s', style({ opacity: 0 }))]),
+        ]),
+    ],
 })
 export class OperatorBaseComponent implements OnInit, OnDestroy {
     contact = CONTACT;
