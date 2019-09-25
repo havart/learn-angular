@@ -3,18 +3,23 @@
         <div>{{ userName$ | async }}</div>
         <div>{{ userName }}</div>
     </div>
-    <div class="control-buttons">
-        <div class="clock-timer-container">
-          <mat-icon>alarm</mat-icon>
-          <div class="clock-timer">00:{{source | async}}</div>
-        </div>
-
-        <mat-icon>micro</mat-icon>
+    <div *ngIf="!(sourceTimer$ | async)" class="container-wait-call">
         <mat-spinner [diameter]="spinnerDiameter"></mat-spinner>
-        <div class="call-btn" (click)="callToggle()">
-            <div class="call-icon">
-                <mat-icon>call</mat-icon>
+        <span>Идет набор номера</span>
+    </div>
+    <div class="control-buttons">
+        <div [ngClass]="{ 'clock-timer-container-off': !(sourceTimer$ | async) }" class="clock-timer-container">
+            <div class="alarm-icon">
+                <mat-icon>alarm</mat-icon>
             </div>
+            <div class="clock-timer">{{ sourceTimer$ | async | formatTime }}</div>
+        </div>
+        <div class="micro-container" (click)="toggleMicrophone()">
+            <mat-icon *ngIf="!microStatus">micro</mat-icon>
+            <mat-icon *ngIf="microStatus">mic_off</mat-icon>
+        </div>
+        <div class="call-btn" (click)="callToggle()">
+            <mat-icon>call</mat-icon>
         </div>
     </div>
 </div>

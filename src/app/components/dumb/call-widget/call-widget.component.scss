@@ -1,19 +1,20 @@
 :host {
     height: 100%;
     width: 100%;
-    background-color: #ec807a;
+    font-weight: 400;
+    color: #f4f4f4;
+    background-color: #282828;
 }
 
 mat-icon {
     display: block;
-    color: white;
-    cursor: pointer;
+    cursor: default;
     margin: 5px;
 }
 
 .call-btn {
-    height: 15px;
-    width: 15px;
+    height: auto;
+    width: auto;
     align-items: center;
     text-align: center;
     vertical-align: middle;
@@ -26,10 +27,12 @@ mat-icon {
     height: 100%;
 }
 
-.call-icon {
+.call-btn {
     display: inline-block;
     border-radius: 5px;
-    background-color: red;
+    align-items: center;
+    text-align: center;
+    background-color: #c04333;
 }
 
 .control-buttons {
@@ -38,17 +41,46 @@ mat-icon {
     flex-wrap: wrap-reverse;
 }
 
+.clock-timer-container,
+.call-btn,
+.micro-container {
+    margin: 0 15px;
+}
+
 .user-information {
     display: flex;
 }
 
-.clock-timer-container{
-  border-radius: 5px;
-  display: flex;
-  background-color: #47c77d;
+.clock-timer-container {
+    border-radius: 5px;
+    display: flex;
+    background-color: #47c77d;
+    align-items: center;
+    text-align: center;
 }
 
-.clock-timer{
-  padding: 5px;
-  font-size: 14px;
+.clock-timer-container-off {
+    background-color: #c04333;
+}
+
+.clock-timer {
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.container-wait-call {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+span {
+    color: #8d9197;
+    font-size: 12px;
+    margin: 0 15px;
+}
+
+.alarm-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }

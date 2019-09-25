@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { SideBarService } from '../../../services/side-bar.service';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { USERNAME } from './tool-bar.constants';

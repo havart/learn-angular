@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ContactTabInterface } from '../../../interfaces/contact-tab.interface';
 import { FormGroup } from '@angular/forms';
 import { CallWidgetService } from '../../../services/call-widget.service';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { async } from 'rxjs/internal/scheduler/async';
 
@@ -12,26 +12,29 @@ import { async } from 'rxjs/internal/scheduler/async';
     styleUrls: ['./phone-number-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PhoneNumberFormComponent implements OnInit {
+export class PhoneNumberFormComponent implements OnInit, OnDestroy {
     @Input() contactForm: FormGroup;
     @Input() contact: ContactTabInterface;
     callStatus = false;
+    statusOtherButtons = false;
 
     private contactId: number;
+    private widgetSubscription: Subscription;
 
     constructor(private callWidgetService: CallWidgetService, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
-        this.callWidgetService.callStatus$
-            .pipe(filter(() => this.contact.id === this.contactId))
-            .subscribe((value: boolean) => {
-                this.callStatus = value;
-                this.changeDetectorRef.detectChanges();
-            });
+        this.widgetSubscription = this.callWidgetService.callStatus$.subscribe((value: boolean) => {
+            this.callStatus = value;
+            this.changeDetectorRef.detectChanges();
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.widgetSubscription.unsubscribe();
     }
 
     toggleCall(contact: ContactTabInterface): void {
-        this.contactId = contact.id;
         this.callStatus = !this.callStatus;
         this.callWidgetService.setCallStatus(this.callStatus);
         this.callWidgetService.setUserName(`${contact.firstName} + ${contact.lastName}`);

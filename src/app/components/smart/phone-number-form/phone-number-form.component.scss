@@ -2,15 +2,15 @@ mat-form-field {
     display: block !important;
     flex: 1 1 auto;
     margin-left: 5px;
-     margin-right: 5px;
+    margin-right: 5px;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline {
-  padding-top: 51px !important;
+    padding-top: 51px !important;
 }
 
 mat-icon {
-    cursor: pointer;
+    cursor: default;
 }
 
 mat-icon:hover {
@@ -23,4 +23,15 @@ mat-icon:hover {
 
 .form-container {
     display: flex;
+    padding: 0;
+    border-style: none;
+}
+
+button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
 }
