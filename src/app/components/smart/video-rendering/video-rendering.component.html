@@ -1,0 +1,24 @@
+<div class="content-info">
+    <h3>Выполните действия:</h3>
+    <div class="container-table-steps">
+        <ng-container *ngFor="let item of listOfSteps; let i = index">
+            <app-circle-progress
+                [number]="i + 1"
+                [description]="item.description"
+                [minTime]="item.minTime"
+                [maxTime]="item.maxTime"
+                (click)="toSnapShotPoint(item.minTime)"
+            ></app-circle-progress>
+        </ng-container>
+    </div>
+    <div class="gradient-container-decorator">
+        <div class="gradient-element-decorator"></div>
+    </div>
+</div>
+
+<div class="video-container">
+    <video #videoPlayer autoplay="true">
+        <source src="../../../../assets/video.mp4" type="video/mp4" />
+        Browser not supported
+    </video>
+</div>

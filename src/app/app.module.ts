@@ -9,17 +9,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
 } from '@angular/material';
 import { SideBarOperatorComponent } from './components/dumb/side-bar-operator/side-bar-operator.component';
 import { ToolBarOperatorComponent } from './components/dumb/tool-bar-operator/tool-bar-operator.component';

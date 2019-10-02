@@ -21,5 +21,6 @@ const routes: Routes = [{ path: '', component: ContactTabComponent, pathMatch: '
         MatButtonModule,
         MatIconModule,
     ],
+    providers: [],
 })
 export class ContactTabModule {}

@@ -1,4 +1,4 @@
-<mat-list-item [ngClass]="{list:isShowDescriptionMenu}">
+<mat-list-item [ngClass]="{ list: isShowDescriptionMenu }">
     <h4 mat-line>{{ step.comment }}</h4>
     <p mat-line *ngIf="step.showDescription" class="more-information">
         <span (click)="showDescriptionMenuToggle()">Подробнее</span>

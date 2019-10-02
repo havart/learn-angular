@@ -1,9 +1,7 @@
 <div class="form-container">
     <form [formGroup]="contactForm" (ngSubmit)="submit()">
         <div class="base-inputs">
-            <app-phone-number-form [contact]="contact" [contactForm]="contactForm">
-
-            </app-phone-number-form>
+            <app-phone-number-form [contact]="contact" [contactForm]="contactForm"> </app-phone-number-form>
             <mat-form-field appearance="outline" color="accent">
                 <mat-label>ФИО контакта</mat-label>
                 <input
