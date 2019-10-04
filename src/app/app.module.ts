@@ -44,8 +44,6 @@ import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
 import { CallWidgetModule } from './components/feature/call-widget/call-widget.module';
-import { CallWidgetComponent } from './components/dumb/call-widget/call-widget.component';
-import { FormatTimePipe } from './pipes/format-time.pipe';
 
 @NgModule({
     declarations: [

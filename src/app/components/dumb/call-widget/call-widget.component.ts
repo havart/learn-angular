@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CallWidgetService } from '../../../services/call-widget.service';
-import { BehaviorSubject, Observable, range, Subject, timer } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
+import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
 import { delay, map, take, takeUntil } from 'rxjs/operators';
 
 @Component({

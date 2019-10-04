@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CallWidgetComponent } from './call-widget.component';
+import { MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { FormatTimePipe } from '../../../pipes/format-time.pipe';
 
 describe('CallWidgetComponent', () => {
   let component: CallWidgetComponent;
@@ -8,7 +10,8 @@ describe('CallWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CallWidgetComponent ],
+      imports: [MatProgressSpinnerModule, MatIconModule],
+      declarations: [ CallWidgetComponent, FormatTimePipe ],
     })
     .compileComponents();
   }));
