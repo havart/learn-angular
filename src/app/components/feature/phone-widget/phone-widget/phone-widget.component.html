@@ -1,0 +1,14 @@
+<div *ngIf="isCall" class="call-container">
+    <span class="full-name">{{ fullName$ | async }}</span>
+    <div class="dialing-number">
+        <ng-container *ngIf="isDialingNumber" class="dialing-number-container">
+            <mat-spinner class="spinner" [diameter]="diameterSpinner"></mat-spinner>
+            <span>Набор номера</span>
+        </ng-container>
+    </div>
+    <div [ngClass]="{ 'timer-icon-end': isEndTimer }" class="timer">
+        <span [ngClass]="{ 'timer-end': isEndTimer }" class="timer-icon"><mat-icon>alarm</mat-icon></span
+        ><span class="seconds">{{ second | timer }}</span>
+    </div>
+    <span class="call-button" (click)="endCall()"><mat-icon class="call-icon">call</mat-icon></span>
+</div>

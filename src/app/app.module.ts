@@ -43,6 +43,7 @@ import { UserMenuComponent } from './components/smart/user-menu/user-menu.compon
 import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
+import { PhoneWidgetModule } from './components/feature/phone-widget/phone-widget.module';
 
 @NgModule({
     declarations: [
@@ -87,6 +88,7 @@ import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-
         }),
         EffectsModule.forRoot([ClientEffects, CommentEffects, LaborActivityEffects]),
         MatSelectModule,
+        PhoneWidgetModule,
     ],
     providers: [SideBarService],
     bootstrap: [AppComponent],
