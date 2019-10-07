@@ -44,6 +44,7 @@ import { LaborActivityEffects } from './store/effects/labor-activity.effect';
 import { StepComponent } from './components/dumb/step/step.component';
 import { StepWithPhoneNumberComponent } from './components/dumb/step-with-phone-number/step-with-phone-number.component';
 import { PhoneWidgetModule } from './components/feature/phone-widget/phone-widget.module';
+import { SmallInfoClientComponent } from './components/dumb/small-info-client/small-info-client.component';
 
 @NgModule({
     declarations: [
@@ -63,6 +64,7 @@ import { PhoneWidgetModule } from './components/feature/phone-widget/phone-widge
         UserMenuComponent,
         StepComponent,
         StepWithPhoneNumberComponent,
+        SmallInfoClientComponent,
     ],
     imports: [
         BrowserModule,
