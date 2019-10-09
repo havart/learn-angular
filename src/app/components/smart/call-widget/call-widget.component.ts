@@ -9,12 +9,8 @@ import { delay, map, take, takeUntil } from 'rxjs/operators';
     styleUrls: ['./call-widget.component.scss'],
 })
 export class CallWidgetComponent implements OnInit, OnDestroy {
-    userName: string;
-    callStatus: boolean;
-    spinnerDiameter = 25;
-    microStatus: boolean;
+    userName$: Observable<string>;
     sourceTimer$: Observable<number>;
-    userName$: Subject<string> = new BehaviorSubject<string>('');
     @Input() timerTimeoutCall: number;
 
     private userNameUnsubscribe$: Subject<void> = new Subject<void>();
@@ -22,13 +18,7 @@ export class CallWidgetComponent implements OnInit, OnDestroy {
     constructor(private callWidgetService: CallWidgetService) {}
 
     ngOnInit(): void {
-        this.callWidgetService.userName$.pipe(takeUntil(this.userNameUnsubscribe$)).subscribe((value: string) => {
-            this.userName$.next(value);
-        });
-
-        this.callWidgetService.callStatus$.pipe(takeUntil(this.userNameUnsubscribe$)).subscribe((value: boolean) => {
-            this.callStatus = value;
-        });
+        this.userName$ = this.callWidgetService.userName$.pipe(takeUntil(this.userNameUnsubscribe$));
 
         this.sourceTimer$ = timer(1000, 1000).pipe(
             delay(2000),
@@ -38,17 +28,8 @@ export class CallWidgetComponent implements OnInit, OnDestroy {
         this.sourceTimer$.subscribe();
     }
 
-    toggleMicrophone(): void {
-        this.microStatus = !this.microStatus;
-    }
-
     ngOnDestroy(): void {
         this.userNameUnsubscribe$.next();
         this.userNameUnsubscribe$.complete();
-    }
-
-    callToggle(): void {
-        this.callStatus = !this.callStatus;
-        this.callWidgetService.setCallStatus(this.callStatus);
     }
 }

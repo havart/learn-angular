@@ -6,81 +6,11 @@
     background-color: #282828;
 }
 
-mat-icon {
-    display: block;
-    cursor: default;
-    margin: 5px;
-}
-
-.call-btn {
-    height: auto;
-    width: auto;
-    align-items: center;
-    text-align: center;
-    vertical-align: middle;
-}
-
 .widget-blocks {
-    display: flex;
+    display: grid;
+    padding: 0 10px;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
-    justify-content: space-evenly;
     height: 100%;
-}
-
-.call-btn {
-    display: inline-block;
-    border-radius: 5px;
-    align-items: center;
-    text-align: center;
-    background-color: #c04333;
-}
-
-.control-buttons {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap-reverse;
-}
-
-.clock-timer-container,
-.call-btn,
-.micro-container {
-    margin: 0 15px;
-}
-
-.user-information {
-    display: flex;
-}
-
-.clock-timer-container {
-    border-radius: 5px;
-    display: flex;
-    background-color: #47c77d;
-    align-items: center;
-    text-align: center;
-}
-
-.clock-timer-container-off {
-    background-color: #c04333;
-}
-
-.clock-timer {
-    padding: 0 5px;
-    font-size: 14px;
-}
-
-.container-wait-call {
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-
-span {
-    color: #8d9197;
-    font-size: 12px;
-    margin: 0 15px;
-}
-
-.alarm-icon {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
+    width: 100%;
 }

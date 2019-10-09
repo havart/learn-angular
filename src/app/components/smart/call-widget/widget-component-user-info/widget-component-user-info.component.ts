@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-widget-component-user-info',
@@ -6,11 +6,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-component-user-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WidgetComponentUserInfoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class WidgetComponentUserInfoComponent {
+  @Input() userName: string;
 }

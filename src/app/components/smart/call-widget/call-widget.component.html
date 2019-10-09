@@ -1,25 +1,5 @@
 <div class="widget-blocks">
-    <div class="user-information">
-        <div>{{ userName$ | async }}</div>
-        <div>{{ userName }}</div>
-    </div>
-    <div *ngIf="!(sourceTimer$ | async)" class="container-wait-call">
-        <mat-spinner [diameter]="spinnerDiameter"></mat-spinner>
-        <span>Идет набор номера</span>
-    </div>
-    <div class="control-buttons">
-        <div [ngClass]="{ 'clock-timer-container-off': !(sourceTimer$ | async) }" class="clock-timer-container">
-            <div class="alarm-icon">
-                <mat-icon>alarm</mat-icon>
-            </div>
-            <div class="clock-timer">{{ sourceTimer$ | async | formatTime }}</div>
-        </div>
-        <div class="micro-container" (click)="toggleMicrophone()">
-            <mat-icon *ngIf="!microStatus">micro</mat-icon>
-            <mat-icon *ngIf="microStatus">mic_off</mat-icon>
-        </div>
-        <div class="call-btn" (click)="callToggle()">
-            <mat-icon>call</mat-icon>
-        </div>
-    </div>
+    <app-widget-component-user-info [userName]="userName$ | async"> </app-widget-component-user-info>
+    <app-widget-component-status [sourceTimer]="sourceTimer$ | async"></app-widget-component-status>
+    <app-widget-component-actions [sourceTimer]="sourceTimer$ | async"></app-widget-component-actions>
 </div>

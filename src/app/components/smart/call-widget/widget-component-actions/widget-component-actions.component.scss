@@ -1,0 +1,55 @@
+mat-icon {
+    display: block;
+    cursor: default;
+    margin: 5px;
+}
+
+.call-btn {
+    height: auto;
+    width: auto;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.call-btn {
+    display: inline-block;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+    background-color: #c04333;
+}
+
+.control-buttons {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.clock-timer-container,
+.call-btn,
+.micro-container {
+    margin: 0 15px;
+}
+
+.clock-timer-container {
+    border-radius: 5px;
+    display: flex;
+    background-color: #47c77d;
+    align-items: center;
+    text-align: center;
+}
+
+.clock-timer-container-off {
+    background-color: #c04333;
+}
+
+.clock-timer {
+    padding: 0 5px;
+    font-size: 14px;
+}
+
+.alarm-icon {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}

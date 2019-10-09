@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SideBarOperatorComponent } from './side-bar-operator.component';
 import { MatIconModule, MatListModule, MatSidenavModule, MatSnackBarModule } from '@angular/material';
 import { OperatorStepsComponent } from '../operator-steps/operator-steps.component';

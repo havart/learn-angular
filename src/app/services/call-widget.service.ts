@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -9,8 +8,6 @@ export class CallWidgetService {
     userName$: BehaviorSubject<string> = new BehaviorSubject<string>('');
     phoneNumber$: BehaviorSubject<string> = new BehaviorSubject<string>('');
     callStatus$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-    constructor() {}
 
     setUserName(userName): void {
         this.userName$.next(userName);
@@ -22,5 +19,13 @@ export class CallWidgetService {
 
     setCallStatus(callStatus): void {
         this.callStatus$.next(callStatus);
+    }
+
+    getUserName(): string {
+        return this.userName$.getValue();
+    }
+
+    getCallStatusValue(): boolean {
+      return this.callStatus$.getValue();
     }
 }

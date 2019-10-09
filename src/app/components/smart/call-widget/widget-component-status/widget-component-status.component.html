@@ -1,3 +1,4 @@
-<p>
-  widget-component-status works!
-</p>
+<div *ngIf="!sourceTimer" class="container-wait-call">
+  <mat-spinner [diameter]="spinnerDiameter"></mat-spinner>
+  <span>Идет набор номера</span>
+</div>

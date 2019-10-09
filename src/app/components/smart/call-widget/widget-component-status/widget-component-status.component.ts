@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-widget-component-status',
@@ -6,11 +6,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./widget-component-status.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WidgetComponentStatusComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class WidgetComponentStatusComponent {
+    @Input() sourceTimer: number;
+    spinnerDiameter = 25;
 }
