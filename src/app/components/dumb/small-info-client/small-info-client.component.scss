@@ -1,0 +1,19 @@
+@import '../../../variables.scss';
+
+.info-client-wrapper {
+    top: 64px;
+    position: fixed;
+    height: 100px;
+    background-color: rgb(87, 82, 82);
+    width: 100%;
+    z-index: $info-client-z-index;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: rgb(231, 228, 228);
+}
+
+.info-client-wrapper :nth-child(1n) {
+    margin: 10px;
+}

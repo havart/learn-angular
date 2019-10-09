@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CONTACT, LABOR_ACTIVITY } from '../../../constants/path.constans';
+import { CONTACT, LABOR_ACTIVITY, VIDEO } from '../../../constants/path.constans';
 
 @Component({
     selector: 'app-operator-base',
@@ -10,4 +10,5 @@ import { CONTACT, LABOR_ACTIVITY } from '../../../constants/path.constans';
 export class OperatorBaseComponent {
     contact = CONTACT;
     laborActivity = LABOR_ACTIVITY;
+    video = VIDEO;
 }

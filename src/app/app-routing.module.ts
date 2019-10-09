@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CONTACT, LABOR_ACTIVITY, LOGIN, OPERATOR, TASK } from './constants/path.constans';
-import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
-import { OperatorBaseGuard } from './operator-base.guard';
-import { TaskComponent } from './components/dumb/task/task.component';
 import { AuthorizationComponent } from './components/smart/authorization/authorization.component';
+import { CONTACT, LABOR_ACTIVITY, LOGIN, OPERATOR, TASK, VIDEO } from './constants/path.constans';
+import { TaskComponent } from './components/dumb/task/task.component';
+import { OperatorBaseGuard } from './operator-base.guard';
 import { PageNotFoundComponent } from './components/dumb/page-not-found/page-not-found.component';
+import { OperatorBaseComponent } from './pages/main-page/operator-base/operator-base.component';
 
 const routes: Routes = [
   {
@@ -20,6 +20,16 @@ const routes: Routes = [
             path: '',
             loadChildren: './components/feature/contact-tab/contact-tab.module#ContactTabModule',
           },
+            {
+                path: LABOR_ACTIVITY,
+                loadChildren:
+                    './components/feature/labor-activity-tab/labor-activity-tab.module#LaborActivityTabModule',
+            },
+            {
+                path: VIDEO,
+                loadChildren: './components/feature/video-rendering/video-rendering.module#VideoRenderingModule',
+            },
+
         ],
       },
       {

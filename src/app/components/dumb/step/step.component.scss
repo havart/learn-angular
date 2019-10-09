@@ -22,9 +22,13 @@ mat-list-item:hover {
     display: block;
     color: #656565;
     padding: 16px;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 12px;
+    background: #e9eaec54;
     word-break: break-all;
 }
 
-span{
-  cursor: pointer;
+span {
+    cursor: pointer;
 }
