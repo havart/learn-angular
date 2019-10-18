@@ -2,15 +2,15 @@
     <mat-card class="form-wrapper">
         <mat-card-title class="form-title">Вход для пользователя</mat-card-title>
         <form class="login-form" [formGroup]="loginForm">
-            <mat-form-field style="width:400px !important">
+            <mat-form-field class="input-full-width">
                 <mat-label>Логин:</mat-label>
                 <input class="form-control" matInput formControlName="login">
-                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обьязательное к заполнению</mat-error>  
+                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обязательное к заполнению</mat-error>  
             </mat-form-field>
-            <mat-form-field style="width:400px !important">
+            <mat-form-field class="input-full-width">
                 <mat-label>Пароль:</mat-label>
                 <input class="form-control" matInput formControlName="password">
-                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обьязательное к заполнению</mat-error>  
+                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обязательное к заполнению</mat-error>  
             </mat-form-field>
             <button class="submit-btn" mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="submitForm()">Отправить</button>
         </form>
