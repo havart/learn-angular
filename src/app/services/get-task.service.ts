@@ -9,7 +9,7 @@ export class GetTaskService {
 
   constructor( private http: HttpClient ) { }
 
-  getApi(id: number) {
+  getClient(id: number) {
     return this.http.get(urlGetTask + id);
   }
 }
