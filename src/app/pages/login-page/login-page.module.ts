@@ -12,7 +12,7 @@ import { UserAuthComponent } from './user-auth.component';
 	declarations: [
     	UserAuthComponent
   	],
- 	 imports: [
+ 	imports: [
 		CommonModule,
 		FormsModule,
 		ReactiveFormsModule,
