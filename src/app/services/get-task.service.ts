@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { urlGetTask } from '../configs/url-get-task';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class GetTaskService {
+    constructor(private http: HttpClient) {}
 
-  constructor( private http: HttpClient ) { }
-
-  getApi(id: number) {
-    return this.http.get(urlGetTask + id);
-  }
+    getApi(id: number) {
+        return this.http.get(urlGetTask + id);
+    }
 }
