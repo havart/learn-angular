@@ -1,18 +1,35 @@
 <div class="container">
     <mat-card class="form-wrapper">
-        <mat-card-title class="form-title">Вход для пользователя</mat-card-title>
-        <form class="login-form" [formGroup]="loginForm">
+        <mat-card-title class="form-title">
+            Вход для пользователя
+        </mat-card-title>
+        <form [formGroup]="loginForm" class="login-form">
             <mat-form-field class="input-full-width">
-                <mat-label>Логин:</mat-label>
-                <input class="form-control" matInput formControlName="login">
-                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обязательное к заполнению</mat-error>  
+                <mat-label>
+                    Логин:
+                </mat-label>
+                <input [formControlName]="LoginFormControlEnum.LOGIN" matInput class="form-control" />
+                <mat-error *ngIf="loginForm.controls[LoginFormControlEnum.LOGIN].errors?.required">
+                    Поле обязательное к заполнению
+                </mat-error>
             </mat-form-field>
             <mat-form-field class="input-full-width">
-                <mat-label>Пароль:</mat-label>
-                <input class="form-control" matInput formControlName="password">
-                <mat-error *ngIf="loginForm.controls['login'].errors?.required">Поле обязательное к заполнению</mat-error>  
+                <mat-label>
+                    Пароль:
+                </mat-label>
+                <input [formControlName]="LoginFormControlEnum.PASSWORD" class="form-control" matInput />
+                <mat-error *ngIf="loginForm.controls[LoginFormControlEnum.PASSWORD].errors?.required">
+                    Поле обязательное к заполнению
+                </mat-error>
             </mat-form-field>
-            <button class="submit-btn" mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="submitForm()">Отправить</button>
+            <button
+                [disabled]="loginForm.invalid"
+                (click)="submitForm()"
+                class="submit-btn"
+                color="primary"
+                mat-raised-button>
+                Отправить
+            </button>
         </form>
     </mat-card>
 </div>

@@ -9,26 +9,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserAuthComponent } from './user-auth.component';
 
 @NgModule({
-	declarations: [
-    	UserAuthComponent
-  	],
- 	imports: [
-		CommonModule,
-		FormsModule,
-		ReactiveFormsModule,
-		MatInputModule,
-		MatCardModule,
-		MatFormFieldModule,
-		MatButtonModule
-  ],
-    exports: [
-		CommonModule,
-		MatInputModule,
-		MatCardModule,
-		MatFormFieldModule,
-		UserAuthComponent,
-		MatButtonModule
+    declarations: [UserAuthComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatButtonModule,
     ],
+    exports: [CommonModule, MatInputModule, MatCardModule, MatFormFieldModule, UserAuthComponent, MatButtonModule],
     providers: [],
 })
-export class LoginPageModule { }
+export class LoginPageModule {}

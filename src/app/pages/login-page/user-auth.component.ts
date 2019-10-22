@@ -1,33 +1,35 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserAuthService } from '../../services/user-auth.service';
 import { Router } from '@angular/router';
+
+import { LoginFormControlEnum } from './form-controls-enum';
 
 @Component({
     selector: 'login-app',
     templateUrl: './user-auth.component.html',
     styleUrls: ['./user-auth.component.scss'],
 })
-export class UserAuthComponent implements OnInit{ 
+export class UserAuthComponent implements OnInit {
     public loginForm: FormGroup;
-   
-    constructor(private formBuilder: FormBuilder,
-                private userAuthService: UserAuthService, private router: Router ){}
-    
-    ngOnInit() {  
+    LoginFormControlEnum: typeof LoginFormControlEnum = LoginFormControlEnum;
+
+    constructor(private formBuilder: FormBuilder, private userAuthService: UserAuthService, private router: Router) {}
+
+    ngOnInit() {
         this.initLoginForm();
     }
-    
+
     public submitForm() {
-        const userLogin = this.loginForm.get('login').value;
+        const userLogin: string = this.loginForm.get(LoginFormControlEnum.LOGIN).value;
+
         this.userAuthService.setUser(userLogin);
-        //this.router.navigateByUrl('/home')
     }
 
     private initLoginForm() {
         this.loginForm = this.formBuilder.group({
-            "login": ["", [Validators.required]],
-            "password": ["", [Validators.required]]
-        })
-    };
+            [LoginFormControlEnum.LOGIN]: ['', [Validators.required]],
+            [LoginFormControlEnum.PASSWORD]: ['', [Validators.required]],
+        });
+    }
 }
