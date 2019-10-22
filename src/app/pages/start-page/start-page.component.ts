@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { GetTaskService } from '../../services/get-task.service';
-import { getRandomId } from '../../helpers/get-random-id';
+import { getRandomIdConst } from '../../helpers/get-random-id.const';
 
 @Component({
     selector: 'app-start-page',
@@ -12,8 +12,8 @@ export class StartPageComponent {
     constructor(private getTaskService: GetTaskService) {}
 
     getTask() {
-        const id = getRandomId(1, 20);
-        this.getTaskService.getClient(id).subscribe(
+        const id = getRandomIdConst(1, 20);
+        this.getTaskService.getClient$(id).subscribe(
             respond => {
                 console.log(respond);
             },
