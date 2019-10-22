@@ -13,7 +13,7 @@ export class StartPageComponent {
 
     getTask() {
         const id = getRandomId(1, 20);
-        this.getTaskService.getApi(id).subscribe(
+        this.getTaskService.getClient(id).subscribe(
             respond => {
                 console.log(respond);
             },
