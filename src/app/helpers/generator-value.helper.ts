@@ -1,3 +1,4 @@
-export class GeneratorValue {
-    static generateValue = () => Math.floor(Math.random() * 19) + 1;
-}
+export function generatorValue() : number {
+    return Math.floor(Math.random() * 19) + 1;
+};
+
