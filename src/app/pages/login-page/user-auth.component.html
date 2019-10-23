@@ -8,8 +8,8 @@
                 <mat-label>
                     Логин:
                 </mat-label>
-                <input [formControlName]="LoginFormControlEnum.LOGIN" matInput class="form-control" />
-                <mat-error *ngIf="loginForm.controls[LoginFormControlEnum.LOGIN].errors?.required">
+                <input [formControlName]="loginFormControlEnum.LOGIN" matInput class="form-control" />
+                <mat-error *ngIf="loginForm.controls[loginFormControlEnum.LOGIN].errors?.required">
                     Поле обязательное к заполнению
                 </mat-error>
             </mat-form-field>
@@ -17,8 +17,8 @@
                 <mat-label>
                     Пароль:
                 </mat-label>
-                <input [formControlName]="LoginFormControlEnum.PASSWORD" class="form-control" matInput />
-                <mat-error *ngIf="loginForm.controls[LoginFormControlEnum.PASSWORD].errors?.required">
+                <input [formControlName]="loginFormControlEnum.PASSWORD" class="form-control" matInput />
+                <mat-error *ngIf="loginForm.controls[loginFormControlEnum.PASSWORD].errors?.required">
                     Поле обязательное к заполнению
                 </mat-error>
             </mat-form-field>
@@ -27,7 +27,8 @@
                 (click)="submitForm()"
                 class="submit-btn"
                 color="primary"
-                mat-raised-button>
+                mat-raised-button
+            >
                 Отправить
             </button>
         </form>

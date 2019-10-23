@@ -12,7 +12,7 @@ import { LoginFormControlEnum } from './form-controls-enum';
 })
 export class UserAuthComponent implements OnInit {
     public loginForm: FormGroup;
-    LoginFormControlEnum: typeof LoginFormControlEnum = LoginFormControlEnum;
+    loginFormControlEnum: typeof LoginFormControlEnum = LoginFormControlEnum;
 
     constructor(private formBuilder: FormBuilder, private userAuthService: UserAuthService, private router: Router) {}
 
@@ -21,15 +21,15 @@ export class UserAuthComponent implements OnInit {
     }
 
     public submitForm() {
-        const userLogin: string = this.loginForm.get(LoginFormControlEnum.LOGIN).value;
+        const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
 
         this.userAuthService.setUser(userLogin);
     }
 
     private initLoginForm() {
         this.loginForm = this.formBuilder.group({
-            [LoginFormControlEnum.LOGIN]: ['', [Validators.required]],
-            [LoginFormControlEnum.PASSWORD]: ['', [Validators.required]],
+            [this.loginFormControlEnum.LOGIN]: ['', [Validators.required]],
+            [this.loginFormControlEnum.PASSWORD]: ['', [Validators.required]],
         });
     }
 }
