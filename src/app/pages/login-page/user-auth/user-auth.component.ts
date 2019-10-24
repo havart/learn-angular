@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { UserAuthService } from '../../services/user-auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserAuthService } from '../../../services/user-auth.service';
 import { Router } from '@angular/router';
 
-import { LoginFormControlEnum } from './form-controls-enum';
+import { LoginFormControlEnum } from '../form-controls-enum';
+import { RouterEnum } from '../../../app-routing/router-enum/router.enum';
 
 @Component({
-    selector: 'login-app',
+    selector: 'app-login',
     templateUrl: './user-auth.component.html',
     styleUrls: ['./user-auth.component.scss'],
 })
@@ -22,8 +23,10 @@ export class UserAuthComponent implements OnInit {
 
     public submitForm() {
         const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
-
-        this.userAuthService.setUser(userLogin);
+        if (userLogin) {
+            this.userAuthService.setUser(userLogin);
+            this.router.navigate([`${RouterEnum.START_PAGE}`]);
+        }
     }
 
     private initLoginForm() {

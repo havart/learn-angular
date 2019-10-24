@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
         HttpClientModule,
         MatButtonModule,
         MatCardModule,
-        LoginPageModule
+        LoginPageModule,
     ],
     providers: [UserAuthService],
     bootstrap: [AppComponent],
