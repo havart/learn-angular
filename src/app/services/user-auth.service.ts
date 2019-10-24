@@ -1,3 +1,5 @@
+import { Observable, Subject } from 'rxjs';
+
 export class UserAuthService {
     public setUser(login: string) {
         const currentUser = {
@@ -7,5 +9,10 @@ export class UserAuthService {
         };
 
         localStorage.setItem('user', JSON.stringify(currentUser));
+    }
+
+    public isUserAuthenticated() {
+        const currentUser = localStorage.getItem('user');
+        return !!currentUser;
     }
 }
