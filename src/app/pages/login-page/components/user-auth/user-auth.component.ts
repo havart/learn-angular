@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { UserAuthService } from '../../../../services/user-auth.service';
 import { Router } from '@angular/router';
 import { LoginFormControlEnum } from '../user-auth/form-controls-enum';
+import { RoutingPathEnum } from '../../../../app-routing-enum';
 
 @Component({
     selector: 'login-app',
@@ -23,7 +24,7 @@ export class UserAuthComponent implements OnInit {
         const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
         if (userLogin) {
             this.userAuthService.setUser(userLogin);
-            this.router.navigateByUrl('/start');
+            this.router.navigate([RoutingPathEnum.START]);
         }
     }
 

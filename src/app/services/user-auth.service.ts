@@ -1,5 +1,3 @@
-import { Observable, Subject } from 'rxjs';
-
 export class UserAuthService {
     public setUser(login: string) {
         const currentUser = {
