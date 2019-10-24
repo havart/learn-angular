@@ -1,15 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { MatButtonModule, MatCardModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { StartPageComponent } from './pages/start-page/start-page.component';
 import { LoginPageModule } from './pages/login-page/login-page.module';
 import { UserAuthService } from './services/user-auth.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, LoginPageModule],
+    declarations: [AppComponent, StartPageComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatCardModule,
+        LoginPageModule
+    ],
     providers: [UserAuthService],
     bootstrap: [AppComponent],
 })
