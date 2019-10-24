@@ -4,9 +4,10 @@ import { MatButtonModule, MatCardModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { StartPageComponent } from './pages/start-page/start-page.component';
+import { LoginPageModule } from './pages/login-page/login-page.module';
+import { UserAuthService } from './services/user-auth.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [AppComponent, StartPageComponent],
@@ -17,8 +18,9 @@ import { StartPageComponent } from './pages/start-page/start-page.component';
         HttpClientModule,
         MatButtonModule,
         MatCardModule,
+        LoginPageModule
     ],
-    providers: [],
+    providers: [UserAuthService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

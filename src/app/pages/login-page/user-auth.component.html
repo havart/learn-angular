@@ -1,0 +1,36 @@
+<div class="container">
+    <mat-card class="form-wrapper">
+        <mat-card-title class="form-title">
+            Вход для пользователя
+        </mat-card-title>
+        <form [formGroup]="loginForm" class="login-form">
+            <mat-form-field class="input-full-width">
+                <mat-label>
+                    Логин:
+                </mat-label>
+                <input [formControlName]="loginFormControlEnum.LOGIN" matInput class="form-control" />
+                <mat-error *ngIf="loginForm.controls[loginFormControlEnum.LOGIN].errors?.required">
+                    Поле обязательное к заполнению
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-full-width">
+                <mat-label>
+                    Пароль:
+                </mat-label>
+                <input [formControlName]="loginFormControlEnum.PASSWORD" class="form-control" matInput />
+                <mat-error *ngIf="loginForm.controls[loginFormControlEnum.PASSWORD].errors?.required">
+                    Поле обязательное к заполнению
+                </mat-error>
+            </mat-form-field>
+            <button
+                [disabled]="loginForm.invalid"
+                (click)="submitForm()"
+                class="submit-btn"
+                color="primary"
+                mat-raised-button
+            >
+                Отправить
+            </button>
+        </form>
+    </mat-card>
+</div>
