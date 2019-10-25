@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-
 export class UserAuthService {
     public setUser(login: string) {
         const currentUser = {
@@ -13,6 +11,7 @@ export class UserAuthService {
 
     public checkUser(): boolean {
         const currentUser: string = localStorage.getItem('user');
+
         return !!currentUser;
     }
 }
