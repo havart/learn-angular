@@ -10,8 +10,10 @@ export class UserAuthGuard implements CanActivate {
     public canActivate(): boolean {
         if (!this.userAuthService.isUserAuthenticated()) {
             this.router.navigate([RoutingPathEnum.LOGIN]);
+
             return false;
         }
+        
         return true;
     }
 }

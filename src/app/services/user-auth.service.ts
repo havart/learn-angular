@@ -11,6 +11,7 @@ export class UserAuthService {
 
     public isUserAuthenticated() {
         const currentUser = localStorage.getItem('user');
+        
         return !!currentUser;
     }
 }

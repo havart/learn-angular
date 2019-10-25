@@ -6,7 +6,7 @@ import { LoginFormControlEnum } from '../user-auth/form-controls-enum';
 import { RoutingPathEnum } from '../../../../app-routing-enum';
 
 @Component({
-    selector: 'login-app',
+    selector: 'app-login',
     templateUrl: './user-auth.component.html',
     styleUrls: ['./user-auth.component.scss'],
 })
@@ -22,6 +22,7 @@ export class UserAuthComponent implements OnInit {
 
     public submitForm() {
         const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
+
         if (userLogin) {
             this.userAuthService.setUser(userLogin);
             this.router.navigate([RoutingPathEnum.START]);
