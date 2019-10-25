@@ -23,6 +23,7 @@ export class UserAuthComponent implements OnInit {
 
     public submitForm() {
         const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
+
         if (userLogin) {
             this.userAuthService.setUser(userLogin);
             this.router.navigate([`${RouterEnum.START_PAGE}`]);
