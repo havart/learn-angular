@@ -8,6 +8,7 @@ import { StartPageComponent } from './pages/start-page/start-page.component';
 import { LoginPageModule } from './pages/login-page/login-page.module';
 import { UserAuthService } from './services/user-auth.service';
 import { AppComponent } from './app.component';
+import { UserAuthGuard } from './guards/auth-guard';
 
 @NgModule({
     declarations: [AppComponent, StartPageComponent],
@@ -18,9 +19,9 @@ import { AppComponent } from './app.component';
         HttpClientModule,
         MatButtonModule,
         MatCardModule,
-        LoginPageModule
+        LoginPageModule,
     ],
-    providers: [UserAuthService],
+    providers: [UserAuthService, UserAuthGuard],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 
-import { UserAuthComponent } from './user-auth.component';
+import { UserAuthComponent } from './components/user-auth/user-auth.component';
 
 @NgModule({
     declarations: [UserAuthComponent],

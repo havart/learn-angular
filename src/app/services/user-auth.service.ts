@@ -8,4 +8,10 @@ export class UserAuthService {
 
         localStorage.setItem('user', JSON.stringify(currentUser));
     }
+
+    public isUserAuthenticated() {
+        const currentUser = localStorage.getItem('user');
+        
+        return !!currentUser;
+    }
 }
