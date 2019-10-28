@@ -26,7 +26,7 @@ export class UserAuthComponent implements OnInit {
 
         if (userLogin) {
             this.userAuthService.setUser(userLogin);
-            this.router.navigate([`${RouterEnum.START_PAGE}`]);
+            this.router.navigate([RouterEnum.START_PAGE]);
         }
     }
 
