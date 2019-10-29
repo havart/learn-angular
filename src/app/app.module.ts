@@ -9,9 +9,11 @@ import { LoginPageModule } from './pages/login-page/login-page.module';
 import { UserAuthService } from './services/user-auth.service';
 import { AppComponent } from './app.component';
 import { UserAuthGuard } from './guards/auth-guard';
+import { ClientDetailComponent } from './components/client/client-detail.component';
+import { ConnectionService } from './services/connection.service';
 
 @NgModule({
-    declarations: [AppComponent, StartPageComponent],
+    declarations: [AppComponent, StartPageComponent, ClientDetailComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -21,7 +23,7 @@ import { UserAuthGuard } from './guards/auth-guard';
         MatCardModule,
         LoginPageModule,
     ],
-    providers: [UserAuthService, UserAuthGuard],
+    providers: [UserAuthService, ConnectionService, UserAuthGuard],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="client-data">
+        <div class="session-data">
+            <span class="time-data">{{ user.createdAt | date: 'hh:mm a' }}(+1)</span>
+            <span class="session-id">{{ user.session }}</span>
+            <span class="date-data">1 сессия с {{ user.createdAt | date: 'dd.MM.yy'}}</span>
+        </div>
+        <div class="client-detail">
+            <div class="client-name"> 
+                <span>{{ user.firstName }}</span>
+                <span>{{ user.lastName}}</span>
+            </div>
+            <span class="client-age">24 года</span>
+            <div class="client-adress">
+            <span >{{ user.city }}</span>
+            <span >{{ user.address }}</span>
+           </div>
+            <div class="client-status">Квалифицированный сотрудник</div>
+        </div>
+        <div >
+            <img src="{{user.avatar}}" class="client-image">
+        </div>
+    </div>
+</div>
