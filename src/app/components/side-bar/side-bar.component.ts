@@ -9,9 +9,9 @@ import { StepInterface } from '../../interfaces/step.interface';
     styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent implements OnInit {
-    constructor(private getStepService: GetStepService) {}
-
     public stepsList$: Observable<StepInterface[]>;
+
+    constructor(private getStepService: GetStepService) {}
 
     ngOnInit(): void {
         this.stepsList$ = this.getStepService.getStep$();
