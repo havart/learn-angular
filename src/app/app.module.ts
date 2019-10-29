@@ -3,6 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainModule } from './pages/main-page/main.module';
 import { NgModule } from '@angular/core';
 import { StartPageComponent } from './pages/start-page/start-page.component';
 import { LoginPageModule } from './pages/login-page/login-page.module';
@@ -20,6 +21,7 @@ import { UserAuthGuard } from './guards/auth-guard';
         MatButtonModule,
         MatCardModule,
         LoginPageModule,
+        MainModule,
     ],
     providers: [UserAuthService, UserAuthGuard],
     bootstrap: [AppComponent],

@@ -13,7 +13,7 @@ export class UserAuthGuard implements CanActivate {
 
             return false;
         }
-        
+
         return true;
     }
 }

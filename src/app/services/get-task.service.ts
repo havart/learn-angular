@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { urlGetTaskConst } from '../configs/url-get-task.const';
+import { urlGetConst } from '../configs/url-get.const';
 import { Observable } from 'rxjs';
 import { ClientInterface } from '../interfaces/client.interface';
 
@@ -11,6 +11,6 @@ export class GetTaskService {
     constructor(private http: HttpClient) {}
 
     getClient$(id: number): Observable<ClientInterface> {
-        return this.http.get<ClientInterface>(urlGetTaskConst + id);
+        return this.http.get<ClientInterface>(urlGetConst + id);
     }
 }
