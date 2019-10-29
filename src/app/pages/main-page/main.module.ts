@@ -6,7 +6,13 @@ import { MatButtonModule, MatSidenavModule, MatListModule, MatToolbarModule } fr
 
 @NgModule({
     declarations: [MainLayoutComponent, SideBarComponent],
-    imports: [CommonModule, MatSidenavModule, MatListModule, MatButtonModule, MatToolbarModule],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        MatToolbarModule
+    ],
     exports: [CommonModule, MainLayoutComponent, SideBarComponent],
     providers: [],
 })
