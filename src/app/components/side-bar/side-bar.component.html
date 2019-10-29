@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened>
+    <mat-sidenav opened mode="side">
         <mat-list class="list-item">
             <mat-list-item *ngFor="let step of stepsList$ | async; let idx = index"
                 >{{ idx + 1 }}. {{ step.name }}
