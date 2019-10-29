@@ -13,12 +13,11 @@ export class UserComponent implements OnInit {
 
     constructor(private userAuthService: UserAuthService, private router: Router) {}
 
-    ngOnInit(): void {
-        const currentUser = this.userAuthService.getUser();
-        this.user = currentUser;
+    ngOnInit() {
+        this.user = this.userAuthService.getUser();
     }
 
-    logOut() {
+    logOut(): void {
         this.userAuthService.clearUserData();
         this.router.navigate([RoutingPathEnum.LOGIN]);
     }

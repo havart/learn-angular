@@ -9,17 +9,17 @@ export class UserAuthService {
         localStorage.setItem('user', JSON.stringify(currentUser));
     }
 
-    public getUser() {
+    public getUser(): string {
         const currentUser = localStorage.getItem('user');
 
         return JSON.parse(currentUser).authData.userName;
     }
 
-    public clearUserData() {
+    public clearUserData(): void {
         localStorage.clear();
     }
 
-    public isUserAuthenticated() {
+    public isUserAuthenticated(): boolean {
         const currentUser = localStorage.getItem('user');
 
         return !!currentUser;
