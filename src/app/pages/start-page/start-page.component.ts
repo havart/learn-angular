@@ -10,16 +10,15 @@ import { ClientInterface } from '../../interfaces/client.interface';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private getTaskService: GetTaskService) {}
+    constructor(private readonly getTaskService: GetTaskService) {}
 
-    getTask() {
+    getTask(): void  {
         const id = getRandomIdHelper(1, 20);
+
         this.getTaskService.getClient$(id).subscribe(
-            (client: ClientInterface) => {
-                console.log(client);
+            (_client: ClientInterface) => {
             },
-            (error: HttpErrorResponse) => {
-                console.log(`No data found with id=${id}.`, error);
+            (_error: HttpErrorResponse) => {
             },
         );
     }

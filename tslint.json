@@ -9,6 +9,7 @@
         "exclude": ["**/*.d.ts", "*.d.ts", "**/*.assets.ts", "*.assets.ts", "utils/*"]
     },
     "rules": {
+        "no-floating-promises": false,
         "angular-whitespace": false,
         "ban": [true, "as", "fit", "fdescribe"],
         "class-name": false,
