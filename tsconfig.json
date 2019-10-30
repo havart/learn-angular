@@ -14,9 +14,6 @@
     ],
     "types": [
       "node",
-      "jquery",
-      "jest",
-      "mocha",
       "jasmine"
     ],
     "lib": [
