@@ -1,0 +1,60 @@
+.wrapper {
+    height: 170px;
+    background-color: rgb(63, 61, 61);
+    font-family: sans-serif;
+    color: rgb(160, 160, 138);
+}
+
+.session-data {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.client-data {
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.client-detail {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 550px;
+    margin-bottom: 10px;
+}
+
+.client-name {
+    text-transform: uppercase;
+    width: 600px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: rgb(243, 241, 236);
+}
+
+.client-name span {
+    padding-left: 10px;
+}
+.client-status {
+    width: 200px;
+    text-align: center;
+    background-color:  rgb(160, 160, 138);
+    border-radius: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: rgb(243, 241, 236);
+}
+
+.client-image {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 40%;
+}

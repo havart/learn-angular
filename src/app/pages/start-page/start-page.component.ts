@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { GetTaskService } from '../../services/get-task.service';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
     selector: 'app-start-page',
@@ -10,16 +11,19 @@ import { ClientInterface } from '../../interfaces/client.interface';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private readonly getTaskService: GetTaskService) {}
+    constructor(
+        private readonly getTaskService: GetTaskService,
+        private readonly connectionService: ConnectionService,
+    ) {}
 
-    getTask(): void  {
+    getTask(): void {
         const id = getRandomIdHelper(1, 20);
 
         this.getTaskService.getClient$(id).subscribe(
             (_client: ClientInterface) => {
+                this.connectionService.setClient(_client);
             },
-            (_error: HttpErrorResponse) => {
-            },
+            (_error: HttpErrorResponse) => {},
         );
     }
 }
