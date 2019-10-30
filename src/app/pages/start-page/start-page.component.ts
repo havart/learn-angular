@@ -5,6 +5,7 @@ import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
 import { Router } from '@angular/router';
 import { RoutingPathEnum } from '../../app-routing-enum';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
     selector: 'app-start-page',
@@ -12,17 +13,20 @@ import { RoutingPathEnum } from '../../app-routing-enum';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private getTaskService: GetTaskService, private router: Router) {}
+    constructor(
+        private readonly getTaskService: GetTaskService,
+        private readonly connectionService: ConnectionService,
+        private readonly router: Router,
+    ) {}
 
     getTask(): void {
-        const id = getRandomIdHelper(1, 10);
+        const id = getRandomIdHelper(1, 20);
+
         this.getTaskService.getClient$(id).subscribe(
-            (client: ClientInterface) => {
-                console.log(client);
+            (_client: ClientInterface) => {
+                this.connectionService.setClient(_client);
             },
-            (error: HttpErrorResponse) => {
-                console.log(`No data found with id=${id}.`, error);
-            },
+            (_error: HttpErrorResponse) => {},
         );
 
         this.router.navigate([RoutingPathEnum.MAIN]);

@@ -1,5 +1,5 @@
 export class UserAuthService {
-    public setUser(login: string) {
+    public setUser(login: string): void {
         const currentUser = {
             authData: {
                 userName: `${login}`,
