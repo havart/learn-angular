@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { RoutingPathEnum } from './app-routing-enum';
 import { UserAuthComponent } from './pages/login-page/components/user-auth/user-auth.component';
 import { StartPageComponent } from './pages/start-page/start-page.component';
