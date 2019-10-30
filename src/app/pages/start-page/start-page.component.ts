@@ -14,7 +14,7 @@ import { RoutingPathEnum } from '../../app-routing-enum';
 export class StartPageComponent {
     constructor(private getTaskService: GetTaskService, private router: Router) {}
 
-    getTask() {
+    getTask(): void {
         const id = getRandomIdHelper(1, 20);
 
         this.getTaskService.getClient$(id).subscribe(

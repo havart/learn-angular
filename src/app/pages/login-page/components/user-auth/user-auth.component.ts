@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserAuthService } from '../../../../services/user-auth.service';
 import { Router } from '@angular/router';
-import { LoginFormControlEnum } from '../user-auth/form-controls-enum';
+import { LoginFormControlEnum } from './form-controls-enum';
 import { RoutingPathEnum } from '../../../../app-routing-enum';
 
 @Component({
@@ -20,7 +20,7 @@ export class UserAuthComponent implements OnInit {
         this.initLoginForm();
     }
 
-    public submitForm() {
+    public submitForm(): void {
         const userLogin: string = this.loginForm.get(this.loginFormControlEnum.LOGIN).value;
 
         if (userLogin) {
@@ -29,7 +29,7 @@ export class UserAuthComponent implements OnInit {
         }
     }
 
-    private initLoginForm() {
+    private initLoginForm(): void {
         this.loginForm = this.formBuilder.group({
             [this.loginFormControlEnum.LOGIN]: ['', [Validators.required]],
             [this.loginFormControlEnum.PASSWORD]: ['', [Validators.required]],
