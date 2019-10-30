@@ -5,5 +5,4 @@
         "types": []
     },
     "exclude": ["src/test.ts", "**/*.spec.ts"],
-    "include": ["src", "custom-typings.d.ts"]
 }

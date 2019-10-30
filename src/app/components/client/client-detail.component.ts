@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { getClientAge } from '../../helpers/get-client-age.helper';
+import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { ClientInterface } from 'src/app/interfaces/client.interface';
 
@@ -8,16 +7,14 @@ import { ClientInterface } from 'src/app/interfaces/client.interface';
     templateUrl: './client-detail.component.html',
     styleUrls: ['./client-detail.component.scss'],
 })
-export class ClientDetailComponent {
+export class ClientDetailComponent implements OnInit {
     public time = Date.now();
     public user: ClientInterface;
-    constructor(private connectionService: ConnectionService) {}
+    constructor(private readonly connectionService: ConnectionService) {}
 
     ngOnInit(): void {
-        this.connectionService.currentСlient.subscribe(
-            (currentClient: ClientInterface) => {
+        this.connectionService.getClient$().subscribe((currentClient: ClientInterface) => {
             this.user = currentClient;
-            console.log(this.user)
-            });
+        });
     }
 }
