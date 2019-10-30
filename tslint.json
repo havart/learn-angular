@@ -1,6 +1,10 @@
 {
-    "rulesDirectory": [],
-    "extends": ["./configurations/tslint/base.tslint.json"],
+    "rulesDirectory": [
+        "codelyzer",
+        "tslint-lines-between-decorator-and-class",
+        "tslint-lines-between-class-members"
+    ],
+    "extends": ["angular-tslint-rules", "tslint-consistent-codestyle", "rxjs-tslint-rules", "tslint-eslint-rules"],
     "linterOptions": {
         "exclude": ["**/*.d.ts", "*.d.ts", "**/*.assets.ts", "*.assets.ts", "utils/*"]
     },
@@ -17,7 +21,7 @@
         "max-line-length": [
             true,
             {
-                "limit": 160,
+                "limit": 120,
                 "ignore-pattern": "^import |^export {(.*?)}"
             }
         ],
