@@ -1,5 +1,5 @@
 export class UserAuthService {
-    public setUser(login: string) {
+    public setUser(login: string): void {
         const currentUser = {
             authData: {
                 userName: `${login}`,
@@ -9,9 +9,9 @@ export class UserAuthService {
         localStorage.setItem('user', JSON.stringify(currentUser));
     }
 
-    public isUserAuthenticated() {
+    public isUserAuthenticated(): boolean {
         const currentUser = localStorage.getItem('user');
-        
+
         return !!currentUser;
     }
 }

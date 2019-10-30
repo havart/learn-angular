@@ -3,7 +3,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { GetTaskService } from '../../services/get-task.service';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
-import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
     selector: 'app-start-page',
@@ -11,18 +10,16 @@ import { ConnectionService } from 'src/app/services/connection.service';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private getTaskService: GetTaskService, private connectionService: ConnectionService) {}
+    constructor(private readonly getTaskService: GetTaskService) {}
 
-    getTask() {
-        const id = getRandomIdHelper(1, 10);
+    getTask(): void  {
+        const id = getRandomIdHelper(1, 20);
+
         this.getTaskService.getClient$(id).subscribe(
-            (client: ClientInterface) => {
-                this.connectionService.setClient(client);
+            (_client: ClientInterface) => {
             },
-            (error: HttpErrorResponse) => {
-                console.log(`No data found with id=${id}.`, error);
+            (_error: HttpErrorResponse) => {
             },
         );
-
     }
 }
