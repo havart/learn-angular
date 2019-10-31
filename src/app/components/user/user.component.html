@@ -1,0 +1,17 @@
+<div class="user-info">
+    <div class="user-image"></div>
+    <div class="user-data">
+        <span>{{ user }}</span>
+    </div>
+    <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button (click)="logOut()" mat-menu-item>
+            <span>Выход</span>
+        </button>
+    </mat-menu>
+    <div class="user-status">
+        <span>В сети</span>
+    </div>
+</div>
