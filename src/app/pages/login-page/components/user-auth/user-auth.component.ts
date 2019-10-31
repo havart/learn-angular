@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserAuthService } from '../../../../services/user-auth.service';
 import { Router } from '@angular/router';
-import { LoginFormControlEnum } from '../user-auth/form-controls-enum';
+import { LoginFormControlEnum } from './form-controls-enum';
 import { RoutingPathEnum } from '../../../../app-routing-enum';
 
 @Component({
