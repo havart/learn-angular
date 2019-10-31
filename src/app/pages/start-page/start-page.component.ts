@@ -20,7 +20,7 @@ export class StartPageComponent {
     ) {}
 
     getTask(): void {
-        const id = getRandomIdHelper(1, 20);
+        const id = getRandomIdHelper(1, 10);
 
         this.getTaskService.getClient$(id).subscribe(
             (_client: ClientInterface) => {

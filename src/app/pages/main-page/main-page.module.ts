@@ -6,9 +6,10 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ToolbarModule } from 'src/app/components/toolbar/toolbar.module';
 import { ClientDetailComponent } from 'src/app/components/client/client-detail.component';
 import { AgeTransformPipe } from 'src/app/pipes/age-transform.pipe';
+import { SideBarComponent } from 'src/app/components/side-bar/side-bar.component';
 
 @NgModule({
-    declarations: [MainLayoutComponent, ClientDetailComponent, AgeTransformPipe],
+    declarations: [MainLayoutComponent, ClientDetailComponent, AgeTransformPipe, SideBarComponent],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule],
     exports: [CommonModule, MainLayoutComponent, MaterialModule, ToolbarModule],
     providers: [],

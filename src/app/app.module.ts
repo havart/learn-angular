@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainModule } from './pages/main-page/main.module';
 import { NgModule } from '@angular/core';
 import { LoginPageModule } from './pages/login-page/login-page.module';
 import { UserAuthService } from './services/user-auth.service';
