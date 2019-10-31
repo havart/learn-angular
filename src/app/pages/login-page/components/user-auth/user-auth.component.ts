@@ -14,9 +14,13 @@ export class UserAuthComponent implements OnInit {
     public loginForm: FormGroup;
     loginFormControlEnum: typeof LoginFormControlEnum = LoginFormControlEnum;
 
-    constructor(private formBuilder: FormBuilder, private userAuthService: UserAuthService, private router: Router) {}
+    constructor(
+        private readonly formBuilder: FormBuilder,
+        private readonly userAuthService: UserAuthService,
+        private readonly router: Router,
+    ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.initLoginForm();
     }
 

@@ -5,7 +5,7 @@ import { RoutingPathEnum } from '../app-routing-enum';
 
 @Injectable()
 export class UserAuthGuard implements CanActivate {
-    constructor(public userAuthService: UserAuthService, public router: Router) {}
+    constructor(private readonly userAuthService: UserAuthService, private readonly router: Router) {}
 
     public canActivate(): boolean {
         if (!this.userAuthService.isUserAuthenticated()) {

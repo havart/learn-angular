@@ -12,19 +12,17 @@ import { RoutingPathEnum } from '../../app-routing-enum';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private getTaskService: GetTaskService, private router: Router) {}
+    constructor(private readonly getTaskService: GetTaskService, private readonly router: Router) {}
 
     getTask(): void {
         const id = getRandomIdHelper(1, 20);
 
         this.getTaskService.getClient$(id).subscribe(
-            (client: ClientInterface) => {
-                console.log(client);
-                this.router.navigate([RoutingPathEnum.MAIN]);
-            },
-            (error: HttpErrorResponse) => {
-                console.log(`No data found with id=${id}.`, error);
-            },
+            (client: ClientInterface) => client,
+
+            (error: HttpErrorResponse) => error,
         );
+
+        this.router.navigate([RoutingPathEnum.MAIN]);
     }
 }

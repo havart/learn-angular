@@ -1,6 +1,7 @@
 {
     "extends": "../tslint.json",
     "rules": {
+        "no-floating-promises": false,
         "attributes-order": true,
         "adjacent-overload-signatures": true,
         "align": [true, "parameters", "statements"],

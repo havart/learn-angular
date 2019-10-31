@@ -11,7 +11,7 @@ import { StepInterface } from '../../interfaces/step.interface';
 export class SideBarComponent implements OnInit {
     public stepsList$: Observable<StepInterface[]>;
 
-    constructor(private getStepService: GetStepService) {}
+    constructor(private readonly getStepService: GetStepService) {}
 
     ngOnInit(): void {
         this.stepsList$ = this.getStepService.getStep$();
