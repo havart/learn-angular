@@ -3,6 +3,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { GetTaskService } from '../../services/get-task.service';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
+import { Router } from '@angular/router';
+import { RoutingPathEnum } from '../../app-routing-enum';
 import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
@@ -14,6 +16,7 @@ export class StartPageComponent {
     constructor(
         private readonly getTaskService: GetTaskService,
         private readonly connectionService: ConnectionService,
+        private readonly router: Router,
     ) {}
 
     getTask(): void {
@@ -25,5 +28,7 @@ export class StartPageComponent {
             },
             (_error: HttpErrorResponse) => {},
         );
+
+        this.router.navigate([RoutingPathEnum.MAIN]);
     }
 }
