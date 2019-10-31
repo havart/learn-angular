@@ -11,7 +11,7 @@ import { MatButtonModule, MatSidenavModule, MatListModule, MatToolbarModule } fr
         MatSidenavModule,
         MatListModule,
         MatButtonModule,
-        MatToolbarModule
+        MatToolbarModule,
     ],
     exports: [CommonModule, MainLayoutComponent, SideBarComponent],
     providers: [],
