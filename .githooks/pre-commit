@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# exit immediately if any command fails
+set -e
+
+# set indent function
+indent() { sed '/^\s*$/d; s/^/   /'; }
+
+# navigate to top level
+cd "$(git rev-parse --show-toplevel)"
+
+# lint check
+echo "TypeScript lint check..."
+# lint command
+TSLINT="$(git rev-parse --show-toplevel)/node_modules/tslint/bin/tslint -s tslint/formatters --project tsconfig.json"
+
+# get committing TS file list
+FILES=""
+for file in $(git diff --cached --name-only | grep -E '\.ts$')
+do
+    FILES="$FILES $file "
+done
+
+# lint check any typescript files
+if [ "$FILES" = "" ]; then
+    echo "No files to check" | indent
+    echo
+else
+    eval $(echo $TSLINT $FILES) | indent
+    if [ "$PIPESTATUS" = "0" ]; then
+        echo "Lint tests passed" | indent
+        echo
+    else
+        echo "Lint tests failed" | indent
+        echo
+        exit 1
+    fi
+fi
+
+# all done
+echo "Done 👍"
