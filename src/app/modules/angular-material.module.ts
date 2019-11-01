@@ -7,37 +7,28 @@ import {
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSnackBarModule,
 } from '@angular/material';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+const MODULES = [
+    MatInputModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSnackBarModule,
+];
 
 @NgModule({
     declarations: [],
-    imports: [
-        MatInputModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatSnackBarModule,
-    ],
-    exports: [
-        MatInputModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatMenuModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatSnackBarModule,
-    ],
+    imports: MODULES,
+    exports: MODULES,
     providers: [],
 })
 export class MaterialModule {}
