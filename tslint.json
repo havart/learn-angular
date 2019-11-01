@@ -1,6 +1,6 @@
 {
     "rulesDirectory": [
-        "codelyzer",
+        "node_modules/codelyzer",
         "node_modules/tslint-lines-between-decorator-and-class",
         "node_modules/tslint-lines-between-class-members"
     ],

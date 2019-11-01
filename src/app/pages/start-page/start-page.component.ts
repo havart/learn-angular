@@ -6,6 +6,7 @@ import { ClientInterface } from '../../interfaces/client.interface';
 import { Router } from '@angular/router';
 import { RoutingPathEnum } from '../../app-routing-enum';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { ErrorSnackBarService } from '../../services/error-snack-bar.service';
 
 @Component({
     selector: 'app-start-page',
@@ -17,6 +18,7 @@ export class StartPageComponent {
         private readonly getTaskService: GetTaskService,
         private readonly connectionService: ConnectionService,
         private readonly router: Router,
+        private readonly errorSnackBarService: ErrorSnackBarService,
     ) {}
 
     getTask(): void {
@@ -25,10 +27,12 @@ export class StartPageComponent {
         this.getTaskService.getClient$(id).subscribe(
             (_client: ClientInterface) => {
                 this.connectionService.setClient(_client);
+                this.router.navigate([RoutingPathEnum.MAIN]);
             },
-            (_error: HttpErrorResponse) => {},
+            (_error: HttpErrorResponse) => {
+                this.errorSnackBarService.openSnackBarError(_error.message);
+                this.router.navigate([RoutingPathEnum.START]);
+            },
         );
-
-        this.router.navigate([RoutingPathEnum.MAIN]);
     }
 }

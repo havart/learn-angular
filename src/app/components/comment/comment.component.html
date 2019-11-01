@@ -1,0 +1,21 @@
+<mat-sidenav opened mode="side">
+    <mat-form-field class="comment-input-box" appearance="outline" color="warn">
+        <img matSuffix class="input-icon" src="../../../assets/icon/message.svg" alt=""/>
+      <label>
+        <input matInput type="text" placeholder="Введите комментарий"/>
+      </label>
+    </mat-form-field>
+    <div class="comment-list">
+        <mat-card *ngFor="let comment of commentsList$ | async" class="comment-card">
+            <mat-card-title-group>
+                <mat-card-title>Сообщение от {{ comment.name }}</mat-card-title>
+                <mat-card-subtitle>{{ comment.createdAt | date }}</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+                <p>
+                    {{ comment.comment }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</mat-sidenav>
