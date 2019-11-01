@@ -1,6 +1,8 @@
 .example-container {
-    width: 450px;
     height: 100%;
+    -webkit-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .side-button {
@@ -19,8 +21,5 @@ mat-sidenav-container {
 
 mat-sidenav {
     flex: 1;
-    width: 300px;
-    -webkit-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
+    width: 250px;
 }
