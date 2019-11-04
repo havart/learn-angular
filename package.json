@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "npm run init-hooks",
+    "postinstall": "ng build --oat --prod",
     "execute:hooks-folder": "git config core.hooksPath .githooks",
     "execute:prepare-commit-msg": "shx chmod +x .githooks/prepare-commit-msg",
     "execute:pre-commit": "shx chmod +x .githooks/pre-commit",
@@ -34,6 +34,7 @@
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/router": "^7.2.15",
     "core-js": "^2.6.10",
+    "express": "^4.17.1",
     "hammerjs": "^2.0.8",
     "jshint": "^2.10.2",
     "lint-staged": "^9.4.2",
@@ -71,5 +72,9 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "~3.2.2"
+  },
+  "engines": {
+    "node": "~10.15.2",
+    "npm": "~6.8.0"
   }
 }
