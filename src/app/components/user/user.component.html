@@ -1,17 +1,21 @@
 <div class="user-info">
-    <div class="user-image"></div>
+    <div class="user-image">
+        <img mat-card-image src="../../../assets/img/woman (1).png" alt="" />
+    </div>
     <div class="user-data">
-        <span>{{ user }}</span>
-    </div>
-    <button [matMenuTriggerFor]="menu" mat-icon-button>
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button (click)="logOut()" mat-menu-item>
-            <span>Выход</span>
+        <div class="user-name">
+            <span>{{ user }}</span>
+        </div>
+        <button [matMenuTriggerFor]="menu" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
         </button>
-    </mat-menu>
-    <div class="user-status">
-        <span>В сети</span>
-    </div>
+        <mat-menu #menu="matMenu">
+            <button (click)="logOut()" mat-menu-item>
+                <span>Выход</span>
+            </button>
+        </mat-menu>
+        <div class="user-status">
+            <span>В сети</span>
+        </div>
+    </div> 
 </div>
