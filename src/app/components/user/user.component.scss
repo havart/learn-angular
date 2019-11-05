@@ -18,12 +18,11 @@
 }
 
 .user-data {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  height: 45px;
-  width: 150px;
-
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 45px;
+    width: 150px;
 }
 
 .user-name {
@@ -33,7 +32,7 @@
     line-height: 25px;
 }
 
-.user-status { 
+.user-status {
     width: 150px;
     padding-left: 10px;
     font-size: 10px;
@@ -50,6 +49,7 @@
     width: 30px;
     height: 30px;
     margin: 0 auto;
+    margin-top: 2px;
     padding-top: 4px;
 }
 

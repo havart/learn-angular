@@ -1,5 +1,5 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav opened mode="side">
+<mat-drawer-container class="example-container">
+    <mat-drawer opened mode="side">
         <mat-list class="list-item">
             <mat-list-item *ngFor="let step of stepsList$ | async; let idx = index"
                 >{{ idx + 1 }}. {{ step.name }}
@@ -8,5 +8,5 @@
         <div class="side-button">
             <button mat-raised-button color="primary">Завершить сессию</button>
         </div>
-    </mat-sidenav>
-</mat-sidenav-container>
+    </mat-drawer>
+</mat-drawer-container>
