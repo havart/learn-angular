@@ -8,9 +8,9 @@ import { ClientInterface } from '../interfaces/client.interface';
     providedIn: 'root',
 })
 export class GetTaskService {
-    constructor(private http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
 
     getClient$(id: number): Observable<ClientInterface> {
-        return this.http.get<ClientInterface>(urlGetUser + id);
+        return this.http.get<ClientInterface>(`${urlGetUser}/${id}`);
     }
 }
