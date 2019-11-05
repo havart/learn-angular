@@ -69,7 +69,7 @@
         "no-var-keyword": true,
         "no-conditional-assignment": true,
         "no-sparse-arrays": true,
-        "no-inferrable-types": false,
+        "no-inferrable-types": true,
         "no-internal-module": true,
         "no-unnecessary-type-assertion": true,
         "no-collapsible-if": true,
