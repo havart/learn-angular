@@ -1,8 +1,5 @@
 .example-container {
     height: 100%;
-    -webkit-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .side-button {
@@ -13,6 +10,10 @@
 
 .list-item .mat-list-item {
     height: 24px;
+}
+
+.mat-drawer-side {
+  border-right: solid 1px rgba(0,0,0,.50);
 }
 
 mat-sidenav-container {
