@@ -33,7 +33,7 @@
     line-height: 25px;
 }
 
-.user-status { 
+.user-status {
     width: 150px;
     padding-left: 10px;
     font-size: 10px;
@@ -56,4 +56,8 @@
 .mat-icon-button {
     width: 30px;
     height: 30px;
+}
+
+.mat-card-image:first-child {
+  margin-top: 0;
 }
