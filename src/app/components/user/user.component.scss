@@ -5,7 +5,7 @@
     align-self: flex-end;
     flex-wrap: wrap;
     width: 200px;
-    height: 55px;
+    height: 50px;
     font-size: 15px;
 }
 
@@ -18,12 +18,11 @@
 }
 
 .user-data {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  height: 45px;
-  width: 150px;
-
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 45px;
+    width: 150px;
 }
 
 .user-name {
@@ -33,7 +32,7 @@
     line-height: 25px;
 }
 
-.user-status { 
+.user-status {
     width: 150px;
     padding-left: 10px;
     font-size: 10px;
@@ -41,11 +40,20 @@
     color: #c7c3c3;
 }
 
+.user-status span {
+    display: block;
+    width: 50px;
+    text-align: center;
+    background-color: rgb(63, 156, 63);
+    border-radius: 5px;
+    color: #f5f5f5;
+}
+
 .mat-menu-item {
     padding: 0 30px;
 }
 
-.mat-card-image {
+.mat-card-image:first-child {
     display: block;
     width: 30px;
     height: 30px;

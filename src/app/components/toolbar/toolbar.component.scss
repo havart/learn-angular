@@ -1,8 +1,7 @@
 .toolbar-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;  
-    height: 50px;
+    align-items: center;
+    min-height: 50px;
     padding: 0 10px;
 }
-
