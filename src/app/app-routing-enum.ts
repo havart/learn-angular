@@ -3,3 +3,11 @@ export enum RoutingPathEnum {
     START = 'start',
     MAIN = 'main',
 }
+
+export enum ChildRoutingEnum {
+    ADDRESS = 'address',
+    IDENTIFICATION = 'identification',
+    ACTIVITY = 'activity',
+    CONTACTS = 'contacts',
+    ORDER_HISTORY = 'orders',
+}
