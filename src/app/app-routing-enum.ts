@@ -1,7 +1,7 @@
 export enum RoutingPathEnum {
     LOGIN = 'login',
     START = 'start',
-    MAIN = 'main',
+    MAIN = 'main/client',
 }
 
 export enum ChildRoutingEnum {

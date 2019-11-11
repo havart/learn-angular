@@ -10,7 +10,7 @@ import { ClientOrderHistoryComponent } from 'src/app/components/client-order-his
 
 const routes: Routes = [
     {
-        path: '',
+        path: ':id',
         component: MainLayoutComponent,
         children: [
             { path: ChildRoutingEnum.ADDRESS, component: ClientAddressComponent },

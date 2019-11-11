@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectionService } from 'src/app/services/connection.service';
 import { ClientInterface } from 'src/app/interfaces/client.interface';
+import { ActivatedRoute } from '@angular/router';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
     selector: 'app-client',
@@ -10,11 +11,15 @@ import { ClientInterface } from 'src/app/interfaces/client.interface';
 export class ClientComponent implements OnInit {
     public time = Date.now();
     public user: ClientInterface;
-    constructor(private readonly connectionService: ConnectionService) {}
+
+    constructor(private readonly route: ActivatedRoute, private readonly clientService: ClientService) {}
 
     ngOnInit(): void {
-        this.connectionService.client$.subscribe((currentClient: ClientInterface) => {
+        const id = this.route.snapshot.params.id;
+        this.clientService.client$(id).subscribe((currentClient: ClientInterface) => {
             this.user = currentClient;
         });
+
+        this.clientService._clientId$.getValue();
     }
 }
