@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { GetTaskService } from '../../services/get-task.service';
+import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
 import { Router } from '@angular/router';
 import { RoutingPathEnum } from '../../app-routing-enum';
+import { ConnectionService } from 'src/app/services/connection.service';
 import { ErrorSnackBarService } from '../../services/error-snack-bar.service';
-import { ClientService } from 'src/app/services/client.service';
-import { getRandomIdHelper } from 'src/app/helpers/get-random-id.helper';
 
 @Component({
     selector: 'app-start-page',
@@ -14,18 +15,19 @@ import { getRandomIdHelper } from 'src/app/helpers/get-random-id.helper';
 })
 export class StartPageComponent {
     constructor(
-        private readonly clientService: ClientService,
+        private readonly getTaskService: GetTaskService,
+        private readonly connectionService: ConnectionService,
         private readonly router: Router,
         private readonly errorSnackBarService: ErrorSnackBarService,
     ) {}
 
     getTask(): void {
         const id = getRandomIdHelper(1, 10);
-        this.clientService.client$(id).subscribe(
+
+        this.getTaskService.getClient$(id).subscribe(
             (_client: ClientInterface) => {
-                if (_client) {
-                    this.router.navigate([RoutingPathEnum.MAIN, `${id}`]);
-                }
+                this.connectionService.setClient(_client);
+                this.router.navigate([RoutingPathEnum.MAIN]);
             },
             (_error: HttpErrorResponse) => {
                 this.errorSnackBarService.openSnackBarError(_error.message);
