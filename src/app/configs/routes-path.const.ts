@@ -1,29 +1,15 @@
-import { ChildRoutingEnum } from '../app-routing-enum';
+import { ChildRoutingEnum } from '../pages/main-page/main-page-routing.enum';
+import { RouteLink } from '../interfaces/routes-link.interface';
 
-export const routesLinks = [
+export const routesLinks: ReadonlyArray<RouteLink> = [
     {
-        label: 'Адресса',
-        path: `./${ChildRoutingEnum.ADDRESS}`,
+        label: 'Трудовая деятельность',
+        path: ChildRoutingEnum.ACTIVITY,
         index: '0',
     },
     {
-        label: 'Идентификация',
-        path: `./${ChildRoutingEnum.IDENTIFICATION}`,
-        index: '1',
-    },
-    {
-        label: 'Трудовая деятельность',
-        path: `./${ChildRoutingEnum.ACTIVITY}`,
-        index: '2',
-    },
-    {
         label: 'Связи',
-        path: `./${ChildRoutingEnum.CONTACTS}`,
-        index: '3',
-    },
-    {
-        label: 'История заявок',
-        path: `./${ChildRoutingEnum.ORDER_HISTORY}`,
-        index: '4',
+        path: ChildRoutingEnum.CONTACTS,
+        index: '1',
     },
 ];
