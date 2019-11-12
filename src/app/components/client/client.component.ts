@@ -24,9 +24,11 @@ export class ClientComponent implements OnInit {
     ngOnInit(): void {
         const isDataLoading = this.requestService._isDataLoading$.getValue();
         const id = this.route.snapshot.params.id;
+
         if (isDataLoading) {
             return;
         }
+
         this.client$ = this.clientService.client$(id);
     }
 }

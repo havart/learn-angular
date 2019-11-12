@@ -21,9 +21,11 @@ export class ClientService {
 
     public client$(id: number): Observable<ClientInterface> {
         const user = this._client$.getValue();
+
         if (user !== null) {
             return this._client$.asObservable();
         }
+
         this.requestService.disableRequest();
         this.fetchClient$(id)
             .pipe(
