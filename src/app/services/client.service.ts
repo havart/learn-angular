@@ -3,17 +3,20 @@ import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
 import { HttpClient } from '@angular/common/http';
-import { RequestService } from './request.service';
+import { LoadingService } from './loading.service';
 import { finalize } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ClientService {
+export class ClientService extends LoadingService {
     public readonly _clientId$ = new BehaviorSubject<any>(null);
     private readonly _client$ = new BehaviorSubject<ClientInterface>(null);
+    private isDataLoading: boolean;
 
-    constructor(private readonly http: HttpClient, private readonly requestService: RequestService) {}
+    constructor(private readonly http: HttpClient) {
+        super();
+    }
 
     public setClient(client: ClientInterface): void {
         this._client$.next(client);
@@ -22,25 +25,28 @@ export class ClientService {
     public client$(id: number): Observable<ClientInterface> {
         const user = this._client$.getValue();
 
-        if (user !== null) {
-            return this._client$.asObservable();
-        }
-
-        this.requestService.disableRequest();
-        this.fetchClient$(id)
-            .pipe(
-                finalize(() => {
-                    this.requestService.enableRequest();
-                }),
-            )
-            .subscribe((_data: ClientInterface) => {
-                this.setClient(_data);
+        if (user === null) {
+            this.fetchClient$(id).subscribe((client: ClientInterface) => {
+                this.setClient(client);
             });
+        }
 
         return this._client$.asObservable();
     }
 
     private fetchClient$(id: number): Observable<ClientInterface> {
-        return this.http.get<ClientInterface>(`${urlGetUser}/${id}`);
+        super.getLoadingStatus$().subscribe(value => {
+            this.isDataLoading = value;
+        });
+
+        if (!this.isDataLoading) {
+            super.setLoadingStatus(true);
+
+            return this.http.get<ClientInterface>(`${urlGetUser}/${id}`).pipe(
+                finalize(() => {
+                    super.setLoadingStatus(false);
+                }),
+            );
+        }
     }
 }

@@ -7,8 +7,9 @@ import { ClientContactsComponent } from 'src/app/components/client-contacts/clie
 
 const routes: Routes = [
     {
-        path: ':id',
+        path: 'client/:id',
         component: MainLayoutComponent,
+        pathMatch: 'full',
         children: [
             { path: ChildRoutingEnum.ACTIVITY, component: ClientActivityComponent },
             { path: ChildRoutingEnum.CONTACTS, component: ClientContactsComponent },
