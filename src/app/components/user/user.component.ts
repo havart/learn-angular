@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAuthService } from 'src/app/services/user-auth.service';
+import { UserAuthService } from '../../services/user-auth.service';
 import { Router } from '@angular/router';
-import { RoutingPathEnum } from 'src/app/app-routing-enum';
+import { RoutingPathEnum } from '../../app-routing-enum';
 
 @Component({
     selector: 'app-user',
@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
 
     constructor(private userAuthService: UserAuthService, private router: Router) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.user = this.userAuthService.getUser();
     }
 

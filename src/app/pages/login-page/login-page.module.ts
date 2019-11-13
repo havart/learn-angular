@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
-import { MaterialModule } from 'src/app/modules/angular-material.module';
+import { MaterialModule } from '../../modules/angular-material.module';
 
 @NgModule({
     declarations: [UserAuthComponent],

@@ -4,9 +4,9 @@ import { ClientInterface } from '../../interfaces/client.interface';
 import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { RoutingPathEnum } from '../../app-routing-enum';
-import { ClientService } from 'src/app/services/client.service';
+import { ClientService } from '../../services/client.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorSnackBarService } from 'src/app/services/error-snack-bar.service';
+import { ErrorSnackBarService } from '../../services/error-snack-bar.service';
 import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
 
 @Component({

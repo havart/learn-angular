@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/modules/angular-material.module';
+import { MaterialModule } from '../../modules/angular-material.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
-import { ToolbarModule } from 'src/app/components/toolbar/toolbar.module';
-import { ClientComponent } from 'src/app/components/client/client.component';
-import { AgeTransformPipe } from 'src/app/pipes/age-transform.pipe';
+import { ToolbarModule } from '../../components/toolbar/toolbar.module';
+import { ClientComponent } from '../../components/client/client.component';
+import { AgeTransformPipe } from '../../pipes/age-transform.pipe';
 import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { CommentComponent } from '../../components/comment/comment.component';
 import { MainPageRoutingModule } from './main-page.routing.module';
-import { ClientActivityComponent } from 'src/app/components/client-activity/client-activity.component';
-import { ClientContactsComponent } from 'src/app/components/client-contacts/client-contacts.component';
-import { ClientPersonalDetailComponent } from 'src/app/components/client-personal-detail/client-personal-detail.component';
-import { ClientDetailComponent } from 'src/app/components/client-detail/client-detail.component';
+import { ClientActivityComponent } from '../../components/client-activity/client-activity.component';
+import { ClientContactsComponent } from '../../components/client-contacts/client-contacts.component';
+import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
+import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 
 @NgModule({
     declarations: [
