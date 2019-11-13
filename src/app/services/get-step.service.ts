@@ -9,7 +9,7 @@ import { urlGetStep } from '../configs/url-get.const';
     providedIn: 'root',
 })
 export class GetStepService {
-    constructor(private http: HttpClient) {}
+    constructor(private readonly http: HttpClient) {}
 
     getStep$(): Observable<StepInterface[]> {
         return this.http

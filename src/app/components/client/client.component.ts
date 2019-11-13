@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ConnectionService } from 'src/app/services/connection.service';
 import { ClientInterface } from 'src/app/interfaces/client.interface';
-import { Observable } from 'rxjs/internal/Observable';
+import { ActivatedRoute } from '@angular/router';
+import { ClientService } from 'src/app/services/client.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-client',
@@ -12,9 +13,12 @@ import { Observable } from 'rxjs/internal/Observable';
 export class ClientComponent implements OnInit {
     public time = Date.now();
     public client$: Observable<ClientInterface>;
-    constructor(private readonly connectionService: ConnectionService) {}
+
+    constructor(private readonly route: ActivatedRoute, private readonly clientService: ClientService) {}
 
     ngOnInit(): void {
-        this.client$ = this.connectionService.client$;
+        const id = this.route.snapshot.params.id;
+
+        this.client$ = this.clientService.client$(id);
     }
 }

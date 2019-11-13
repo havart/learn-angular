@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChildRoutingEnum } from './main-page-routing.enum';
+import { MainPageRoutingEnum } from './main-page-routing.enum';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ClientActivityComponent } from '../../components/client-activity/client-activity.component';
 import { ClientContactsComponent } from 'src/app/components/client-contacts/client-contacts.component';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'client/:id',
         component: MainLayoutComponent,
         children: [
-            { path: ChildRoutingEnum.ACTIVITY, component: ClientActivityComponent },
-            { path: ChildRoutingEnum.CONTACTS, component: ClientContactsComponent },
+            { path: MainPageRoutingEnum.ACTIVITY, component: ClientActivityComponent },
+            { path: MainPageRoutingEnum.CONTACTS, component: ClientContactsComponent },
         ],
     },
 ];
