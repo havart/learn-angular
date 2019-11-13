@@ -3,7 +3,7 @@ import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
 import { HttpClient } from '@angular/common/http';
-import { AbstractLoading } from '../abstract/abstract-loading.service';
+import { AbstractLoading } from '../abstract/abstract-loading';
 import { finalize } from 'rxjs/operators';
 
 @Injectable({
