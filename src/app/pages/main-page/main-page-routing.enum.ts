@@ -1,4 +1,5 @@
-export enum ChildRoutingEnum {
+export enum MainPageRoutingEnum {
     ACTIVITY = 'activity',
     CONTACTS = 'contacts',
+    CLIENT = 'client',
 }

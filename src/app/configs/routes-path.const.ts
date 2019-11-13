@@ -1,15 +1,15 @@
-import { ChildRoutingEnum } from '../pages/main-page/main-page-routing.enum';
+import { MainPageRoutingEnum } from '../pages/main-page/main-page-routing.enum';
 import { RouteLink } from '../interfaces/routes-link.interface';
 
 export const routesLinks: ReadonlyArray<RouteLink> = [
     {
         label: 'Трудовая деятельность',
-        path: ChildRoutingEnum.ACTIVITY,
+        path: MainPageRoutingEnum.ACTIVITY,
         index: '0',
     },
     {
         label: 'Связи',
-        path: ChildRoutingEnum.CONTACTS,
+        path: MainPageRoutingEnum.CONTACTS,
         index: '1',
     },
 ];

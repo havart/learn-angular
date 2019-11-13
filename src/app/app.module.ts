@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { UserAuthGuard } from './guards/auth-guard';
 import { StartPageModule } from './pages/start-page/start-page.module';
 import { MainPageModule } from './pages/main-page/main-page.module';
-import { ConnectionService } from './services/connection.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,7 +21,7 @@ import { ConnectionService } from './services/connection.service';
         StartPageModule,
         MainPageModule,
     ],
-    providers: [UserAuthService, ConnectionService, UserAuthGuard],
+    providers: [UserAuthService, UserAuthGuard],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

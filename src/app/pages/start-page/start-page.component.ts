@@ -7,6 +7,7 @@ import { RoutingPathEnum } from '../../app-routing-enum';
 import { ClientService } from 'src/app/services/client.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorSnackBarService } from 'src/app/services/error-snack-bar.service';
+import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
 
 @Component({
     selector: 'app-start-page',
@@ -22,12 +23,13 @@ export class StartPageComponent {
 
     getTask(): void {
         const clientId = getRandomIdHelper(1, 10);
+
         this.clientService
             .client$(clientId)
             .pipe(filter((client: ClientInterface) => !!client))
             .subscribe(
                 ({ id }: ClientInterface) => {
-                    this.router.navigate([RoutingPathEnum.MAIN, 'client', `${id}`]);
+                    this.router.navigate([RoutingPathEnum.MAIN, MainPageRoutingEnum.CLIENT, `${id}`]);
                 },
                 (_error: HttpErrorResponse) => {
                     this.errorSnackBarService.openSnackBarError(_error.message);
