@@ -7,7 +7,7 @@ import { ClientContactsComponent } from '../../components/client-contacts/client
 
 const routes: Routes = [
     {
-        path: 'client/:id',
+        path: `${MainPageRoutingEnum.CLIENT}/:id`,
         component: MainLayoutComponent,
         children: [
             { path: MainPageRoutingEnum.ACTIVITY, component: ClientActivityComponent },
