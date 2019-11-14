@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ClientInterface } from 'src/app/interfaces/client.interface';
+import { ClientInterface } from '../../interfaces/client.interface';
 import { ActivatedRoute } from '@angular/router';
-import { ClientService } from 'src/app/services/client.service';
+import { ClientService } from '../../services/client.service';
 import { Observable } from 'rxjs';
 
 @Component({

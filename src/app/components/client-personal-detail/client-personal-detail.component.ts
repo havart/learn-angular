@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { routesLinks } from '../../configs/routes-path.const';
-import { RouteLink } from 'src/app/interfaces/routes-link.interface';
+import { RouteLink } from '../../interfaces/routes-link.interface';
 
 @Component({
     selector: 'app-client-personal-detail',

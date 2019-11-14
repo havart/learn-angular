@@ -10,7 +10,6 @@ import { finalize } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class ClientService extends AbstractLoading {
-    public readonly _clientId$ = new BehaviorSubject<any>(null);
     private readonly _client$ = new BehaviorSubject<ClientInterface>(null);
 
     constructor(private readonly http: HttpClient) {
@@ -36,7 +35,7 @@ export class ClientService extends AbstractLoading {
     private fetchClient$(id: number): Observable<ClientInterface> {
         this.setLoadingStatus(true);
 
-        return this.http.get<ClientInterface>(`${urlGetUser}/${id}`).pipe(
+        return this.http.get<ClientInterface>(`${urlGetUser}${id}`).pipe(
             finalize(() => {
                 this.setLoadingStatus(false);
             }),

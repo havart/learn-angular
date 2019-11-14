@@ -22,7 +22,7 @@ const routes: Routes = [
     },
     {
         path: RoutingPathEnum.MAIN,
-        loadChildren: async () => import('./pages/main-page/main-page.module').then(mod => mod.MainPageModule),
+        loadChildren: './pages/main-page/main-page.module#MainPageModule',
         canActivate: [UserAuthGuard],
     },
 ];
