@@ -2,9 +2,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AbstractLoading } from '../abstract/abstract-loading';
 import { finalize } from 'rxjs/operators';
+import { ErrorSnackBarService } from './error-snack-bar.service';
 
 @Injectable({
     providedIn: 'root',
@@ -12,7 +13,7 @@ import { finalize } from 'rxjs/operators';
 export class ClientService extends AbstractLoading {
     private readonly _client$ = new BehaviorSubject<ClientInterface>(null);
 
-    constructor(private readonly http: HttpClient) {
+    constructor(private readonly http: HttpClient, private readonly errorSnackBarService: ErrorSnackBarService) {
         super();
     }
 
@@ -24,9 +25,14 @@ export class ClientService extends AbstractLoading {
         const user = this._client$.getValue();
 
         if (!this.isLoading || user === null) {
-            this.fetchClient$(id).subscribe((client: ClientInterface) => {
-                this.setClient(client);
-            });
+            this.fetchClient$(id).subscribe(
+                (client: ClientInterface) => {
+                    this.setClient(client);
+                },
+                (error: HttpErrorResponse) => {
+                    this.errorSnackBarService.openSnackBarError(error.message);
+                },
+            );
         }
 
         return this._client$.asObservable();
