@@ -30,7 +30,7 @@ export class ClientService extends AbstractLoading {
                     this.setClient(client);
                 },
                 (error: HttpErrorResponse) => {
-                    this.errorSnackBarService.openSnackBarError(error.message);
+                    this.errorSnackBarService.openSnackBarError(error.status);
                 },
             );
         }
