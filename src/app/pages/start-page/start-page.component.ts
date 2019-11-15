@@ -6,7 +6,6 @@ import { filter } from 'rxjs/operators';
 import { RoutingPathEnum } from '../../app-routing-enum';
 import { ClientService } from '../../services/client.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ErrorSnackBarService } from '../../services/error-snack-bar.service';
 import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
 
 @Component({
@@ -15,14 +14,10 @@ import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(
-        private readonly clientService: ClientService,
-        private readonly router: Router,
-        private readonly errorSnackBarService: ErrorSnackBarService,
-    ) {}
+    constructor(private readonly clientService: ClientService, private readonly router: Router) {}
 
     getTask(): void {
-        const clientId = getRandomIdHelper(1, 10);
+        const clientId = getRandomIdHelper(1, 20);
 
         this.clientService
             .client$(clientId)
@@ -32,7 +27,6 @@ export class StartPageComponent {
                     this.router.navigate([RoutingPathEnum.MAIN, MainPageRoutingEnum.CLIENT, `${id}`]);
                 },
                 (_error: HttpErrorResponse) => {
-                    this.errorSnackBarService.openSnackBarError(_error.message);
                     this.router.navigate([RoutingPathEnum.START]);
                 },
             );
