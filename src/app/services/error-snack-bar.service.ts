@@ -41,7 +41,7 @@ export class ErrorSnackBarService {
                 mes = 'Ошибка сервера.';
                 break;
             case BAD_GATEWAY:
-                mes = 'Ошибка сервера.';
+                mes = 'Ошибка шлюза.';
                 break;
             case SERVICE_UNAVAILABLE:
                 mes = 'Сервер временно не может обрабатывать запросы по техническим причинам.';
