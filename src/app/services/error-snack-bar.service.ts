@@ -9,8 +9,7 @@ export class ErrorSnackBarService {
     constructor(private readonly snackBar: MatSnackBar) {}
 
     openSnackBarError(message: number): void {
-        let mes: string;
-        mes = serverResponseMessages[message] || serverResponseMessages.OTHER_MESSAGE;
+        const mes: string = serverResponseMessages[message] || serverResponseMessages.OTHER_MESSAGE;
 
         this.snackBar.open(mes, 'x', {
             duration: 5000,
