@@ -9,6 +9,13 @@ import { AppComponent } from './app.component';
 import { UserAuthGuard } from './guards/auth-guard';
 import { StartPageModule } from './pages/start-page/start-page.module';
 import { MainPageModule } from './pages/main-page/main-page.module';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducers } from './reducers';
+import { ClientEffects } from './effects/client.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,6 +27,15 @@ import { MainPageModule } from './pages/main-page/main-page.module';
         LoginPageModule,
         StartPageModule,
         MainPageModule,
+        StoreModule.forRoot(appReducers, {
+            runtimeChecks: {
+                strictStateImmutability: true,
+                strictActionImmutability: true,
+            },
+        }),
+        EffectsModule.forRoot([ClientEffects]),
+        StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
+        !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],
     providers: [UserAuthService, UserAuthGuard],
     bootstrap: [AppComponent],
