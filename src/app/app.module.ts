@@ -10,12 +10,12 @@ import { UserAuthGuard } from './guards/auth-guard';
 import { StartPageModule } from './pages/start-page/start-page.module';
 import { MainPageModule } from './pages/main-page/main-page.module';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { appReducers } from './reducers';
-import { ClientEffects } from './effects/client.effects';
+// import { EffectsModule } from '@ngrx/effects';
+// import { ClientEffects } from './effects/client.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { reducers, metaReducers } from './+store';
 
 @NgModule({
     declarations: [AppComponent],
@@ -27,13 +27,9 @@ import { environment } from 'src/environments/environment';
         LoginPageModule,
         StartPageModule,
         MainPageModule,
-        StoreModule.forRoot(appReducers, {
-            runtimeChecks: {
-                strictStateImmutability: true,
-                strictActionImmutability: true,
-            },
+        StoreModule.forRoot(reducers, {
+            metaReducers,
         }),
-        EffectsModule.forRoot([ClientEffects]),
         StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
     ],

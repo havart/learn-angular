@@ -7,9 +7,10 @@ import { Store, select } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
 import { AppState } from 'src/app/app.state';
-import { GetClient } from 'src/app/actions/client.actions';
+import { getClientAction } from 'src/app/actions/client.actions';
 import { filter } from 'rxjs/operators';
 import { getClient } from 'src/app/selectors/client.selector';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
     selector: 'app-start-page',
@@ -17,14 +18,13 @@ import { getClient } from 'src/app/selectors/client.selector';
     styleUrls: ['./start-page.component.scss'],
 })
 export class StartPageComponent {
-    constructor(private readonly store$: Store<AppState>, private readonly router: Router) {}
+    constructor(private readonly router: Router, private readonly clientService: ClientService) {}
 
     getTask(): void {
         const clientId = getRandomIdHelper(1, 20);
-        this.store$.dispatch(new GetClient(clientId));
-        this.store$
-            .pipe(select(getClient))
-            .pipe(filter(Boolean))
+        this.clientService
+            .client$(clientId)
+            .pipe(filter((client: ClientInterface) => !!client))
             .subscribe(
                 ({ id }: ClientInterface) => {
                     this.router.navigate([RoutingPathEnum.MAIN, MainPageRoutingEnum.CLIENT, `${id}`]);
