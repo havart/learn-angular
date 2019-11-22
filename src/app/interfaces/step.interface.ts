@@ -10,3 +10,8 @@ export interface StepInterface {
     showPhone: boolean;
     phone: number;
 }
+
+export interface StepsInterface {
+    clientId: string;
+    steps: StepInterface[];
+}

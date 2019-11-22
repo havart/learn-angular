@@ -10,23 +10,8 @@ const getClientEntities = createSelector(
     fromClient.getClientEntities,
 );
 
-// const getAllClientInfo = createSelector(
-//     getClientState,
-//     fromClient.getAllClientInfo,
-// );
-
 export const getClientById = (clientId: string) =>
     createSelector(
         getClientEntities,
-        (customerInfo: Dictionary<ClientInterface>) => customerInfo[clientId],
+        (client: Dictionary<ClientInterface>) => client[clientId],
     );
-
-// export const getClient = createSelector(
-//     getAllCustomersInfo,
-//     (allCustomersInfo: ClientInterface[]) => allCustomersInfo && allCustomersInfo[0],
-// );
-
-// export const getClientId = createSelector(
-//     getClient,
-//     (customerInfo: ClientInterface) => customerInfo && customerInfo.id,
-// );

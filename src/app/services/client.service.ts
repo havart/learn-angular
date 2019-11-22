@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
