@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StepInterface, StepsInterface } from '../../interfaces/step.interface';
 import { GetCommentService } from '../../services/get-comment.service';
-import { Store, select } from '@ngrx/store';
-import { GlobalState } from 'src/app/+store';
 import { ActivatedRoute } from '@angular/router';
-import { getStepsById } from 'src/app/+store/steps/steps.selectors';
+import { CommentInterface } from 'src/app/interfaces/comment.interface';
 
 @Component({
     selector: 'app-comment',
@@ -13,13 +10,12 @@ import { getStepsById } from 'src/app/+store/steps/steps.selectors';
     styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent implements OnInit {
-    public commentsList$: Observable<StepsInterface>;
+    public commentsList$: Observable<CommentInterface[]>;
 
-    constructor(
-        private readonly getCommentService: GetCommentService,
-        private readonly store$: Store<GlobalState>,
-        private readonly route: ActivatedRoute,
-    ) {}
+    constructor(private readonly getCommentService: GetCommentService, private readonly route: ActivatedRoute) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        const id = this.route.snapshot.params.id;
+        this.commentsList$ = this.getCommentService.getCommentsByClientId$(id);
+    }
 }

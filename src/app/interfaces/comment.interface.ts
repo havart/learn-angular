@@ -9,5 +9,5 @@ export interface CommentInterface {
 
 export interface CommentsInterface {
     clientId: string;
-    steps: CommentInterface[];
+    comments: CommentInterface[];
 }

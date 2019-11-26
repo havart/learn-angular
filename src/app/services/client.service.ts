@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
@@ -11,8 +11,9 @@ import { ClientUpsertAction } from '../+store/client/client.actions';
 import { getClientById } from '../+store/client/client.selectors';
 import { GlobalState } from '../+store/index';
 import { GetCommentService } from './get-comment.service';
-import { StepInterface } from '../interfaces/step.interface';
 import { StepsUpsertAction } from '../+store/steps/steps.actions';
+import { GetStepService } from './get-step.service';
+import { CommentsUpsertAction } from '../+store/comments/comments.actions';
 
 @Injectable({
     providedIn: 'root',
@@ -23,6 +24,7 @@ export class ClientService extends AbstractLoading {
         private readonly store$: Store<GlobalState>,
         private readonly errorSnackBarService: ErrorSnackBarService,
         private readonly getCommentService: GetCommentService,
+        private readonly getStepsService: GetStepService,
     ) {
         super();
     }
@@ -45,24 +47,26 @@ export class ClientService extends AbstractLoading {
     private checkDataLoadingandFetch$(id: number): void {
         this.fetchClient$(id)
             .pipe(
-                concatMap(clientF => {
-                    if (clientF) {
-                        this.setClient(clientF);
+                concatMap(client => {
+                    this.setClient(client);
 
-                        return this.getCommentService.getComment$();
-                    }
+                    return this.getCommentsAndSteps$();
                 }),
             )
             .subscribe(
-                (comments: StepInterface[]) => {
-                    console.log(comments);
-                    this.store$.dispatch(new StepsUpsertAction({ clientId: id.toString(), steps: comments }));
+                result => {
+                    this.store$.dispatch(new CommentsUpsertAction({ clientId: `${id}`, comments: result[0] }));
+                    this.store$.dispatch(new StepsUpsertAction({ clientId: `${id}`, steps: result[1] }));
                 },
                 (error: HttpErrorResponse) => {
                     this.errorSnackBarService.openSnackBarError(error.status);
                 },
             );
     }
+    private getCommentsAndSteps$(): Observable<any> {
+        return forkJoin(this.getCommentService.getComment$(), this.getStepsService.getStep$());
+    }
+
     private fetchClient$(id: number): Observable<ClientInterface> {
         this.setLoadingStatus(true);
 

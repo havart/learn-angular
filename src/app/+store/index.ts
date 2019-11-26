@@ -3,16 +3,19 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from '../../environments/environment';
 import * as fromClient from './client/client.reducer';
 import * as fromSteps from './steps/steps.reducer';
+import * as fromComments from './comments/comments.reducer';
 import { GlobalActionTypes, SetRootState } from './global.actions';
 
 export interface GlobalState {
     client: fromClient.ClientStateInterface;
     steps: fromSteps.StepsStateInterface;
+    comments: fromComments.CommentsStateInterface;
 }
 
 export const reducers: ActionReducerMap<GlobalState> = {
     client: fromClient.reducer,
     steps: fromSteps.reducer,
+    comments: fromComments.reducer,
 };
 
 export function stateSetter(reducer: ActionReducer<GlobalState>): ActionReducer<GlobalState> {
