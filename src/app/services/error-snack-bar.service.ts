@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { serverResponseMessages } from '../configs/server-response-messages.const';
 
 @Injectable({
     providedIn: 'root',
@@ -8,16 +9,8 @@ export class ErrorSnackBarService {
     constructor(private readonly snackBar: MatSnackBar) {}
 
     openSnackBarError(message: number): void {
-        let mes: string;
+        const mes: string = serverResponseMessages[message] || serverResponseMessages.OTHER_MESSAGE;
 
-        switch (message) {
-            case 404:
-                mes = 'По данному URL ничего не найдено — данные не существуют!';
-                break;
-            default:
-                mes = 'Undefined!';
-                break;
-        }
         this.snackBar.open(mes, 'x', {
             duration: 5000,
             verticalPosition: 'top',
