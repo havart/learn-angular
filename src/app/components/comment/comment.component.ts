@@ -16,6 +16,7 @@ export class CommentComponent implements OnInit {
 
     ngOnInit(): void {
         const id = this.route.snapshot.params.id;
+
         this.commentsList$ = this.getCommentService.getCommentsByClientId$(id);
     }
 }

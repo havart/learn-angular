@@ -16,6 +16,7 @@ export class SideBarComponent implements OnInit {
 
     ngOnInit(): void {
         const id = this.route.snapshot.params.id;
+
         this.stepsList$ = this.getStepService.getStepByClientId$(id);
     }
 }
