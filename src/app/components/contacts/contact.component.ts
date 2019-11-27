@@ -1,26 +1,27 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ContactsFormControlEnum } from '../contacts/form-contact-enum';
-import { GetContactsService } from 'src/app/services/get-contacts';
 import { Observable } from 'rxjs';
 import { ContactInterface } from 'src/app/interfaces/contact.interface';
+import { ContactsFormControlEnum } from './form-contact-enum';
+import { PHONE_TYPES } from './phone-types';
 
 @Component({
-    selector: 'app-clientcontacts',
-    templateUrl: './client-contacts.component.html',
-    styleUrls: ['./client-contacts.component.scss'],
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
 })
-export class ClientContactsComponent implements OnInit {
+export class ContactComponent implements OnInit {
     public clientContactsForm: FormGroup;
-    public contacts$: Observable<ContactInterface[]>;
+    public phoneTypes = PHONE_TYPES;
     contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
+    @Input() contact: Observable<ContactInterface>;
 
-    constructor(private readonly formBuilder: FormBuilder, private readonly getContactsService: GetContactsService) {}
+    constructor(private readonly formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
         this.initContactsForm();
-        this.contacts$ = this.getContactsService.getContacts$();
     }
 
     private initContactsForm(): void {
