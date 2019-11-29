@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { StepInterface } from '../../interfaces/step.interface';
+import { GlobalState } from '../../+store';
+import { CommentsUpsertAction } from '../../+store/comments/comments.actions';
+import { CommentInterface } from '../../interfaces/comment.interface';
 import { GetCommentService } from '../../services/get-comment.service';
 
 @Component({
@@ -9,11 +13,21 @@ import { GetCommentService } from '../../services/get-comment.service';
     styleUrls: ['./comment.component.scss'],
 })
 export class CommentComponent implements OnInit {
-    public commentsList$: Observable<StepInterface[]>;
+    public commentsList$: Observable<CommentInterface[]>;
 
-    constructor(private readonly getCommentService: GetCommentService) {}
+    constructor(
+        private readonly getCommentService: GetCommentService,
+        private readonly route: ActivatedRoute,
+        private readonly store$: Store<GlobalState>,
+    ) {}
 
     ngOnInit(): void {
-        this.commentsList$ = this.getCommentService.getComment$();
+        const id = this.route.snapshot.params.id;
+
+        this.getCommentService.getComment$().subscribe(result => {
+            this.store$.dispatch(new CommentsUpsertAction({ clientId: `${id}`, comments: result }));
+        });
+
+        this.commentsList$ = this.getCommentService.getCommentsByClientId$(id);
     }
 }
