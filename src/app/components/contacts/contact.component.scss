@@ -22,9 +22,15 @@
 
     .mat-form-field-infix {
         padding: 0.5em 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 10px solid transparent;
+        border: 10px solid transparent;
+    }
+
+    .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    .mat-form-field-type-mat-native-select.mat-form-field-invalid .mat-form-field-infix::after {
+        color: rgba(0, 0, 0, 0.54);
     }
 
     .comment {

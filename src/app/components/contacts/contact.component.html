@@ -14,9 +14,9 @@
 
     <mat-form-field class="input-full-width">
         <mat-label>Тип телефона</mat-label>
-        <select [formControlName]="contactsFormControlEnum.PHONE_TYPE" matNativeControl>
+        <select [formControlName]="contactsFormControlEnum.PHONE_TYPE" placeholder="Тип телефона" matNativeControl>
             <option [selected]="contact.phoneType" value="contact.phoneType"> {{ contact.phoneType }} </option>
-            <option *ngFor="let phoneType of phoneTypes" [ngValue]="phoneType">
+            <option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
                 {{ phoneType }}
             </option>
         </select>
@@ -27,12 +27,12 @@
         <input [formControlName]="contactsFormControlEnum.CONTACTS_TYPE" value="{{ contact.departament }}" matInput />
     </mat-form-field>
 
-    <mat-form-field class="input-full-width comment">
+    <mat-form-field class="input-full-width comment" floatLabel="never">
         <input
             [formControlName]="contactsFormControlEnum.COMMENT"
             value="{{ contact.description }}"
-            matInput
             placeholder="Комментарий"
+            matInput
         />
     </mat-form-field>
 </form>
