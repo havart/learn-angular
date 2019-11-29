@@ -5,7 +5,7 @@ import { urlGetUser } from '../configs/url-get.const';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AbstractLoading } from '../abstract/abstract-loading';
 import { finalize, tap, concatMap } from 'rxjs/operators';
-import { ErrorSnackBarService } from './error-snack-bar.service';
+
 import { Store, select } from '@ngrx/store';
 import { ClientUpsertAction } from '../+store/client/client.actions';
 import { getClientById } from '../+store/client/client.selectors';
@@ -14,6 +14,7 @@ import { GetCommentService } from './get-comment.service';
 import { StepsUpsertAction } from '../+store/steps/steps.actions';
 import { GetStepService } from './get-step.service';
 import { CommentsUpsertAction } from '../+store/comments/comments.actions';
+import { ErrorSnackBarService } from './error-snack-bar.service';
 
 @Injectable({
     providedIn: 'root',
@@ -63,8 +64,9 @@ export class ClientService extends AbstractLoading {
                 },
             );
     }
+
     private getCommentsAndSteps$(): Observable<any> {
-        return forkJoin(this.getCommentService.getComment$(), this.getStepsService.getStep$());
+        return forkJoin([this.getCommentService.getComment$(), this.getStepsService.getStep$()]);
     }
 
     private fetchClient$(id: number): Observable<ClientInterface> {

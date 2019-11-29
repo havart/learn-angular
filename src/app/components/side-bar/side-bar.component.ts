@@ -12,7 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SideBarComponent implements OnInit {
     public stepsList$: Observable<StepInterface[]>;
 
-    constructor(private readonly getStepService: GetStepService, private readonly route: ActivatedRoute) {}
+    constructor(
+        private readonly getStepService: GetStepService,
+
+        private readonly route: ActivatedRoute,
+    ) {}
 
     ngOnInit(): void {
         const id = this.route.snapshot.params.id;
