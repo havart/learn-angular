@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, filter, map, switchMapTo, take } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { GlobalState } from '../+store';
 import { CommentsUpsertAction } from '../+store/comments/comments.actions';
@@ -28,27 +28,17 @@ export class GetCommentService {
     }
 
     public fetchComments$(id: string): Observable<CommentInterface[]> {
-        const storeComments$: Observable<CommentInterface[]> = this.store$.select(getCommentsById(id));
-        storeComments$
-            .pipe(
-                take(1),
-                filter((comments: CommentInterface[]) => !comments),
-                switchMapTo(this.http.get<CommentInterface[]>(this.config.COMMENTS_URL)),
-                map((comments: CommentInterface[]) =>
-                    comments.filter((comment: CommentInterface) => comment.isComment),
-                ),
-            )
-            .subscribe(
-                (result: CommentInterface[]) => {
-                    this.store$.dispatch(new CommentsUpsertAction({ clientId: id, comments: result }));
-                },
-                catchError((error: HttpErrorResponse) => {
-                    this.errorSnackBarService.openSnackBarError(error.status);
 
-                    return EMPTY;
-                }),
-            );
+        return this.http.get<CommentInterface[]>(this.config.COMMENTS_URL).pipe(
+            map((comments: CommentInterface[]) => comments.filter((comment: CommentInterface) => comment.isComment)),
+            tap((result: CommentInterface[]) => {
+                this.store$.dispatch(new CommentsUpsertAction({ clientId: id, comments: result }));
+            }),
+            catchError((error: HttpErrorResponse) => {
+                this.errorSnackBarService.openSnackBarError(error.status);
 
-        return storeComments$;
+                return EMPTY;
+            }),
+        );
     }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, filter, map, switchMapTo, take } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { GlobalState } from '../+store';
 import { StepsUpsertAction } from '../+store/steps/steps.actions';
 import { getStepsById } from '../+store/steps/steps.selectors';
@@ -28,25 +28,17 @@ export class GetStepService {
     }
 
     public fetchSteps$(id: string): Observable<StepInterface[]> {
-        const storeSteps$: Observable<StepInterface[]> = this.store$.select(getStepsById(id));
-        storeSteps$
-            .pipe(
-                take(1),
-                filter((steps: StepInterface[]) => !steps),
-                switchMapTo(this.http.get<StepInterface[]>(this.config.STEPS_URL)),
-                map((steps: StepInterface[]) => steps.filter((step: StepInterface) => step.isComment)),
-            )
-            .subscribe(
-                (result: StepInterface[]) => {
-                    this.store$.dispatch(new StepsUpsertAction({ clientId: id, steps: result }));
-                },
-                catchError((error: HttpErrorResponse) => {
-                    this.errorSnackBarService.openSnackBarError(error.status);
 
-                    return EMPTY;
-                }),
-            );
+        return this.http.get<StepInterface[]>(this.config.STEPS_URL).pipe(
+            map((steps: StepInterface[]) => steps.filter((step: StepInterface) => step.isComment)),
+            tap((result: StepInterface[]) => {
+                this.store$.dispatch(new StepsUpsertAction({ clientId: id, steps: result }));
+            }),
+            catchError((error: HttpErrorResponse) => {
+                this.errorSnackBarService.openSnackBarError(error.status);
 
-        return storeSteps$;
+                return EMPTY;
+            }),
+        );
     }
 }
