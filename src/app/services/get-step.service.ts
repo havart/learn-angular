@@ -30,7 +30,7 @@ export class GetStepService {
     public fetchSteps$(id: string): Observable<StepInterface[]> {
 
         return this.http.get<StepInterface[]>(this.config.STEPS_URL).pipe(
-            map((steps: StepInterface[]) => steps.filter((step: StepInterface) => step.isComment)),
+            map((steps: StepInterface[]) => steps.filter((step: StepInterface) => !step.isComment)),
             tap((result: StepInterface[]) => {
                 this.store$.dispatch(new StepsUpsertAction({ clientId: id, steps: result }));
             }),
