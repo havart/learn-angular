@@ -34,7 +34,7 @@ export class StartPageComponent implements OnDestroy {
                 takeUntil(this.onDestroy$),
             )
             .subscribe(({ id }: ClientInterface) => {
-                this.router.navigate([RoutingPathEnum.MAIN, MainPageRoutingEnum.CLIENT, `${id}`]);
+                this.router.navigate([RoutingPathEnum.MAIN, MainPageRoutingEnum.CLIENT, id]);
             });
     }
 }
