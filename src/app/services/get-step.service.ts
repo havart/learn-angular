@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, filter, map, switchMap, take } from 'rxjs/operators';
+import { catchError, filter, map, switchMapTo, take } from 'rxjs/operators';
 import { GlobalState } from '../+store';
 import { StepsUpsertAction } from '../+store/steps/steps.actions';
 import { getStepsById } from '../+store/steps/steps.selectors';
+import { onceRunOrCatch } from '../helpers/once-run-or-catch.helper';
 import { StepInterface } from '../interfaces/step.interface';
 import { ApiService } from './api.service';
 import { ErrorSnackBarService } from './error-snack-bar.service';
@@ -22,13 +23,17 @@ export class GetStepService {
     ) {}
 
     public getStep$(id: string): Observable<StepInterface[]> {
-        const storeSteps$: Observable<StepInterface[]> = this.store$.select(getStepsById(id));
 
+        return this.store$.select(getStepsById(id)).pipe(onceRunOrCatch(this.fetchSteps$(id)));
+    }
+
+    public fetchSteps$(id: string): Observable<StepInterface[]> {
+        const storeSteps$: Observable<StepInterface[]> = this.store$.select(getStepsById(id));
         storeSteps$
             .pipe(
                 take(1),
                 filter((steps: StepInterface[]) => !steps),
-                switchMap(() => this.http.get<StepInterface[]>(this.config.STEPS_URL)),
+                switchMapTo(this.http.get<StepInterface[]>(this.config.STEPS_URL)),
                 map((steps: StepInterface[]) => steps.filter((step: StepInterface) => step.isComment)),
             )
             .subscribe(

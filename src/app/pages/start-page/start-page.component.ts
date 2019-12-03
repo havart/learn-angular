@@ -1,10 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
-import { ClientInterface } from '../../interfaces/client.interface';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { RoutingPathEnum } from '../../app-routing-enum';
+import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
+import { ClientInterface } from '../../interfaces/client.interface';
 import { ClientService } from '../../services/client.service';
 import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
 
@@ -12,6 +12,7 @@ import { MainPageRoutingEnum } from '../main-page/main-page-routing.enum';
     selector: 'app-start-page',
     templateUrl: './start-page.component.html',
     styleUrls: ['./start-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartPageComponent implements OnDestroy {
     private onDestroy$ = new Subject<boolean>();

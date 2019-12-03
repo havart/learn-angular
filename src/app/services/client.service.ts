@@ -1,8 +1,9 @@
 import { Store, select } from '@ngrx/store';
-import { EMPTY, Observable, of } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { GlobalState } from '../+store';
 import { ClientIsLoadingAction, ClientUpsertAction } from '../+store/client/client.actions';
 import { clientIsLoadingStatus, getClientById } from '../+store/client/client.selectors';
+import { onceRunOrCatch } from '../helpers/once-run-or-catch.helper';
 import { ClientInterface } from '../interfaces/client.interface';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
@@ -25,25 +26,13 @@ export class ClientService {
         this.store$.dispatch(new ClientUpsertAction(client));
     }
 
-    public setStatus(status: boolean): void {
+    public setStatus(status?: boolean): void {
         this.store$.dispatch(new ClientIsLoadingAction(status));
     }
 
     public client$(id: string): Observable<ClientInterface> {
-        const clientById$ = this.store$.pipe(
-            select(getClientById(id)),
-            take(1),
-        );
 
-        return clientById$.pipe(
-            switchMap(clientById => {
-                if (clientById && clientById.id === id) {
-                    return of(clientById);
-                }
-
-                return this.fetchClient$(id);
-            }),
-        );
+        return this.store$.select(getClientById(id)).pipe(onceRunOrCatch(this.fetchClient$(id)));
     }
 
     private fetchClient$(id: string): Observable<ClientInterface> {
