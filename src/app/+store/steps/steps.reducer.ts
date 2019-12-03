@@ -2,13 +2,18 @@ import { StepsAction, StepsActionTypes, StepsUpsertAction } from './steps.action
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { ActionReducer } from '@ngrx/store';
 import { GlobalActionTypes } from '../global.actions';
-import { StepsInterface } from 'src/app/interfaces/step.interface';
+import { StepInterface } from 'src/app/interfaces/step.interface';
 
-export const stepsAdapter = createEntityAdapter<StepsInterface>({
-    selectId: ({ clientId }: StepsInterface) => clientId,
+export interface StepListInterface {
+    clientId: string;
+    steps: StepInterface[];
+}
+
+export const stepsAdapter = createEntityAdapter<StepListInterface>({
+    selectId: ({ clientId }: StepListInterface) => clientId,
 });
 
-export interface StepsStateInterface extends EntityState<StepsInterface> {}
+export interface StepsStateInterface extends EntityState<StepListInterface> {}
 
 export const stepsInitialState: StepsStateInterface = stepsAdapter.getInitialState({});
 

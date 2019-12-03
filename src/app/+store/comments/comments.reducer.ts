@@ -2,13 +2,18 @@ import { CommentsAction, CommentsActionTypes, CommentsUpsertAction } from './com
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { ActionReducer } from '@ngrx/store';
 import { GlobalActionTypes } from '../global.actions';
-import { CommentsInterface } from 'src/app/interfaces/comment.interface';
+import { CommentInterface } from 'src/app/interfaces/comment.interface';
 
-export const commentsAdapter = createEntityAdapter<CommentsInterface>({
-    selectId: ({ clientId }: CommentsInterface) => clientId,
+export interface CommentListInterface {
+    clientId: string;
+    comments: CommentInterface[];
+}
+
+export const commentsAdapter = createEntityAdapter<CommentListInterface>({
+    selectId: ({ clientId }: CommentListInterface) => clientId,
 });
 
-export interface CommentsStateInterface extends EntityState<CommentsInterface> {}
+export interface CommentsStateInterface extends EntityState<CommentListInterface> {}
 
 export const commentsInitialState: CommentsStateInterface = commentsAdapter.getInitialState({});
 

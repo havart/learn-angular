@@ -6,8 +6,3 @@ export interface CommentInterface {
     viewType: number;
     isComment: boolean;
 }
-
-export interface CommentsInterface {
-    clientId: string;
-    comments: CommentInterface[];
-}
