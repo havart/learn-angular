@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutingPathEnum } from '../../app-routing-enum';
 
 @Component({
     selector: 'app-logo',
@@ -6,7 +8,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./logo.component.scss'],
 })
 export class LogoComponent {
-    public refresh(): void {
-        window.location.reload();
+    constructor(private readonly router: Router) {}
+
+    public navigateToStartPage(): void {
+        this.router.navigate([RoutingPathEnum.START]);
     }
 }
