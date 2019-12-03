@@ -13,5 +13,5 @@ const getStepsEntities = createSelector(
 export const getStepsById = (clientId: string) =>
     createSelector(
         getStepsEntities,
-        (steps: Dictionary<StepsState>) => steps[clientId],
+        (steps: Dictionary<StepsState>) => steps[clientId] && steps[clientId].steps,
     );

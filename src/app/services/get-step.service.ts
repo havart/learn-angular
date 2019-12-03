@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, filter, map } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, take } from 'rxjs/operators';
 import { GlobalState } from '../+store';
+import { StepsUpsertAction } from '../+store/steps/steps.actions';
 import { getStepsById } from '../+store/steps/steps.selectors';
 import { StepInterface } from '../interfaces/step.interface';
 import { ApiService } from './api.service';
-import { StepsState } from '../interfaces/steps-state.interface';
 import { ErrorSnackBarService } from './error-snack-bar.service';
 
 @Injectable({
@@ -21,24 +21,27 @@ export class GetStepService {
         private readonly store$: Store<GlobalState>,
     ) {}
 
-    public getStep$(): Observable<StepInterface[]> {
+    public getStep$(id: string): Observable<StepInterface[]> {
+        const storeSteps$: Observable<StepInterface[]> = this.store$.select(getStepsById(id));
 
-        return this.http.get<StepInterface[]>(this.config.STEPS_URL).pipe(
-            catchError((error: HttpErrorResponse) => {
-                this.errorSnackBarService.openSnackBarError(error.status);
+        storeSteps$
+            .pipe(
+                take(1),
+                filter((steps: StepInterface[]) => !steps),
+                switchMap(() => this.http.get<StepInterface[]>(this.config.STEPS_URL)),
+                map((steps: StepInterface[]) => steps.filter((step: StepInterface) => step.isComment)),
+            )
+            .subscribe(
+                (result: StepInterface[]) => {
+                    this.store$.dispatch(new StepsUpsertAction({ clientId: id, steps: result }));
+                },
+                catchError((error: HttpErrorResponse) => {
+                    this.errorSnackBarService.openSnackBarError(error.status);
 
-                return EMPTY;
-            }),
-            map((steps: StepInterface[]) => steps.filter(({ isComment }: StepInterface) => !isComment)),
-        );
-    }
+                    return EMPTY;
+                }),
+            );
 
-    public getStepByClientId$(id: string): Observable<StepInterface[]> {
-
-        return this.store$.pipe(
-            select(getStepsById(id)),
-            filter(Boolean),
-            map(({ steps }: StepsState) => steps),
-        );
+        return storeSteps$;
     }
 }
