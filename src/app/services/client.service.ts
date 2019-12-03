@@ -25,7 +25,7 @@ export class ClientService {
         this.store$.dispatch(new ClientUpsertAction(client));
     }
 
-    public setStatus(status?: boolean): void {
+    public setStatus(status: boolean): void {
         this.store$.dispatch(new ClientIsLoadingAction(status));
     }
 
