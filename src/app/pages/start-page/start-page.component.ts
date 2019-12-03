@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 import { ClientInterface } from '../../interfaces/client.interface';
 import { Router } from '@angular/router';
@@ -12,12 +12,13 @@ import { ClientService } from 'src/app/services/client.service';
     selector: 'app-start-page',
     templateUrl: './start-page.component.html',
     styleUrls: ['./start-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartPageComponent {
     constructor(private readonly router: Router, private readonly clientService: ClientService) {}
 
     getTask(): void {
-        const clientId = getRandomIdHelper(1, 20);
+        const clientId = getRandomIdHelper(1, 20).toString();
         this.clientService
             .client$(clientId)
             .pipe(filter((client: ClientInterface) => !!client))

@@ -12,5 +12,5 @@ const getCommentsEntities = createSelector(
 export const getCommentsById = (clientId: string) =>
     createSelector(
         getCommentsEntities,
-        (comments: Dictionary<fromComments.CommentListInterface>) => comments[clientId],
+        (comments: Dictionary<fromComments.CommentListInterface>) => comments[clientId] && comments[clientId].comments,
     );
