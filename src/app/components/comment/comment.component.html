@@ -9,7 +9,7 @@
         <mat-card *ngFor="let comment of commentsList$ | async" class="comment-card">
             <mat-card-title-group>
                 <mat-card-title> Сообщение от {{ comment.name }} </mat-card-title>
-                <label class="comment-data">{{ comment.createdAt | date }}</label>
+                <label class="comment-data">{{ comment.createdAt | date:'HH:mm dd.MM.yyyy' }}</label>
             </mat-card-title-group>
             <mat-card-content>
                 <p>
