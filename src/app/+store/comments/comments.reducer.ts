@@ -18,10 +18,12 @@ const reducers: Record<string, ActionReducer<CommentsStateInterface, CommentsAct
 };
 
 function reset(state: CommentsStateInterface): CommentsStateInterface {
+
     return commentsAdapter.removeAll(state);
 }
 
 function upsertComments(state: CommentsStateInterface, { payload }: CommentsUpsertAction): CommentsStateInterface {
+
     return commentsAdapter.upsertOne(payload, state);
 }
 
@@ -29,6 +31,7 @@ export function reducer(
     state: CommentsStateInterface = commentsInitialState,
     action: CommentsAction,
 ): CommentsStateInterface {
+
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
 

@@ -21,18 +21,22 @@ const reducers: Record<string, ActionReducer<ClientStateInterface, ClientAction>
 };
 
 function upsertClient(state: ClientStateInterface, { payload }: ClientUpsertAction): ClientStateInterface {
+
     return clientAdapter.upsertOne(payload, state);
 }
 
 function setClientIsLoading(state: ClientStateInterface, { payload }: ClientIsLoadingAction): ClientStateInterface {
-  return { ...state, isLoading: payload };
+
+    return { ...state, isLoading: payload };
 }
 
 function reset(state: ClientStateInterface): ClientStateInterface {
-  return clientAdapter.removeAll(state);
+
+    return clientAdapter.removeAll(state);
 }
 
 export function reducer(state: ClientStateInterface = clientInitialState, action: ClientAction): ClientStateInterface {
+
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
 

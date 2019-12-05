@@ -11,8 +11,8 @@ export const getClientEntities = createSelector(
 );
 
 export const clientIsLoadingStatus = createSelector(
-  getClientState,
-  ({ isLoading }: fromClient.ClientStateInterface) => isLoading,
+    getClientState,
+    ({ isLoading }: fromClient.ClientStateInterface) => isLoading,
 );
 
 export const getClientById = (clientId: string) =>
