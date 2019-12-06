@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap, switchMapTo } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { switchMap, switchMapTo, takeUntil } from 'rxjs/operators';
 import { AddCommentInterface } from '../../interfaces/add-comment.interface';
 import { CommentInterface } from '../../interfaces/comment.interface';
 import { CommentsService } from '../../services/comments.service';
@@ -14,10 +14,11 @@ import { UserAuthService } from '../../services/user-auth.service';
     styleUrls: ['./comment.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent implements OnInit, OnDestroy {
     public commentsList$: Observable<CommentInterface[]>;
     public commentForm: FormControl = new FormControl();
     public clientId: string;
+    private onDestroy$ = new Subject<boolean>();
 
     constructor(
         private readonly commentsService: CommentsService,
@@ -35,6 +36,11 @@ export class CommentComponent implements OnInit {
         );
     }
 
+    ngOnDestroy(): void {
+        this.onDestroy$.next(true);
+        this.onDestroy$.complete();
+    }
+
     addComment(): void {
         const comment: AddCommentInterface = {
             createdAt: new Date().toISOString(),
@@ -45,7 +51,10 @@ export class CommentComponent implements OnInit {
 
         this.commentsService
             .addComment$(comment)
-            .pipe(switchMapTo(this.commentsService.fetchComments$(this.clientId)))
+            .pipe(
+                switchMapTo(this.commentsService.fetchComments$(this.clientId)),
+                takeUntil(this.onDestroy$),
+            )
             .subscribe();
 
         this.commentForm.setValue('');
