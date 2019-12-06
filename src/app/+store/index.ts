@@ -8,8 +8,8 @@ import { GlobalActionTypes, Reset, SetRootState } from './global.actions';
 
 export interface GlobalState {
     client: fromClient.ClientStateInterface;
-    steps: fromSteps.StepsStateInterface;
-    comments: fromComments.CommentsStateInterface;
+    steps: fromSteps.StepsState;
+    comments: fromComments.CommentsState;
 }
 
 export const reducers: ActionReducerMap<GlobalState> = {

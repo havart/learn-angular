@@ -14,7 +14,7 @@ import { ErrorSnackBarService } from './error-snack-bar.service';
 @Injectable({
     providedIn: 'root',
 })
-export class GetStepService {
+export class StepsService {
     constructor(
         private readonly http: HttpClient,
         private readonly config: ApiService,

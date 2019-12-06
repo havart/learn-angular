@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CommentInterface } from '../../interfaces/comment.interface';
+import { CommentsStateInterface } from '../../interfaces/comments-state.interface';
 
 export enum CommentsActionTypes {
     UPSERT_COMMENTS = '[COMMENTS] UPSERT_COMMENTS',
@@ -8,12 +8,7 @@ export enum CommentsActionTypes {
 export class CommentsUpsertAction implements Action {
     readonly type = CommentsActionTypes.UPSERT_COMMENTS;
 
-    constructor(
-        public payload: {
-            clientId: string;
-            comments: CommentInterface[];
-        },
-    ) {}
+    constructor(public payload: CommentsStateInterface) {}
 }
 
 export type CommentsAction = CommentsUpsertAction;

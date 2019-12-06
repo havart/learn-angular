@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Dictionary } from '@ngrx/entity';
 import * as fromSteps from './steps.reducer';
-import { StepsState } from '../../interfaces/steps-state.interface';
+import { StepsStateInterface } from '../../interfaces/steps-state.interface';
 
-export const getStepsState = createFeatureSelector<fromSteps.StepsStateInterface>('steps');
+export const getStepsState = createFeatureSelector<fromSteps.StepsState>('steps');
 
 const getStepsEntities = createSelector(
     getStepsState,
@@ -13,5 +13,5 @@ const getStepsEntities = createSelector(
 export const getStepsById = (clientId: string) =>
     createSelector(
         getStepsEntities,
-        (steps: Dictionary<StepsState>) => steps[clientId] && steps[clientId].steps,
+        (steps: Dictionary<StepsStateInterface>) => steps[clientId] && steps[clientId].steps,
     );

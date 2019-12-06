@@ -31,7 +31,6 @@ export class ClientService {
     }
 
     public client$(id: string): Observable<ClientInterface> {
-
         return this.store$.select(getClientById(id)).pipe(onceRunOrCatch(this.fetchClient$(id)));
     }
 
@@ -44,10 +43,8 @@ export class ClientService {
 
         return clientStatus$.pipe(
             tap(() => this.setStatus(true)),
-            switchMap(() => this.http.get<ClientInterface>(`${this.config.CLIENT_URL}${id}`)),
-            tap((client: ClientInterface) => {
-                this.setClient(client);
-            }),
+            switchMap(() => this.http.get<ClientInterface>(this.config.CLIENT_URL + id)),
+            tap((client: ClientInterface) => this.setClient(client)),
             catchError((error: HttpErrorResponse) => {
                 this.errorSnackBarService.openSnackBarError(error.status);
 

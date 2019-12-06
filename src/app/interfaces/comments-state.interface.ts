@@ -1,6 +1,6 @@
 import { CommentInterface } from './comment.interface';
 
-export interface CommentsState {
+export interface CommentsStateInterface {
     clientId: string;
     comments: CommentInterface[];
 }

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { StepInterface } from '../../interfaces/step.interface';
+import { StepsStateInterface } from '../../interfaces/steps-state.interface';
 
 export enum StepsActionTypes {
     UPSERT_STEPS = '[STEPS] UPSERT_STEPS',
@@ -8,12 +8,7 @@ export enum StepsActionTypes {
 export class StepsUpsertAction implements Action {
     readonly type = StepsActionTypes.UPSERT_STEPS;
 
-    constructor(
-        public payload: {
-            clientId: string;
-            steps: StepInterface[];
-        },
-    ) {}
+    constructor(public payload: StepsStateInterface) {}
 }
 
 export type StepsAction = StepsUpsertAction;

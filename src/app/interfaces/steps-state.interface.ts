@@ -1,6 +1,6 @@
 import { StepInterface } from './step.interface';
 
-export interface StepsState {
+export interface StepsStateInterface {
     clientId: string;
     steps: StepInterface[];
 }
