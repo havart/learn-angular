@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { urlGetUser } from '../configs/url-get.const';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AbstractLoading } from '../abstract/abstract-loading';
-import { finalize } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 import { ErrorSnackBarService } from './error-snack-bar.service';
 
 @Injectable({

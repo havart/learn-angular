@@ -9,32 +9,21 @@
         width: 330px;
     }
 
-    .mat-form-field-flex {
+    .input {
         background-color: rgb(195, 226, 238);
         border-radius: 4px;
-        line-height: 30px;
-        padding: 0;
-    }
-
-    .mat-form-field-underline {
-        display: none;
-    }
-
-    .mat-form-field-infix {
-        padding: 0.5em 0;
-        border: 10px solid transparent;
-    }
-
-    .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-        color: rgba(0, 0, 0, 0.54);
-    }
-
-    .mat-form-field-type-mat-native-select.mat-form-field-invalid .mat-form-field-infix::after {
-        color: rgba(0, 0, 0, 0.54);
+        line-height: 16px;
+        padding: 5px;
+        box-sizing: border-box;
+        margin-bottom: 15px;
     }
 
     .comment {
         width: 680px;
-        line-height: 40px;
+        line-height: 20px;
+    }
+
+    ::ng-deep .mat-form-field-underline {
+        display: none;
     }
 }
