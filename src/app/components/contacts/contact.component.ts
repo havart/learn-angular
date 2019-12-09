@@ -13,7 +13,7 @@ import { PHONE_TYPES } from './phone-types';
 export class ContactComponent implements OnInit {
     public clientContactsForm: FormGroup;
     public phoneTypes = PHONE_TYPES;
-    contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
+    public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
     @Input() contact: ContactInterface;
 
     constructor(private readonly formBuilder: FormBuilder) {}

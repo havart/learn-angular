@@ -17,8 +17,6 @@ export class SideBarComponent implements OnInit {
     constructor(private readonly stepsService: StepsService, private readonly route: ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.stepsList$ = this.route.paramMap.pipe(
-          switchMap(params => this.stepsService.getStep$(params.get('id'))),
-        );
+        this.stepsList$ = this.route.paramMap.pipe(switchMap(params => this.stepsService.getStep$(params.get('id'))));
     }
 }
