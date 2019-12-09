@@ -42,9 +42,7 @@ export class ClientService {
         );
 
         return clientStatus$.pipe(
-            tap(() => {
-                this.setStatus(true);
-            }),
+            tap(() => this.setStatus(true)),
             switchMap(() => this.http.get<ClientInterface>(this.config.CLIENT_URL + id)),
             tap((client: ClientInterface) => this.setClient(client)),
             catchError((error: HttpErrorResponse) => {
