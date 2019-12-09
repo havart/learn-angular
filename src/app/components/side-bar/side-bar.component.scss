@@ -8,11 +8,11 @@
     text-align: center;
 }
 
-mat-sidenav-container {
-    background-color: white;
-}
-
 mat-sidenav {
     flex: 1;
     width: 250px;
+}
+
+mat-sidenav-container {
+    background-color: white;
 }

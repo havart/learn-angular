@@ -4,6 +4,7 @@ import { ClientInterface } from '../../interfaces/client.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { Observable } from 'rxjs';
+// import { tap, map, take, switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-client',
@@ -18,8 +19,6 @@ export class ClientComponent implements OnInit {
     constructor(private readonly route: ActivatedRoute, private readonly clientService: ClientService) {}
 
     ngOnInit(): void {
-        this.client$ = this.route.paramMap.pipe(
-          switchMap(params => this.clientService.client$(params.get('id'))),
-        );
+        this.client$ = this.route.paramMap.pipe(switchMap(params => this.clientService.client$(params.get('id'))));
     }
 }

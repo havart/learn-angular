@@ -10,6 +10,7 @@
     },
     "rules": {
         "no-floating-promises": false,
+        "no-void-expression": false,
         "angular-whitespace": false,
         "ban": [true, "as", "fit", "fdescribe"],
         "class-name": false,

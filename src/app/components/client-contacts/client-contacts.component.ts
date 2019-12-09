@@ -1,4 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ContactInterface } from 'src/app/interfaces/contact.interface';
+import { ContactsService } from 'src/app/services/contacts.service';
 
 @Component({
     selector: 'app-client-contacts',
@@ -6,4 +9,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     styleUrls: ['./client-contacts.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClientContactsComponent {}
+export class ClientContactsComponent implements OnInit {
+    public contacts$: Observable<ContactInterface[]>;
+
+    constructor(private readonly contactsService: ContactsService) {}
+
+    ngOnInit(): void {
+        this.contacts$ = this.contactsService.fetchContacts$();
+    }
+}
