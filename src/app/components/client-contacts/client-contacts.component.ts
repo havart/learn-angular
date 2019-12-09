@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { ContactInterface } from 'src/app/interfaces/contact.interface';
 
 @Component({
-    selector: 'app-clientcontacts',
+    selector: 'app-client-contacts',
     templateUrl: './client-contacts.component.html',
     styleUrls: ['./client-contacts.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,3 +10,24 @@
     font-size: 15px;
     font-weight: bold;
 }
+
+.cl-effect a {
+    color: rgba(0, 0, 0, 0.2);
+    text-shadow: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cl-effect a::before {
+    color: #fff;
+    content: attr(data-hover);
+    position: absolute;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.cl-effect a:hover::before,
+.cl-effect a:focus::before {
+    transform: scale(0.9);
+    opacity: 0;
+}
