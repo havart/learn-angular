@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 import { ClientInterface } from '../../interfaces/client.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ClientService } from '../../services/client.service';
@@ -17,8 +18,8 @@ export class ClientComponent implements OnInit {
     constructor(private readonly route: ActivatedRoute, private readonly clientService: ClientService) {}
 
     ngOnInit(): void {
-        const id = this.route.snapshot.params.id;
-
-        this.client$ = this.clientService.client$(id);
+        this.client$ = this.route.paramMap.pipe(
+          switchMap(params => this.clientService.client$(params.get('id'))),
+        );
     }
 }

@@ -1,8 +1,6 @@
-export interface CommentInterface {
-    id: string;
+export interface AddCommentInterface {
     createdAt: string;
     name: string;
     comment: string;
-    viewType: number;
     isComment: boolean;
 }
