@@ -1,21 +1,19 @@
-<div class="wrapper">
-    <div *ngIf="client$ | async as client" class="client-data">
-        <div class="session-data">
-            <span class="time-data">{{ time | date: 'hh:mm a' }}</span>
-            <span class="session-id">{{ client.customerId }}</span>
-            <span class="date-data">{{ client.createdAt | date: 'dd.MM.yy' }}</span>
+<div *ngIf="client$ | async as client" class="client-data">
+    <div class="session-data grey">
+        <span class="time-data">{{ time | date: 'hh:mm a' }}</span>
+        <span class="session-id">{{ client.customerId }}</span>
+        <span class="date-data">{{ client.createdAt | date: 'dd.MM.yy' }}</span>
+    </div>
+    <div class="client-detail">
+        <div class="client-name">
+            <span>{{ client.firstName }}</span>
+            <span>{{ client.lastName }}</span>
         </div>
-        <div class="client-detail">
-            <div class="client-name">
-                <span>{{ client.firstName }}</span>
-                <span>{{ client.lastName }}</span>
-            </div>
-            <span class="client-age">{{ client.age | ageData }}</span>
-            <div class="client-adress">{{ client.address }}</div>
-            <div class="client-status">{{ client.city }}</div>
-        </div>
-        <div>
-            <img src="{{ client.avatar }}" class="client-image" />
-        </div>
+        <span class="client-age grey">{{ client.age | ageData }}</span>
+        <div class="client-adress grey">{{ client.address }}</div>
+        <div class="client-status">{{ client.city }}</div>
+    </div>
+    <div>
+        <img src="{{ client.avatar }}" class="client-image" />
     </div>
 </div>

@@ -21,4 +21,8 @@ export class ApiService {
     public get CONTACTS_URL(): string {
         return `${this.mainUrl}/contacts`;
     }
+
+    public get CLIENT_ACTIVITY_URL(): string {
+        return `${this.mainUrl}/labor-activity/`;
+    }
 }
