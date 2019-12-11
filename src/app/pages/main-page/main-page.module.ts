@@ -13,7 +13,7 @@ import { ClientActivityComponent } from '../../components/client-activity/client
 import { ClientContactsComponent } from '../../components/client-contacts/client-contacts.component';
 import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
-import { ContactComponent } from 'src/app/components/contacts/contact.component';
+import { ContactComponent } from '../../components/contacts/contact.component';
 
 @NgModule({
     declarations: [

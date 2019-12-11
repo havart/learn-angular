@@ -1,14 +1,15 @@
 <mat-sidenav opened mode="side">
     <form class="form">
         <mat-form-field class="comment-input-box" appearance="outline" color="warn">
-            <img
+            <mat-icon
                 *ngIf="commentForm.value"
                 (click)="addComment()"
-                matSuffix
                 class="input-icon"
-                src="../../../assets/icon/message.svg"
-                alt=""
-            />
+                aria-hidden="true"
+                aria-label="Send"
+                matSuffix
+                >send</mat-icon
+            >
             <label>
                 <input
                     [formControl]="commentForm"

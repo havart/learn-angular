@@ -1,7 +1,9 @@
 mat-toolbar {
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 50px;
     padding: 0 10px;
+    z-index: 999;
 }
