@@ -13,7 +13,8 @@ import { ClientActivityComponent } from '../../components/client-activity/client
 import { ClientContactsComponent } from '../../components/client-contacts/client-contacts.component';
 import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
-import { ContactComponent } from 'src/app/components/contacts/contact.component';
+import { ContactComponent } from '../../components/contacts/contact.component';
+import {WidgetCallComponent } from '../../components/widget-call/widget-call.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { ContactComponent } from 'src/app/components/contacts/contact.component'
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        WidgetCallComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -42,6 +44,7 @@ import { ContactComponent } from 'src/app/components/contacts/contact.component'
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        WidgetCallComponent,
     ],
     providers: [],
 })
