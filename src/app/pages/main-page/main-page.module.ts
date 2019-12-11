@@ -14,6 +14,7 @@ import { ClientContactsComponent } from '../../components/client-contacts/client
 import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from 'src/app/components/contacts/contact.component';
+import { ButtonCallComponent } from 'src/app/components/button-call/button-call.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { ContactComponent } from 'src/app/components/contacts/contact.component'
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        ButtonCallComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -42,6 +44,7 @@ import { ContactComponent } from 'src/app/components/contacts/contact.component'
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        ButtonCallComponent,
     ],
     providers: [],
 })
