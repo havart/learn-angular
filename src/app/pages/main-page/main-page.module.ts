@@ -14,6 +14,7 @@ import { ClientContactsComponent } from '../../components/client-contacts/client
 import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from '../../components/contacts/contact.component';
+import { ButtonCallComponent } from 'src/app/components/button-call/button-call.component';
 import {WidgetCallComponent } from '../../components/widget-call/widget-call.component';
 
 @NgModule({
@@ -29,6 +30,8 @@ import {WidgetCallComponent } from '../../components/widget-call/widget-call.com
         ClientContactsComponent,
         ContactComponent,
         WidgetCallComponent,
+        ButtonCallComponent,
+
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -45,6 +48,7 @@ import {WidgetCallComponent } from '../../components/widget-call/widget-call.com
         ClientContactsComponent,
         ContactComponent,
         WidgetCallComponent,
+        ButtonCallComponent,
     ],
     providers: [],
 })
