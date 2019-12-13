@@ -7,3 +7,10 @@ export const INTERNAL_SERVER_ERROR = 500;
 export const BAD_GATEWAY = 502;
 export const SERVICE_UNAVAILABLE = 503;
 export const GATEWAY_TIMEOUT = 504;
+
+export const callState = {
+    iscall : false,
+    delay: false,
+    callStarted: false,
+    errorCall: false,
+};

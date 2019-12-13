@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-button-call',
@@ -6,6 +6,11 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./button-call.component.scss'],
 })
 export class ButtonCallComponent {
-    @Input() customStyle: {};
+    @Output() onClicked = new EventEmitter<boolean>();
+
     constructor() {}
+
+    public startCall(): void {
+        this.onClicked.emit(true);
+    }
 }

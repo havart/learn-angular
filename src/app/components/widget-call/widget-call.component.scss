@@ -1,7 +1,32 @@
 .widget {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: absolute;
-    left: 500px;
+    left: 400px;
     top: 10px;
-    width: 300px;
+    width: 700px;
+    padding-right: 30px;
     background-color: grey;
+}
+
+.client-data {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.block {
+    display: flex;
+    width: 50px;
+}
+
+.button-call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(196, 30, 58);
+    border-radius: 3px;
 }

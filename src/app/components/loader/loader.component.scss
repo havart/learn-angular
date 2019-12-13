@@ -1,0 +1,18 @@
+.progress-loader {
+ display: flex;
+ position: relative;
+ width: 150px;
+}
+
+.loader {
+    position: absolute;
+    top: 20%;
+    left: 80%; 
+    color: black;
+    transform: translate(-50%,-50%); 
+   
+}
+
+p {
+    font-size: 12px;
+}

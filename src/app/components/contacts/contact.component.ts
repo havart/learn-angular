@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, OnInit, Input, AfterViewInit, Eleme
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ContactInterface } from 'src/app/interfaces/contact.interface';
 import { ContactsFormControlEnum } from './form-contact-enum';
+import { CallService } from '../../services/call.service';
 import { PHONE_TYPES } from './phone-types';
 
 @Component({
@@ -15,9 +16,10 @@ export class ContactComponent implements OnInit, AfterViewInit {
     public phoneTypes = PHONE_TYPES;
     public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
     el: ElementRef;
+    public isStartCall: boolean;
     @Input() contact: ContactInterface;
 
-    constructor(private readonly formBuilder: FormBuilder, el: ElementRef) {
+    constructor(private readonly formBuilder: FormBuilder, el: ElementRef, private callService: CallService) {
         this.el = el;
     }
 
@@ -29,13 +31,18 @@ export class ContactComponent implements OnInit, AfterViewInit {
         const style1 = {
             borderRadius: '0px 4px 4px 0px',
         };
-         let elem = this.el.nativeElement.querySelector('.phone-field').lastChild.children[0];
-        
-         elem.style.borderRadius = style1.borderRadius ;
+        const elem = this.el.nativeElement.querySelector('.phone-field').lastChild.children[0];
+
+        elem.style.borderRadius = style1.borderRadius;
     }
 
-    public makeCall(): void {
-        // console.log(`Звонок на номер ${this.contact.phone}`);
+    public onClicked(): void {
+        const client = {
+            name: `${this.contact.firstName} ${this.contact.lastName}`,
+            phone: this.contact.phone,
+        };
+        this.callService.setCallStatus(true);
+        this.callService.setClient(client);
     }
 
     private initContactsForm(): void {

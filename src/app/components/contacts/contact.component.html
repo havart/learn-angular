@@ -4,7 +4,7 @@
             <mat-label>Номер телефона</mat-label>
             <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
         </mat-form-field>
-        <app-button-call></app-button-call>
+        <app-button-call (onClicked)="onClicked($event)"></app-button-call>
     </div>
 
     <mat-form-field class="input-full-width input ">
