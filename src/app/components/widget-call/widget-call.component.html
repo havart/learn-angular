@@ -1,16 +1,22 @@
-<div *ngIf="startCall$ | async as startCall" class="widget">
-	<div *ngIf="client$ | async as client" class="client-data">
+<div *ngIf="isCall" class="widget">
+    <div *ngIf="client$ | async as client" class="client-data">
 		<p>{{ client.name }}</p>
-	</div>
-	<app-loader *ngIf="delayNumber"></app-loader>
-	<div *ngIf="isConnected" class="block">
-	   <app-timer></app-timer>
-	   <button class="button-mic" mat-icon-button>
-       		<mat-icon aria-hidden="false">mic</mat-icon>
-       </button>
-       <button (click)="endCall()" class="button-call" mat-icon-button>
-       		<mat-icon aria-hidden="false">call_end</mat-icon>
-       </button>
+		<p>{{ client.phone }}</p>
     </div>
-	
+    <app-loader *ngIf="delayNumber"></app-loader>
+    <div *ngIf="isConnected" class="success-block">
+        <app-timer></app-timer>
+        <button class="button-mic" mat-icon-button>
+            <mat-icon aria-hidden="false">mic</mat-icon>
+        </button>
+        <button (click)="endCall()" class="button-call" mat-icon-button>
+            <mat-icon aria-hidden="false">call_end</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="isErrorConnection" class="error-block">
+		<p>Ошибка соеденения...</p>
+		<button (click)="endCall()" class="button-call" mat-icon-button>
+            <mat-icon aria-hidden="false">call_end</mat-icon>
+        </button>
+    </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CallService } from '../../services/call.service';
-import { Observable, timer } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, delay, tap } from 'rxjs/operators';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
 
 @Component({
@@ -10,42 +10,53 @@ import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
     styleUrls: ['./widget-call.component.scss'],
 })
 export class WidgetCallComponent implements OnInit {
-    public startCall$: Observable<boolean>;
     public client$: Observable<any>;
-    public delayNumber = false;
-    public isConnected = false;
-    public isErrorConnection = false;
-    public counter = 60;
-    public interval = 1000;
+    public delayNumber: boolean;
+    public isConnected: boolean;
+    public isErrorConnection: boolean;
+    public isCall: boolean;
     constructor(private readonly callService: CallService) {}
 
     ngOnInit(): void {
-        this.startCall$ = this.callService.getCallStatus$().pipe(
-            map(({isCall}) => {
-                 console.log(isCall);
-                // this.delayNumber = res;
-                this.isConnected = false;
-                setTimeout(() => {
-                this.delayNumber = false;
-                this.isConnected = true;
-            }, 2000);
-
-            return isCall;
-        }));
-
-        this.client$ = this.callService.client$().pipe(map(res => res));
+        this.callService
+            .getCallStatus$()
+            .pipe(
+                map(({ isCall, isDelay, callStarted, errorCall }) => {
+                    this.isCall = isCall;
+                    this.delayNumber = isDelay;
+                    this.isConnected = callStarted;
+                    this.isErrorConnection = errorCall;
+                }),
+                delay(2000),
+                tap(() => {
+                    if (this.delayNumber) {
+                        this.callService.setCallStatus(false, 'isDelay');
+                        this.connectClient();
+                    }
+                    if(this.isConnected) {
+                        this.client$ = this.callService.client$().pipe(map(res => res));
+                    } 
+                    
+                }),
+            )
+            .subscribe();
+            
     }
 
-    private connectClient(): boolean {
+    public endCall(): void {
+        
+        this.callService.setCallStatus(false, 'isCall');
+        this.callService.setCallStatus(false, 'callStarted');
+        this.callService.setCallStatus(false, 'errorCall');
+        
+
+    }
+
+    private connectClient(): void {
         const randomNumber = getRandomIdHelper(1, 20);
 
-        return randomNumber < 20 ? this.isConnected = true : this.isErrorConnection = true;
+        return randomNumber < 10
+            ? this.callService.setCallStatus(true, 'callStarted')
+            : this.callService.setCallStatus(true, 'errorCall');
     }
-
-    public endCall() {
-        this.callService.setCallStatus(false);
-        this.isConnected = false;
-    }
-
-    
 }

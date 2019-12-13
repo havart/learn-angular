@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { callState} from '../constants/server-response.constants'
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { callState } from '../constants/call-status.constant';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CallService {
-    private readonly _callStatus$ = new BehaviorSubject(false);
+    private readonly currentCallState = callState;
+    private readonly _callStatus$ = new BehaviorSubject(this.currentCallState);
     private readonly _client$ = new BehaviorSubject(null);
 
     constructor() {}
 
-    public setCallStatus(value): void {
-        this._callStatus$.next(value);
+    public setCallStatus(value, status): void {
+        this.currentCallState[status] = value;
+        this._callStatus$.next(this.currentCallState);
     }
 
     public getCallStatus$(): Observable<any> {

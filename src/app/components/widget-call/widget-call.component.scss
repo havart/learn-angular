@@ -16,7 +16,12 @@
     width: 300px;
 }
 
-.block {
+.success-block {
+    display: flex;
+    width: 50px;
+}
+
+.error-block {
     display: flex;
     width: 50px;
 }

@@ -16,10 +16,9 @@ export class ContactComponent implements OnInit, AfterViewInit {
     public phoneTypes = PHONE_TYPES;
     public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
     el: ElementRef;
-    public isStartCall: boolean;
     @Input() contact: ContactInterface;
 
-    constructor(private readonly formBuilder: FormBuilder, el: ElementRef, private callService: CallService) {
+    constructor(private readonly formBuilder: FormBuilder, el: ElementRef, private readonly callService: CallService) {
         this.el = el;
     }
 
@@ -28,9 +27,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        const style1 = {
-            borderRadius: '0px 4px 4px 0px',
-        };
+        const style1 = { borderRadius: '0px 4px 4px 0px' };
         const elem = this.el.nativeElement.querySelector('.phone-field').lastChild.children[0];
 
         elem.style.borderRadius = style1.borderRadius;
@@ -41,7 +38,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
             name: `${this.contact.firstName} ${this.contact.lastName}`,
             phone: this.contact.phone,
         };
-        this.callService.setCallStatus(true);
+        this.callService.setCallStatus(true, 'isDelay');
+        this.callService.setCallStatus(true, 'isCall');
         this.callService.setClient(client);
     }
 

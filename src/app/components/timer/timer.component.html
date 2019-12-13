@@ -1,8 +1,8 @@
 <div class="timer">
-    <p [class.stop-time]="isStoped" class ="image-clock" >
+    <p [class.stop-time]="isTimerStoped" class ="image-clock" >
        <mat-icon aria-hidden="false">access_alarm</mat-icon>
 	</p>
-	<p [class.stop-time]="isStoped" class="time">00:{{this.count | time }}</p>
+	<p [class.stop-time]="isTimerStoped" class="time">00:{{this.count | time }}</p>
 </div>
 
 
