@@ -1,29 +1,33 @@
 .widget {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     position: absolute;
     left: 400px;
     top: 10px;
-    width: 700px;
+    width: 800px;
+    border-radius: 3px;
     padding-right: 30px;
     background-color: grey;
 }
 
 .client-data {
     display: flex;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: space-around;
+    width: 400px;
 }
 
-.success-block {
+.connect-block {
     display: flex;
-    width: 50px;
+    align-items: center;
+    width: 600px;
 }
 
 .error-block {
     display: flex;
-    width: 50px;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
 }
 
 .button-call {

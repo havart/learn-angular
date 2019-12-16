@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CallService } from '../../services/call.service';
-import { Observable, of } from 'rxjs';
-import { map, delay, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, delay, tap, takeUntil } from 'rxjs/operators';
 import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
+import { ClientWidgetInterface } from 'src/app/interfaces/client-widget.interface';
 
 @Component({
     selector: 'app-widget-call',
     templateUrl: './widget-call.component.html',
     styleUrls: ['./widget-call.component.scss'],
 })
-export class WidgetCallComponent implements OnInit {
-    public client$: Observable<any>;
+export class WidgetCallComponent implements OnInit, OnDestroy {
+    public icon = true;
+    public client$: Observable<ClientWidgetInterface>;
     public delayNumber: boolean;
     public isConnected: boolean;
     public isErrorConnection: boolean;
     public isCall: boolean;
+    private readonly onDestroy$ = new Subject<boolean>();
+
     constructor(private readonly callService: CallService) {}
 
     ngOnInit(): void {
@@ -33,23 +37,28 @@ export class WidgetCallComponent implements OnInit {
                         this.callService.setCallStatus(false, 'isDelay');
                         this.connectClient();
                     }
-                    if(this.isConnected) {
-                        this.client$ = this.callService.client$().pipe(map(res => res));
-                    } 
-                    
                 }),
+                takeUntil(this.onDestroy$),
             )
             .subscribe();
-            
+
+        this.client$ = this.callService.client$();
+    }
+
+    ngOnDestroy(): void {
+        this.onDestroy$.next(true);
+        this.onDestroy$.complete();
+    }
+
+    public toggleMic(): boolean {
+        return (this.icon = !this.icon);
     }
 
     public endCall(): void {
-        
         this.callService.setCallStatus(false, 'isCall');
         this.callService.setCallStatus(false, 'callStarted');
         this.callService.setCallStatus(false, 'errorCall');
-        
-
+        this.callService.setClient(null);
     }
 
     private connectClient(): void {

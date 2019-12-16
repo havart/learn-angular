@@ -4,7 +4,7 @@ import { ClientInterface } from '../../interfaces/client.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { Observable } from 'rxjs';
-// import { tap, map, take, switchMap } from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-client',

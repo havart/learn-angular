@@ -9,10 +9,8 @@ import { take, tap, takeWhile } from 'rxjs/operators';
 })
 export class TimerComponent implements OnInit {
     public interval = 1000;
-    public count = 10;
+    public count = 20;
     public isTimerStoped = false;
-
-    // private _counterSource$ = new Subject<any>();
 
     ngOnInit(): void {
         timer(0, this.interval)
