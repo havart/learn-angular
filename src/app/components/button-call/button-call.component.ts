@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-phone-number',
-    templateUrl: './phone-number.component.html',
-    styleUrls: ['./phone-number.component.scss'],
+    templateUrl: './button-call.component.html',
+    styleUrls: ['./button-call.component.scss'],
 })
-export class PhoneNumberComponent {
+export class ButtonCallComponent {
     @Input() data: string;
     callStatus: boolean;
 
