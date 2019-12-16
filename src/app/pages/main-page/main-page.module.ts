@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PhoneNumberComponent } from '../../components/phone-number/phone-number.component';
 import { MaterialModule } from '../../modules/angular-material.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ToolbarModule } from '../../components/toolbar/toolbar.module';
@@ -27,6 +28,7 @@ import { ContactComponent } from '../../components/contacts/contact.component';
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        PhoneNumberComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -42,6 +44,7 @@ import { ContactComponent } from '../../components/contacts/contact.component';
         ClientActivityComponent,
         ClientContactsComponent,
         ContactComponent,
+        PhoneNumberComponent,
     ],
     providers: [],
 })

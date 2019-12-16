@@ -6,8 +6,15 @@
                     <mat-panel-title> {{ idx + 1 }}. {{ step.name }} </mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-panel-description>
-                    {{ step.phone }}
+                    {{ step.description }}
                 </mat-panel-description>
+                <mat-form-field>
+                    <label>
+                        <input matInput value="{{ step.phone }}" readonly /><app-phone-number
+                            [data]="step.phone"
+                        ></app-phone-number>
+                    </label>
+                </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>

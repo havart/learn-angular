@@ -8,5 +8,5 @@ export interface StepInterface {
     description: string;
     showDescription: boolean;
     showPhone: boolean;
-    phone: number;
+    phone: string;
 }

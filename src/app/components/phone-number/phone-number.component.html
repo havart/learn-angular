@@ -1,0 +1,4 @@
+<mat-icon *ngIf="!callStatus; else callOff" (click)="toggleCall(data)">call</mat-icon>
+<ng-template #callOff>
+    <mat-icon (click)="toggleCall('end')">call_end</mat-icon>
+</ng-template>
