@@ -22,4 +22,8 @@ mat-sidenav-container {
     width: 250px;
     background-color: white;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.3);
+
+    ::ng-deep .mat-form-field-infix {
+        display: flex;
+    }
 }

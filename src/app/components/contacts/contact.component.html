@@ -1,39 +1,29 @@
 <form [formGroup]="clientContactsForm" class="contacts-form">
     <mat-form-field class="input-full-width input ">
         <mat-label>Номер телефона</mat-label>
-        <label>
-            <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
-        </label>
+        <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
         <app-phone-number [data]="contact.phone"></app-phone-number>
     </mat-form-field>
     <mat-form-field class="input-full-width input ">
         <mat-label>ФИО Контакта</mat-label>
-        <label>
-            <input [formControlName]="contactsFormControlEnum.CLIENT_NAME" matInput />
-        </label>
+        <input [formControlName]="contactsFormControlEnum.CLIENT_NAME" matInput />
     </mat-form-field>
 
     <mat-form-field class="input-full-width input ">
         <mat-label>Тип телефона</mat-label>
-        <label>
-            <select [formControlName]="contactsFormControlEnum.PHONE_TYPE" placeholder="Тип телефона" matNativeControl>
-                <option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
-                    {{ phoneType }}
-                </option>
-            </select>
-        </label>
+        <select [formControlName]="contactsFormControlEnum.PHONE_TYPE" placeholder="Тип телефона" matNativeControl>
+            <option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
+                {{ phoneType }}
+            </option>
+        </select>
     </mat-form-field>
 
     <mat-form-field class="input-full-width input ">
         <mat-label>Тип Связи</mat-label>
-        <label>
-            <input [formControlName]="contactsFormControlEnum.CONTACTS_TYPE" matInput />
-        </label>
+        <input [formControlName]="contactsFormControlEnum.CONTACTS_TYPE" matInput />
     </mat-form-field>
 
     <mat-form-field class="input-full-width input comment" floatLabel="never">
-        <label>
-            <input [formControlName]="contactsFormControlEnum.COMMENT" placeholder="Комментарий" matInput />
-        </label>
+        <input [formControlName]="contactsFormControlEnum.COMMENT" placeholder="Комментарий" matInput />
     </mat-form-field>
 </form>

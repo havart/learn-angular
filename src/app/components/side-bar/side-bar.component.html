@@ -9,11 +9,9 @@
                     {{ step.description }}
                 </mat-panel-description>
                 <mat-form-field>
-                    <label>
-                        <input matInput value="{{ step.phone }}" readonly /><app-phone-number
-                            [data]="step.phone"
-                        ></app-phone-number>
-                    </label>
+                    <input matInput value="{{ step.phone }}" readonly /><app-phone-number
+                        [data]="step.phone"
+                    ></app-phone-number>
                 </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>
