@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit, AfterViewInit {
         elem.style.borderRadius = style1.borderRadius;
     }
 
-    public onClicked(): void {
+    public startCall(): void {
         const client = {
             name: `${this.contact.firstName} ${this.contact.lastName}`,
             phone: this.contact.phone,
