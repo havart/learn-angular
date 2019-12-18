@@ -11,14 +11,17 @@ import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { CommentComponent } from '../../components/comment/comment.component';
 import { MainPageRoutingModule } from './main-page.routing.module';
 import { ClientActivityComponent } from '../../components/client-activity/client-activity.component';
-import { ClientContactsComponent } from '../../components/client-contacts/client-contacts.component';
-import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
+import { ClientContactsListComponent } from '../../components/client-contacts-list/client-contacts-list.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from '../../components/contacts/contact.component';
 import { ButtonCallComponent } from 'src/app/components/button-call/button-call.component';
 import { WidgetCallComponent } from '../../components/widget-call/widget-call.component';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { TimerComponent } from '../../components/timer/timer.component';
+import { ContactComponent } from 'src/app/components/contacts/contact.component';
+import { ClientActivityDetailComponent } from '../../components/client-activity-detail/client-activity-detail.component';
+import { ClientDetailListComponent } from 'src/app/components/client-detail-list/client-detail-list.component';
+import { ClientDataComponent } from 'src/app/components/client-data/client-data.component';
 
 @NgModule({
     declarations: [
@@ -27,11 +30,13 @@ import { TimerComponent } from '../../components/timer/timer.component';
         TimePipe,
         SideBarComponent,
         CommentComponent,
+        ClientDataComponent,
         ClientComponent,
         ClientDetailComponent,
-        ClientPersonalDetailComponent,
+        ClientDetailListComponent,
         ClientActivityComponent,
-        ClientContactsComponent,
+        ClientContactsListComponent,
+        ClientActivityDetailComponent,
         ContactComponent,
         WidgetCallComponent,
         ButtonCallComponent,
@@ -47,10 +52,12 @@ import { TimerComponent } from '../../components/timer/timer.component';
         SideBarComponent,
         CommentComponent,
         ClientComponent,
+        ClientDataComponent,
         ClientDetailComponent,
-        ClientPersonalDetailComponent,
+        ClientDetailListComponent,
         ClientActivityComponent,
-        ClientContactsComponent,
+        ClientContactsListComponent,
+        ClientActivityDetailComponent,
         ContactComponent,
         WidgetCallComponent,
         ButtonCallComponent,

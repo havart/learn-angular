@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ClientService } from '../../services/client.service';
 import { Observable } from 'rxjs';
 
-
 @Component({
     selector: 'app-client',
     templateUrl: './client.component.html',
