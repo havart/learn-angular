@@ -13,6 +13,7 @@ import {
     MatTabsModule,
     MatSelectModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
 } from '@angular/material';
 
 const MODULES = [
@@ -29,6 +30,7 @@ const MODULES = [
     MatTabsModule,
     MatSelectModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
 ];
 
 @NgModule({

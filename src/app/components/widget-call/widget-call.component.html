@@ -1,0 +1,20 @@
+<div *ngIf="isCall" class="widget-blocks">
+    <app-widget-call-status *ngIf="isDelay"></app-widget-call-status>
+    <div *ngIf="isConnected" class="connect-block">
+        <div *ngIf="nameAndPhone$ | async as data" class="client-data">
+            <p>{{ data.name }}</p>
+            <pre>{{ data.phone }}</pre>
+        </div>
+        <app-timer></app-timer>
+        <mat-icon (click)="toggleMic()" aria-hidden="true">{{ micIcon ? 'mic' : 'mic_off' }}</mat-icon>
+        <button (click)="endCall()" class="button-call" mat-icon-button>
+            <mat-icon aria-hidden="false">call_end</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="isErrorConnection" class="error-block">
+        <p>Ошибка соеденения...</p>
+        <button (click)="endCall()" class="button-call" mat-icon-button>
+            <mat-icon aria-hidden="false">call_end</mat-icon>
+        </button>
+    </div>
+</div>

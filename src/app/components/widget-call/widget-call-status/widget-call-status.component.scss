@@ -1,0 +1,15 @@
+.progress-loader {
+    display: flex;
+    position: relative;
+    width: 150px;
+    p {
+        font-size: medium;
+    }
+}
+
+.loader {
+    position: absolute;
+    left: 30px;
+    margin-top: 15%;
+    margin-left: 100%;
+}
