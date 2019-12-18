@@ -18,7 +18,6 @@ import { ButtonCallComponent } from 'src/app/components/button-call/button-call.
 import { WidgetCallComponent } from '../../components/widget-call/widget-call.component';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { TimerComponent } from '../../components/timer/timer.component';
-import { ContactComponent } from 'src/app/components/contacts/contact.component';
 import { ClientActivityDetailComponent } from '../../components/client-activity-detail/client-activity-detail.component';
 import { ClientDetailListComponent } from 'src/app/components/client-detail-list/client-detail-list.component';
 import { ClientDataComponent } from 'src/app/components/client-data/client-data.component';
