@@ -11,10 +11,12 @@ import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { CommentComponent } from '../../components/comment/comment.component';
 import { MainPageRoutingModule } from './main-page.routing.module';
 import { ClientActivityComponent } from '../../components/client-activity/client-activity.component';
-import { ClientContactsComponent } from '../../components/client-contacts/client-contacts.component';
-import { ClientPersonalDetailComponent } from '../../components/client-personal-detail/client-personal-detail.component';
+import { ClientContactsListComponent } from '../../components/client-contacts-list/client-contacts-list.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from '../../components/contacts/contact.component';
+import { ClientActivityDetailComponent } from '../../components/client-activity-detail/client-activity-detail.component';
+import { ClientDetailListComponent } from '../../components/client-detail-list/client-detail-list.component';
+import { ClientDataComponent } from '../../components/client-data/client-data.component';
 
 @NgModule({
     declarations: [
@@ -22,11 +24,13 @@ import { ContactComponent } from '../../components/contacts/contact.component';
         AgeTransformPipe,
         SideBarComponent,
         CommentComponent,
+        ClientDataComponent,
         ClientComponent,
         ClientDetailComponent,
-        ClientPersonalDetailComponent,
+        ClientDetailListComponent,
         ClientActivityComponent,
-        ClientContactsComponent,
+        ClientContactsListComponent,
+        ClientActivityDetailComponent,
         ContactComponent,
         ButtonCallComponent,
     ],
@@ -39,10 +43,12 @@ import { ContactComponent } from '../../components/contacts/contact.component';
         SideBarComponent,
         CommentComponent,
         ClientComponent,
+        ClientDataComponent,
         ClientDetailComponent,
-        ClientPersonalDetailComponent,
+        ClientDetailListComponent,
         ClientActivityComponent,
-        ClientContactsComponent,
+        ClientContactsListComponent,
+        ClientActivityDetailComponent,
         ContactComponent,
         ButtonCallComponent,
     ],

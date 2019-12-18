@@ -38,10 +38,10 @@
     margin-bottom: 10px;
     font-size: 20px;
     text-transform: uppercase;
-}
 
-.client-name span:last-child {
-    padding-left: 10px;
+    span:last-child {
+        padding-left: 10px;
+    }
 }
 
 .client-status {
@@ -59,4 +59,8 @@
     position: absolute;
     right: 10px;
     top: 40%;
+}
+
+.grey {
+    color: rgb(168, 168, 167);
 }
