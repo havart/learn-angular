@@ -8,11 +8,6 @@
                 <mat-panel-description>
                     {{ step.description }}
                 </mat-panel-description>
-                <mat-form-field>
-                    <input matInput value="{{ step.phone }}" readonly /><app-phone-number
-                        [data]="step"
-                    ></app-phone-number>
-                </mat-form-field>
             </mat-expansion-panel>
         </mat-accordion>
     </mat-sidenav>
