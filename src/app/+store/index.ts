@@ -19,7 +19,6 @@ export const reducers: ActionReducerMap<GlobalState> = {
 };
 
 export function stateSetter(reducer: ActionReducer<GlobalState>): ActionReducer<GlobalState> {
-
     return (state: GlobalState, action: SetRootState) => {
         if (action.type === GlobalActionTypes.SET_ROOT_STATE) {
             return action.payload;
@@ -30,7 +29,6 @@ export function stateSetter(reducer: ActionReducer<GlobalState>): ActionReducer<
 }
 
 export function stateReset(reducer: ActionReducer<GlobalState>): ActionReducer<GlobalState> {
-
     return (state: GlobalState, action: Reset) => {
         if (action.type === GlobalActionTypes.RESET_STATE) {
             state = undefined;

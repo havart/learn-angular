@@ -1,0 +1,51 @@
+.widget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 400px;
+    top: 10px;
+    width: 800px;
+    border-radius: 3px;
+    padding-right: 30px;
+    background-color: grey;
+}
+
+.client-data {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+
+    :first-child {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    :last-child {
+        font-size: 14px;
+        line-height: 27px;
+    }
+}
+
+.connect-block {
+    display: flex;
+    align-items: center;
+    width: 620px;
+}
+
+.error-block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 360px;
+    font-size: 14px;
+}
+
+.button-call {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(196, 30, 58);
+    border-radius: 3px;
+}

@@ -1,0 +1,31 @@
+.timer {
+    width: 75px;
+    height: 30px;
+    display: flex;
+}
+
+.timer.stop-time p {
+    background-color: rgb(185, 63, 63);
+}
+
+.image-clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+    background-color: rgb(60, 179, 113);
+    border-radius: 3px 0 0 3px;
+}
+
+.time {
+    width: 45px;
+    line-height: 30px;
+    margin: 0;
+    padding-left: 3px;
+    font-size: 14px;
+    background-color: rgb(46, 139, 87);
+    border-radius: 0 3px 3px 0;
+}
