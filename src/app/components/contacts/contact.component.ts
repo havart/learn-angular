@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, Input, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ContactInterface } from 'src/app/interfaces/contact.interface';
 import { ContactsFormControlEnum } from './form-contact-enum';
@@ -11,26 +11,16 @@ import { PHONE_TYPES } from './phone-types';
     styleUrls: ['./contact.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactComponent implements OnInit, AfterViewInit {
+export class ContactComponent implements OnInit {
     public clientContactsForm: FormGroup;
     public phoneTypes = PHONE_TYPES;
     public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
-    el: ElementRef;
     @Input() contact: ContactInterface;
 
-    constructor(private readonly formBuilder: FormBuilder, el: ElementRef, private readonly callService: CallService) {
-        this.el = el;
-    }
+    constructor(private readonly formBuilder: FormBuilder, private readonly callService: CallService) {}
 
     ngOnInit(): void {
         this.initContactsForm();
-    }
-
-    ngAfterViewInit(): void {
-        const style1 = { borderRadius: '0px 4px 4px 0px' };
-        const elem = this.el.nativeElement.querySelector('.phone-field').lastChild.children[0];
-
-        elem.style.borderRadius = style1.borderRadius;
     }
 
     public startCall(): void {
@@ -38,9 +28,8 @@ export class ContactComponent implements OnInit, AfterViewInit {
             name: `${this.contact.firstName} ${this.contact.lastName}`,
             phone: this.contact.phone,
         };
-        this.callService.setCallStatus(true, 'isDelay');
-        this.callService.setCallStatus(true, 'isCall');
-        this.callService.setClient(client);
+
+        this.callService.makeCall(client);
     }
 
     private initContactsForm(): void {

@@ -15,12 +15,13 @@ import { ClientContactsListComponent } from '../../components/client-contacts-li
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from '../../components/contacts/contact.component';
 import { ButtonCallComponent } from 'src/app/components/button-call/button-call.component';
-import { WidgetCallComponent } from '../../components/widget-call/widget-call.component';
+import { PhoneWidgetComponent } from '../../components/phone-widget/phone-widget.component';
 import { LoaderComponent } from '../../components/loader/loader.component';
 import { TimerComponent } from '../../components/timer/timer.component';
 import { ClientActivityDetailComponent } from '../../components/client-activity-detail/client-activity-detail.component';
-import { ClientDetailListComponent } from 'src/app/components/client-detail-list/client-detail-list.component';
-import { ClientDataComponent } from 'src/app/components/client-data/client-data.component';
+import { ClientDetailListComponent } from '../../components/client-detail-list/client-detail-list.component';
+import { ClientDataComponent } from '../../components/client-data/client-data.component';
+import { PhoneFieldComponent } from '../../components/phone-field/phone-field.component';
 
 @NgModule({
     declarations: [
@@ -37,10 +38,11 @@ import { ClientDataComponent } from 'src/app/components/client-data/client-data.
         ClientContactsListComponent,
         ClientActivityDetailComponent,
         ContactComponent,
-        WidgetCallComponent,
+        PhoneWidgetComponent,
         ButtonCallComponent,
         LoaderComponent,
         TimerComponent,
+        PhoneFieldComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -58,10 +60,11 @@ import { ClientDataComponent } from 'src/app/components/client-data/client-data.
         ClientContactsListComponent,
         ClientActivityDetailComponent,
         ContactComponent,
-        WidgetCallComponent,
+        PhoneWidgetComponent,
         ButtonCallComponent,
         LoaderComponent,
-        TimerComponent
+        TimerComponent,
+        PhoneFieldComponent,
     ],
     providers: [],
 })

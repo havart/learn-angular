@@ -1,6 +1,6 @@
 export interface CallStatusInterface {
-    isCall: boolean;
-    isDelay: boolean;
-    callStarted: boolean;
-    errorCall: boolean;
+    call: boolean;
+    connecting: boolean;
+    connected: boolean;
+    error_connect: boolean;
 }

@@ -15,19 +15,29 @@
     display: flex;
     justify-content: space-around;
     width: 400px;
+
+    :first-child {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    :last-child {
+        font-size: 14px;
+        line-height: 27px;
+    }
 }
 
 .connect-block {
     display: flex;
     align-items: center;
-    width: 600px;
+    width: 620px;
 }
 
 .error-block {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+    width: 360px;
+    font-size: 14px;
 }
 
 .button-call {
