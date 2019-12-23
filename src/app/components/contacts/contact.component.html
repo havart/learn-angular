@@ -2,6 +2,7 @@
     <mat-form-field class="input-full-width input ">
         <mat-label>Номер телефона</mat-label>
         <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
+        <app-button-call [data]="contact"></app-button-call>
     </mat-form-field>
 
     <mat-form-field class="input-full-width input ">

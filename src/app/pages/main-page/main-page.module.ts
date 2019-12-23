@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonCallComponent } from '../../components/button-call/button-call.component';
 import { MaterialModule } from '../../modules/angular-material.module';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { ToolbarModule } from '../../components/toolbar/toolbar.module';
@@ -31,6 +32,7 @@ import { ClientDataComponent } from '../../components/client-data/client-data.co
         ClientContactsListComponent,
         ClientActivityDetailComponent,
         ContactComponent,
+        ButtonCallComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
     exports: [
@@ -48,6 +50,7 @@ import { ClientDataComponent } from '../../components/client-data/client-data.co
         ClientContactsListComponent,
         ClientActivityDetailComponent,
         ContactComponent,
+        ButtonCallComponent,
     ],
     providers: [],
 })
