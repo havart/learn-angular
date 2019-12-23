@@ -23,12 +23,10 @@ export class StepsService {
     ) {}
 
     public getStep$(id: string): Observable<StepInterface[]> {
-
         return this.store$.select(getStepsById(id)).pipe(onceRunOrCatch(this.fetchSteps$(id)));
     }
 
     public fetchSteps$(id: string): Observable<StepInterface[]> {
-
         return this.http.get<StepInterface[]>(this.config.STEPS_URL).pipe(
             map((steps: StepInterface[]) => steps.filter((step: StepInterface) => !step.isComment)),
             tap((result: StepInterface[]) => {

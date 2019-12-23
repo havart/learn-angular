@@ -1,0 +1,7 @@
+<div [formGroup]="phoneInputForm" class="phone-field">
+    <mat-form-field class="input-full-width input phone">
+        <mat-label>Номер телефона</mat-label>
+        <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
+    </mat-form-field>
+    <app-button-call></app-button-call>
+</div>

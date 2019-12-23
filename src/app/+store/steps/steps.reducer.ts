@@ -18,17 +18,14 @@ const reducers: Record<string, ActionReducer<StepsState, StepsAction>> = {
 };
 
 function reset(state: StepsState): StepsState {
-
     return stepsAdapter.removeAll(state);
 }
 
 function upsertSteps(state: StepsState, { payload }: StepsUpsertAction): StepsState {
-
     return stepsAdapter.upsertOne(payload, state);
 }
 
 export function reducer(state: StepsState = stepsInitialState, action: StepsAction): StepsState {
-
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
 

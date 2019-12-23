@@ -1,10 +1,5 @@
 <form [formGroup]="clientContactsForm" class="contacts-form">
-    <mat-form-field class="input-full-width input ">
-        <mat-label>Номер телефона</mat-label>
-        <input [formControlName]="contactsFormControlEnum.PHONE" matInput />
-        <app-button-call [data]="contact"></app-button-call>
-    </mat-form-field>
-
+   <app-phone-field [phone]="contact.phone" (click)="startCall()"></app-phone-field>
     <mat-form-field class="input-full-width input ">
         <mat-label>ФИО Контакта</mat-label>
         <input [formControlName]="contactsFormControlEnum.CLIENT_NAME" matInput />

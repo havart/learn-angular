@@ -18,17 +18,14 @@ const reducers: Record<string, ActionReducer<CommentsState, CommentsAction>> = {
 };
 
 function reset(state: CommentsState): CommentsState {
-
     return commentsAdapter.removeAll(state);
 }
 
 function upsertComments(state: CommentsState, { payload }: CommentsUpsertAction): CommentsState {
-
     return commentsAdapter.upsertOne(payload, state);
 }
 
 export function reducer(state: CommentsState = commentsInitialState, action: CommentsAction): CommentsState {
-
     return action.type in reducers ? reducers[action.type](state, action) : state;
 }
 

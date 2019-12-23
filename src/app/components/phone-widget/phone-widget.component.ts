@@ -1,48 +1,54 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { delay, map, takeUntil, tap } from 'rxjs/operators';
-import { getRandomIdHelper } from '../../helpers/get-random-id.helper';
-import { WidgetDataInterface } from '../../interfaces/widget-data.interface';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { CallService } from '../../services/call.service';
+import { Observable, Subject } from 'rxjs';
+import { map, delay, tap, takeUntil } from 'rxjs/operators';
+import { ClientWidgetInterface } from '../../interfaces/client-widget.interface';
+import { CallStatusInterface } from '../../interfaces/call-status.interface';
+import { CallStatusEnum } from '../../enums/call-status.enum';
+import { widgetSettings } from '../../configs/widget-settings.const';
 
 @Component({
     selector: 'app-phone-widget',
     templateUrl: './phone-widget.component.html',
     styleUrls: ['./phone-widget.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhoneWidgetComponent implements OnInit, OnDestroy {
-    public nameAndPhone$: Observable<WidgetDataInterface>;
-    public micIcon = true;
-    public isCall: boolean;
-    public isDelay: boolean;
+    public icon = true;
+    public client$: Observable<ClientWidgetInterface>;
+    public connecting: boolean;
     public isConnected: boolean;
     public isErrorConnection: boolean;
-
+    public isCall: boolean;
+    public callStatusEnum: typeof CallStatusEnum = CallStatusEnum;
+    public widgetSettings = widgetSettings;
     private readonly onDestroy$ = new Subject<boolean>();
 
-    constructor(private callService: CallService) {}
+    constructor(private readonly callService: CallService, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.callService
             .getCallStatus$()
             .pipe(
-                map(({ isCall, isDelay, callStarted, errorCall }) => {
-                    this.isCall = isCall;
-                    this.isDelay = isDelay;
-                    this.isConnected = callStarted;
-                    this.isErrorConnection = errorCall;
+                map(({ call, connecting, connected, error_connect }: CallStatusInterface) => {
+                    this.isCall = call;
+                    this.connecting = connecting;
+                    this.isConnected = connected;
+                    this.isErrorConnection = error_connect;
+                    this.changeDetectorRef.detectChanges();
                 }),
-                delay(2000),
+                delay(this.widgetSettings.connectingTime),
                 tap(() => {
-                    if (this.isDelay) {
-                        this.callService.setCallStatus(false, 'isDelay');
-                        this.connectCall();
+                    if (this.connecting) {
+                        this.callService.makeConnection();
+                        this.changeDetectorRef.detectChanges();
                     }
                 }),
                 takeUntil(this.onDestroy$),
             )
             .subscribe();
-        this.nameAndPhone$ = this.callService.data$();
+
+        this.client$ = this.callService.client$();
     }
 
     ngOnDestroy(): void {
@@ -51,21 +57,10 @@ export class PhoneWidgetComponent implements OnInit, OnDestroy {
     }
 
     public toggleMic(): boolean {
-        return (this.micIcon = !this.micIcon);
+        return (this.icon = !this.icon);
     }
 
     public endCall(): void {
-        this.callService.setCallStatus(false, 'isCall');
-        this.callService.setCallStatus(false, 'callStarted');
-        this.callService.setCallStatus(false, 'errorCall');
-        this.callService.setData(null);
-    }
-
-    private connectCall(): void {
-        const randomNumber = getRandomIdHelper(1, 20);
-
-        return randomNumber < 10
-            ? this.callService.setCallStatus(true, 'callStarted')
-            : this.callService.setCallStatus(true, 'errorCall');
+        this.callService.endCall();
     }
 }
