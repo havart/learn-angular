@@ -27,6 +27,10 @@
         display: none;
     }
 
+    ::ng-deep .mat-form-field-infix {
+        display: flex;
+    }
+  
     .phone-field {
         width: 330px;
         display: flex;

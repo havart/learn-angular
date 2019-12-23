@@ -21,15 +21,11 @@
     height: 24px;
     cursor: pointer;
     margin-left: 5px;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .input-icon:hover {
-    opacity: 0.8;
-}
-
-.mat-drawer-side {
-    border-left: solid 1px rgba(0, 0, 0, 0.5);
+    opacity: 1;
 }
 
 .mat-card-title {
@@ -39,6 +35,7 @@
 
 .mat-card {
     box-shadow: 0 0 0 0;
+    background: white;
 }
 
 mat-card-content {
@@ -48,7 +45,7 @@ mat-card-content {
 
 mat-sidenav {
     position: relative;
-    top: 0;
+    padding-top: 54px;
     display: flex;
     flex-direction: column;
     flex: 1;

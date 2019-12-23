@@ -1,12 +1,17 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container>
     <mat-sidenav opened mode="side">
-        <mat-list class="list-item">
-            <mat-list-item *ngFor="let step of stepsList$ | async; let idx = index"
-                >{{ idx + 1 }}. {{ step.name }}
-            </mat-list-item>
-        </mat-list>
-        <div class="side-button">
-            <button mat-raised-button color="primary">Завершить сессию</button>
-        </div>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let step of stepsList$ | async; let idx = index">
+                <mat-expansion-panel-header>
+                    <mat-panel-title> {{ idx + 1 }}. {{ step.name }} </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-panel-description>
+                    {{ step.description }}
+                </mat-panel-description>
+            </mat-expansion-panel>
+        </mat-accordion>
     </mat-sidenav>
+    <div class="side-button">
+        <button mat-raised-button color="primary">Завершить сессию</button>
+    </div>
 </mat-sidenav-container>
