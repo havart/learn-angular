@@ -24,12 +24,10 @@ export class CommentsService {
     ) {}
 
     public getComment$(id: string): Observable<CommentInterface[]> {
-
         return this.store$.select(getCommentsById(id)).pipe(onceRunOrCatch(this.fetchComments$(id)));
     }
 
     public fetchComments$(id: string): Observable<CommentInterface[]> {
-
         return this.http.get<CommentInterface[]>(this.config.COMMENTS_URL).pipe(
             map((comments: CommentInterface[]) =>
                 comments
@@ -49,7 +47,6 @@ export class CommentsService {
     }
 
     public addComment$(comment: AddCommentInterface): Observable<any> {
-
         return this.http.post<CommentInterface[]>(this.config.COMMENTS_URL, comment);
     }
 }
