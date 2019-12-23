@@ -28,14 +28,8 @@ export class ButtonCallComponent implements OnInit, OnDestroy {
     }
 
     toggleCall(data): void {
-        let checkClient: string;
-        if (data.name) {
-            checkClient = data.name;
-        } else {
-            checkClient = `${data.firstName} ${data.lastName}`;
-        }
         this.callService.setCallStatus(true, 'isCall');
         this.callService.setCallStatus(true, 'isDelay');
-        this.callService.setData({ name: checkClient, phone: data.phone });
+        this.callService.setData({ name: `${data.firstName} ${data.lastName}`, phone: data.phone });
     }
 }
