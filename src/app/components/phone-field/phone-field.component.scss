@@ -1,0 +1,20 @@
+.phone-field {
+    width: 330px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    
+    .input {
+        width: 276px;
+        background-color: rgb(195, 226, 238);
+        border-radius: 4px 0 0 4px;
+        padding: 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+    }
+
+    ::ng-deep .mat-form-field-underline {
+        display: none;
+    }
+}

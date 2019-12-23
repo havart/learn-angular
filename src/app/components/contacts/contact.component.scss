@@ -12,8 +12,8 @@
     .input {
         background-color: rgb(195, 226, 238);
         border-radius: 4px;
-        line-height: 16px;
-        padding: 5px;
+        padding: 0;
+        padding: 0 10px;
         box-sizing: border-box;
         margin-bottom: 15px;
     }
@@ -29,5 +29,26 @@
 
     ::ng-deep .mat-form-field-infix {
         display: flex;
+    }
+  
+    .phone-field {
+        width: 330px;
+        display: flex;
+        justify-content: space-between;
+
+        mat-form-field:first-of-type {
+            width: 280px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        :nth-child(2n) {
+            border-radius: 0;
+        }
+
+        :last-child {
+            width: 46px;
+            height: 68px;
+            border-radius: 4px;
+        }
     }
 }
