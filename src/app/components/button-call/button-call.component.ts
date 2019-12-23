@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CallStatusInterface } from '../../interfaces/call-status.interface';
+import { ContactInterface } from '../../interfaces/contact.interface';
 import { CallService } from '../../services/call.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CallService } from '../../services/call.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonCallComponent implements OnInit, OnDestroy {
-    @Input() data: any;
+    @Input() data: ContactInterface;
     public callStatus: CallStatusInterface;
     private widgetSubscription: Subscription;
 
@@ -19,7 +20,7 @@ export class ButtonCallComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.widgetSubscription = this.callService.callStatus$.subscribe((value: CallStatusInterface) => {
             this.callStatus = value;
-            this.changeDetectionRef.markForCheck();
+            this.changeDetectionRef.detectChanges();
         });
     }
 
@@ -27,9 +28,12 @@ export class ButtonCallComponent implements OnInit, OnDestroy {
         this.widgetSubscription.unsubscribe();
     }
 
-    toggleCall(data): void {
-        this.callService.setCallStatus(true, 'isCall');
-        this.callService.setCallStatus(true, 'isDelay');
-        this.callService.setData({ name: `${data.firstName} ${data.lastName}`, phone: data.phone });
+    public startCall(): void {
+        const client = {
+            name: `${this.data.firstName} ${this.data.lastName}`,
+            phone: this.data.phone,
+        };
+
+        this.callService.makeCall(client);
     }
 }

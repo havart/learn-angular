@@ -1,4 +1,6 @@
-<mat-icon *ngIf="!callStatus.isCall; else callOff" (click)="toggleCall(data)" aria-hidden="true">call</mat-icon>
+<mat-icon *ngIf="!callStatus.call; else callOff" (click)="startCall()" aria-hidden="true" class="button-call"
+    >call</mat-icon
+>
 <ng-template #callOff>
-    <mat-icon aria-hidden="true">phone_in_talk</mat-icon>
+    <mat-icon aria-hidden="true" class="button-call">phone_in_talk</mat-icon>
 </ng-template>

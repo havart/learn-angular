@@ -2,7 +2,6 @@ import { Component, ChangeDetectionStrategy, OnInit, Input } from '@angular/core
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ContactInterface } from 'src/app/interfaces/contact.interface';
 import { ContactsFormControlEnum } from './form-contact-enum';
-import { CallService } from '../../services/call.service';
 import { PHONE_TYPES } from './phone-types';
 
 @Component({
@@ -17,19 +16,10 @@ export class ContactComponent implements OnInit {
     public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
     @Input() contact: ContactInterface;
 
-    constructor(private readonly formBuilder: FormBuilder, private readonly callService: CallService) {}
+    constructor(private readonly formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
         this.initContactsForm();
-    }
-
-    public startCall(): void {
-        const client = {
-            name: `${this.contact.firstName} ${this.contact.lastName}`,
-            phone: this.contact.phone,
-        };
-
-        this.callService.makeCall(client);
     }
 
     private initContactsForm(): void {
