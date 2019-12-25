@@ -1,10 +1,8 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { CallService } from '../../services/call.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { map, delay, tap, takeUntil } from 'rxjs/operators';
+import { delay, map, takeUntil, tap } from 'rxjs/operators';
 import { ClientWidgetInterface } from '../../interfaces/client-widget.interface';
-import { CallStatusInterface } from '../../interfaces/call-status.interface';
-import { CallStatusEnum } from '../../enums/call-status.enum';
+import { CallService } from '../../services/call.service';
 import { widgetSettings } from '../../configs/widget-settings.const';
 
 @Component({
@@ -14,32 +12,32 @@ import { widgetSettings } from '../../configs/widget-settings.const';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhoneWidgetComponent implements OnInit, OnDestroy {
-    public icon = true;
-    public client$: Observable<ClientWidgetInterface>;
-    public connecting: boolean;
+    public nameAndPhone$: Observable<ClientWidgetInterface>;
+    public micIcon = true;
+    public isCall: boolean;
+    public isConnecting: boolean;
     public isConnected: boolean;
     public isErrorConnection: boolean;
-    public isCall: boolean;
-    public callStatusEnum: typeof CallStatusEnum = CallStatusEnum;
     public widgetSettings = widgetSettings;
+
     private readonly onDestroy$ = new Subject<boolean>();
 
-    constructor(private readonly callService: CallService, private readonly changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private callService: CallService, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.callService
             .getCallStatus$()
             .pipe(
-                map(({ call, connecting, connected, error_connect }: CallStatusInterface) => {
+                map(({ call, connecting, connected, error_connect }) => {
                     this.isCall = call;
-                    this.connecting = connecting;
+                    this.isConnecting = connecting;
                     this.isConnected = connected;
                     this.isErrorConnection = error_connect;
                     this.changeDetectorRef.detectChanges();
                 }),
                 delay(this.widgetSettings.connectingTime),
                 tap(() => {
-                    if (this.connecting) {
+                    if (this.isConnecting) {
                         this.callService.makeConnection();
                         this.changeDetectorRef.detectChanges();
                     }
@@ -47,8 +45,7 @@ export class PhoneWidgetComponent implements OnInit, OnDestroy {
                 takeUntil(this.onDestroy$),
             )
             .subscribe();
-
-        this.client$ = this.callService.client$();
+        this.nameAndPhone$ = this.callService.data$();
     }
 
     ngOnDestroy(): void {
@@ -57,7 +54,7 @@ export class PhoneWidgetComponent implements OnInit, OnDestroy {
     }
 
     public toggleMic(): boolean {
-        return (this.icon = !this.icon);
+        return (this.micIcon = !this.micIcon);
     }
 
     public endCall(): void {

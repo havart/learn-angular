@@ -2,10 +2,7 @@
     width: 75px;
     height: 30px;
     display: flex;
-}
-
-.timer.stop-time p {
-    background-color: rgb(185, 63, 63);
+    padding: 15px;
 }
 
 .image-clock {
@@ -16,7 +13,7 @@
     height: 30px;
     line-height: 30px;
     margin: 0;
-    background-color: rgb(60, 179, 113);
+    background-color: rgb(60, 179, 110);
     border-radius: 3px 0 0 3px;
 }
 
@@ -28,4 +25,8 @@
     font-size: 14px;
     background-color: rgb(46, 139, 87);
     border-radius: 0 3px 3px 0;
+}
+
+.stop-time {
+    background-color: rgb(204, 3, 37);
 }

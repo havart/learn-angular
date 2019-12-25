@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'time',
+    name: 'timer',
 })
-export class TimePipe implements PipeTransform {
+export class TimerPipe implements PipeTransform {
     transform(value: number): string {
         return value < 10 ? `0${value}` : value.toString();
     }

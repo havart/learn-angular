@@ -1,53 +1,53 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { callState } from '../constants/call-status.constant';
-import { ClientWidgetInterface } from '../interfaces/client-widget.interface';
-import { CallStatusInterface } from '../interfaces/call-status.interface';
+import { callStatus } from '../constants/call-status.constants';
 import { CallStatusEnum } from '../enums/call-status.enum';
 import { getRandomIdHelper } from '../helpers/get-random-id.helper';
+import { CallStatusInterface } from '../interfaces/call-status.interface';
+import { ClientWidgetInterface } from '../interfaces/client-widget.interface';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CallService {
-    private readonly _callStatus$ = new BehaviorSubject<CallStatusInterface>(callState);
-    private readonly _client$ = new BehaviorSubject<ClientWidgetInterface>(null);
+    public callStatus$ = new BehaviorSubject<CallStatusInterface>(callStatus);
+    public nameAndPhone$ = new BehaviorSubject<ClientWidgetInterface>(null);
     private readonly callStatusEnum: typeof CallStatusEnum = CallStatusEnum;
 
-    public setCallStatus(status: string, value: boolean): void {
-        this._callStatus$.next({ ...this._callStatus$.getValue(), [status]: value });
+    public setCallStatus(value, status): void {
+        this.callStatus$.next({ ...this.callStatus$.getValue(), [status]: value });
+    }
+
+    public setData(value: ClientWidgetInterface): void {
+        this.nameAndPhone$.next(value);
+    }
+
+    public data$(): Observable<ClientWidgetInterface> {
+        return this.nameAndPhone$.asObservable();
     }
 
     public getCallStatus$(): Observable<CallStatusInterface> {
-        return this._callStatus$.asObservable();
-    }
-
-    public setClient(value: ClientWidgetInterface): void {
-        this._client$.next(value);
-    }
-
-    public client$(): Observable<ClientWidgetInterface> {
-        return this._client$.asObservable();
+        return this.callStatus$.asObservable();
     }
 
     public makeCall(client: ClientWidgetInterface): void {
-        this.setCallStatus(this.callStatusEnum.CONNECTING, true);
-        this.setCallStatus(this.callStatusEnum.CALL, true);
-        this.setClient(client);
+        this.setCallStatus(true, this.callStatusEnum.CONNECTING);
+        this.setCallStatus(true, this.callStatusEnum.CALL);
+        this.setData(client);
     }
 
     public makeConnection(): void {
         const randomNumber = getRandomIdHelper(1, 20);
 
-        this.setCallStatus(this.callStatusEnum.CONNECTING, false);
+        this.setCallStatus(false, this.callStatusEnum.CONNECTING);
 
         randomNumber < 10
-            ? this.setCallStatus(this.callStatusEnum.CONNECTED, true)
-            : this.setCallStatus(this.callStatusEnum.ERROR_CONNECT, true);
+            ? this.setCallStatus(true, this.callStatusEnum.CONNECTED)
+            : this.setCallStatus(true, this.callStatusEnum.ERROR_CONNECT);
     }
 
     public endCall(): void {
-        this._callStatus$.next(callState);
-        this.setClient(null);
+        this.callStatus$.next(callStatus);
+        this.setData(null);
     }
 }

@@ -1,4 +1,4 @@
-export const callState = {
+export const callStatus = {
     call: false,
     connecting: false,
     connected: false,
