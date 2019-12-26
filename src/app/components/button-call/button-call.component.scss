@@ -1,3 +1,11 @@
+mat-icon {
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    opacity: 0.6;
+}
+
 .button-call {
     width: 50px;
     height: 65px;

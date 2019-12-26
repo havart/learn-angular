@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { timer, Subject } from 'rxjs';
-import { take, tap, takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subject, timer } from 'rxjs';
+import { take, takeUntil, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-timer',
@@ -9,14 +9,15 @@ import { take, tap, takeUntil } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimerComponent implements OnInit, OnDestroy {
+    @Input() count: number;
     public interval = 1000;
     public isTimerStoped = false;
-    @Input() count: number;
     private readonly onDestroy$ = new Subject<boolean>();
 
     constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+
     ngOnInit(): void {
-        timer(0, this.interval)
+        timer(500, this.interval)
             .pipe(
                 take(this.count),
                 tap(() => {

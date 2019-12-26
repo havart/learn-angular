@@ -1,6 +1,6 @@
 export const callStatus = {
-    isCall: false,
-    isDelay: false,
-    callStarted: false,
-    errorCall: false,
+    call: false,
+    connecting: false,
+    connected: false,
+    error_connect: false,
 };

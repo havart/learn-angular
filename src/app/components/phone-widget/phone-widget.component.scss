@@ -1,14 +1,14 @@
-.widget {
+.widget-blocks {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 400px;
-    top: 10px;
-    width: 800px;
+    position: relative;
+    padding: 0 10px;
     border-radius: 3px;
-    padding-right: 30px;
-    background-color: grey;
+    width: 650px;
+    flex: 1;
+    height: 50px;
+    background-color: rgb(70, 70, 70);
     z-index: 999;
 }
 
@@ -16,37 +16,62 @@
     display: flex;
     justify-content: space-around;
     width: 400px;
-
-    :first-child {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    p {
+        font-size: medium;
     }
-
-    :last-child {
+    pre {
         font-size: 14px;
-        line-height: 27px;
+        font-style: italic;
     }
 }
 
 .connect-block {
     display: flex;
     align-items: center;
-    width: 620px;
+    width: 600px;
 }
 
 .error-block {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 360px;
-    font-size: 14px;
+    width: 400px;
+    p {
+        font-size: medium;
+    }
 }
 
 .button-call {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 15px;
     width: 40px;
     height: 40px;
-    background-color: rgb(196, 30, 58);
+    background-color: rgb(204, 3, 37);
     border-radius: 3px;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+mat-icon:hover {
+    opacity: 0.6;
+}
+
+.progress-loader {
+    display: flex;
+    position: relative;
+    width: 150px;
+    p {
+        font-size: medium;
+    }
+}
+
+.loader {
+    position: absolute;
+    left: 30px;
+    margin-top: 15%;
+    margin-left: 100%;
 }

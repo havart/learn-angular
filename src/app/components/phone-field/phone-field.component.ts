@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ContactInterface } from '../../interfaces/contact.interface';
 import { ContactsFormControlEnum } from '../contacts/form-contact-enum';
 
 @Component({
@@ -11,7 +12,8 @@ import { ContactsFormControlEnum } from '../contacts/form-contact-enum';
 export class PhoneFieldComponent implements OnInit {
     public phoneInputForm: FormGroup;
     public contactsFormControlEnum: typeof ContactsFormControlEnum = ContactsFormControlEnum;
-    @Input() phone: string;
+    @Input() contact: ContactInterface;
+
     constructor(private readonly formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
@@ -20,7 +22,7 @@ export class PhoneFieldComponent implements OnInit {
 
     private initPhoneInputForm(): void {
         const form = {
-            [this.contactsFormControlEnum.PHONE]: [this.phone, [Validators.required]],
+            [this.contactsFormControlEnum.PHONE]: [this.contact.phone, [Validators.required]],
         };
 
         this.phoneInputForm = this.formBuilder.group(form);

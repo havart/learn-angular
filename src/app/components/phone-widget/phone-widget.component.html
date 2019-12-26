@@ -1,30 +1,25 @@
-<div *ngIf="isCall" class="widget">
-    <ng-container [ngSwitch]="true">
-        <div *ngSwitchCase="isConnected">
-            <div class="connect-block">
-                <div *ngIf="client$ | async as client" class="client-data">
-                    <p>{{ client.name }}</p>
-                    <p>{{ client.phone }}</p>
-                </div>
-                <app-timer [count]="widgetSettings.timerCount"></app-timer>
-                <button (click)="toggleMic()" mat-icon-button>
-                    <mat-icon aria-hidden="false">{{ icon ? 'mic' : 'mic_off' }}</mat-icon>
-                </button>
-                <button (click)="endCall()" class="button-call" mat-icon-button>
-                    <mat-icon aria-hidden="false">call_end</mat-icon>
-                </button>
+<div *ngIf="isCall" class="widget-blocks">
+    <div *ngIf="isConnecting" class="progress-loader">
+        <p>{{ widgetSettings.connectingMessage }}</p>
+        <mat-progress-spinner class="loader" mode="indeterminate" diameter="20"> </mat-progress-spinner>
+    </div>
+    <ng-container *ngIf="!isConnecting">
+        <div *ngIf="isConnected; else errorConnect" class="connect-block">
+            <div *ngIf="nameAndPhone$ | async as data" class="client-data">
+                <p>{{ data.name }}</p>
+                <pre>{{ data.phone }}</pre>
             </div>
+            <app-timer [count]="widgetSettings.timerCount"></app-timer>
+            <mat-icon (click)="toggleMic()" aria-hidden="true">{{ micIcon ? 'mic' : 'mic_off' }}</mat-icon>
+            <button (click)="endCall()" class="button-call" mat-icon-button>
+                <mat-icon aria-hidden="false">call_end</mat-icon>
+            </button>
         </div>
-        <div *ngSwitchCase="connecting">
-            <app-loader *ngIf="connecting" [message]="widgetSettings.connectingMessage"></app-loader>
-        </div>
-        <div *ngSwitchCase="isErrorConnection">
-            <div class="error-block">
-                <p>{{ widgetSettings.errorMessage }}</p>
-                <button (click)="endCall()" class="button-call" mat-icon-button>
-                    <mat-icon aria-hidden="false">call_end</mat-icon>
-                </button>
-            </div>
-        </div>
+        <ng-template #errorConnect class="error-block">
+            <p>{{ widgetSettings.errorMessage }}</p>
+            <button (click)="endCall()" class="button-call" mat-icon-button>
+                <mat-icon aria-hidden="false">call_end</mat-icon>
+            </button>
+        </ng-template>
     </ng-container>
 </div>
