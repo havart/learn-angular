@@ -22,7 +22,7 @@ export class PhoneWidgetComponent implements OnInit, OnDestroy {
 
     private readonly onDestroy$ = new Subject<boolean>();
 
-    constructor(private callService: CallService, private readonly changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private readonly callService: CallService, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.callService

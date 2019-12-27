@@ -1,5 +1,16 @@
 <app-toolbar></app-toolbar>
-<app-side-bar></app-side-bar>
-<app-client-data></app-client-data>
-<app-client-detail></app-client-detail>
-<app-comment></app-comment>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" class="left" opened><app-side-bar></app-side-bar></mat-drawer>
+    <mat-drawer-content class="right">
+        <app-client></app-client>
+        <mat-drawer-container>
+            <mat-drawer mode="side" class="right-list comment-block" opened>
+                <app-comment></app-comment>
+            </mat-drawer>
+            <mat-drawer-content class="tabs">
+                <app-client-detail></app-client-detail>
+            </mat-drawer-content>
+        </mat-drawer-container>
+    </mat-drawer-content>
+</mat-drawer-container>

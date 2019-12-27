@@ -1,0 +1,40 @@
+.right-list {
+    display: flex;
+    position: relative;
+    padding: 15px;
+    float: right;
+    width: 28%;
+}
+
+.comment-block {
+    padding-top: 48px;
+}
+
+.left {
+    margin-top: 64px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    overflow: auto;
+    left: 0;
+    height: 75%;
+    padding-bottom: 130px;
+    width: 20%;
+    border: 1px solid rgba(221, 221, 221, 0.3);
+    box-sizing: content-box;
+    box-shadow: 4px 4px 5px 1px rgba(136, 136, 136, 0.2);
+}
+
+.right {
+    width: 80%;
+}
+
+mat-drawer-content .tabs {
+    position: absolute;
+    margin: 0 !important;
+    width: 72%;
+}
+
+mat-drawer-container {
+    background-color: rgb(255, 255, 255);
+}

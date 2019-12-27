@@ -6,7 +6,7 @@
         <input [formControlName]="contactsFormControlEnum.CLIENT_NAME" matInput />
     </mat-form-field>
 
-    <mat-form-field class="input-full-width input ">
+    <mat-form-field class="input-full-width input phone-type">
         <mat-label>Тип телефона</mat-label>
         <select [formControlName]="contactsFormControlEnum.PHONE_TYPE" placeholder="Тип телефона" matNativeControl>
             <option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
