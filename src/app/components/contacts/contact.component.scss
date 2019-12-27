@@ -1,21 +1,21 @@
 .contacts-form {
-    width: 680px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 680px;
+    margin: 0 auto;
 
     .mat-form-field {
-        width: 330px;
+        width: 310px;
     }
 
     .input {
+        max-height: 64px;
+        height: 100%;
+        margin-bottom: 15px;
         background-color: rgb(195, 226, 238);
         border-radius: 4px;
-        padding: 0;
         padding: 0 10px;
-        box-sizing: border-box;
-        margin-bottom: 15px;
     }
 
     .comment {
@@ -27,28 +27,8 @@
         display: none;
     }
 
-    ::ng-deep .mat-form-field-infix {
+    ::ng-deep .mat-form-field-infix .phone-type {
         display: flex;
-    }
-  
-    .phone-field {
-        width: 330px;
-        display: flex;
-        justify-content: space-between;
-
-        mat-form-field:first-of-type {
-            width: 280px;
-            border-radius: 4px 0 0 4px;
-        }
-
-        :nth-child(2n) {
-            border-radius: 0;
-        }
-
-        :last-child {
-            width: 46px;
-            height: 68px;
-            border-radius: 4px;
-        }
+        height: 44px;
     }
 }

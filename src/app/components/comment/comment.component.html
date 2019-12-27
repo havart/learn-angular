@@ -1,37 +1,29 @@
-<mat-sidenav opened mode="side">
-    <form class="form">
-        <mat-form-field class="comment-input-box" appearance="outline" color="warn">
-            <mat-icon
-                *ngIf="commentForm.value"
-                (click)="addComment()"
-                class="input-icon"
-                aria-hidden="true"
-                aria-label="Send"
-                matSuffix
-                >send</mat-icon
-            >
-            <label>
-                <input
-                    [formControl]="commentForm"
-                    matInput
-                    type="text"
-                    placeholder="Введите комментарий"
-                    name="comment"
-                />
-            </label>
-        </mat-form-field>
-    </form>
-    <div class="comment-list">
-        <mat-card *ngFor="let comment of commentsList$ | async" class="comment-card">
-            <mat-card-title-group>
-                <mat-card-title> Сообщение от {{ comment.name }} </mat-card-title>
-                <label class="comment-data">{{ comment.createdAt | date: 'HH:mm dd.MM.yyyy' }}</label>
-            </mat-card-title-group>
-            <mat-card-content>
-                <p>
-                    {{ comment.comment }}
-                </p>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</mat-sidenav>
+<form class="form">
+    <mat-form-field class="comment-input-box" appearance="outline" color="warn">
+        <mat-icon
+            *ngIf="commentForm.value"
+            (click)="addComment()"
+            class="input-icon"
+            aria-hidden="true"
+            aria-label="Send"
+            matSuffix
+            >send</mat-icon
+        >
+        <label>
+            <input [formControl]="commentForm" matInput type="text" placeholder="Введите комментарий" name="comment" />
+        </label>
+    </mat-form-field>
+</form>
+<div class="comment-list">
+    <mat-card *ngFor="let comment of commentsList$ | async" class="comment-card">
+        <mat-card-title-group>
+            <mat-card-title> Сообщение от {{ comment.name }} </mat-card-title>
+            <label class="comment-data">{{ comment.createdAt | date: 'HH:mm dd.MM.yyyy' }}</label>
+        </mat-card-title-group>
+        <mat-card-content>
+            <p>
+                {{ comment.comment }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

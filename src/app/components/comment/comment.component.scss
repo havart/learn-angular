@@ -2,14 +2,6 @@
     width: 100%;
 }
 
-.comment-card {
-    margin-bottom: 15px;
-}
-
-.comment-list {
-    display: block;
-}
-
 .comment-data {
     text-align: right;
     font-family: monospace;
@@ -34,8 +26,10 @@
 }
 
 .mat-card {
-    box-shadow: 0 0 0 0;
+    margin-bottom: 15px;
+    box-shadow: 4px 3px 5px 0 rgba(207, 207, 207, 0.5);
     background: white;
+    border: 1px solid rgba(160, 159, 159, 0.5);
 }
 
 mat-card-content {
@@ -45,11 +39,7 @@ mat-card-content {
 
 mat-sidenav {
     position: relative;
-    padding-top: 54px;
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    float: right;
-    right: 0;
-    width: 350px;
 }
