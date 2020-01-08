@@ -13,9 +13,7 @@ import { ClientActivityComponent } from '../../components/client-activity/client
 import { ClientContactsListComponent } from '../../components/client-contacts-list/client-contacts-list.component';
 import { ClientDetailComponent } from '../../components/client-detail/client-detail.component';
 import { ContactComponent } from '../../components/contacts/contact.component';
-import { ClientActivityDetailComponent } from '../../components/client-activity-detail/client-activity-detail.component';
 import { ClientDetailListComponent } from '../../components/client-detail-list/client-detail-list.component';
-import { ClientDataComponent } from '../../components/client-data/client-data.component';
 
 @NgModule({
     declarations: [
@@ -23,13 +21,11 @@ import { ClientDataComponent } from '../../components/client-data/client-data.co
         AgeTransformPipe,
         SideBarComponent,
         CommentComponent,
-        ClientDataComponent,
         ClientComponent,
         ClientDetailComponent,
         ClientDetailListComponent,
         ClientActivityComponent,
         ClientContactsListComponent,
-        ClientActivityDetailComponent,
         ContactComponent,
     ],
     imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, ToolbarModule, MainPageRoutingModule],
@@ -41,12 +37,10 @@ import { ClientDataComponent } from '../../components/client-data/client-data.co
         SideBarComponent,
         CommentComponent,
         ClientComponent,
-        ClientDataComponent,
         ClientDetailComponent,
         ClientDetailListComponent,
         ClientActivityComponent,
         ClientContactsListComponent,
-        ClientActivityDetailComponent,
         ContactComponent,
     ],
     providers: [],
