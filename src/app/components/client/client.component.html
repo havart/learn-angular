@@ -27,7 +27,7 @@
             <p>
                 <a [href]="clientDetail.site" target="_blank">{{ clientDetail.site }}</a>
             </p>
-            <p>{{ clientDetail.income | currency: 'RUB':'symbol-narrow' }}</p>
+            <p>{{ clientDetail.income.substring(0,6) | currency: 'RUB':'symbol-narrow' }}</p>
         </div>
     </div>
 </div>
